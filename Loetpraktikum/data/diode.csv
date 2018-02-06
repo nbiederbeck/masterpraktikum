@@ -1,6 +1,6 @@
 Diode             Diode             Diode         Diode         Zener-Diode       Zener-Diode       Zener-Diode   Zener-Diode
 Durchlassrichtung Durchlassrichtung Sperrrichtung Sperrrichtung Durchlassrichtung Durchlassrichtung Sperrrichtung Sperrrichtung
-I/mA              U/mV              I/uA          U/mV          I/mA              U/V               I/uA          U/V
+I/mA              U/mV              I/uA          U/mV          I/mA              U/mV              I/uA          U/V
 32                739               0             2.2           0.00006           251               0.34          3.34
 13                701               0.01          104.9         0.0006            367               0.26          2.63
 4.2               650               0.03          292           0.0026            437               0.22          2.16
