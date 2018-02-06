@@ -21,3 +21,9 @@ plots:
 
 Loetpraktikum.pdf: Loetpraktikum.md $(all_plots)
 	pandoc -o Loetpraktikum.pdf Loetpraktikum.md
+
+clean:
+	rm -rf plots
+	rm Loetpraktikum.pdf
+
+.PHONY: clean
