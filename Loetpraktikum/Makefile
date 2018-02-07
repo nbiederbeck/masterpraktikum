@@ -19,8 +19,10 @@ $(all_plots): Loetpraktikum.py $(all_data) plots
 plots:
 	mkdir -p plots
 
-Loetpraktikum.pdf: Loetpraktikum.md $(all_plots)
-	pandoc -o Loetpraktikum.pdf Loetpraktikum.md
+Loetpraktikum.pdf: $(all_plots)
+	gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite \
+		-sOutputFile=Loetpraktikum.pdf \
+		$(all_plots)
 
 clean:
 	rm -rf plots
