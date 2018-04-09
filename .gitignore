@@ -1,3 +1,11 @@
-**/.ipynb_checkpoints/
-**/.DS_Store
+# LaTeX
+build/
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# macOS Files
+.DS_Store
+
+# Compiled and downloaded documents
 *.pdf
