@@ -9,7 +9,7 @@ OUT_DIR = build
 	--output-directory=$(OUT_DIR) \
 	--halt-on-error \
 	--interaction=nonstopmode
-TEX_CMD = latexrun \
+TEX_CMD = ./latexrun \
 	--latex-cmd pdflatex \
 	--bibtex-cmd biber \
 	-O $(OUT_DIR)
@@ -19,7 +19,7 @@ all: $(BUILD_FILES)
 
 
 anleitung_V41_DebyeScherrer.pdf:
-	wget http://129.217.224.2/HOMEPAGE/PHYSIKER/MASTER/SKRIPT/V41.pdf \
+	wget http://129.217.224.2/HOMEPAGE/PHYSIKER/MASTER/SKRIPT/V41.pdf -q \
 		--user TUDoFP --password WS1718 \
 		-O anleitung_V41_DebyeScherrer.pdf
 
@@ -34,7 +34,7 @@ FORCE:
 
 
 build:
-	mkdir -p build
+	@mkdir -p build
 
 
 clean:
