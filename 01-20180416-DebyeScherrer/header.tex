@@ -10,6 +10,13 @@
 % Warnung, falls nochmal kompiliert werden muss
 \usepackage[aux]{rerunfilecheck}
 
+% % deutsche Spracheinstellungen
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+
+
 % unverzichtbare Mathe-Befehle
 \usepackage{amsmath}
 % viele Mathe-Symbole
@@ -18,7 +25,7 @@
 \usepackage{mathtools}
 
 % Fonteinstellungen
-\usepackage{fontspec}
+% \usepackage{fontspec}
 % Latin Modern Fonts werden automatisch geladen
 % Alternativ zum Beispiel:
 %\setromanfont{Libertinus Serif}
@@ -29,30 +36,25 @@
 % sollte man das Seiten-Layout neu berechnen lassen
 \recalctypearea{}
 
-% deutsche Spracheinstellungen
-\usepackage{polyglossia}
-\setmainlanguage{german}
-
-
-\usepackage[
-  math-style=ISO,    % ┐
-  bold-style=ISO,    % │
-  sans-style=italic, % │ ISO-Standard folgen
-  nabla=upright,     % │
-  partial=upright,   % ┘
-  warnings-off={           % ┐
-    mathtools-colon,       % │ unnötige Warnungen ausschalten
-    mathtools-overbracket, % │
-  },                       % ┘
-]{unicode-math}
+% \usepackage[
+%   math-style=ISO,    % ┐
+%   bold-style=ISO,    % │
+%   sans-style=italic, % │ ISO-Standard folgen
+%   nabla=upright,     % │
+%   partial=upright,   % ┘
+%   warnings-off={           % ┐
+%     mathtools-colon,       % │ unnötige Warnungen ausschalten
+%     mathtools-overbracket, % │
+%   },                       % ┘
+% ]{unicode-math}
 
 % traditionelle Fonts für Mathematik
-\setmathfont{Latin Modern Math}
+% \setmathfont{Latin Modern Math}
 % Alternativ zum Beispiel:
 %\setmathfont{Libertinus Math}
 
-\setmathfont{XITS Math}[range={scr, bfscr}]
-\setmathfont{XITS Math}[range={cal, bfcal}, StylisticSet=1]
+% \setmathfont{XITS Math}[range={scr, bfscr}]
+% \setmathfont{XITS Math}[range={cal, bfcal}, StylisticSet=1]
 
 % Zahlen und Einheiten
 \usepackage[
@@ -130,10 +132,9 @@
 \usepackage[shortcuts]{extdash}
 
 \author{%
-  AUTOR A\\%
-  \href{mailto:authorA@udo.edu}{authorA@udo.edu}%
+  Noah Biederbeck\\%
+  \href{mailto:noah.biederbeck@udo.edu}{noah.biederbeck@udo.edu}%
   \texorpdfstring{\and}{,}%
-  AUTOR B\\%
-  \href{mailto:authorB@udo.edu}{authorB@udo.edu}%
+  Maximilian Sackel\\%
+  \href{mailto:maximilian.sackel@udo.edu}{maximilian.sackel@udo.edu}%
 }
-\publishers{TU Dortmund – Fakultät Physik}
