@@ -1,58 +1,163 @@
 \section{Theorie}\label{sec:Theorie}
-Hallo, Welt!~\cite{sample}
+\nocite{anleitung}
 
-\subsection{Kristallstrukturen}
-% - Kristallstrukturen
-%   - Basis
-%   - Basisvektor
-%   - Punktgitter
-%   - Translation
-%   - Elementarzelle
-%   - Symmetrieeigenschaften
-%   - Bravais-Gitter
+Der Großteil der Materie, die sich im festen Aggregatzustand befindet,
+ist kristallin aufgebaut.
+Dies bedeutet, dass seine Atome räumlich periodisch angeordnet sind,
+aufgrund von zwischenatomaren Kräfte.
+Da viele Festkörper, sogenannte Polykristallite, aus vielen Kristalliten bestehen,
+muss über die in ihnen enthaltenen Kristalle mitteln, und damit beschränkt sich die
+Untersuchung von Kristalleigenschaften auf Einkristalle oder einzelne Kristalle
+von Polykristallen.
 
-\subsection{Kubische Kristallstrukturen}
-% - Kubische Kristallstrukturen
-%   - kubisch-raumzentriert
-%   - kubisch-flächenzentriert
-%   - Zinkblende-Struktur
-%   - Steinsalz-Struktur
-%   - Cäsiumchlorid-Struktur
-%   - Fluorit-Struktur
-%   - hexagonale Struktur
+Um die periodische Struktur von Kristallen aufzulösen, wird eine Sonde in der
+Größenordnung der Atomabstände benötigt.
+Hierfür eignen sich Elektronen, langsame Neutronen und insbesondere Röntgenstrahlen.
+
+In diesem Versuch wird die Debye-Scherre-Methode zur Kristallstrukturuntersuchung beschrieben,
+die die Beugung von Röntgenstrahlung am Kristallgitter nutzt.
+
+\subsection{Kristallstrukturen}%
+\label{sub:kristallstrukturen}
+% Basis
+% Basisvektor
+% Punktgitter
+% Translation
+% Elementarzelle
+% Symmetrieeigenschaften
+% Bravais-Gitter
+Die Beschreibung der räumlichen Periodizität basiert auf einem Punktgitter.
+Jeder Gitterpunkt kann aus einem oder mehreren Atomen bestehen,
+dies wird als Basis bezeichnet.
+In Abbildung~\ref{fig:punktgitter} sind ein Punktgitter, eine Basis und ein Basisgitter
+dargestellt.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\linewidth]{build/punktgitter.pdf}
+  \caption{Darstellung von Punktgitter, Basis, Basisgitter (v.l.).\cite{anleitung}}%
+  \label{fig:punktgitter}
+\end{figure}
+
+Die Vektoren $\vec{a}, \vec{b}, \vec{c}$, die bei einer Translation
+\begin{equation}
+  \vec{T} = x\vec{a} + y\vec{b} + z\vec{c}
+\end{equation}
+mit $\left\{x, y, z\right\} = 1$ das Gitter in sich selbst abbilden, heißen Basisvektoren.
+Ihre Wahl ist nahezu beliebig, jedoch werden aus Symmetriegründen jene gewählt,
+deren Länge dem Abstand der nächsten Nachbarn der Atome gleicht.
+
+So existieren 14 verschiedene Gitter, die Bravais-Gitter genannt werden
+und in 7 Gittertypen eingeteilt werden.
+Einige davon werden in Kapitel~\ref{sub:kubische_kristallstrukturen} beschrieben.
+
+Das von den Basisvektoren aufgespannte Parallelepided mit Volumen
+\begin{equation}
+  V = \vec{a} \cdot \left(\vec{b} \times \vec{c}\right)
+\end{equation}
+heißt Einheitszelle.
+
+
+\subsection{Kubische Kristallstrukturen}%
+\label{sub:kubische_kristallstrukturen}
+% kubisch-raumzentriert
+% kubisch-flächenzentriert
+% Zinkblende-Struktur
+% Steinsalz-Struktur 
+% Cäsiumchlorid-Struktur 
+% Fluorit-Struktur 
+% hexagonale Struktur 
+Die einfachsten Kristallstrukturen haben kubische Anordnung.
+Dies bedeutet, dass ihre Basisvektoren jeweils senkrecht aufeinander stehen.
+Hierbei wird zwischen ein- und mehratomigen Basen unterschieden.
+Das einfachste (\textit{primitive}) kubische Gitter hat auf je ein Atom auf den Ecken eines Würfels.
+Da sich das Atom auf der Ecke genau acht Würfelgitter teilt,
+besteht die Elementarzelle also aus einem Atom.
+
+Ein Gitter heißt \textit{kubisch-raumzentriert}, wenn zusätzlich zum primitiven Gitter
+ein Atom in der Mitte des Würfels zu finden ist.
+Die Elementarzelle besteht hier aus zwei Atomen.
+Die Atome liegen, geschrieben in Koordinaten der Basisvektoren, bei
+\begin{align*}
+  % \label{eq:basisvektoren_kubisch-raumzentriert}
+  a_1 = {\left(0, 0, 0\right)}^T, \hspace{2em} a_2 = {\left(\sfrac{1}{2}, \sfrac{1}{2}, \sfrac{1}{2}\right)}^T.
+\end{align*}
+
+Ein weiteres einatomiges Gitter ist das \textit{kubisch-flächenzentrierte} Gitter.
+Hier sind die Atome sowohl auf den Ecken, als auch in der Mitte jeder Seitenfläche.
+Die Elementarzelle besteht somit aus $8 \cdot \sfrac{1}{8} + 6 \cdot \sfrac{1}{2} = 4$ Atomen.
+Die Atome liegen an den Stellen
+\begin{align*}
+  % \label{eq:basisvektoren_kubisch-flächenzentriert}
+  a_1 = {\left(0, 0, 0\right)}^T, \hspace{2em}
+  a_2 = {\left(0, \sfrac{1}{2}, \sfrac{1}{2}\right)}, \hspace{2em}
+  a_3 = {\left(\sfrac{1}{2}, 0, \sfrac{1}{2}\right)}, \hspace{2em}
+  a_4 = {\left(\sfrac{1}{2}, \sfrac{1}{2}, 0\right)}.
+\end{align*}
+
+Die \textit{Zinkblende-Struktur} besteht aus einer zweiatomigen Basis,
+deren Atome jeweils auf primitiven Gittern sitzen.
+Die Elementarzelle besteht aus zwei Atomen, sie sitzen also bei
+\begin{align*}
+  % \label{eq:basisvektoren_zinkblende}
+  a_1 = {\left(0, 0, 0\right)}^T, \hspace{2em} b_1 = {\left(\sfrac{1}{4}, \sfrac{1}{4}, \sfrac{1}{4}\right)}^T.
+\end{align*}
+lauten.
 
 \subsection{Netzebenen}
-% - Netzebenen
-%   - Miller Indizes
-%   - Netzebenenschar
-%   - Netzebenenabstand
+% Miller Indizes
+% Netzebenenschar
+% Netzebenenabstand
+In sogenannten Netzebenen liegen die Schwerpunkte der Atome.
+Parallele Netzebenen bilden eine Ebenenschar.
+Die Gesamtheit einer Ebenenschar wird durch die drei
+\textit{Millerschen Indizes} $\left(hkl\right)$ beschrieben.
+Diese werden bestimmt, indem die reziproken Achsenabschnitte
+der dem Koordinatenursprung nächsten Netzebene in Bruchteilen der
+Basisvektorenlänge angegeben wird.
+Weiterhin sollten die Indizes aus Rechengründen auf ganze Zahlen gebracht werden.
+
+So ist zum Beispiel eine Netzebene, die die Koordinatenachsen in den
+Punkten $2a, \sfrac{b}{2}, \sfrac{c}{3}$ schneidet,
+durch die Miller-Indizes $(146)$ gegeben.
+Die Rechenvorschrift lautet hier $2~\cdot~\text{reziprok}$.
+
+Ein negativer Achsenabschnitt wird durch einen Balken über dem Index
+kenntlich gemacht: $\left(\overline{h}kl\right)$.
+Existiert in einer Richtung kein Achsenabschnitt, so ist der Miller-Index 0.
+
+Der Netzebenenabstand steht senkrecht auf einer Ebenenschar und beschreibt
+gerade den abstandt zwischen zwei Netzebenen.
+Er ist gerade
+\begin{equation}
+  \label{eq:netzebenensbstand}
+  d = \frac{1}{\sqrt{%
+    \frac{h^2}{a^2} + \frac{k^2}{b^2} + \frac{l^2}{c^2}
+  }}.
+\end{equation}
 
 \subsection{Beugung von Röntgenstrahlung an Kristallen}
-% - Beugung von Röntgenstrahlung an Kristallen
-%   - Streuzentren
-%   - Streuung an
-%     - Elektronen
-%     - Atomen
-%     - Einheitszellen
-%   - Atomformfaktor
-%   - Phasenunterschiede
-%   - Fouriertrafo
-%   - Interferenzen
-%   - Strukturamplitude $S$
-%   - Braggsche Bedingung
-%   - reziproke Gittervektoren
-%   - reziprokes Giter
+% Streuzentren 
+% Streuung an 
+% - Elektronen 
+% - Atomen 
+% - Einheitszellen 
+% Atomformfaktor 
+% Phasenunterschiede 
+% Fouriertrafo 
+% Interferenzen 
+% Strukturamplitude $S$ 
+% Braggsche Bedingung 
+% reziproke Gittervektoren 
+% reziprokes Giter 
 
 \subsection{Messmethode}
-% - Messmethode
-%   - Debye-Scherrer
-%   - kristalline Probe
-%   - Filmmethode
-%   - Kollimator
-%   - Kegelmantel
-%   - Probe drehen
-%   - systematischer Fehler (2 Stück)
-%   - Röntgenstrahlung
-%   - Wellenlängen
-%   - Aufgabe
-
+% Debye-Scherrer 
+% kristalline Probe 
+% Filmmethode 
+% Kollimator 
+% Kegelmantel 
+% Probe drehen 
+% systematischer Fehler (2 Stück) 
+% Röntgenstrahlung 
+% Wellenlängen 
+% Aufgabe 
