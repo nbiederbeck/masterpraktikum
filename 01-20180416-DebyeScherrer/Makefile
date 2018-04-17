@@ -91,7 +91,7 @@ build/verzug_probe.pdf: anleitung_V41_DebyeScherrer.pdf | build
 		-dFirstPage=15 -dLastPage=15 \
 		-sOutputFile=build/verzug_probe.pdf \
 		anleitung_V41_DebyeScherrer.pdf
-	pdfcrop --bbox "0 425 315 630" build/verzug_probe.pdf build/verzug_probe.pdf
+	pdfcrop --bbox "0 428 320 630" build/verzug_probe.pdf build/verzug_probe.pdf
 	pdfcrop build/verzug_probe.pdf build/verzug_probe.pdf 
 
 build/absorptionskante.pdf: anleitung_V41_DebyeScherrer.pdf | build

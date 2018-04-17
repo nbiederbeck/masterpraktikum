@@ -81,7 +81,7 @@ Die Elementarzelle besteht hier aus zwei Atomen.
 Die Atome liegen, geschrieben in Koordinaten der Basisvektoren, bei
 \begin{align*}
   % \label{eq:basisvektoren_kubisch-raumzentriert}
-  a_1 = {\left(0, 0, 0\right)}^T, \hspace{2em} a_2 = {\left(\sfrac{1}{2}, \sfrac{1}{2}, \sfrac{1}{2}\right)}^T.
+  a_1 = {\left(0, 0, 0\right)}^\top, \hspace{2em} a_2 = {\left(\sfrac{1}{2}, \sfrac{1}{2}, \sfrac{1}{2}\right)}^\top.
 \end{align*}
 
 Ein weiteres einatomiges Gitter ist das \textit{kubisch-flächenzentrierte} Gitter.
@@ -90,20 +90,43 @@ Die Elementarzelle besteht somit aus $8 \cdot \sfrac{1}{8} + 6 \cdot \sfrac{1}{2
 Die Atome liegen an den Stellen
 \begin{align*}
   % \label{eq:basisvektoren_kubisch-flächenzentriert}
-  a_1 = {\left(0, 0, 0\right)}^T, \hspace{2em}
-  a_2 = {\left(0, \sfrac{1}{2}, \sfrac{1}{2}\right)}, \hspace{2em}
-  a_3 = {\left(\sfrac{1}{2}, 0, \sfrac{1}{2}\right)}, \hspace{2em}
-  a_4 = {\left(\sfrac{1}{2}, \sfrac{1}{2}, 0\right)}.
+  a_1 = {\left(0, 0, 0\right)}^\top, \hspace{2em}
+  a_2 = {\left(0, \sfrac{1}{2}, \sfrac{1}{2}\right)}^\top, \hspace{2em}
+  a_3 = {\left(\sfrac{1}{2}, 0, \sfrac{1}{2}\right)}^\top, \hspace{2em}
+  a_4 = {\left(\sfrac{1}{2}, \sfrac{1}{2}, 0\right)}^\top.
+\end{align*}
+
+Die \textit{Diamantstruktur} besteht aus zwei kubisch-flächenzentrierten Gittern,
+die um eine Viertelraumdiagonale gegeneinander verschoben sind.
+Die Elementarzelle besteht aus acht Atomen an der Orten
+\begin{align*}
+  a_1 = {\left(0, 0, 0\right)}^\top, \hspace{1em}
+  a_2 = {\left(0, \sfrac{1}{2}, \sfrac{1}{2}\right)}^\top, \hspace{1em}
+  a_3 = {\left(\sfrac{1}{2}, 0, \sfrac{1}{2}\right)}^\top, \hspace{1em}
+  a_4 = {\left(\sfrac{1}{2}, \sfrac{1}{2}, 0\right)}^\top, \\
+  a_5 = {\left(\sfrac{1}{4}, \sfrac{1}{4}, \sfrac{1}{4}\right)}^\top, \hspace{1em}
+  a_6 = {\left(\sfrac{1}{4}, \sfrac{3}{4}, \sfrac{3}{4}\right)}^\top, \hspace{1em}
+  a_7 = {\left(\sfrac{3}{4}, \sfrac{1}{4}, \sfrac{3}{4}\right)}^\top, \hspace{1em}
+  a_8 = {\left(\sfrac{3}{4}, \sfrac{3}{4}, \sfrac{1}{4}\right)}^\top.
 \end{align*}
 
 Die \textit{Zinkblende-Struktur} besteht aus einer zweiatomigen Basis,
-deren Atome jeweils auf primitiven Gittern sitzen.
-Die Elementarzelle besteht aus zwei Atomen, sie sitzen also bei
-\begin{align*}
-  % \label{eq:basisvektoren_zinkblende}
-  a_1 = {\left(0, 0, 0\right)}^T, \hspace{2em} b_1 = {\left(\sfrac{1}{4}, \sfrac{1}{4}, \sfrac{1}{4}\right)}^T.
-\end{align*}
-lauten.
+deren Atome jeweils ein kubisch-flächenzentriertes Gitter
+der Diamantstruktur belegen.
+
+Die \textit{Steinsalz-Struktur} ist ganz ähnlich wie die Zinkblende-Struktur,
+jedoch sind die einzelnen Gitter um eine halbe Raumdiagonale gegeneiander verschoben.
+
+Die häufige \textit{Cäsiumchlorid-Struktur} entspricht der Steinsalz-Struktur,
+jedoch mit zwei kubisch-primitiven Gittern.
+
+Die \textit{Fluorit-Struktur} besteht aus drei kubisch-flächenzentrierten Gittern,
+die gegeneinander um $\sfrac{1}{4}$- und $\sfrac{3}{4}$-Raumdiagonale verschoben sind.
+Die Elementarzelle besteht aus einer zweiatomigen Basis des Typs $AB_2$.
+
+Eine weitere häufige, jedoch nicht kubische, ist die \textit{hexagonale Struktur}.
+Hier beschreibt die Form der Elementarzelle ein rechtwinkliges Prisma,
+und die Atome sind in der dichtesten Kugelpackung angeordnet.
 
 \subsection{Netzebenen}
 % Miller Indizes
@@ -141,6 +164,8 @@ Dieser ist allgemein
   }}
 \end{align}
 vereinfacht.
+Hierbei sind $a, b, c$ die Längen der Gittervektoren,
+im kubischen Gitter bezeichnet als Gitterkonstante.
 
 \subsection{Beugung von Röntgenstrahlung an Kristallen}
 Aufgrund der räumlichen Periodizität der Kristalle spielen
@@ -150,7 +175,7 @@ Ein Teilchen mit Masse $m$ und Ladung $q$ emittiert in einem
 unpolarisierten elektrischen Wechselfeld eine Strahlung der Intensität
 \begin{equation}
   \label{eq:strahlung_elektron}
-  I_\text{e} (r, \theta) = I_0 {\left(\frac{\mu_0 q^2}{4\pi m}\right)}^2 \frac{1}{r^2} \frac{1+ \cos^2 (2\theta)}{2},
+  I_\text{e} (r, \theta) = I_0 {\left(\frac{\mu_0 q^2}{4\pi m}\right)}^2 \frac{1}{r^2} \frac{1+ \cos^2\! (2\theta)}{2},
 \end{equation}
 wobei $2\theta$ der Winkel zwischen einfallendem und gestreuten Strahl ist.
 Es ist zu erkennen, dass die Streuung an Atomen aufgrund ihrer hohen Masse
@@ -160,7 +185,7 @@ Die Streuung an Hüllenelektronen muss im Gegensatz zur Streuung an freien
 Elektronen korrigiert werden:
 \begin{equation}
   \label{eq:strahlung_huellenelektron}
-  I (r, \theta, z) = I_0 {\left(\frac{\mu_0 {\left(z e_0 \right)}^2}{4\pi z m_0}\right)}^2 \frac{1}{r^2} \frac{1+\cos^2 (2\theta)}{2}
+  I (r, \theta, z) = I_0 {\left(\frac{\mu_0 {\left(z e_0 \right)}^2}{4\pi z m_0}\right)}^2 \frac{1}{r^2} \frac{1+\cos^2\! (2\theta)}{2}
   = z^2 I_\text{e} (r, \theta).
 \end{equation}
 
@@ -255,7 +280,9 @@ Somit lautet der Strukturfaktor mit Gleichungen~\eqref{eq:struktufaktor_atome},~
   S\left(hkl\right) = \sum_j f_j \exp\left(x_j h + y_j k + z_j l\right).
 \end{equation}
 
-
+Ein ausfallender Strukturfaktor, für den ein Braggscher Winkel existiert,
+gibt Hinweise auf die Struktur von Kristallen,
+ebenso wie der existierende Strukturfaktor.
 
 % Streuzentren 
 % Streuung an 
@@ -272,6 +299,80 @@ Somit lautet der Strukturfaktor mit Gleichungen~\eqref{eq:struktufaktor_atome},~
 % reziprokes Giter 
 
 \subsection{Messmethode}
+Da ein Einkristall sehr wenig konstruktive Interferenzen zulässt,
+müsste Röntgenstrahlung zufällig aus der richtigen Richtung auf den Kristall
+strahlen, um überhaupt einen Reflex aufzubringen.
+Um die Reflexwahrscheinlichkeit zu erhöhen, wird die Probe pulverisiert.
+Die Anordnung der Kristalle ist dann nämlich statistisch verteilt
+und es mehr Röntgenstrahlen treffen im Braggschen Winkel auf die Kristalle.
+
+Die gebeugte Röntgenstrahlung der Netzebenenschar $(hkl)$ trifft unter
+dem Winkel $\theta$ auf einen Filmstreifen.
+Aufgrund der Verteilung der Orientierungen wird die reflektierte Strahlung
+als Kreis sichtbar.
+
+Die Probe wird während der Messung rotiert, um die Orientierungen der Kristalle
+weiterhin zu variieren.
+
+Das Messverfahren ist in Kapitel~\ref{sub:messung} weiter beschrieben.
+
+Es können bei der Messung zwei systematische Fehler auftreten.
+\begin{enumerate}
+  \item\label{item:absorption} Absorption der Röntgenstrahlung \\
+    Die Röntgenstrahlung wird nur am Rand der zylindrischen Probe gestreut,
+    im mittleren Teil wird aufgrund der Dicke die Röntgenstrahlung absorbiert.
+    Vergleiche hierzu Abbildung~\ref{fig:fehler_absorption}.
+    Nach Bradley und Jay\cite{bradleyjay} lautet die Korrektur
+    \begin{equation}
+      \label{eq:korrektur_lokalisation}
+      \frac{\Delta a_\text{A}}{a} = \frac{\rho}{2R}\left(1 - \frac{R}{F}\right) \frac{\cos^2\!\theta}{\theta}
+    \end{equation}
+  \item\label{item:lokalisierung} Lokalisierung der Probenachse \\
+    Die Verschiebung der Probenachse gegen die Achse des Films bringt
+    einen Winkelfehler von
+    \begin{equation}
+      4 \Delta \theta = -\frac{2 \Delta s}{R}
+    \end{equation}
+    Vergleiche hierzu Abbildung~\ref{fig:fehler_lokalisation}.
+    Geometrische Überlegungen zeigen, dass die Korrektur
+    \begin{equation}
+      \frac{a_\text{V}}{a} = \frac{v}{R} \cos^2\!{\theta}
+    \end{equation}
+    ist.
+\end{enumerate}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{build/ausdehnung_probe.pdf}
+    \caption{%
+      Absorption der Röntgenstrahlung.
+    }%
+    \label{fig:fehler_absorption}
+  \end{subfigure}
+  %
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{build/verzug_probe.pdf}
+    \caption{%
+      Lokalisierung der Probenachse.
+    }%
+    \label{fig:fehler_lokalisation}
+  \end{subfigure}
+  \caption{%
+    Systematischer Fehler in der Messung.\cite{anleitung}
+  }
+\end{figure}
+
+Der systematische Fehler $\Delta a_\text{V}$ ist groß gegenüber $\Delta a_\text{A}$.
+Dies bedeutet, dass
+\begin{equation}
+  \Delta a_\text{ges} = \Delta a_\text{V} + \Delta a_\text{A} \propto \cos^2\!{\theta}.
+\end{equation}
+Bei einer linearen Regression dieser Parameter ist
+der Achsenabschnitt der $a$-Achse der beste Schätzer für die Gitterkonstante.
+
 % Debye-Scherrer 
 % kristalline Probe 
 % Filmmethode 
@@ -279,6 +380,21 @@ Somit lautet der Strukturfaktor mit Gleichungen~\eqref{eq:struktufaktor_atome},~
 % Kegelmantel 
 % Probe drehen 
 % systematischer Fehler (2 Stück) 
+
+\subsection{Röntgenstrahlung}%
+\label{sub:roentgenstrahlung}
+Die für den Versuch benötigte Röntgenstrahlung wird durch eine Röntgenröhre erzeugt.
+Die Beschleunigungsspannung $U$ ist groß gegen die $K_\alpha$-Linie der Anode.
+Mittels eines $\beta$-Filters wird die zusätzlich entstehende $K_\beta$-Linie eliminiert.
+Übrig bleiben zwei $K_\alpha$-Linien, deren Wellenlängen aufgrund der unterschiedlichen
+Emissionswahrscheinlichkeiten zu $\overline{\lambda}_{K_\alpha} = \SI{1.5417}{\angstrom}$
+gemittelt wird.
+Bei Winkeln im Bereich von \SI{90}{\degree} muss die Aufspaltung beiden $K_\alpha$-Linien
+berücksichtigt werden:
+\begin{equation}
+  \Delta \theta_{1, 2} = \frac{\lambda_1 - \lambda_2}{\overline{\lambda}} \tan{\theta}
+\end{equation}
+
 % Röntgenstrahlung 
 % Wellenlängen 
 % Aufgabe 
