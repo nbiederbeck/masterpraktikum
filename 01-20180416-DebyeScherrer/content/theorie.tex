@@ -34,15 +34,17 @@ dargestellt.
 \begin{figure}
   \centering
   \includegraphics[width=0.8\linewidth]{build/punktgitter.pdf}
-  \caption{Darstellung von Punktgitter, Basis, Basisgitter (v.l.).\cite{anleitung}}%
+  \caption{Von links: Darstellung von Punktgitter, Basis und Basisgitter.\cite{anleitung}}%
   \label{fig:punktgitter}
 \end{figure}
 
 Die Vektoren $\vec{a}, \vec{b}, \vec{c}$, die bei einer Translation
-\begin{equation}
-  \vec{T} = x\vec{a} + y\vec{b} + z\vec{c}
-\end{equation}
-mit $\left\{x, y, z\right\} = 1$ das Gitter in sich selbst abbilden, heißen Basisvektoren.
+\begin{align}
+  \vec{T} &= x\vec{a} + y\vec{b} + z\vec{c} \\
+  \intertext{mit}
+  \left\{x, y, z\right\} &\in \mathbb{N}_0
+\end{align}
+das Gitter in sich selbst abbilden, heißen Basisvektoren.
 Ihre Wahl ist nahezu beliebig, jedoch werden aus Symmetriegründen jene gewählt,
 deren Länge dem Abstand der nächsten Nachbarn der Atome gleicht.
 
@@ -125,17 +127,136 @@ Ein negativer Achsenabschnitt wird durch einen Balken über dem Index
 kenntlich gemacht: $\left(\overline{h}kl\right)$.
 Existiert in einer Richtung kein Achsenabschnitt, so ist der Miller-Index 0.
 
-Der Netzebenenabstand steht senkrecht auf einer Ebenenschar und beschreibt
-gerade den abstandt zwischen zwei Netzebenen.
-Er ist gerade
-\begin{equation}
+Der Netzebenenvektor steht senkrecht auf einer Netzebene und beschreibt
+die zugehörige Netzebenenschar, sein Betrag ist gerade der Abstand zwischen zwei Netzebenen.
+Dieser ist allgemein
+\begin{align}
   \label{eq:netzebenensbstand}
-  d = \frac{1}{\sqrt{%
+  d &= \frac{1}{\sqrt{%
     \frac{h^2}{a^2} + \frac{k^2}{b^2} + \frac{l^2}{c^2}
-  }}.
-\end{equation}
+  }}, \\
+  \intertext{was sich in einem kubischen Gitter auf}
+  d &= \frac{a}{\sqrt{%
+    h^2 + k^2 + l^2
+  }}
+\end{align}
+vereinfacht.
 
 \subsection{Beugung von Röntgenstrahlung an Kristallen}
+Aufgrund der räumlichen Periodizität der Kristalle spielen
+Interferenzeffekte eine große Rolle bei der Röntgenbeugung.
+
+Ein Teilchen mit Masse $m$ und Ladung $q$ emittiert in einem
+unpolarisierten elektrischen Wechselfeld eine Strahlung der Intensität
+\begin{equation}
+  \label{eq:strahlung_elektron}
+  I_\text{e} (r, \theta) = I_0 {\left(\frac{\mu_0 q^2}{4\pi m}\right)}^2 \frac{1}{r^2} \frac{1+ \cos^2 (2\theta)}{2},
+\end{equation}
+wobei $2\theta$ der Winkel zwischen einfallendem und gestreuten Strahl ist.
+Es ist zu erkennen, dass die Streuung an Atomen aufgrund ihrer hohen Masse
+vernachlässigt werden kann.
+
+Die Streuung an Hüllenelektronen muss im Gegensatz zur Streuung an freien
+Elektronen korrigiert werden:
+\begin{equation}
+  \label{eq:strahlung_huellenelektron}
+  I (r, \theta, z) = I_0 {\left(\frac{\mu_0 {\left(z e_0 \right)}^2}{4\pi z m_0}\right)}^2 \frac{1}{r^2} \frac{1+\cos^2 (2\theta)}{2}
+  = z^2 I_\text{e} (r, \theta).
+\end{equation}
+
+Der Quotient $f$ der Intensitäten, mit
+\begin{equation}
+  f^2 = \frac{I_\text{a}}{I_\text{e}} \le 1
+\end{equation}
+heißt Atomformfaktor.
+
+Der Atomformfaktor $f$ ist die Fouriertransformierte der Ladungsverteilung $\rho$ des Atoms.
+
+Trifft nun eine Welle auf ein Atom, so existiert eine Phasendifferenz zwischen
+den Streuungen an verschiedenen Elektronen in der Hülle.
+Ist $\vec{k_0}$ der Wellenzahlvektor der einlaufenden und $\vec{k}$ der der gestreuten Welle,
+so ist nach Abbildung~\ref{fig:phasenunterschied} der Gangunterschied der Wellen
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\linewidth]{build/phasenunterschied.pdf}
+  \caption{Skizze zur Berechnung des Phasenunterschieds bei der Streuung an zwei Punkten.\cite{anleitung}}%
+  \label{fig:phasenunterschied}
+\end{figure}
+\begin{equation}
+  \Delta s = s_1 + s_2 = \vec{r} \cdot \left(\frac{\vec{k}}{k} - \frac{\vec{k}_0}{k_0}\right).
+\end{equation}
+Dies bedeutet, dass der Phasenunterschied
+\begin{equation}
+  \Delta \varphi = 2 \pi \frac{\Delta s}{\lambda} = 2 \pi \vec{r} \cdot \left(\vec{k} - \vec{k}_0\right)
+\end{equation}
+ist.
+
+% Gemäß Abbildung~\ref{fig:wellenvektor} ist gerade
+% \begin{equation}
+%   \left| \vec{k} - \vec{k}_0 \right| = \frac{2 \sin{\theta}}{\lambda}
+% \end{equation}
+% \begin{wrapfigure}{l}{0.4\textwidth}
+%   \centering
+%   \includegraphics[width=0.7\linewidth]{build/wellenvektor.pdf}
+%   \caption{%
+%     Zusammenhang zwischen Streuinkel und Wellenzahlvektoren der einfallenden und gestreuten Welle.\cite{anleitung}
+%   }%
+%   \label{fig:wellenvektor}
+% \end{wrapfigure}
+
+Die Phasendifferenz bei der Streuung an der Elementarzelle kann analog berechnet werden.
+Um die Streuamplitude $A$ zu berechnen, muss phasenrichtig über alle Atom
+in der Elementarzelle summiert werden.
+Hier ist zu berücksichtigen, dass alle Atome einen eigenen Formfaktor $f_j$ haben:
+\begin{equation}
+  A = \sum_j f_j \exp\left(-2\pi i \vec{r_j} \cdot\left(\vec{k} - \vec{k}_0 \right)\right) I_e
+\end{equation}
+
+Werden die Ortsvektoren der Atome $\vec{r_j}$ durch die Basisvektoren dargestellt, so ist
+\begin{equation}
+  \label{eq:struktufaktor_atome}
+  S := \sum_j f_j \exp\left(-2\pi i \left(x_j \vec{a} + y_j \vec{b} + z_j \vec{c}\right) \cdot \left(\vec{k} - \vec{k}_0 \right)\right) I_e
+\end{equation}
+der Strukturfaktor der Elementarzelle.
+
+Die Forderung nach konstruktiver Interferenz erfordert die Beziehung
+\begin{equation}
+  n \lambda = 2 d \sin{\theta}, \hspace{2em} n \in \mathbb{N}.
+\end{equation}
+Dies ist die Braggsche Bedingung.
+In allen anderen Fällen sind die Interferenzen destruktiv und Beugungsreflexe entfallen.
+
+Um den Strukturfaktor noch übersichtlicher zu gestalten, wird der reziproke Gittervektor eingeführt.
+Dieser ist, ausgedrückt mit den Wellenzahlvektoren
+\begin{equation}
+  \label{eq:gittervektor}
+  \vec{g} = \vec{k} - \vec{k}_0.
+\end{equation}
+Der reziproke Gittervektor ist der charakteristische Netzebenenvektor der Netzebenenscharen im reziproken Gitter.
+Dieses wird durch reziporke Basisvektoren aufgespannt.
+Sie lassen sich folgendermaßen aus den normalen Basisvektoren berechnen:
+\begin{align}
+  \label{eq:reziproke_basisvektoren}
+  \vec{A} &= \frac{1}{V} \left(\vec{b} \times \vec{c}\right), \\
+  \vec{B} &= \frac{1}{V} \left(\vec{c} \times \vec{a}\right), \\
+  \vec{C} &= \frac{1}{V} \left(\vec{a} \times \vec{b}\right), \\
+  \intertext{mit dem Volumen}
+  V &= \vec{a} \cdot \left(\vec{b} \times \vec{c}\right).
+\end{align}
+
+Der reziproke Gittervektor lautet dann
+\begin{equation}
+  \label{eq:gittervektor_basis}
+  \vec{g}(hkl) = h\vec{A} + k\vec{B} + l\vec{C}.
+\end{equation}
+
+Somit lautet der Strukturfaktor mit Gleichungen~\eqref{eq:struktufaktor_atome},~\eqref{eq:gittervektor},~\eqref{eq:gittervektor_basis}
+\begin{equation}
+  S\left(hkl\right) = \sum_j f_j \exp\left(x_j h + y_j k + z_j l\right).
+\end{equation}
+
+
+
 % Streuzentren 
 % Streuung an 
 % - Elektronen 
