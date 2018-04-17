@@ -21,7 +21,7 @@ class cristal:
         structurfactor = 0
         for g_1, g_2, g_3 in self.base_vec:
             structurfactor += self.formfaktor * np.cos(2*np.pi*(g_1*h + g_2*k + g_3*l))
-        return np.round(structurfactor, 2)
+        return structurfactor
 
     def all_struc_fac(self, order):
         h, k, l = 1, 0, 0
@@ -30,9 +30,8 @@ class cristal:
             while(k<=h):
                 while(l<=k):
                     storage['hkl'].append('{}{}{}'.format(h, k, l))
-                    storage['m'].append('{}'.format(h**2 + k**2 + l*2))
-                    storage['structurfactor'].append('{}'.format(
-                            self.structurfactor(h, k, l)))
+                    storage['m'].append(h**2 + k**2 + l**2)
+                    storage['structurfactor'].append(round(self.structurfactor(h, k, l),2))
                     l += 1
                 k += 1
                 l = 0
@@ -82,73 +81,94 @@ class composite_structure(cristal):
         return sum_st_fa
 
 if __name__ == '__main__':
-    print('sc:')
     sc = prim_cubic_cristal()   
-    dsc = sc.all_struc_fac(3)
-    print(dsc)
+    dsc = sc.all_struc_fac(4)
 
-    print('bcc:')
     bcc = body_cubic_cristal()   
-    dbcc = bcc.all_struc_fac(3)
-    print(dbcc)
+    dbcc = bcc.all_struc_fac(4)
 
-    print('fcc:')
     fcc = face_cubic_cristal()   
-    dfcc = fcc.all_struc_fac(3)
-    print(dfcc)
+    dfcc = fcc.all_struc_fac(4)
     
-    print('diamant:')
     diamant = composite_structure()   
     diamant.add_structure(face_cubic_cristal())
     diamant.add_structure(face_cubic_cristal(
         bias=[0.25,0.25,0.25]))
-    dd = diamant.all_struc_fac(3)
-    print(dd)
+    dd = diamant.all_struc_fac(4)
     
-    print('zinkblende:')
     zinkblende = composite_structure()   
     zinkblende.add_structure(face_cubic_cristal())
     zinkblende.add_structure(face_cubic_cristal(
         bias=[0.25,0.25,0.25], formfaktor=2/3))
-    dz = zinkblende.all_struc_fac(3)
-    print(dz)
+    dz = zinkblende.all_struc_fac(4)
     
-    print('Steinsalz:')
     steinsalz = composite_structure()   
     steinsalz.add_structure(face_cubic_cristal())
     steinsalz.add_structure(face_cubic_cristal(
         bias=[0.5,0.5,0.5], formfaktor=2/3))
-    ds = steinsalz.all_struc_fac(3)
-    print(ds)
+    ds = steinsalz.all_struc_fac(4)
     
-    print('Caesiumchlorid:')
     caesium = composite_structure()   
     caesium.add_structure(prim_cubic_cristal())
     caesium.add_structure(prim_cubic_cristal(
         bias=[0.5,0.5,0.5], formfaktor=2/3))
-    dc = caesium.all_struc_fac(3)
-    print(dc)
+    dc = caesium.all_struc_fac(4)
 
-    print('Fluorit:')
     fluorit= composite_structure()   
     fluorit.add_structure(prim_cubic_cristal())
     fluorit.add_structure(prim_cubic_cristal(
         bias=[0.25,0.25,0.25], formfaktor=2/3))
     fluorit.add_structure(prim_cubic_cristal(
         bias=[0.75,0.75,0.75], formfaktor=2/3))
-    df = fluorit.all_struc_fac(3)
-    print(df)
+    df = fluorit.all_struc_fac(4)
+
+    with open("build/structf.txt", "w") as text_file:
+        for hkl, m, sc, bcc, fcc, diamant, zinkblende, steinsalz, caesium, \
+            Fluorit in zip(df['hkl'], df['m'], dsc['structurfactor'], \
+            dbcc['structurfactor'], dfcc['structurfactor'], dd['structurfactor'],\
+            dz['structurfactor'], ds['structurfactor'], dc['structurfactor'], \
+            df['structurfactor']):
+            text_file.write("{} & {} & {} & {} & {} & {} & {} & {} & {} & {} \\\\ \n".format(hkl, m, sc, bcc, fcc, diamant, zinkblende, steinsalz, caesium, Fluorit))
+   
+    m = [dsc, dbcc, dfcc, dd, dz, ds, dc, df]
+    new_m = []
+    for x in m:
+        mask = np.array(x['structurfactor']) != 0
+        x = np.array(x['m'])[mask]
+        x = np.unique(x)
+        x = np.sort(x)
+        new_m.append(x)
+    
+
 #    radius = 57.3
 #    print('Die Kammer besitzt einen Radius von {} mm.'.format(radius))
 #    umfang_to_deg = np.round(360 / (2 * np.pi * radius),4)
 #    print('Damit betraegt gemessener Millimeter auf der Trommel den \
 #    Winkel {} Grad.'.format(umfang_to_deg))
 #    
-#    def netzebenen_abstand(n, lam, theta):
-#        return n * lam / (2 * np.sin(theta))
-#    
-#    print('Probe 1:')
-#    reflexe_1 = np.array([2.1,4.3,5.1,7.4,9.0,11.7,13.6,14.4])*10 #mm
+    theta_1 = 0.5*np.array([4.3, 4.9, 7.4, 9.0, 9.5, 11.7, 13.6, 14.4])*10 #mm
+    theta_2 = 0.5*np.array([2.6, 4.5, 5.5, 6.8, 7.5, 8.7, 9.4, 10.5, 11.2, 12.5,
+        13.5, 15.4])*10 #mm
+
+    rho = 0.8*10**(-3)      # meter
+    R = 57.3*10**(-3)       # meter
+    F = 130*10**(-3)        # meter
+
+    def gittertest(m, theta):
+        return m / (np.sin(np.radians(theta))**2)
+
+    def delta_a_A(theta, a):
+        pass
+
+    
+
+    print('Probe 1:')
+    for x in new_m:
+        print(gittertest(x[:7],theta_1[:7]))
+
+    print('Probe 2:')
+    for x in new_m:
+        print(gittertest(x[:9],theta_2[:9]))
 #    print('Die Reflexe sind im Abstand von {} mm von der Quelle zu \
 #    sehen'.format(reflexe_1))
 #    print('Dies entspricht gleichzeitig auch derem doppelten Winkel.')
