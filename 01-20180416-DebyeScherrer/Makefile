@@ -40,7 +40,7 @@ build/punktgitter.pdf: anleitung_V41_DebyeScherrer.pdf | build
 		-dFirstPage=2 -dLastPage=2 \
 		-sOutputFile=build/punktgitter.pdf \
 		anleitung_V41_DebyeScherrer.pdf
-	pdfcrop --bbox "97 650 600 986" build/punktgitter.pdf build/punktgitter.pdf 
+	pdfcrop --bbox "97 650 600 785" build/punktgitter.pdf build/punktgitter.pdf 
 	pdfcrop build/punktgitter.pdf build/punktgitter.pdf
 
 build/versuchsaufbau.pdf: anleitung_V41_DebyeScherrer.pdf | build
