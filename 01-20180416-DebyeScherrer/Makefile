@@ -27,6 +27,9 @@ build/main.pdf: build/versuchsaufbau.pdf
 build/main.pdf: build/ausdehnung_probe.pdf
 build/main.pdf: build/verzug_probe.pdf
 build/main.pdf: build/absorptionskante.pdf
+build/main.pdf: build/streuung.pdf
+build/main.pdf: build/phasenunterschied.pdf
+build/main.pdf: build/wellenvektor.pdf
 build/main.pdf: FORCE | build
 	TEXINPUTS=build: BIBINPUTS=build: max_print_line=1048576 \
 	$(TEX_CMD) main.tex
@@ -35,6 +38,22 @@ preview: FORCE | build
 	TEXINPUTS=build: BIBINPUTS=build: max_print_line=1048576 \
 	$(PREVIEW_CMD) main.tex
 
+build/wellenvektor.pdf: anleitung_V41_DebyeScherrer.pdf | build
+	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+                -dFirstPage=10 -dLastPage=10 \
+                -sOutputFile=build/wellenvektor.pdf \
+                anleitung_V41_DebyeScherrer.pdf
+	pdfcrop --bbox "000 535 190 690" build/wellenvektor.pdf build/wellenvektor.pdf
+	pdfcrop build/wellenvektor.pdf build/wellenvektor.pdf
+
+build/phasenunterschied.pdf: anleitung_V41_DebyeScherrer.pdf | build
+	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+                -dFirstPage=9 -dLastPage=9 \
+                -sOutputFile=build/phasenunterschied.pdf \
+                anleitung_V41_DebyeScherrer.pdf
+	pdfcrop --bbox "200 200 400 328" build/phasenunterschied.pdf build/phasenunterschied.pdf
+	pdfcrop build/phasenunterschied.pdf build/phasenunterschied.pdf
+
 build/punktgitter.pdf: anleitung_V41_DebyeScherrer.pdf | build
 	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
 		-dFirstPage=2 -dLastPage=2 \
@@ -42,6 +61,14 @@ build/punktgitter.pdf: anleitung_V41_DebyeScherrer.pdf | build
 		anleitung_V41_DebyeScherrer.pdf
 	pdfcrop --bbox "97 650 600 785" build/punktgitter.pdf build/punktgitter.pdf 
 	pdfcrop build/punktgitter.pdf build/punktgitter.pdf
+
+build/streuung.pdf: anleitung_V41_DebyeScherrer.pdf | build
+	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+		-dFirstPage=11 -dLastPage=11 \
+		-sOutputFile=build/streuung.pdf \
+		anleitung_V41_DebyeScherrer.pdf
+	pdfcrop --bbox "0 0 600 280" build/streuung.pdf build/streuung.pdf
+	pdfcrop build/streuung.pdf build/streuung.pdf
 
 build/versuchsaufbau.pdf: anleitung_V41_DebyeScherrer.pdf | build
 	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
