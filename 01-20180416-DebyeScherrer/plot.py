@@ -147,19 +147,26 @@ if __name__ == '__main__':
     print('Damit betraegt gemessener Millimeter auf der Trommel den \
     Winkel {} Grad.'.format(umfang_to_deg))
     
-    theta_1 = 0.5*np.array([4.35, 5.05, 7.4, 9.0, 9.5, 11.7, 13.6, 14.4])*10 #mm
-    theta_1 =np.radians(theta_1)
-    theta_2 = 0.5*np.array([2.7, 4.5, 5.5, 6.8, 7.5, 8.7, 9.4, 10.5, 11.2, 12.5, 13.5, 15.4])*10 #mm
-    theta_2 =np.radians(theta_2)
-
+    lam_1 = 1.54093*10**(-10)
+    lam_2 = 1.54478*10**(-10)
+    lam_m = 1.5415*10**(-10)
     rho = 0.8*10**(-3)      # meter
     R = 57.3*10**(-3)       # meter
     F = 130*10**(-3)        # meter
 
+    def uncertainty_theta(theta):
+        return theta*(lam_2 - lam_1)/lam_m*np.tan(theta)
+    
+    theta_1_deg = 0.5*np.array([44.5, 51.5, 75.0, 90.6, 96.6, 117.5, 135.0, 144.6]) #mm
+    theta_2_deg = 0.5*np.array([29.0, 47.5, 57.0, 69.6, 76.5, 88.0, 94.7, 106.5,
+        113.4, 126.5, 135.5, 156.0]) #mm
+    theta_1 = np.radians(theta_1_deg)
+    theta_1_u = uncertainty_theta(theta_1)
+    theta_2 = np.radians(theta_2_deg)
+    theta_2_u = uncertainty_theta(theta_2)
+
+
     def gittertest(m, theta):
-        # print('m:', m)
-        # print('theta:', theta)
-        # print('len: ', len(m), len(theta))
         return m / (np.sin(theta)**2)
 
     def delta_a_A(theta, a):
@@ -171,20 +178,22 @@ if __name__ == '__main__':
     def linear_func(x, a, b):
         return a*x + b
 
-    lam = 1.6*10**(-10)
 
     print('Probe 1:')
-    def output(n_refl, gitter, theta, lam, pathrefl, pathfig, rem=0): 
+    def output(n_refl, gitter, theta, theta_u, lam, pathrefl, pathfig, rem=0): 
         theta = theta[:n_refl]
         for x in new_m:
             print(gittertest(x[:n_refl],theta))
         abstand = gitterabstand(lam, new_m[gitter][:n_refl],theta)
-        print('Abstand: ', abstand)
+        a_err =  gitterabstand(lam, new_m[gitter][:n_refl],theta+theta_u)\
+            - gitterabstand(lam, new_m[gitter][:n_refl],theta-theta_u)
+        print('Abstand: ', abstand, a_err)
 
         x = np.cos(theta)**2
+        x_err = np.cos(theta + theta_u)**2 - np.cos(theta - theta_u)**2
         popt, pcov = curve_fit(linear_func, x[rem:], abstand[rem:])
 
-        plt.plot(x, abstand, 'x')
+        plt.errorbar(x, abstand, xerr=x_err, yerr=a_err,fmt='o')
         plt.plot(np.linspace(0,1,10), linear_func(np.linspace(0,1,10), *popt), '--')
         plt.xlabel(r'$\cos^2(x)$')
         plt.xlabel(r'$a$ / nm')
@@ -195,7 +204,7 @@ if __name__ == '__main__':
         with open(pathrefl, "w") as text_file:
             i = 1
             for theta, m in zip(theta, new_m[gitter][:n_refl]):
-                theta_deg = round(np.degrees(theta), 3)
+                theta_deg = round(np.degrees(theta), 1)
                 m_sin = round(gittertest(m,theta), 3)
                 cosinus = round(np.cos(theta)**2, 3)
                 abstand = round(10**10*gitterabstand(lam, m, theta), 3) 
@@ -203,69 +212,5 @@ if __name__ == '__main__':
                     theta_deg, m, m_sin, cosinus, abstand))
                 i += 1
 
-    output(8,2,theta_1,lam,"build/reflexe1.txt",'build/test1.pdf',rem=0)
-#    print('leange output 2', len(theta_2))
-    output(12,6,theta_2,lam,"build/reflexe2.txt",'build/test2.pdf', rem=1)
-
-#    n_refl1= 8
-#    gitter = 2
-#    theta_1 = theta_1[:n_refl1]
-#    for x in new_m:
-#        print(gittertest(x[:n_refl1],theta_1))
-#    abstand_1 = gitterabstand(lam, new_m[gitter][:n_refl1],theta_1)
-#    print('Abstand 1: ', abstand_1)
-#    
-#    x = np.cos(theta_1)**2
-#    popt, pcov = curve_fit(linear_func, x, abstand_1)
-#
-#    plt.plot(x, abstand_1, 'x')
-#    plt.plot(x, linear_func(x, *popt), '--')
-#    plt.show()
-#    print('Parameter: ', popt)
-#    
-#    with open("build/reflexe1.txt", "w") as text_file:
-#        i = 1
-#        for theta_1, m in zip(theta_1, new_m[gitter][:n_refl1]):
-#            theta = np.degrees(theta_1)
-#            m_sin = round(gittertest(m,theta_1), 3)
-#            cosinus = round(np.cos(theta_1), 3)
-#            abstand = round(10**10*gitterabstand(lam, m, theta_1), 3) 
-#            text_file.write('{} & {} & {} & {} & {} & {} \\\\ '.format(i, theta, m, m_sin, cosinus, abstand))
-#            i += 1
-#    
-#    print('Probe 2:')
-#    n_refl2= 9
-#    gitter = 6
-#    theta_2 = theta_2[:n_refl2]
-#    for x in new_m:
-#        print(gittertest(x[:n_refl2],theta_2))
-#    abstand_2 = gitterabstand(lam, new_m[gitter][:n_refl2],theta_2)
-#    print('Abstand 2: ', abstand_2)
-#    plt.plot(np.cos(theta_2)**2, 1/abstand_2)
-#    plt.show()
-#    
-#    with open("build/reflexe2.txt", "w") as text_file:
-#        i = 1
-#        for theta_2, m in zip(theta_2, new_m[gitter][:n_refl2]):
-#            theta = np.degrees(theta_2)
-#            m_sin = round(gittertest(m,theta_2), 3)
-#            cosinus = round(np.cos(theta_2), 3)
-#            abstand = round(10**10*gitterabstand(lam, m, theta_2), 3) 
-#            text_file.write('{} & {} & {} & {} & {} & {} \\\\ '.format(i, theta, m, m_sin, cosinus, abstand))
-#            i += 1
-
-
-#    print('Die Reflexe sind im Abstand von {} mm von der Quelle zu \
-#    sehen'.format(reflexe_1))
-#    print('Dies entspricht gleichzeitig auch derem doppelten Winkel.')
-#    
-#    theta_1 = reflexe_1/2
-#    print('Die Streuwinkel sind {}'.format(theta_1))
-#    
-#    m = np.array([1,4,6,11,14,24,26,24])
-#    print(m / np.sin(np.radians(theta_1))**2)
-#    fig = plt.figure()
-#    ax = fig.add_subplot(111)
-#    ax.plot(m, np.sin(np.radians(theta_1))**2)
-#    fig.savefig('build/probe_1.pdf')
-#    plt.close(fig)
+    output(8,2,theta_1, theta_1_u, lam_m,"build/reflexe1.txt",'build/lin_fit1.pdf',rem=0)
+    output(12,2,theta_2, theta_2_u, lam_m,"build/reflexe2.txt",'build/lin_fit2.pdf', rem=1)
