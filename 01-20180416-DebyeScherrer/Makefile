@@ -30,6 +30,7 @@ build/main.pdf: build/absorptionskante.pdf
 build/main.pdf: build/streuung.pdf
 build/main.pdf: build/phasenunterschied.pdf
 build/main.pdf: build/wellenvektor.pdf
+build/main.pdf: build/structf.txt
 build/main.pdf: FORCE | build
 	TEXINPUTS=build: BIBINPUTS=build: max_print_line=1048576 \
 	$(TEX_CMD) main.tex
@@ -37,6 +38,9 @@ build/main.pdf: FORCE | build
 preview: FORCE | build
 	TEXINPUTS=build: BIBINPUTS=build: max_print_line=1048576 \
 	$(PREVIEW_CMD) main.tex
+
+build/structf.txt: plot.py
+	python plot.py
 
 build/wellenvektor.pdf: anleitung_V41_DebyeScherrer.pdf | build
 	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
