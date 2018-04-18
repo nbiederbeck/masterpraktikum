@@ -1,6 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
+from uncertainties.unumpy import uarray
+from uncertainties import unumpy
+
 
 class cristal:
     def __init__(self, alpha, beta, gamma, formfaktor=1):
@@ -21,7 +24,7 @@ class cristal:
     def structurfactor(self, h, k, l):
         structurfactor = 0
         for g_1, g_2, g_3 in self.base_vec:
-            structurfactor += self.formfaktor * np.cos(2*np.pi*(g_1*h + g_2*k + g_3*l))
+            structurfactor += self.formfaktor * unumpy.cos(2*np.pi*(g_1*h + g_2*k + g_3*l))
         return structurfactor
 
     def all_struc_fac(self, order):
@@ -155,45 +158,46 @@ if __name__ == '__main__':
     F = 130*10**(-3)        # meter
 
     def uncertainty_theta(theta):
-        return theta*(lam_2 - lam_1)/lam_m*np.tan(theta)
+        return np.radians(1) * np.ones(len(theta)) + theta*(lam_2 - lam_1)/lam_m*np.tan(theta)
     
     theta_1_deg = 0.5*np.array([44.5, 51.5, 75.0, 90.6, 96.6, 117.5, 135.0, 144.6]) #mm
     theta_2_deg = 0.5*np.array([29.0, 47.5, 57.0, 69.6, 76.5, 88.0, 94.7, 106.5,
         113.4, 126.5, 135.5, 156.0]) #mm
     theta_1 = np.radians(theta_1_deg)
-    theta_1_u = uncertainty_theta(theta_1)
+    theta_1 = unumpy.uarray(theta_1, uncertainty_theta(theta_1))
     theta_2 = np.radians(theta_2_deg)
-    theta_2_u = uncertainty_theta(theta_2)
+    theta_2 = unumpy.uarray(theta_2, uncertainty_theta(theta_2))
 
 
     def gittertest(m, theta):
-        return m / (np.sin(theta)**2)
+        return m / (unumpy.sin(theta)**2)
 
     def delta_a_A(theta, a):
-        return a*rho/(2 * R)*(1 - R/F)*(np.cos(theta)**2)/theta
+        return a*rho/(2 * R)*(1 - R/F)*(unumpy.cos(theta)**2)/theta
 
     def gitterabstand(lam, m, theta):
-        return np.sqrt(m)*(lam/2)/np.sin(theta)
+        return np.sqrt(m)*(lam/2)/unumpy.sin(theta)
 
     def linear_func(x, a, b):
         return a*x + b
 
 
     print('Probe 1:')
-    def output(n_refl, gitter, theta, theta_u, lam, pathrefl, pathfig, rem=0): 
+    def output(n_refl, gitter, theta, lam, pathrefl, pathfig, rem=0): 
         theta = theta[:n_refl]
         for x in new_m:
-            print(gittertest(x[:n_refl],theta))
+            print(unumpy.nominal_values(gittertest(x[:n_refl],theta)))
         abstand = gitterabstand(lam, new_m[gitter][:n_refl],theta)
-        a_err =  gitterabstand(lam, new_m[gitter][:n_refl],theta+theta_u)\
-            - gitterabstand(lam, new_m[gitter][:n_refl],theta-theta_u)
-        print('Abstand: ', abstand, a_err)
+        print('Abstand: ', abstand)
 
-        x = np.cos(theta)**2
-        x_err = np.cos(theta + theta_u)**2 - np.cos(theta - theta_u)**2
-        popt, pcov = curve_fit(linear_func, x[rem:], abstand[rem:])
+        x = unumpy.cos(theta)**2
+         
+        popt, pcov = curve_fit(linear_func, 
+                unumpy.nominal_values(x[rem:]), 
+                unumpy.nominal_values(abstand[rem:]))
 
-        plt.errorbar(x, abstand, xerr=x_err, yerr=a_err,fmt='o')
+        plt.errorbar(unumpy.nominal_values(x), unumpy.nominal_values(abstand),
+                xerr=unumpy.std_devs(x), yerr=unumpy.std_devs(abstand) ,fmt='o')
         plt.plot(np.linspace(0,1,10), linear_func(np.linspace(0,1,10), *popt), '--')
         plt.xlabel(r'$\cos^2(x)$')
         plt.xlabel(r'$a$ / nm')
@@ -204,13 +208,20 @@ if __name__ == '__main__':
         with open(pathrefl, "w") as text_file:
             i = 1
             for theta, m in zip(theta, new_m[gitter][:n_refl]):
-                theta_deg = round(np.degrees(theta), 1)
-                m_sin = round(gittertest(m,theta), 3)
-                cosinus = round(np.cos(theta)**2, 3)
-                abstand = round(10**10*gitterabstand(lam, m, theta), 3) 
-                text_file.write('{} & {} & {} & {} & {} & {} \\\\ '.format(i,
-                    theta_deg, m, m_sin, cosinus, abstand))
+                theta_deg = round(np.degrees(unumpy.nominal_values(theta)), 1)
+                theta_deg_err = round(np.degrees(unumpy.std_devs(theta)), 0)
+                m_sin =round(np.asscalar(unumpy.nominal_values(
+                    gittertest(m,theta))))
+                cosinus =round(np.asscalar(np.cos(
+                    unumpy.nominal_values(theta))**2), 3)
+                abstand = round(np.asscalar(unumpy.nominal_values(
+                    10**10*gitterabstand(lam,m, theta))), 3) 
+                abstand_err = round(np.asscalar(unumpy.std_devs(10**10*gitterabstand(lam,
+                    m, theta))), 0) 
+                text_file.write('{} &'.format(i) + ' \\num{'+'{}'.format(theta_deg) + 
+                        ' +- ' '{}'.format(theta_deg_err) + '} ' + \
+                        '& {} & {} & {} & {} \\\\ \n'.format(m, m_sin, cosinus, abstand))
                 i += 1
 
-    output(8,2,theta_1, theta_1_u, lam_m,"build/reflexe1.txt",'build/lin_fit1.pdf',rem=0)
-    output(12,2,theta_2, theta_2_u, lam_m,"build/reflexe2.txt",'build/lin_fit2.pdf', rem=1)
+    output(8,2,theta_1, lam_m,"build/reflexe1.txt",'build/lin_fit1.pdf',rem=0)
+    output(12,2,theta_2, lam_m,"build/reflexe2.txt",'build/lin_fit2.pdf', rem=1)
