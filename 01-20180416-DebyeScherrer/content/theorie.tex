@@ -64,10 +64,10 @@ heißt Einheitszelle.
 % kubisch-raumzentriert
 % kubisch-flächenzentriert
 % Zinkblende-Struktur
-% Steinsalz-Struktur 
-% Cäsiumchlorid-Struktur 
-% Fluorit-Struktur 
-% hexagonale Struktur 
+% Steinsalz-Struktur
+% Cäsiumchlorid-Struktur
+% Fluorit-Struktur
+% hexagonale Struktur
 Die einfachsten Kristallstrukturen haben kubische Anordnung.
 Dies bedeutet, dass ihre Basisvektoren jeweils senkrecht aufeinander stehen.
 Hierbei wird zwischen ein- und mehratomigen Basen unterschieden.
@@ -154,11 +154,11 @@ Der Netzebenenvektor steht senkrecht auf einer Netzebene und beschreibt
 die zugehörige Netzebenenschar, sein Betrag ist gerade der Abstand zwischen zwei Netzebenen.
 Dieser ist allgemein
 \begin{align}
-  \label{eq:netzebenensbstand}
   d &= \frac{1}{\sqrt{%
     \frac{h^2}{a^2} + \frac{k^2}{b^2} + \frac{l^2}{c^2}
   }}, \\
   \intertext{was sich in einem kubischen Gitter auf}
+  \label{eq:netzebenensbstand}
   d &= \frac{a}{\sqrt{%
     h^2 + k^2 + l^2
   }}
@@ -246,6 +246,7 @@ der Strukturfaktor der Elementarzelle.
 
 Die Forderung nach konstruktiver Interferenz erfordert die Beziehung
 \begin{equation}
+  \label{eq:bragg}
   n \lambda = 2 d \sin{\theta}, \hspace{2em} n \in \mathbb{N}.
 \end{equation}
 Dies ist die Braggsche Bedingung.
@@ -284,19 +285,30 @@ Ein ausfallender Strukturfaktor, für den ein Braggscher Winkel existiert,
 gibt Hinweise auf die Struktur von Kristallen,
 ebenso wie der existierende Strukturfaktor.
 
-% Streuzentren 
-% Streuung an 
-% - Elektronen 
-% - Atomen 
-% - Einheitszellen 
-% Atomformfaktor 
-% Phasenunterschiede 
-% Fouriertrafo 
-% Interferenzen 
-% Strukturamplitude $S$ 
-% Braggsche Bedingung 
-% reziproke Gittervektoren 
-% reziprokes Giter 
+Um die Gitterkonstanten zu bestimmen,
+wird der Netzebenensabstand~\ref{eq:netzebenensbstand}
+in die Braggsche Bedingung~\ref{eq:bragg} eingesetzt:
+\begin{equation}
+  \label{eq:const}
+  {\left(\frac{2a}{\lambda}\right)}^2
+  = \frac{n^2 \cdot \left(h^2 + k^2 + l^2\right)}{\sin^2\!\theta_i}
+  = \frac{m_i}{\sin^2\!\theta_i} = \text{const.}
+\end{equation}
+Nun kann $a$ bestimmt werden, da die Wellenlänge $\lambda$ der Röntgenröhre bekannt ist.
+
+% Streuzentren
+% Streuung an
+% - Elektronen
+% - Atomen
+% - Einheitszellen
+% Atomformfaktor
+% Phasenunterschiede
+% Fouriertrafo
+% Interferenzen
+% Strukturamplitude $S$
+% Braggsche Bedingung
+% reziproke Gittervektoren
+% reziprokes Giter
 
 \subsection{Messmethode}
 Da ein Einkristall sehr wenig konstruktive Interferenzen zulässt,
@@ -373,13 +385,13 @@ Dies bedeutet, dass
 Bei einer linearen Regression dieser Parameter ist
 der Achsenabschnitt der $a$-Achse der beste Schätzer für die Gitterkonstante.
 
-% Debye-Scherrer 
-% kristalline Probe 
-% Filmmethode 
-% Kollimator 
-% Kegelmantel 
-% Probe drehen 
-% systematischer Fehler (2 Stück) 
+% Debye-Scherrer
+% kristalline Probe
+% Filmmethode
+% Kollimator
+% Kegelmantel
+% Probe drehen
+% systematischer Fehler (2 Stück)
 
 \subsection{Röntgenstrahlung}%
 \label{sub:roentgenstrahlung}
@@ -395,6 +407,6 @@ berücksichtigt werden:
   \Delta \theta_{1, 2} = \frac{\lambda_1 - \lambda_2}{\overline{\lambda}} \tan{\theta}
 \end{equation}
 
-% Röntgenstrahlung 
-% Wellenlängen 
-% Aufgabe 
+% Röntgenstrahlung
+% Wellenlängen
+% Aufgabe
