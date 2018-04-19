@@ -132,7 +132,11 @@ if __name__ == '__main__':
             dbcc['structurfactor'], dfcc['structurfactor'], dd['structurfactor'],\
             dz['structurfactor'], ds['structurfactor'], dc['structurfactor'], \
             df['structurfactor']):
-            text_file.write("{} & {} & {} & {} & {} & {} & {} & {} & {} & {} \\\\ \n".format(hkl, m, sc, bcc, fcc, diamant, zinkblende, steinsalz, caesium, Fluorit))
+            text_file.write("{} & {} & {} & {} & {} & {} & {} & {} & {} & {} \\\\ \n".format(
+                hkl, m, abs(sc), abs(bcc), abs(fcc), abs(diamant), abs(zinkblende),
+                abs(steinsalz), abs(caesium), abs(Fluorit)))
+            if hkl=='444':
+                break
    
     m = [dsc, dbcc, dfcc, dd, dz, ds, dc, df]
     new_m = []
@@ -222,8 +226,6 @@ if __name__ == '__main__':
                     unumpy.nominal_values(theta))**2), 3)
                 abstand = round(np.asscalar(unumpy.nominal_values(
                     10**10*gitterabstand(lam,m, theta))), 2) 
-                # abstand_err = round(np.asscalar(unumpy.std_devs(
-                #     10**10*gitterabstand(lam,m, theta))), 3) 
                 abstand_err = round(np.asscalar(unumpy.std_devs(
                     10**10*gitterabstand(lam, m, theta))), 2) 
                 text_file.write('{} &'.format(i) + ' \\num{'+'{}'.format(theta_deg) + 
