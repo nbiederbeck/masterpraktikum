@@ -209,8 +209,8 @@ if __name__ == '__main__':
         plt.errorbar(unumpy.nominal_values(x), unumpy.nominal_values(abstand),
                 xerr=unumpy.std_devs(x), yerr=unumpy.std_devs(abstand) ,fmt='o')
         plt.plot(np.linspace(0,1,10), linear_func(np.linspace(0,1,10), *popt), '--')
-        plt.xlabel(r'$\cos^2(x)$')
-        plt.xlabel(r'$a$ / nm')
+        plt.xlabel(r'$\cos^2(\theta)$')
+        plt.ylabel(r'$a$ / 10 nm')
         plt.tight_layout(pad=0)
         plt.savefig(pathfig)
         plt.close()

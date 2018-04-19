@@ -19,7 +19,7 @@ Die Reflexe werden dem Gitter zugeordnet, bei welchem die auftretenden Reflexe f
 die nicht verschwindenden Strukturfaktoren der verschiedenen Gittertypen der 
 Quotiente aus der Ordnung $m$ und $\sin^2(\theta)$ (siehe Tabelle \ref{tab:wink})
 moeglichst Konstant ist.
-Desweiteren wird versucht die Staerke der Reflexe bei dem Vergleich mit den
+Desweiteren wird versucht die relative Staerke der Reflexe bei dem Vergleich mit den
 Strukturfaktoren zu beruecksichtigen. 
 
 Sowohl Probe 2 als auch Salz 2 scheinen am besten zur Struktur des fcc-Gitter zu
@@ -34,7 +34,7 @@ aufweisen, welcher $\propto \cos^2(\theta)$ ist.
 \begin{figure}[ht]
 		\centering
 		\caption{Bestimmung der exakten Gitterkonstanten aus der Abhaengigkeit 
-		des	Messfehlers und den naiven Gittervektoren}
+		des	Messfehlers und den naiven Gittervektoren.}
 		\begin{subfigure}{0.49\textwidth}
 				\centering
 				\includegraphics[width=\textwidth]{build/lin_fit1.pdf}
@@ -56,14 +56,15 @@ Die ungebiasten Gitterkonstanten sind in Tabelle \ref{tab:gitt} aufgefuehrt.
 
 \begin{table}[ht]
 		\centering
-		\caption{linerarer Fit mit y-Achsenabschnitt b und Steigung a}
+		\caption{linerarer Fit mit y-Achsenabschnitt a und Steigung b zur
+				Bestimmung der exakten Gitterkonstante.}
 		\label{tab:gitt}
-		\begin{tabular}{c c}
+		\begin{tabular}{l c c}
 				\toprule
-				a / 10 nm & b / 10nm \\
+				& a / 10 nm & b / 10nm \\
 				\midrule
-				\input{build/params1.txt}
-				\input{build/params2.txt}
+				Probe 2: 	& \input{build/params1.txt}
+				Salz 2: 	& \input{build/params2.txt}
 				\bottomrule
 		\end{tabular}
 \end{table}
