@@ -182,8 +182,7 @@ if __name__ == '__main__':
         return a*x + b
 
 
-    print('Probe 1:')
-    def output(n_refl, gitter, theta, lam, pathrefl, pathfig, rem=0): 
+    def output(n_refl, gitter, theta, lam, pathrefl, pathfig, pathparams, rem=0): 
         theta = theta[:n_refl]
         for x in new_m:
             print(unumpy.nominal_values(gittertest(x[:n_refl],theta)))
@@ -196,14 +195,21 @@ if __name__ == '__main__':
                 unumpy.nominal_values(x[rem:]), 
                 unumpy.nominal_values(abstand[rem:]))
 
+        print('parameter:' , popt, np.sqrt(np.diag(pcov)))
+        with open(pathparams, "w") as text_file:
+            text_file.write('\\num{' + '{}'.format(round(popt[1]*10**10,2)) + '+-' + 
+                    '{}'.format(np.round(np.sqrt(pcov[1,1])*10**10,2)) + '} & '
+                    + '\\num{' + '{}'.format(round(popt[0]*10**10,2)) + '+-' + 
+                    '{}'.format(np.round(np.sqrt(pcov[0,0])*10**10,2)) + '} \\\\')
+
         plt.errorbar(unumpy.nominal_values(x), unumpy.nominal_values(abstand),
                 xerr=unumpy.std_devs(x), yerr=unumpy.std_devs(abstand) ,fmt='o')
         plt.plot(np.linspace(0,1,10), linear_func(np.linspace(0,1,10), *popt), '--')
         plt.xlabel(r'$\cos^2(x)$')
         plt.xlabel(r'$a$ / nm')
+        plt.tight_layout(pad=0)
         plt.savefig(pathfig)
         plt.close()
-        print('Parameter: ', popt)
         
         with open(pathrefl, "w") as text_file:
             i = 1
@@ -215,13 +221,19 @@ if __name__ == '__main__':
                 cosinus =round(np.asscalar(np.cos(
                     unumpy.nominal_values(theta))**2), 3)
                 abstand = round(np.asscalar(unumpy.nominal_values(
-                    10**10*gitterabstand(lam,m, theta))), 3) 
-                abstand_err = round(np.asscalar(unumpy.std_devs(10**10*gitterabstand(lam,
-                    m, theta))), 0) 
+                    10**10*gitterabstand(lam,m, theta))), 2) 
+                # abstand_err = round(np.asscalar(unumpy.std_devs(
+                #     10**10*gitterabstand(lam,m, theta))), 3) 
+                abstand_err = round(np.asscalar(unumpy.std_devs(
+                    10**10*gitterabstand(lam, m, theta))), 2) 
                 text_file.write('{} &'.format(i) + ' \\num{'+'{}'.format(theta_deg) + 
                         ' +- ' '{}'.format(theta_deg_err) + '} ' + \
-                        '& {} & {} & {} & {} \\\\ \n'.format(m, m_sin, cosinus, abstand))
+                        '& {} & {} & {} & '.format(m, m_sin, cosinus) + '\\num{'
+                        + '{}'.format(abstand) + ' +- '+ '{}'.format(abstand_err) + 
+                        ' } \\\\ \n')
                 i += 1
 
-    output(8,2,theta_1, lam_m,"build/reflexe1.txt",'build/lin_fit1.pdf',rem=0)
-    output(12,2,theta_2, lam_m,"build/reflexe2.txt",'build/lin_fit2.pdf', rem=1)
+    output(8, 2, theta_1, lam_m, "build/reflexe1.txt", 'build/lin_fit1.pdf', \
+            'build/params1.txt', rem=0)
+    output(12, 2, theta_2, lam_m, "build/reflexe2.txt", 'build/lin_fit2.pdf', \
+            'build/params2.txt', rem=1)
