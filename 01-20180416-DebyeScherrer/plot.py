@@ -162,6 +162,7 @@ if __name__ == '__main__':
     F = 130*10**(-3)        # meter
 
     def uncertainty_theta(theta):
+        print('Delta theta in deg: ', np.degrees(theta*(lam_2 - lam_1)/lam_m*np.tan(theta)))
         return np.radians(1) * np.ones(len(theta)) + theta*(lam_2 - lam_1)/lam_m*np.tan(theta)
     
     theta_1_deg = 0.5*np.array([44.5, 51.5, 75.0, 90.6, 96.6, 117.5, 135.0, 144.6]) #mm
@@ -176,9 +177,6 @@ if __name__ == '__main__':
     def gittertest(m, theta):
         return m / (unumpy.sin(theta)**2)
 
-    def delta_a_A(theta, a):
-        return a*rho/(2 * R)*(1 - R/F)*(unumpy.cos(theta)**2)/theta
-
     def gitterabstand(lam, m, theta):
         return np.sqrt(m)*(lam/2)/unumpy.sin(theta)
 
@@ -191,7 +189,6 @@ if __name__ == '__main__':
         for x in new_m:
             print(unumpy.nominal_values(gittertest(x[:n_refl],theta)))
         abstand = gitterabstand(lam, new_m[gitter][:n_refl],theta)
-        print('Abstand: ', abstand)
 
         x = unumpy.cos(theta)**2
          

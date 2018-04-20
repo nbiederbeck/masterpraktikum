@@ -9,11 +9,18 @@ Da das einscannen der aufgenommenen Negative aufgrund schwieriger
 Belichtungsverhältnisse nicht möglich ist, werden die Winkel der aufgenommenen
 Reflexe mittels einer Schieblehre ausgemessen.
 Die Winkelverteilung der Reflexe sind in Tabelle~\ref{tab:wink} aufgetragen.
+Dabei wird für jeden Messwert ein Messfehler von \SI{1}{\milli\meter} und
+zusätzlich der Fehler der Winkelaufspaltung der zwei Emissionslinien
+entsprechend Formel~\ref{eq:lamtheta} angenommen.
+Dieser Fehler wird maximal für grosse Winkel, ist \SI{<1}{\degree} und mit dem
+Ablesefehler summiert zusammen als Unsicherheit in Tabelle \ref{tab:wink}
+aufgeführt.
+
 Entsprechend Formel~\eqref{eq:const} lassen sich Strukturfaktoren simmulieren.
-Diese sind in Tabelle~\ref{tab:struct} aufgetragen.
+Diese sind in Tabelle~\ref{tab:struct}, bis zu Reflexen der 4 Ordnung, aufgetragen.
 Da nicht bekannt ist, nach welcher Struktur gesucht wird, wird bei
 zusammengesetzten Strukturen mit unterschiedlichen Atomen die Atomformfaktoren
-1 und $\sfrac{5}{6}$ gewählt und sonst 1.
+1 und $\sfrac{5}{6}$ und sonst 1 gewählt.
 
 Die Reflexe werden dem Gitter zugeordnet, bei welchem die auftretenden Reflexe für
 die nicht verschwindenden Strukturfaktoren der verschiedenen Gittertypen der
@@ -49,8 +56,9 @@ aufweisen, welcher $\propto \cos^2(\theta)$ ist.
 		des	Messfehlers und den naiven Gittervektoren.}
 \end{figure}
 
-Aus einem linearen Fit der Form $f(x) = a \cdot x + b$ werden die ungebiasten
-Gitterkonstanten bestimmt.
+Aus einem linearen Fit der Form $f(x) = a \cdot x + b$ können die ungebiasten
+Gitterkonstanten bestimmt, werden da der Messfehler $\propto \cos^2(\theta)$ ist
+(Vergleiche Kapitel~\ref{sec:Messmethode}).
 Dabei entspricht der y-Achsen Abschnitt die Gitterkonstante $a$.
 Die ungebiasten Gitterkonstanten sind in Tabelle~\ref{tab:gitt} aufgeführt.
 
@@ -61,7 +69,7 @@ Die ungebiasten Gitterkonstanten sind in Tabelle~\ref{tab:gitt} aufgeführt.
 		\label{tab:gitt}
 		\begin{tabular}{l c c}
 				\toprule
-        & a / \SI{10}{\nano\meter} & b / \SI{10}{\nano\meter} \\
+        & a / \AA & b / \AA \\
 				\midrule
 				Probe 2: 	& \input{build/params1.txt}
 				Salz 2: 	& \input{build/params2.txt}
