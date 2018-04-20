@@ -12,9 +12,12 @@ Die Winkelverteilung der Reflexe sind in Tabelle~\ref{tab:wink} aufgetragen.
 Dabei wird für jeden Messwert ein Messfehler von \SI{1}{\milli\meter} und
 zusätzlich der Fehler der Winkelaufspaltung der zwei Emissionslinien
 entsprechend Formel~\ref{eq:lamtheta} angenommen.
-Dieser Fehler wird maximal für grosse Winkel, ist \SI{<1}{\degree} und mit dem
+Dieser Fehler wird maximal für große Winkel, ist \SI{<1}{\degree} und mit dem
 Ablesefehler summiert zusammen als Unsicherheit in Tabelle \ref{tab:wink}
 aufgeführt.
+In der Auswertung wird im weiteren mit der gemittelten Wellenlänge
+$\lambda_{K\alpha}$ gerechnet, da die Aufspaltung der beiden Emissionslinien 
+mit den vorhandenen Instrumenten nicht weiter vermessen werden kann.
 
 Entsprechend Formel~\eqref{eq:const} lassen sich Strukturfaktoren simmulieren.
 Diese sind in Tabelle~\ref{tab:struct}, bis zu Reflexen der 4 Ordnung, aufgetragen.
@@ -29,15 +32,6 @@ möglichst Konstant ist.
 Desweiteren wird versucht die relative Stärke der Reflexe bei dem Vergleich mit den
 Strukturfaktoren zu berücksichtigen.
 
-Sowohl Probe 2 als auch Salz 2 scheinen am besten zur Struktur des fcc-Gitter zu
-passen.
-Dabei wurde allerdings der erste Reflex von Probe 2 verworfen, bei dem es sich
-nach Vergleich mit den verschiedenen Gitterstrukturen wohl um eine Verunreinigung
-handelt.
-Unter der Annahme lassen sich nach Formel~\eqref{eq:gittervektor} die
-Gitterkonstanten $a$ bestimmen die einen Versatz aufgrund des
-Probendurchmessers, als auch die Verschiebung der Dreh- zur Kamera-Achse
-aufweisen, welcher $\propto \cos^2(\theta)$ ist.
 \begin{figure}[ht]
 		\centering
 		\begin{subfigure}{0.49\textwidth}
@@ -55,6 +49,16 @@ aufweisen, welcher $\propto \cos^2(\theta)$ ist.
 		\caption{Bestimmung der exakten Gitterkonstanten aus der Abhängigkeit
 		des	Messfehlers und den naiven Gittervektoren.}
 \end{figure}
+
+Sowohl Probe 2 als auch Salz 2 scheinen am besten zur Struktur des fcc-Gitter zu
+passen.
+Dabei wurde allerdings der erste Reflex von Probe 2 verworfen, bei dem es sich
+nach Vergleich mit den verschiedenen Gitterstrukturen wohl um eine Verunreinigung
+handelt.
+Unter der Annahme lassen sich nach Formel~\eqref{eq:gittervektor} die
+Gitterkonstanten $a$ bestimmen die einen Versatz aufgrund des
+Probendurchmessers, als auch die Verschiebung der Dreh- zur Kamera-Achse
+aufweisen, welcher $\propto \cos^2(\theta)$ ist.
 
 Aus einem linearen Fit der Form $f(x) = a \cdot x + b$ können die ungebiasten
 Gitterkonstanten bestimmt, werden da der Messfehler $\propto \cos^2(\theta)$ ist
