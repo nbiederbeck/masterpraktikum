@@ -5,31 +5,31 @@ Radien der Fotostreifen in Streuwinkel umgerechnet.
 Der Umfang der Box der Kamera beträgt genau \SI{360}{\milli\meter}.
 \SI{1}{\milli\meter} entspricht genau dem Beugungswinkel $\theta$ von
 \SI{1}{\degree}.
-Da das einscannen der aufgenommenen Negative aufgrund schwieriger
+Da das Einscannen der aufgenommenen Negative aufgrund schwieriger
 Belichtungsverhältnisse nicht möglich ist, werden die Winkel der aufgenommenen
 Reflexe mittels einer Schieblehre ausgemessen.
 Die Winkelverteilung der Reflexe sind in Tabelle~\ref{tab:wink} aufgetragen.
 Dabei wird für jeden Messwert ein Messfehler von \SI{1}{\milli\meter} und
 zusätzlich der Fehler der Winkelaufspaltung der zwei Emissionslinien
-entsprechend Formel~\ref{eq:lamtheta} angenommen.
-Dieser Fehler wird maximal für große Winkel, ist \SI{<1}{\degree} und mit dem
-Ablesefehler summiert zusammen als Unsicherheit in Tabelle \ref{tab:wink}
+entsprechend Formel~\eqref{eq:lamtheta} angenommen.
+Dieser Fehler wird maximal für große Winkel, beträgt $< \SI{1}{\degree}$ und ist mit dem
+Ablesefehler summiert zusammen als Unsicherheit in Tabelle~\ref{tab:wink}
 aufgeführt.
-In der Auswertung wird im weiteren mit der gemittelten Wellenlänge
-$\lambda_{K\alpha}$ gerechnet, da die Aufspaltung der beiden Emissionslinien 
+In der Auswertung wird im Weiteren mit der gemittelten Wellenlänge
+$\overline{\lambda}_{K\alpha}$ gerechnet, da die Aufspaltung der beiden Emissionslinien 
 mit den vorhandenen Instrumenten nicht weiter vermessen werden kann.
 
-Entsprechend Formel~\eqref{eq:const} lassen sich Strukturfaktoren simmulieren.
-Diese sind in Tabelle~\ref{tab:struct}, bis zu Reflexen der 4 Ordnung, aufgetragen.
-Da nicht bekannt ist, nach welcher Struktur gesucht wird, wird bei
+Entsprechend Formel~\eqref{eq:const} lassen sich Strukturfaktoren simulieren.
+Diese sind in Tabelle~\ref{tab:struct}, bis zu Reflexen der 4. Ordnung, aufgetragen.
+Da nicht bekannt ist, nach welcher Struktur gesucht wird, werden bei
 zusammengesetzten Strukturen mit unterschiedlichen Atomen die Atomformfaktoren
 1 und $\sfrac{5}{6}$ und sonst 1 gewählt.
 
 Die Reflexe werden dem Gitter zugeordnet, bei welchem die auftretenden Reflexe für
 die nicht verschwindenden Strukturfaktoren der verschiedenen Gittertypen der
-Quotiente aus der Ordnung $m$ und $\sin^2(\theta)$ (siehe Tabelle~\ref{tab:wink})
-möglichst Konstant ist.
-Desweiteren wird versucht die relative Stärke der Reflexe bei dem Vergleich mit den
+Quotienten aus der Ordnung $m$ und $\sin^2(\theta)$ (siehe Tabelle~\ref{tab:wink})
+möglichst konstant ist.
+Des Weiteren wird versucht, die relative Stärke der Reflexe bei dem Vergleich mit den
 Strukturfaktoren zu berücksichtigen.
 
 \begin{figure}[ht]
@@ -37,33 +37,33 @@ Strukturfaktoren zu berücksichtigen.
 		\begin{subfigure}{0.49\textwidth}
 				\centering
 				\includegraphics[width=\textwidth]{build/lin_fit1.pdf}
-				\caption{Probe 2}
+				\caption{Probe 2.}
 				\label{fig:prb1}
 		\end{subfigure}
 		\begin{subfigure}{0.49\textwidth}
 				\centering
 				\includegraphics[width=\textwidth]{build/lin_fit2.pdf}
-				\caption{Salz 2}
+				\caption{Salz 2.}
 				\label{fig:prb1}
 		\end{subfigure}
 		\caption{Bestimmung der exakten Gitterkonstanten aus der Abhängigkeit
 		des	Messfehlers und den naiven Gittervektoren.}
 \end{figure}
 
-Sowohl Probe 2 als auch Salz 2 scheinen am besten zur Struktur des fcc-Gitter zu
+Sowohl Probe 2 als auch Salz 2 scheinen am besten zur Struktur des fcc-Gitters zu
 passen.
 Dabei wurde allerdings der erste Reflex von Probe 2 verworfen, bei dem es sich
 nach Vergleich mit den verschiedenen Gitterstrukturen wohl um eine Verunreinigung
 handelt.
 Unter der Annahme lassen sich nach Formel~\eqref{eq:gittervektor} die
-Gitterkonstanten $a$ bestimmen die einen Versatz aufgrund des
+Gitterkonstanten $a$ bestimmen, die einen Versatz aufgrund des
 Probendurchmessers, als auch die Verschiebung der Dreh- zur Kamera-Achse
 aufweisen, welcher $\propto \cos^2(\theta)$ ist.
 
 Aus einem linearen Fit der Form $f(x) = a \cdot x + b$ können die ungebiasten
 Gitterkonstanten bestimmt, werden da der Messfehler $\propto \cos^2(\theta)$ ist
-(Vergleiche Kapitel~\ref{sec:Messmethode}).
-Dabei entspricht der y-Achsen Abschnitt die Gitterkonstante $a$.
+(vergleiche Kapitel~\ref{sec:Messmethode}).
+Dabei entspricht der $y$-Achsenabschnitt die Gitterkonstante $a$.
 Die ungebiasten Gitterkonstanten sind in Tabelle~\ref{tab:gitt} aufgeführt.
 
 \begin{table}[ht]
@@ -73,7 +73,7 @@ Die ungebiasten Gitterkonstanten sind in Tabelle~\ref{tab:gitt} aufgeführt.
 		\label{tab:gitt}
 		\begin{tabular}{l c c}
 				\toprule
-        & a / \AA & b / \AA \\
+        & $a$ / \AA & $b$ / \AA \\
 				\midrule
 				Probe 2: 	& \input{build/params1.txt}
 				Salz 2: 	& \input{build/params2.txt}

@@ -3,10 +3,10 @@
 
 Der Großteil der Materie, die sich im festen Aggregatzustand befindet,
 ist kristallin aufgebaut.
-Dies bedeutet, dass seine Atome räumlich periodisch angeordnet sind,
-aufgrund von zwischenatomaren Kräfte.
+Dies bedeutet, dass seine Atome aufgrund von zwischenatomaren Kräften räumlich periodisch angeordnet sind.
 Da viele Festkörper, sogenannte Polykristallite, aus vielen Kristalliten bestehen,
-muss über die in ihnen enthaltenen Kristalle mitteln, und damit beschränkt sich die
+muss über die in ihnen enthaltenen Kristalle mitteln.
+Damit beschränkt sich die
 Untersuchung von Kristalleigenschaften auf Einkristalle oder einzelne Kristalle
 von Polykristallen.
 
@@ -45,7 +45,8 @@ Die Vektoren $\vec{a}, \vec{b}, \vec{c}$, die bei einer Translation
   \left\{x, y, z\right\} &\in \mathbb{N}_0
 \end{align}
 das Gitter in sich selbst abbilden, heißen Basisvektoren.
-Ihre Wahl ist nahezu beliebig, jedoch werden aus Symmetriegründen jene gewählt,
+Ihre Wahl ist nahezu beliebig.
+Es werden aus Symmetriegründen jene gewählt,
 deren Länge dem Abstand der nächsten Nachbarn der Atome gleicht.
 
 So existieren 14 verschiedene Gitter, die Bravais-Gitter genannt werden
@@ -244,12 +245,12 @@ Werden die Ortsvektoren der Atome $\vec{r_j}$ durch die Basisvektoren dargestell
 \end{equation}
 der Strukturfaktor der Elementarzelle.
 
-Die Forderung nach konstruktiver Interferenz erfordert die Beziehung
+Aus der Forderung nach konstruktiver Interferenz ergibt sich die Beziehung
 \begin{equation}
   \label{eq:bragg}
   n \lambda = 2 d \sin{\theta}, \hspace{2em} n \in \mathbb{N}.
 \end{equation}
-Dies ist die Braggsche Bedingung.
+Dies ist das Braggsche Reflexionsgesetz.
 In allen anderen Fällen sind die Interferenzen destruktiv und Beugungsreflexe entfallen.
 
 Um den Strukturfaktor noch übersichtlicher zu gestalten, wird der reziproke Gittervektor eingeführt.
@@ -286,8 +287,8 @@ gibt Hinweise auf die Struktur von Kristallen,
 ebenso wie der existierende Strukturfaktor.
 
 Um die Gitterkonstanten zu bestimmen,
-wird der Netzebenensabstand~\ref{eq:netzebenensbstand}
-in die Braggsche Bedingung~\ref{eq:bragg} eingesetzt:
+wird der Netzebenensabstand~\eqref{eq:netzebenensbstand}
+in die Braggsche Bedingung~\eqref{eq:bragg} eingesetzt:
 \begin{equation}
   \label{eq:const}
   {\left(\frac{2a}{\lambda}\right)}^2
@@ -314,7 +315,7 @@ Nun kann $a$ bestimmt werden, da die Wellenlänge $\lambda$ der Röntgenröhre b
 \label{sec:Messmethode}
 Da ein Einkristall sehr wenig konstruktive Interferenzen zulässt,
 müsste Röntgenstrahlung zufällig aus der richtigen Richtung auf den Kristall
-strahlen, um überhaupt einen Reflex aufzubringen.
+strahlen, um überhaupt einen Reflex zu erzeugen.
 Um die Reflexwahrscheinlichkeit zu erhöhen, wird die Probe pulverisiert.
 Die Anordnung der Kristalle ist dann nämlich statistisch verteilt
 und es mehr Röntgenstrahlen treffen im Braggschen Winkel auf die Kristalle.
@@ -381,7 +382,7 @@ Es können bei der Messung zwei systematische Fehler auftreten.
 Der systematische Fehler $\Delta a_\text{V}$ ist groß gegenüber $\Delta a_\text{A}$.
 Dies bedeutet, dass
 \begin{equation}
-  \Delta a_\text{ges} = \Delta a_\text{V} + \Delta a_\text{A} \propto \cos^2\!{\theta}.
+  \Delta a_\text{ges} = \left(\Delta a_\text{V} + \Delta a_\text{A}\right) \propto \cos^2\!{\theta}.
 \end{equation}
 Bei einer linearen Regression dieser Parameter ist
 der Achsenabschnitt der $a$-Achse der beste Schätzer für die Gitterkonstante.
