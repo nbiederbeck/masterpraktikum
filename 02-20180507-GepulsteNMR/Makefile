@@ -1,6 +1,6 @@
 BUILD_FILES = \
 	anleitung_V49_GepulsteNMR.pdf \
-	build/main.pdf\
+	build/main.pdf \
 	build/aufspaltungE.pdf \
 	build/effB.pdf \
 	build/aufbau.pdf \
@@ -43,7 +43,7 @@ build/punktgitter.pdf: anleitung_V41_DebyeScherrer.pdf | build
 		-dFirstPage=2 -dLastPage=2 \
 		-sOutputFile=build/punktgitter.pdf \
 		anleitung_V41_DebyeScherrer.pdf
-	pdfcrop --bbox "97 650 600 785" build/punktgitter.pdf build/punktgitter.pdf 
+	pdfcrop --bbox "97 650 600 785" build/punktgitter.pdf build/punktgitter.pdf
 	pdfcrop build/punktgitter.pdf build/punktgitter.pdf
 
 build/aufspaltungE.pdf: anleitung_V49_GepulsteNMR.pdf | build
@@ -51,7 +51,7 @@ build/aufspaltungE.pdf: anleitung_V49_GepulsteNMR.pdf | build
 		-dFirstPage=2 -dLastPage=2 \
 		-sOutputFile=build/aufspaltungE.pdf \
 		anleitung_V49_GepulsteNMR.pdf
-	pdfcrop --bbox "0 190 480 350" build/aufspaltungE.pdf build/aufspaltungE.pdf 
+	pdfcrop --bbox "0 190 480 350" build/aufspaltungE.pdf build/aufspaltungE.pdf
 	pdfcrop build/aufspaltungE.pdf build/aufspaltungE.pdf
 
 build/effB.pdf: anleitung_V49_GepulsteNMR.pdf | build
@@ -75,7 +75,7 @@ build/spin.pdf: anleitung_V49_GepulsteNMR.pdf | build
 		-dFirstPage=9 -dLastPage=9 \
 		-sOutputFile=build/spin.pdf \
 		anleitung_V49_GepulsteNMR.pdf
-	pdfcrop --bbox "0 350 600 700" build/spin.pdf build/spin.pdf 
+	pdfcrop --bbox "0 350 600 700" build/spin.pdf build/spin.pdf
 	pdfcrop build/spin.pdf build/spin.pdf
 
 build/signalverlauf.pdf: anleitung_V49_GepulsteNMR.pdf | build
