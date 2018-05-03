@@ -1,4 +1,4 @@
-\section{Durchführung}%
+\section{Aufbau und Durchführung}%
 \label{sec:Durchführung}
 Die Debye-Scherrer-Aufnahmen werden nach der Filmmethode nach Straumanis angefertigt.
 
@@ -7,7 +7,7 @@ Die Debye-Scherrer-Aufnahmen werden nach der Filmmethode nach Straumanis angefer
 Der prinzipielle Versuchsaufbau ist in Abbildung~\ref{fig:versuchsaufbau} dargestellt.
 \begin{figure}
   \centering
-  \includegraphics[width=0.8\linewidth]{build/versuchsaufbau.pdf}
+  \includegraphics[width=0.7\linewidth]{build/versuchsaufbau.pdf}
   \caption{Prinzipielle Darstellung des Versuchsaufbaus.\cite{anleitung}}%
   \label{fig:versuchsaufbau}
 \end{figure}
@@ -33,8 +33,88 @@ Anodenstrom $A = \SI{20}{\milli\ampere}$ eingestellt.
 Die Messzeit wird über eine Stoppuhr eingestellt.
 
 
-\subsection{Messung}%
-\label{sub:messung}
+\subsection{Messmethode}%
+\label{sec:Messmethode}
+Da ein Einkristall sehr wenig konstruktive Interferenzen zulässt,
+müsste Röntgenstrahlung zufällig aus der richtigen Richtung auf den Kristall
+strahlen, um überhaupt einen Reflex zu erzeugen.
+Um die Reflexwahrscheinlichkeit zu erhöhen, wird die Probe pulverisiert.
+Die Anordnung der Kristalle ist dann nämlich statistisch verteilt
+und es mehr Röntgenstrahlen treffen im Braggschen Winkel auf die Kristalle.
+
+Die gebeugte Röntgenstrahlung der Netzebenenschar $(hkl)$ trifft unter
+dem Winkel $\theta$ auf einen Filmstreifen.
+Aufgrund der Verteilung der Orientierungen wird die reflektierte Strahlung
+als Kreis sichtbar.
+
+Die Probe wird während der Messung rotiert, um die Orientierungen der Kristalle
+weiterhin zu variieren.
+
+Es können bei der Messung zwei systematische Fehler auftreten.
+\begin{enumerate}
+  \item\label{item:absorption} Absorption der Röntgenstrahlung \\
+    Die Röntgenstrahlung wird nur am Rand der zylindrischen Probe gestreut,
+    im mittleren Teil wird aufgrund der Dicke die Röntgenstrahlung absorbiert.
+    Vergleiche hierzu Abbildung~\ref{fig:fehler_absorption}.
+    Nach Bradley und Jay\cite{bradleyjay} lautet die Korrektur
+    \begin{equation}
+      \label{eq:korrektur_lokalisation}
+      \frac{\Delta a_\text{A}}{a} = \frac{\rho}{2R}\left(1 - \frac{R}{F}\right) \frac{\cos^2\!\theta}{\theta}
+    \end{equation}
+  \item\label{item:lokalisierung} Lokalisierung der Probenachse \\
+    Die Verschiebung der Probenachse gegen die Achse des Films bringt
+    einen Winkelfehler von
+    \begin{equation}
+      4 \Delta \theta = -\frac{2 \Delta s}{R}
+    \end{equation}
+    Vergleiche hierzu Abbildung~\ref{fig:fehler_lokalisation}.
+    Geometrische Überlegungen zeigen, dass die Korrektur
+    \begin{equation}
+      \frac{a_\text{V}}{a} = \frac{v}{R} \cos^2\!{\theta}
+    \end{equation}
+    ist.
+\end{enumerate}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{build/ausdehnung_probe.pdf}
+    \caption{%
+      Absorption der Röntgenstrahlung.
+    }%
+    \label{fig:fehler_absorption}
+  \end{subfigure}
+  %
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{build/verzug_probe.pdf}
+    \caption{%
+      Lokalisierung der Probenachse.
+    }%
+    \label{fig:fehler_lokalisation}
+  \end{subfigure}
+  \caption{%
+    Systematischer Fehler in der Messung.\cite{anleitung}
+  }
+\end{figure}
+
+Der systematische Fehler $\Delta a_\text{V}$ ist groß gegenüber $\Delta a_\text{A}$.
+Dies bedeutet, dass
+\begin{equation}
+  \Delta a_\text{ges} = \left(\Delta a_\text{V} + \Delta a_\text{A}\right) \propto \cos^2\!{\theta}.
+\end{equation}
+Bei einer linearen Regression dieser Parameter ist
+der Achsenabschnitt der $a$-Achse der beste Schätzer für die Gitterkonstante.
+
+% Debye-Scherrer
+% kristalline Probe
+% Filmmethode
+% Kollimator
+% Kegelmantel
+% Probe drehen
+% systematischer Fehler (2 Stück)
+
 Um eine zuverlässige Messung durchzuführen, muss die Probe justiert werden.
 Die Probe wird durch den Ausgangskollimator mit einer Lampe belichtet,
 sodass durch den Eingangskollimator hindurch geschaut werden kann.

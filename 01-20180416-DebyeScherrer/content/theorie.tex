@@ -4,8 +4,8 @@
 Der Großteil der Materie, die sich im festen Aggregatzustand befindet,
 ist kristallin aufgebaut.
 Dies bedeutet, dass seine Atome aufgrund von zwischenatomaren Kräften räumlich periodisch angeordnet sind.
-Da viele Festkörper, sogenannte Polykristallite, aus vielen Kristalliten bestehen,
-muss über die in ihnen enthaltenen Kristalle mitteln.
+Da viele Festkörper aus vielen Kristalliten bestehen, sogenannte Polykristallite,
+ergeben sich ihre Eigenschaften durch Mitteln über die in ihnen enthaltenen Kristallrichtungen.
 Damit beschränkt sich die
 Untersuchung von Kristalleigenschaften auf Einkristalle oder einzelne Kristalle
 von Polykristallen.
@@ -44,11 +44,9 @@ Die Vektoren $\vec{a}, \vec{b}, \vec{c}$, die bei einer Translation
   \intertext{mit}
   \left\{x, y, z\right\} &\in \mathbb{N}_0
 \end{align}
-das Gitter in sich selbst abbilden, heißen Basisvektoren.
+das Gitter in sich selbst abbilden, heißen direkte Basisvektoren.
 Ihre Wahl ist nahezu beliebig.
-Es werden aus Symmetriegründen jene gewählt,
-deren Länge dem Abstand der nächsten Nachbarn der Atome gleicht.
-
+Die Symmetrien von Kristallgittern schränken die Wahl sinnvoller Basisvektoren ein.
 So existieren 14 verschiedene Gitter, die Bravais-Gitter genannt werden
 und in 7 Gittertypen eingeteilt werden.
 Einige davon werden in Kapitel~\ref{sub:kubische_kristallstrukturen} beschrieben.
@@ -70,14 +68,15 @@ heißt Einheitszelle.
 % Fluorit-Struktur
 % hexagonale Struktur
 Die einfachsten Kristallstrukturen haben kubische Anordnung.
-Dies bedeutet, dass ihre Basisvektoren jeweils senkrecht aufeinander stehen.
-Hierbei wird zwischen ein- und mehratomigen Basen unterschieden.
-Das einfachste (\textit{primitive}) kubische Gitter (\textit{sc} = \enquote{simple cubic}) hat auf je ein Atom auf den Ecken eines Würfels.
+Dies bedeutet, dass ihre Basisvektoren jeweils senkrecht aufeinander stehen und denselben Betrag haben.
+Es wird zwischen Basen aus einem oder mehreren Elementen unterschieden.
+Das einfachste (\textit{primitive}) kubische Gitter (\textit{sc} = \enquote{simple cubic})
+besteht aus einem Element und hat ein Atom auf jeder Ecke eines Würfels.
 Da sich das Atom auf der Ecke genau acht Würfelgitter teilt,
 besteht die Elementarzelle also aus einem Atom.
 
-Ein Gitter heißt \textit{kubisch-raumzentriert} (\textit{bcc} = \enquote{body center cubic}), wenn zusätzlich zum primitiven Gitter
-ein Atom in der Mitte des Würfels zu finden ist.
+Ein Gitter heißt \textit{kubisch-raumzentriert} (\textit{bcc} = \enquote{body center cubic}),
+wenn zusätzlich zum primitiven Gitter ein Atom desselben Elements in der Mitte des Würfels zu finden ist.
 Die Elementarzelle besteht hier aus zwei Atomen.
 Die Atome liegen, geschrieben in Koordinaten der Basisvektoren, bei
 \begin{align*}
@@ -85,7 +84,7 @@ Die Atome liegen, geschrieben in Koordinaten der Basisvektoren, bei
   a_1 = {\left(0, 0, 0\right)}^\top, \hspace{2em} a_2 = {\left(\sfrac{1}{2}, \sfrac{1}{2}, \sfrac{1}{2}\right)}^\top.
 \end{align*}
 
-Ein weiteres einatomiges Gitter ist das \textit{kubisch-flächenzentrierte} Gitter (\textit{fcc} = \enquote{face center cubic}).
+Ein weiteres Gitter aus einem Element ist das \textit{kubisch-flächenzentrierte} Gitter (\textit{fcc} = \enquote{face center cubic}).
 Hier sind die Atome sowohl auf den Ecken, als auch in der Mitte jeder Seitenfläche.
 Die Elementarzelle besteht somit aus $8 \cdot \sfrac{1}{8} + 6 \cdot \sfrac{1}{2} = 4$ Atomen.
 Die Atome liegen an den Stellen
@@ -99,7 +98,7 @@ Die Atome liegen an den Stellen
 
 Die \textit{Diamantstruktur} besteht aus zwei kubisch-flächenzentrierten Gittern,
 die um eine Viertelraumdiagonale gegeneinander verschoben sind.
-Die Elementarzelle besteht aus acht Atomen an der Orten
+Die Elementarzelle besteht aus acht Atomen an den Orten
 \begin{align*}
   a_1 = {\left(0, 0, 0\right)}^\top, \hspace{1em}
   a_2 = {\left(0, \sfrac{1}{2}, \sfrac{1}{2}\right)}^\top, \hspace{1em}
@@ -111,7 +110,7 @@ Die Elementarzelle besteht aus acht Atomen an der Orten
   a_8 = {\left(\sfrac{3}{4}, \sfrac{3}{4}, \sfrac{1}{4}\right)}^\top.
 \end{align*}
 
-Die \textit{Zinkblende-Struktur} besteht aus einer zweiatomigen Basis,
+Die \textit{Zinkblende-Struktur} besteht aus einer Basis von zwei Elementen,
 deren Atome jeweils ein kubisch-flächenzentriertes Gitter
 der Diamantstruktur belegen.
 
@@ -123,7 +122,7 @@ jedoch mit zwei kubisch-primitiven Gittern.
 
 Die \textit{Fluorit-Struktur} besteht aus drei kubisch-flächenzentrierten Gittern,
 die gegeneinander um $\sfrac{1}{4}$- und $\sfrac{3}{4}$-Raumdiagonale verschoben sind.
-Die Elementarzelle besteht aus einer zweiatomigen Basis des Typs $AB_2$.
+Die Elementarzelle besteht aus einer Basis von zwei Elementen des Typs $AB_2$.
 
 Eine weitere häufige, jedoch nicht kubische, ist die \textit{hexagonale Struktur}.
 Hier beschreibt die Form der Elementarzelle ein rechtwinkliges Prisma,
@@ -165,8 +164,7 @@ Dieser ist allgemein
   }}
 \end{align}
 vereinfacht.
-Hierbei sind $a, b, c$ die Längen der Gittervektoren,
-im kubischen Gitter bezeichnet als Gitterkonstante.
+Hierbei sind $a, b, c$ die Längen der Gittervektoren, die als Gitterkonstanten bezeichnet werden.
 
 \subsection{Beugung von Röntgenstrahlung an Kristallen}
 Aufgrund der räumlichen Periodizität der Kristalle spielen
@@ -179,20 +177,22 @@ unpolarisierten elektrischen Wechselfeld eine Strahlung der Intensität
   I_\text{e} (r, \theta) = I_0 {\left(\frac{\mu_0 q^2}{4\pi m}\right)}^2 \frac{1}{r^2} \frac{1+ \cos^2\! (2\theta)}{2},
 \end{equation}
 wobei $2\theta$ der Winkel zwischen einfallendem und gestreuten Strahl ist.
-Es ist zu erkennen, dass die Streuung an Atomen aufgrund ihrer hohen Masse
+Es ist zu erkennen, dass die Streuung an Atomkernen aufgrund ihrer hohen Masse
 vernachlässigt werden kann.
 
-Die Streuung an Hüllenelektronen muss im Gegensatz zur Streuung an freien
-Elektronen korrigiert werden:
+Die Streuung an einem Atom wäre einfach zu beschreiben, wenn die Wellenlänge
+der Röntgenstrahlung groß gegen die Ausdehnung der Elektronenhülle des Atoms wäre.
+Dann würde die Streuintensität
 \begin{equation}
   \label{eq:strahlung_huellenelektron}
   I (r, \theta, z) = I_0 {\left(\frac{\mu_0 {\left(z e_0 \right)}^2}{4\pi z m_0}\right)}^2 \frac{1}{r^2} \frac{1+\cos^2\! (2\theta)}{2}
-  = z^2 I_\text{e} (r, \theta).
+  = z^2 I_\text{e} (r, \theta)
 \end{equation}
+lauten.
 
 Der Quotient $f$ der Intensitäten, mit
 \begin{equation}
-  f^2 = \frac{I_\text{a}}{I_\text{e}} \le 1
+  f^2 = \frac{I_\text{a}}{I_\text{e}} > 1
 \end{equation}
 heißt Atomformfaktor.
 
@@ -231,7 +231,7 @@ ist.
 % \end{wrapfigure}
 
 Die Phasendifferenz bei der Streuung an der Elementarzelle kann analog berechnet werden.
-Um die Streuamplitude $A$ zu berechnen, muss phasenrichtig über alle Atom
+Um die Streuamplitude $A$ zu berechnen, muss phasenrichtig über alle Atome
 in der Elementarzelle summiert werden.
 Hier ist zu berücksichtigen, dass alle Atome einen eigenen Formfaktor $f_j$ haben:
 \begin{equation}
@@ -260,8 +260,8 @@ Dieser ist, ausgedrückt mit den Wellenzahlvektoren
   \vec{g} = \vec{k} - \vec{k}_0.
 \end{equation}
 Der reziproke Gittervektor ist der charakteristische Netzebenenvektor der Netzebenenscharen im reziproken Gitter.
-Dieses wird durch reziporke Basisvektoren aufgespannt.
-Sie lassen sich folgendermaßen aus den normalen Basisvektoren berechnen:
+Dieses wird durch reziproke Basisvektoren aufgespannt.
+Sie lassen sich folgendermaßen aus den direkten Basisvektoren berechnen:
 \begin{align}
   \label{eq:reziproke_basisvektoren}
   \vec{A} &= \frac{1}{V} \left(\vec{b} \times \vec{c}\right), \\
@@ -310,90 +310,6 @@ Nun kann $a$ bestimmt werden, da die Wellenlänge $\lambda$ der Röntgenröhre b
 % Braggsche Bedingung
 % reziproke Gittervektoren
 % reziprokes Giter
-
-\subsection{Messmethode}
-\label{sec:Messmethode}
-Da ein Einkristall sehr wenig konstruktive Interferenzen zulässt,
-müsste Röntgenstrahlung zufällig aus der richtigen Richtung auf den Kristall
-strahlen, um überhaupt einen Reflex zu erzeugen.
-Um die Reflexwahrscheinlichkeit zu erhöhen, wird die Probe pulverisiert.
-Die Anordnung der Kristalle ist dann nämlich statistisch verteilt
-und es mehr Röntgenstrahlen treffen im Braggschen Winkel auf die Kristalle.
-
-Die gebeugte Röntgenstrahlung der Netzebenenschar $(hkl)$ trifft unter
-dem Winkel $\theta$ auf einen Filmstreifen.
-Aufgrund der Verteilung der Orientierungen wird die reflektierte Strahlung
-als Kreis sichtbar.
-
-Die Probe wird während der Messung rotiert, um die Orientierungen der Kristalle
-weiterhin zu variieren.
-
-Das Messverfahren ist in Kapitel~\ref{sub:messung} weiter beschrieben.
-
-Es können bei der Messung zwei systematische Fehler auftreten.
-\begin{enumerate}
-  \item\label{item:absorption} Absorption der Röntgenstrahlung \\
-    Die Röntgenstrahlung wird nur am Rand der zylindrischen Probe gestreut,
-    im mittleren Teil wird aufgrund der Dicke die Röntgenstrahlung absorbiert.
-    Vergleiche hierzu Abbildung~\ref{fig:fehler_absorption}.
-    Nach Bradley und Jay\cite{bradleyjay} lautet die Korrektur
-    \begin{equation}
-      \label{eq:korrektur_lokalisation}
-      \frac{\Delta a_\text{A}}{a} = \frac{\rho}{2R}\left(1 - \frac{R}{F}\right) \frac{\cos^2\!\theta}{\theta}
-    \end{equation}
-  \item\label{item:lokalisierung} Lokalisierung der Probenachse \\
-    Die Verschiebung der Probenachse gegen die Achse des Films bringt
-    einen Winkelfehler von
-    \begin{equation}
-      4 \Delta \theta = -\frac{2 \Delta s}{R}
-    \end{equation}
-    Vergleiche hierzu Abbildung~\ref{fig:fehler_lokalisation}.
-    Geometrische Überlegungen zeigen, dass die Korrektur
-    \begin{equation}
-      \frac{a_\text{V}}{a} = \frac{v}{R} \cos^2\!{\theta}
-    \end{equation}
-    ist.
-\end{enumerate}
-
-\begin{figure}
-  \centering
-  \begin{subfigure}[b]{0.48\textwidth}
-    \centering
-    \includegraphics[width=0.9\linewidth]{build/ausdehnung_probe.pdf}
-    \caption{%
-      Absorption der Röntgenstrahlung.
-    }%
-    \label{fig:fehler_absorption}
-  \end{subfigure}
-  %
-  \begin{subfigure}[b]{0.48\textwidth}
-    \centering
-    \includegraphics[width=0.9\linewidth]{build/verzug_probe.pdf}
-    \caption{%
-      Lokalisierung der Probenachse.
-    }%
-    \label{fig:fehler_lokalisation}
-  \end{subfigure}
-  \caption{%
-    Systematischer Fehler in der Messung.\cite{anleitung}
-  }
-\end{figure}
-
-Der systematische Fehler $\Delta a_\text{V}$ ist groß gegenüber $\Delta a_\text{A}$.
-Dies bedeutet, dass
-\begin{equation}
-  \Delta a_\text{ges} = \left(\Delta a_\text{V} + \Delta a_\text{A}\right) \propto \cos^2\!{\theta}.
-\end{equation}
-Bei einer linearen Regression dieser Parameter ist
-der Achsenabschnitt der $a$-Achse der beste Schätzer für die Gitterkonstante.
-
-% Debye-Scherrer
-% kristalline Probe
-% Filmmethode
-% Kollimator
-% Kegelmantel
-% Probe drehen
-% systematischer Fehler (2 Stück)
 
 \subsection{Röntgenstrahlung}%
 \label{sub:roentgenstrahlung}
