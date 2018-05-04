@@ -85,46 +85,53 @@ class composite_structure(cristal):
         return sum_st_fa
 
 if __name__ == '__main__':
+    reflexe_order = 8
     sc = prim_cubic_cristal()   
-    dsc = sc.all_struc_fac(5)
+    dsc = sc.all_struc_fac(reflexe_order)
 
     bcc = body_cubic_cristal()   
-    dbcc = bcc.all_struc_fac(5)
+    dbcc = bcc.all_struc_fac(reflexe_order)
 
     fcc = face_cubic_cristal()   
-    dfcc = fcc.all_struc_fac(5)
+    dfcc = fcc.all_struc_fac(reflexe_order)
     
     diamant = composite_structure()   
     diamant.add_structure(face_cubic_cristal())
     diamant.add_structure(face_cubic_cristal(
         bias=[0.25,0.25,0.25]))
-    dd = diamant.all_struc_fac(5)
-    
+    dd = diamant.all_struc_fac(reflexe_order)
+
+    # Zusammengestzte Struktur deren Atomformfaktoren
+    f_2_atomig = [2, 1] 
+
     zinkblende = composite_structure()   
-    zinkblende.add_structure(face_cubic_cristal())
+    zinkblende.add_structure(face_cubic_cristal(formfaktor=f_2_atomig[0]))
     zinkblende.add_structure(face_cubic_cristal(
-        bias=[0.25,0.25,0.25], formfaktor=5/3))
-    dz = zinkblende.all_struc_fac(5)
+        bias=[0.25,0.25,0.25], formfaktor=f_2_atomig[1]))
+    dz = zinkblende.all_struc_fac(reflexe_order)
     
     steinsalz = composite_structure()   
-    steinsalz.add_structure(face_cubic_cristal())
+    steinsalz.add_structure(face_cubic_cristal(formfaktor=f_2_atomig[0]))
     steinsalz.add_structure(face_cubic_cristal(
-        bias=[0.5,0.5,0.5], formfaktor=5/6))
-    ds = steinsalz.all_struc_fac(5)
+        bias=[0.5,0.5,0.5], formfaktor=f_2_atomig[1]))
+    ds = steinsalz.all_struc_fac(reflexe_order)
     
     caesium = composite_structure()   
-    caesium.add_structure(prim_cubic_cristal())
+    caesium.add_structure(prim_cubic_cristal(formfaktor=f_2_atomig[0]))
     caesium.add_structure(prim_cubic_cristal(
-        bias=[0.5,0.5,0.5], formfaktor=5/6))
-    dc = caesium.all_struc_fac(5)
+        bias=[0.5,0.5,0.5], formfaktor=f_2_atomig[0]))
+    dc = caesium.all_struc_fac(reflexe_order)
+
+    # Zusammengestzte Struktur deren Atomformfaktoren
+    f_3_atomig = [2,1,1] 
 
     fluorit= composite_structure()   
-    fluorit.add_structure(prim_cubic_cristal())
-    fluorit.add_structure(prim_cubic_cristal(
-        bias=[0.25,0.25,0.25], formfaktor=5/6))
-    fluorit.add_structure(prim_cubic_cristal(
-        bias=[0.75,0.75,0.75], formfaktor=5/6))
-    df = fluorit.all_struc_fac(5)
+    fluorit.add_structure(face_cubic_cristal(formfaktor=f_3_atomig[0]))
+    fluorit.add_structure(face_cubic_cristal(
+        bias=[0.25,0.25,0.25], formfaktor=f_3_atomig[1]))
+    fluorit.add_structure(face_cubic_cristal(
+        bias=[0.75,0.75,0.75], formfaktor=f_3_atomig[2]))
+    df = fluorit.all_struc_fac(reflexe_order)
 
     with open("build/structf.txt", "w") as text_file:
         for hkl, m, sc, bcc, fcc, diamant, zinkblende, steinsalz, caesium, \
@@ -140,13 +147,17 @@ if __name__ == '__main__':
    
     m = [dsc, dbcc, dfcc, dd, dz, ds, dc, df]
     new_m = []
+    cut_strukturf = 0.4
+    print('Cutten des Strukturfactor bis zu {} des maximalen Strf.'\
+            .format(cut_strukturf))
     for x in m:
-        mask = np.array(x['structurfactor']) != 0
+        print('Strukturfactor: ', x['structurfactor'])
+        mask = np.array(x['structurfactor']) >= max(x['structurfactor']) \
+                * cut_strukturf
         x = np.array(x['m'])[mask]
         x = np.unique(x)
         x = np.sort(x)
         new_m.append(x)
-    
 
     radius = 57.3
     print('Die Kammer besitzt einen Radius von {} mm.'.format(radius))
@@ -173,7 +184,6 @@ if __name__ == '__main__':
     theta_2 = np.radians(theta_2_deg)
     theta_2 = unumpy.uarray(theta_2, uncertainty_theta(theta_2))
 
-
     def gittertest(m, theta):
         return m / (unumpy.sin(theta)**2)
 
@@ -183,7 +193,6 @@ if __name__ == '__main__':
     def linear_func(x, a, b):
         return a*x + b
 
-
     def output(n_refl, gitter, theta, lam, pathrefl, pathfig, pathparams, rem=0): 
         theta = theta[:n_refl]
         for x in new_m:
@@ -191,10 +200,10 @@ if __name__ == '__main__':
         abstand = gitterabstand(lam, new_m[gitter][:n_refl],theta)
 
         x = unumpy.cos(theta)**2
-         
+      
         popt, pcov = curve_fit(linear_func, 
-                unumpy.nominal_values(x[rem:]), 
-                unumpy.nominal_values(abstand[rem:]))
+               unumpy.nominal_values(x[rem:]), 
+               unumpy.nominal_values(abstand[rem:]))
 
         print('parameter:' , popt, np.sqrt(np.diag(pcov)))
         with open(pathparams, "w") as text_file:
@@ -211,7 +220,7 @@ if __name__ == '__main__':
         plt.tight_layout(pad=0)
         plt.savefig(pathfig)
         plt.close()
-        
+ 
         with open(pathrefl, "w") as text_file:
             i = 1
             for theta, m in zip(theta, new_m[gitter][:n_refl]):
@@ -233,6 +242,6 @@ if __name__ == '__main__':
                 i += 1
 
     output(8, 2, theta_1, lam_m, "build/reflexe1.txt", 'build/lin_fit1.pdf', \
-            'build/params1.txt', rem=0)
-    output(12, 2, theta_2, lam_m, "build/reflexe2.txt", 'build/lin_fit2.pdf', \
-            'build/params2.txt', rem=1)
+           'build/params1.txt', rem=0)
+    output(12, 7, theta_2, lam_m, "build/reflexe2.txt", 'build/lin_fit2.pdf', \
+           'build/params2.txt', rem=1)
