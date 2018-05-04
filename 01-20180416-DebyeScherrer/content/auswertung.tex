@@ -19,16 +19,50 @@ In der Auswertung wird im Weiteren mit der gemittelten Wellenlänge
 $\overline{\lambda}_{K\alpha}$ gerechnet, da die Aufspaltung der beiden Emissionslinien 
 mit den vorhandenen Instrumenten nicht weiter vermessen werden kann.
 
+\begin{table}[ht]
+		\centering
+		\caption{Reflexe der Proben und die Gitterkonstanten mit ihrem
+		systematischen Fehler.}
+		\label{tab:wink}
+		\begin{subtable}{\textwidth}
+				\centering
+				\caption{Probe 2}
+				\begin{tabular}{c c c c c c}
+						\toprule
+						i & $\theta$ / deg & m & m$/\sin^2(\theta)$ & $\cos^2(\theta)$
+						  & a / \AA \\ \midrule
+						\input{build/reflexe1.txt}
+						\bottomrule
+				\end{tabular}
+		\end{subtable}
+		\begin{subtable}{\textwidth}
+				\centering
+				\caption{Salz 2}
+				\begin{tabular}{c c c c c c}
+						\toprule
+						i & $\theta$ / deg & m & m$/\sin^2(\theta)$ & $\cos^2(\theta)$
+						  & a / \AA \\ 
+						\midrule
+						\input{build/reflexe2.txt}
+						\bottomrule
+				\end{tabular}
+		\end{subtable}
+\end{table}
+
 Entsprechend Formel~\eqref{eq:const} lassen sich Strukturfaktoren simulieren.
 Diese sind in Tabelle~\ref{tab:struct}, bis zu Reflexen der 4. Ordnung, aufgetragen.
-Da nicht bekannt ist, nach welcher Struktur gesucht wird, werden bei
-zusammengesetzten Strukturen mit unterschiedlichen Atomen die Atomformfaktoren
-1 und $\sfrac{5}{6}$ und sonst 1 gewählt.
+Dazu werden systematisch die Atomformfaktoren der in der Anleitung
+\cite{anleitung} aufgeführten Ionenkombinationen berechnet und im folgenden mit
+den Messwerten verglichen. 
+In Tabelle~\ref{tab:struct} sind die Strukturfaktoren unter der Annahme der
+Atomfaktoren für Calcium und Fluor aufgetragen.
 
-Die Reflexe werden dem Gitter zugeordnet, bei welchem die auftretenden Reflexe für
-die nicht verschwindenden Strukturfaktoren der verschiedenen Gittertypen der
-Quotienten aus der Ordnung $m$ und $\sin^2(\theta)$ (siehe Tabelle~\ref{tab:wink})
-möglichst konstant ist.
+Für die Zuordnung von den Strukturfaktoren zu den Reflexen wird die Annahme
+getroffen,
+dass nur die Reflexe wo der Strukturfaktor groß ist eine auswertbare Schwärzung
+des Negatives verursachen. 
+Die Reflexe werden dem Gitter zugeordnet bei dem der Quotienten aus der Ordnung 
+$m$ und $\sin^2(\theta)$ (siehe Tabelle~\ref{tab:wink}) möglichst konstant ist.
 Des Weiteren wird versucht, die relative Stärke der Reflexe bei dem Vergleich mit den
 Strukturfaktoren zu berücksichtigen.
 
@@ -50,21 +84,27 @@ Strukturfaktoren zu berücksichtigen.
 		des	Messfehlers und den naiven Gittervektoren.}
 \end{figure}
 
-Sowohl Probe 2 als auch Salz 2 scheinen am besten zur Struktur des fcc-Gitters zu
-passen.
+Probe 2 scheint am besten zur Struktur des fcc-Gitters zu passen.
 Dabei wurde allerdings der erste Reflex von Probe 2 verworfen, bei dem es sich
 nach Vergleich mit den verschiedenen Gitterstrukturen wohl um eine Verunreinigung
 handelt.
-Unter der Annahme lassen sich nach Formel~\eqref{eq:gittervektor} die
+Bei Salz 2 scheinen die Intensitätsmaxi verglichen mit Probe 2 stärker zu
+varieren. 
+Es lässt sich sowohl der Struktur der Zinkblende als auch der Fluoridstruktur
+zuordenen. 
+Jeweils charakteristisch für beide Gittertypen ist, dass der zweite Reflex
+starker als der erste ausgeprägt ist.
+Nach Formel~\eqref{eq:gittervektor} lassen sich die
 Gitterkonstanten $a$ bestimmen, die einen Versatz aufgrund des
 Probendurchmessers, als auch die Verschiebung der Dreh- zur Kamera-Achse
 aufweisen, welcher $\propto \cos^2(\theta)$ ist.
 
-Aus einem linearen Fit der Form $f(x) = a \cdot x + b$ können die ungebiasten
+Aus einem linearen Fit der Form $f(x) = a \cdot x + b$ können die vom
+systematischen Fehler befreiten  
 Gitterkonstanten bestimmt, werden da der Messfehler $\propto \cos^2(\theta)$ ist
 (vergleiche Kapitel~\ref{sec:Messmethode}).
-Dabei entspricht der $y$-Achsenabschnitt die Gitterkonstante $a$.
-Die ungebiasten Gitterkonstanten sind in Tabelle~\ref{tab:gitt} aufgeführt.
+Dabei entspricht der $y$-Achsenabschnitt der Gitterkonstante $a$.
+Die vom systematischen Fehler befreiten Gitterkonstanten sind in Tabelle~\ref{tab:gitt} aufgeführt.
 
 \begin{table}[ht]
 		\centering
@@ -80,3 +120,10 @@ Die ungebiasten Gitterkonstanten sind in Tabelle~\ref{tab:gitt} aufgeführt.
 				\bottomrule
 		\end{tabular}
 \end{table}
+
+Mittels Gitterstruktur und Gitterkonstante wird versucht die Bestandteile der
+Probe zu erschließen. 
+Probe 2 scheint mit dem Abgleich mit Quelle \cite{kupfer} möglicherweise Kupfer
+zu seien. 
+Wie durch die Atomformfaktoren bereits ermittelt scheint Salz 2 Calciumfluorid
+zu seien. 
