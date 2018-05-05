@@ -1,6 +1,4 @@
 BUILD_FILES = \
-	anleitung_V49_GepulsteNMR.pdf \
-	build/main.pdf \
 	build/aufspaltungE.pdf \
 	build/effB.pdf \
 	build/aufbau.pdf \
@@ -22,7 +20,7 @@ PREVIEW_CMD = \
 	$(TEX_CMD) --pvc
 
 
-all: $(BUILD_FILES)
+all: build/main.pdf
 
 
 anleitung_V49_GepulsteNMR.pdf:
@@ -30,7 +28,7 @@ anleitung_V49_GepulsteNMR.pdf:
 		--user TUDoFP --password WS1718 \
 		-O anleitung_V49_GepulsteNMR.pdf
 
-build/main.pdf: FORCE | build
+build/main.pdf: $(BUILD_FILES) FORCE | build
 	TEXINPUTS=build: BIBINPUTS=build: max_print_line=1048576 \
 	$(TEX_CMD) main.tex
 
