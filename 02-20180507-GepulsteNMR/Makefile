@@ -28,6 +28,9 @@ anleitung_V49_GepulsteNMR.pdf:
 		--user TUDoFP --password WS1718 \
 		-O anleitung_V49_GepulsteNMR.pdf
 
+Pulsed_NMR.pdf:
+	wget https://www.physics.rutgers.edu/grad/506/Pulsed_NMR.pdf -q
+
 build/main.pdf: $(BUILD_FILES) FORCE | build
 	TEXINPUTS=build: BIBINPUTS=build: max_print_line=1048576 \
 	$(TEX_CMD) main.tex
