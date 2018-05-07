@@ -8,7 +8,11 @@ BUILD_FILES = \
 	build/pulssequenz.pdf \
 	build/magnetisierung.pdf \
 	build/signalbild.pdf \
-	build/meiboom.pdf
+	build/meiboom.pdf \
+	build/messung_T1.png \
+	build/burst_sequences.png \
+	build/halftime_sequence.png \
+	build/messung_D.png
 
 OUT_DIR = build
 TEX_CMD = latexmk \
@@ -38,6 +42,18 @@ build/main.pdf: $(BUILD_FILES) FORCE | build
 preview: FORCE | build
 	TEXINPUTS=build: BIBINPUTS=build: max_print_line=1048576 \
 	$(PREVIEW_CMD) main.tex
+
+build/halftime_sequence.png: scripts/halftime.py
+	python scripts/halftime.py
+
+build/messung_D.png: scripts/plot_D.py
+	python scripts/plot_D.py
+
+build/messung_T1.png: scripts/plot_T1.py
+	python scripts/plot_T1.py
+
+build/burst_sequences.png: scripts/bursts.py
+	python scripts/bursts.py
 
 build/punktgitter.pdf: anleitung_V41_DebyeScherrer.pdf | build
 	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \

@@ -26,6 +26,6 @@ Loetpraktikum.pdf: $(all_plots)
 
 clean:
 	rm -rf plots
-	rm Loetpraktikum.pdf
+	rm -f Loetpraktikum.pdf
 
 .PHONY: clean
