@@ -12,7 +12,9 @@ BUILD_FILES = \
 	build/messung_T1.png \
 	build/burst_sequences.png \
 	build/halftime_sequence.png \
-	build/messung_D.png
+	build/messung_D.png \
+	build/table_messung_D.tex \
+	build/table_messung_T1.tex
 
 OUT_DIR = build
 TEX_CMD = latexmk \
@@ -45,6 +47,12 @@ preview: FORCE | build
 
 build/halftime_sequence.png: scripts/halftime.py
 	python scripts/halftime.py
+
+build/table_messung_D.tex: scripts/make_tables.py
+	python scripts/make_tables.py
+
+build/table_messung_T1.tex: scripts/make_tables.py
+	python scripts/make_tables.py
 
 build/messung_D.png: scripts/plot_D.py
 	python scripts/plot_D.py
