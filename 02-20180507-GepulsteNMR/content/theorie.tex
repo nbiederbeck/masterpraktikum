@@ -109,68 +109,105 @@ wobei zwei verschiedenen Relaxationszeiten auftreten:
 
 \subsection{HF-Einstrahlungsvorgaenge}%
 \label{sub:hf_einstrahlungsvorgaenge}
-
+Durch das einstrahlen von Hochfrequenz welche senkrecht zur Gleichgewichtslaage
+der Magnetiserung steht 
 \begin{equation}
 		\label{eq:bhf}
 		\vec{B}_\text{HF} = 2 \vec{B}_1 \cos(\omega t)
 \end{equation}
-
+laesst dieser sich, aus der Gleichgewichtslaage bringen. 
+Fuer Frequenzen nahe der Lamorfrequenz kann man von einem in der x-y-Ebene
+aufgespannten Ebene rotieredes Feld ausgehen. 
+Durch die Transformation der Einheitsvektoren in das mit $B_1$ sich mitbewegende
+System laesst sich die Zeitabhaengigkeit eliminieren. 
+Unter beruecksichtigung das die Einheitsvektoren nun zeitabhaengige Grossen sind
+laesst sich die zeitliche Ableitung der Magnetisierung darstellen als 
 \begin{equation}
 		\label{eq:moment}
 		\frac{\text{d}\vec{M}}{\text{d} t} = \gamma \left( \vec{M} \times \left(
-		\vec{B}_\text{ges} + \frac{\vec{\omega}}{\gamma} \right) \right)
+		\vec{B}_\text{ges} + \frac{\vec{\omega}}{\gamma} \right) \right) \ .
 \end{equation}
-
+Durch das einfuehren des effektiven Magnetfeldes 
 \begin{equation}
 		\label{eq:sumB}
 		\vec{B}_\text{eff} = \vec{B}_0 + \vec{B}_1 + \frac{\vec{\omega}}{\gamma}
 \end{equation}
-
+ergibt sich die bekannte Kreiselgleichung, dessen Loesung die
+Praessesionsbewegung der Magnetisierung um die Ruhelaage sind. 
+Da die Lamorfrequenz $\omega_\text{L}$ antiparallel zum angelgeten Feld steht,
+ist der fall fuer $\omega = \omega_\text{L}$ von besonderem Interesse.
+Dabei Betraegt das effektive B-Feld $B_1$ und der Oeffnungswinkel der
+Praezession 90 grad. 
+Bleibt das Hochfrequenzfeld fuer eine Zeit von 
 \begin{equation}
 		\label{eq:90kick}
 		\Delta t_{90} = \frac{\pi}{2 \gamma B_1}
 \end{equation}
+eingeschaltet, werden die Spins aus der Gelichgewichtslaage in die y-Ebene
+heraugedreht. 
+Fuer die doppelte dauer laesst sich ein 180 grad zustand herstellen, andenen die
+Relaxationszeiten $T_1$ und $T_2$ gemessen werden koennen. 
 
 \subsection{Relaxationsverhalten einer fluessigen Probe}%
 \label{sub:relaxationsverhalten_einer_fluessigen_probe}
-
+%#Fluessigkeit
+Aufgrund der brownschen Molekularbewegung und der inhomogenitaet des
+magnetischen Feldes wird die Larmorfrequenz eine Funktion der Zeit. 
+Durch die Diffusion wird die Refokussierung der Spins gestoert, sodass die
+Signalamplitude schneller abnimmt.
+Zur berechnung wird die Diffusionsstromdichte 
 \begin{equation}
 		\vec{j} = -D \nabla n	
 \end{equation}
-
+berechnet welche von der Diffusionskonstantte und den Moeglichen
+Spineinstellungen abhaenigig ist. 
+Der Gradient der Stromdichte entspricht grade der Magnetisierung
 \begin{equation}
 		\frac{\partial M}{\partial t} = - \nabla \vec{J}_\text{M}
 \end{equation}
-
-
+was redondant fuer Spin \sfrac{1}{2} teilchen mit der Aussage 
 \begin{equation}
+		\label{eq:dm}
 		\frac{\partial M}{\partial t} = - D \Delta M
 \end{equation}
-
+ist. Durch die Erweiterung der Blochsen Gleichungen um den Term \ref{eq:dm}
+ergibt sich unter beruecksichtigung des Feldgradientens
 \begin{equation}
 		\label{eq:gradB}
 		B_\text{z} = B_0 + G \cdot z
 \end{equation}
-
+die Bewegungsgleichung
 \begin{equation}
 		\frac{\partial M_\text{tr}}{\partial t} = \left(- i \omega_\text{L} - i \gamma
 Gz - \frac{1}{T_2} + D \Delta \right) M_\text{tr}
 \end{equation}
-
+Loesung dieser Gleichung ist 
 \begin{equation}
 		M_\text{tr} = f(x,y,z,t) \cdot \exp(-i\omega_\text{L}t) \cdot
 		\exp\left(-\frac{t}{T_\text{2}}\right)
 \end{equation}
-
+wobei f wiederum eine Funktion ist
 \begin{equation}
 		\frac{\partial f}{\partial t} = -i \gamma Gzf + D \Delta f
 \end{equation}
-
+Der Diffusionsterm wird fuer die Loesung dieser Gleichung erstmal vernachlaessig
+t und durch die Einfuehrung der Amplitudenfunktion 
 \begin{equation}
 		f(t) = A \exp \left( -i \gamma Gz ( t -2n\tau) \right)
 \end{equation}
-
+beruecksichtigt. Durch periodische Randbedingungen ergibt sich ein eponentieller
+Zusammenhand mit der halbwertsdauer
 \begin{equation}
 		T_\text{D} = \frac{3}{D \gamma^2 G^2 \tau^2}
 \end{equation}
-
+Im folgenden wird beruecksichtigt das die Magnetisierung einerseits von der
+Relaxationszeit $T_2$ als auch von der Diffusionskonstanate abhaengig ist.
+\begin{equation}
+		\label{eq:my}
+		M_\text{y}(t) = M_0 \exp \left( - \frac{t}{T_2} \right) \exp \left( -
+		\frac{t}{T_\text{D}} \right)
+\end{equation}
+Fuer grosse $T_D$ ist die Bestimmung der Relaxationszeit moeglich unter
+vernachlaessigung der Diffusion. 
+Durch hohe Feldgradienten besteht die moeglichkeit $T_D$ klein gegenueber $T_2$
+zu waehlen und somit die Relaxationszeit zu bestimmen. 

@@ -109,7 +109,7 @@ build/signalverlauf.pdf: anleitung_V49_GepulsteNMR.pdf | build
 		-dFirstPage=9 -dLastPage=9 \
 		-sOutputFile=build/signalverlauf.pdf \
 		anleitung_V49_GepulsteNMR.pdf
-	pdfcrop --bbox "0 100 600 280" build/spin.pdf build/signalverlauf.pdf
+	pdfcrop --bbox "0 100 600 280" build/signalverlauf.pdf build/signalverlauf.pdf
 	pdfcrop build/signalverlauf.pdf build/signalverlauf.pdf
 
 build/echo.pdf: anleitung_V49_GepulsteNMR.pdf | build
