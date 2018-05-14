@@ -3,6 +3,11 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 import pandas as pd
 
+from pint import UnitRegistry
+
+ureg = UnitRegistry()
+ureg.default_format = "Lx"
+
 
 def plot_D():
     tau, U = np.genfromtxt("data/messung_D.txt", unpack=True)
@@ -23,8 +28,15 @@ def plot_D():
         )
 
     def func(x, D, a, m):
-        """-a * np.exp(-x / D) + m"""
-        return -a * np.exp(-x / D) + m
+        T_2 = 1.47  # * ureg.second
+        gammap = 2.68e8  # * ureg('radians per second per tesla')
+        G = 8.1e-5  # * ureg('tesla per millimeter per radians')
+        return m + a * np.exp(-x / T_2) * np.exp(
+            -D * gammap ** 2 * G ** 2 * x ** 3 / 12
+        )
+
+    def func(x, D, a, m):
+        return a * np.exp(- x**3 * D) + m
 
     # Fit exp function
     weights = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]  # weigh last two 3 times
@@ -35,22 +47,25 @@ def plot_D():
     for n, p, c in zip(["D", "a", "m"], par, np.sqrt(np.diag(cov))):
         print("{}: {:.2f} +- {:.2f}".format(n, p, c))
 
+    T_2 = 1.47 * ureg.second
+    gammap = 2.68e8 * ureg('radians per second per tesla')
+    G = 8.1e-5 * ureg('tesla per millimeter per radians')
+    D = par[0] * ureg.second ** -3 * 12 / (gammap **2 * G ** 2)
+    print("D = {}".format(D.to(ureg('meter ** 2 / second'))))
+
     fig, ax = plt.subplots()
 
+    # ax.plot(tau**3, (U+800) + np.exp(tau/1.47e3), "C0x", label=r"Messung $D$")
+    # ax.set_yscale('log')
+    # ax.set_xscale('log')
     ax.plot(tau, U, "C0x", label=r"Messung $D$")
-    ax.plot(x, func(x, *par), "C1-", label="")
+    ax.plot(x, func(x, *par), "C1-", label="Fit")
+
     ax.set_xlabel(r"$\tau \:\:/\:\: \si{\milli\second}$")
     ax.set_ylabel(r"$U \:\:/\:\: \si{\milli\volt}$")
 
     ax.legend()
     fig.savefig("build/messung_D.png")
-
-
-def printer():
-    OFILE = "build/helloworld.tex"
-    with open(OFILE, "w") as ofile:
-        for c1, c2 in zip("Hallo", "Welt!"):
-            print(c1, c2, sep=" & ", end=" \\\\\n", file=ofile)
 
 
 if __name__ == "__main__":

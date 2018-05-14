@@ -35,10 +35,10 @@ def plot_burst_sequences(
 
     ax_mg.legend(loc="best")
     ax_cp.legend(loc="best")
-    ax_mg.set_xticks([])
-    ax_mg.set_yticks([])
-    ax_cp.set_xticks([])
-    ax_cp.set_yticks([])
+    ax_mg.set_xlabel(r"$t \:\:/\:\: \si{\second}$")
+    ax_mg.set_ylabel(r"$U \:\:/\:\: \si{\volt}$")
+    ax_cp.set_xlabel(r"$t \:\:/\:\: \si{\second}$")
+    ax_cp.set_ylabel(r"$U \:\:/\:\: \si{\volt}$")
 
     # fig.set_size_inches([5.73, 3.57])
     # fig.tight_layout(pad=0)
@@ -76,8 +76,8 @@ def expo_fit_meiboom_gill(data, peakinds):
         label=r"Fit: $T_2 = \SI{" + "{:.2f}".format(par[0]) + "}{\second}$"
     )
 
-    ax.set_xlabel(r"$t$")
-    ax.set_ylabel(r"$\log_{10}(U \:\:/\:\: \text{div})$")
+    ax.set_xlabel(r"$t \:\:/\:\: \si{\second}$")
+    ax.set_ylabel(r"$\log_{10}(U \:\:/\:\: \si{\volt})$")
 
     ax.set_yscale("log")
     ax.legend()
