@@ -39,13 +39,10 @@ def plot_D():
 
     ax.plot(tau, U, "C0x", label=r"Messung $D$")
     ax.plot(x, func(x, *par), "C1-", label="")
-    ax.set_xlabel(r"$\tau / $ms")
-    ax.set_ylabel(r"$U / $mV")
-    # ax.set_xscale('log')
+    ax.set_xlabel(r"$\tau \:\:/\:\: \si{\milli\second}$")
+    ax.set_ylabel(r"$U \:\:/\:\: \si{\milli\volt}$")
 
-    ax.legend(loc="best")
-    fig.set_size_inches([5.73, 3.57])
-    fig.tight_layout(pad=0)
+    ax.legend()
     fig.savefig("build/messung_D.png")
 
 

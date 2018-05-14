@@ -41,19 +41,21 @@ def plot_T1():
 
     # plotting
     fig, ax = plt.subplots()
-    fig.set_size_inches([5.73, 3.57])
+    # fig.set_size_inches([5.73, 3.57])
 
     ax.plot(tau, U, "C0x", label=r"Messung $T_1$")
     ax.plot(
-        x, func(x, *par), "C1-", label=r"Fit: $T_1 = ${:.2f}ms".format(par[0])
+        x,
+        func(x, *par),
+        "C1-",
+        label=r"Fit: $T_1 = \SI{" + r"{:.2f}".format(par[0]) + r"}{\milli\second}$",
     )
 
-    ax.set_xlabel(r"$\log_{10}(\tau \:\:/\:\: $ms)")
-    ax.set_ylabel(r"$U \:\:/\:\: $mV")
+    ax.set_xlabel(r"$\log_{10}(\tau \:\:/\:\: \si{\milli\second})$")
+    ax.set_ylabel(r"$U \:\:/\:\: \si{\milli\volt}$")
     ax.set_xscale("log")
 
-    ax.legend(loc="best")
-    fig.tight_layout(pad=0)
+    ax.legend()
     fig.savefig("build/messung_T1.png")
 
 

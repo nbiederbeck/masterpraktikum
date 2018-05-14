@@ -12,12 +12,10 @@ def plot_halftime_sequence():
 
     ax.plot(halftime["x-axis"], halftime["1"], label="Burst Sequenz")
 
-    ax.legend(loc="best")
+    ax.legend()
     ax.set_xticks([])
     ax.set_yticks([])
 
-    fig.set_size_inches([5.73, 3.57])
-    fig.tight_layout(pad=0)
     fig.savefig("build/halftime_sequence.png")
 
 

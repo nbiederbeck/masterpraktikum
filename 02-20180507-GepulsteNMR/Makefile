@@ -14,7 +14,8 @@ BUILD_FILES = \
 	build/halftime_sequence.png \
 	build/messung_D.png \
 	build/table_messung_D.tex \
-	build/table_messung_T1.tex
+	build/table_messung_T1.tex \
+	build/burst_peaks_mg.png
 
 OUT_DIR = build
 TEX_CMD = latexmk \
@@ -45,22 +46,22 @@ preview: FORCE | build
 	TEXINPUTS=build: BIBINPUTS=build: max_print_line=1048576 \
 	$(PREVIEW_CMD) main.tex
 
-build/halftime_sequence.png: scripts/halftime.py
+build/halftime_sequence.png: scripts/halftime.py matplotlibrc
 	python scripts/halftime.py
 
-build/table_messung_D.tex: scripts/make_tables.py
-	python scripts/make_tables.py
-
-build/table_messung_T1.tex: scripts/plot_T1.py data/messung_T1.txt
+build/table_messung_T1.tex: scripts/plot_T1.py data/messung_T1.txt matplotlibrc
 	python scripts/plot_T1.py
 
-build/messung_D.png: scripts/plot_D.py
+build/table_messung_D.tex: scripts/plot_D.py data/messung_D.txt matplotlibrc
 	python scripts/plot_D.py
 
-build/messung_T1.png: scripts/plot_T1.py data/messung_T1.txt
+build/messung_D.png: scripts/plot_D.py matplotlibrc
+	python scripts/plot_D.py
+
+build/messung_T1.png: scripts/plot_T1.py data/messung_T1.txt matplotlibrc
 	python scripts/plot_T1.py
 
-build/burst_sequences.png: scripts/bursts.py
+build/burst_sequences.png: scripts/bursts.py matplotlibrc
 	python scripts/bursts.py
 
 build/punktgitter.pdf: anleitung_V41_DebyeScherrer.pdf | build
