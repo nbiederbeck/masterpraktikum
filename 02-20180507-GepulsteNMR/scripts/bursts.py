@@ -59,8 +59,8 @@ def expo_fit_meiboom_gill(data, peakinds):
     xs = np.linspace(np.min(x), np.max(x), 1000)
 
     def func(x, T_2, a, m):
-        """-a * np.exp(-x / T_2) + m"""
-        return -a * np.exp(-x / T_2) + m
+        """a * np.exp(-x / T_2) + m"""
+        return a * np.exp(-x / T_2) + m
 
     # Fit exp function
     par, cov = curve_fit(func, x, y)
