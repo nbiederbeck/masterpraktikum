@@ -14,7 +14,7 @@ def plot_T1():
 
     # Fit exp function
     weights = [
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 / 3, 1 / 4
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 / 2, 1 / 4
     ]  # weigh last two 3 times
     p0 = [2400, 1, 1]  # known-to-be T_1, others have default value
     par, cov = curve_fit(func, tau, U, p0=p0, sigma=weights)

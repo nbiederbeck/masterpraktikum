@@ -13,9 +13,7 @@ def plot_D():
         return -a * np.exp(-x / D) + m
 
     # Fit exp function
-    weights = [
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    ]  # weigh last two 3 times
+    weights = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]  # weigh last two 3 times
     p0 = [1, 1, 1]
     par, cov = curve_fit(func, tau, U, p0=p0, sigma=weights)
 
@@ -26,9 +24,7 @@ def plot_D():
     fig, ax = plt.subplots()
 
     ax.plot(tau, U, "C0x", label=r"Messung $D$")
-    ax.plot(
-        x, func(x, *par), "C1-", label=""
-    )
+    ax.plot(x, func(x, *par), "C1-", label="")
     ax.set_xlabel(r"$\tau / $ms")
     ax.set_ylabel(r"$U / $mV")
     # ax.set_xscale('log')
