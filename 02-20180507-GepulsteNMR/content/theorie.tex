@@ -1,0 +1,143 @@
+\section{Theorie}%
+\label{sec:theorie}
+
+\subsection{Magnetieserung im thermischen Gleichgewicht}%
+\label{ssub:magnetieserung_im_thermischen_gleichgewicht}
+
+\begin{equation}
+		\label{eq:delta_e}
+		\Delta E = \gamma B_0 \hbar 
+\end{equation}
+
+\begin{equation}
+		\label{eq:boltzmann}
+		\frac{N(m)}{N(m-1)} = \exp \left( - \frac{\gamma B_0 \hbar}{kT} \right)
+\end{equation}
+
+\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.8\linewidth]{./build/aufspaltungE.pdf}
+		\caption{Aufspaltung der E-Niveaus durch auesseres B-Feld}
+		\label{fig:aufsp_E}
+\end{figure}
+
+\begin{equation}
+		\label{eq:kernpo}
+		\langle I_Z \rangle_P = - \frac{\hbar^2 \gamma B_0}{4 kT}
+\end{equation}
+
+\begin{equation}
+		\label{eq:magn}
+		M_0 = N \frac{\mu_0 \gamma^2 \hbar^2 B_0}{4 kT}
+\end{equation}
+
+\subsection{Larmor-Praezession}%
+\label{sub:larmor_praezession}
+
+\begin{equation}
+		\label{eq:dreh}
+		\vec{D} = \vec{M} \times B_0 \vec{z_e} = \frac{\text{d} \vec{I}}{\text{d}t} 
+\end{equation}
+
+\begin{equation}
+		\label{eq:dreh}
+		\frac{\text{d} \vec{M}}{\text{d}t} = \gamma \vec{M} \times B_0 \vec{z_e}
+\end{equation}
+
+\begin{equation}
+		\label{eq:ablM}
+		\frac{\text{d} \vec{M_\text{z}}}{\text{d}t} = 0 ,  \hspace{1em}
+		\frac{\text{d} \vec{M_\text{x}}}{\text{d}t} = \gamma \text{B}_0
+		M_\text{y}, \hspace{1em}
+		\frac{\text{d} \vec{M_\text{y}}}{\text{d}t} = \gamma \text{B}_0
+		M_\text{x}, 
+\end{equation}
+
+\begin{equation}
+		\label{eq:schwM}
+		M_\text{z} = \text{const}, \hspace{1em} M_\text{x} = A \cos(\gamma B_0
+		t ), \hspace{1em} M_\text{y} = -A \sin(B_0 t)
+\end{equation}
+
+\begin{equation}
+		\label{eq:larmorf}
+		\omega_\text{L} = \gamma B_0
+\end{equation}
+
+\subsection{Relaxationserscheinungen}%
+\label{sub:relaxationserscheinungen}
+
+\begin{eqnarray}
+		\frac{\text{d} M_\text{z}}{\text{d} t} = \frac{M_0 - M_\text{z}}{T_1} \\
+		\frac{\text{d} M_\text{x}}{\text{d} t} = \gamma B_0 M_\text{y} -
+		\frac{M_\text{x}}{T_2} \\
+		\frac{\text{d} M_\text{y}}{\text{d} t} = \gamma B_0 M_\text{x} - \frac{M_\text{y}}{T_2} 
+\end{eqnarray}
+
+\subsection{HF-Einstrahlungsvorgaenge}%
+\label{sub:hf_einstrahlungsvorgaenge}
+
+\begin{equation}
+		\label{eq:bhf}
+		\vec{B}_\text{HF} = 2 \vec{B}_1 \cos(\omega t)
+\end{equation}
+
+\begin{equation}
+		\label{eq:moment}
+		\frac{\text{d}\vec{M}}{\text{d} t} = \gamma \left( \vec{M} \times \left(
+		\vec{B}_\text{ges} + \frac{\vec{\omega}}{\gamma} \right) \right)
+\end{equation}
+
+\begin{equation}
+		\label{eq:sumB}
+		\vec{B}_\text{eff} = \vec{B}_0 + \vec{B}_1 + \frac{\vec{\omega}}{\gamma}
+\end{equation}
+
+\begin{equation}
+		\label{eq:90kick}
+		\Delta t_{90} = \frac{\pi}{2 \gamma B_1}
+\end{equation}
+
+\subsection{Relaxationsverhalten einer fluessigen Probe}%
+\label{sub:relaxationsverhalten_einer_fluessigen_probe}
+
+\begin{equation}
+		\vec{j} = -D \nabla n	
+\end{equation}
+
+\begin{equation}
+		\frac{\partial M}{\partial t} = - \nabla \vec{J}_\text{M}
+\end{equation}
+
+
+\begin{equation}
+		\frac{\partial M}{\partial t} = - D \Delta M
+\end{equation}
+
+\begin{equation}
+		\label{eq:gradB}
+		B_\text{z} = B_0 + G \cdot z
+\end{equation}
+
+\begin{equation}
+		\frac{\partial M_\text{tr}}{\partial t} = \left(- i \omega_\text{L} - i \gamma
+Gz - \frac{1}{T_2} + D \Delta \right) M_\text{tr}
+\end{equation}
+
+\begin{equation}
+		M_\text{tr} = f(x,y,z,t) \cdot \exp(-i\omega_\text{L}t) \cdot
+		\exp\left(-\frac{t}{T_\text{2}}\right)
+\end{equation}
+
+\begin{equation}
+		\frac{\partial f}{\partial t} = -i \gamma Gzf + D \Delta f
+\end{equation}
+
+\begin{equation}
+		f(t) = A \exp \left( -i \gamma Gz ( t -2n\tau) \right)
+\end{equation}
+
+\begin{equation}
+		T_\text{D} = \frac{3}{D \gamma^2 G^2 \tau^2}
+\end{equation}
+
