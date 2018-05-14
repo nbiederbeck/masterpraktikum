@@ -3,47 +3,64 @@
 
 \subsection{Magnetieserung im thermischen Gleichgewicht}%
 \label{ssub:magnetieserung_im_thermischen_gleichgewicht}
-
+Durch das Anlegen eines magnetischen Feldes spalten der Bahndrehimpuls die Energieniveaus in $2 I
++ 1$ in aequidistante Energieniveaus auf. 
+Der Abstand der aufgespaltenen Niveaus betraegt 
 \begin{equation}
 		\label{eq:delta_e}
-		\Delta E = \gamma B_0 \hbar 
+		\Delta E = \gamma B_0 \hbar. 
 \end{equation}
-
-\begin{equation}
-		\label{eq:boltzmann}
-		\frac{N(m)}{N(m-1)} = \exp \left( - \frac{\gamma B_0 \hbar}{kT} \right)
-\end{equation}
-
+Dies geschieht dadurch das die Entartung der Spins durch das Anlegen eines
+Magnetfeldes aufgehoben wird.
 \begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.8\linewidth]{./build/aufspaltungE.pdf}
 		\caption{Aufspaltung der E-Niveaus durch auesseres B-Feld}
 		\label{fig:aufsp_E}
 \end{figure}
-
+Die Besetzungswahrscheinlichkeit im thermischen Gleichgewicht ist entsprechend
+der Boltzmanverteilung verteilt.
+\begin{equation}
+		\label{eq:boltzmann}
+		\frac{N(m)}{N(m-1)} = \exp \left( - \frac{\gamma B_0 \hbar}{kT} \right)
+\end{equation}
+Daraus resultiert das die E-Niveaus und Orientierungsrichtungen unterschiedlich
+besetzt sind, woraus eine Netto Kernspinpolarisation entsteht. 
+Fuer kleine Zeemanaufspaltungen $(m \gamma B_0 \hbar << kT)$ laesst sich die Kernspinpolarisation bis zur
+zweiten Ordnung Tayloren 
 \begin{equation}
 		\label{eq:kernpo}
-		\langle I_Z \rangle_P = - \frac{\hbar^2 \gamma B_0}{4 kT}
+		\langle I_Z \rangle_P = \frac{\sum_\text{m} \hbar m \exp\left(-\frac{m \gamma B_0
+		\hbar}{kT}\right)}{\sum_\text{m}\exp\left(-\frac{m \gamma B_0
+		\hbar}{kT}\right)} \approx - \frac{\hbar^2 \gamma B_0}{4 kT}
 \end{equation}
-
+welche eine netto Magnetisierung $M_0$ erzeugen. 
+Der Erwartungswert der Magnetisierung entlang der Feldrichtung betraegt
 \begin{equation}
 		\label{eq:magn}
-		M_0 = N \frac{\mu_0 \gamma^2 \hbar^2 B_0}{4 kT}
+		M_0 = N \frac{\mu_0 \gamma^2 \hbar^2 B_0}{4 kT} .
 \end{equation}
 
 \subsection{Larmor-Praezession}%
 \label{sub:larmor_praezession}
-
+Durch die Aufspaltung der Energieniveaus audgrund der Zeemaneffekts fueren
+die magnetischen Momente eine Praessesionsbewegung um die Achse des von aussen
+angelegten magentischen Feldes durch. 
+Dieser Effekt heist Larmor Praezession. 
+Auf die Magnetisierung wirkt ein Drehmoment welches versucht die Magnetisierung
+parallel zur Magnetfeldrichtung zu drehen.
 \begin{equation}
 		\label{eq:dreh}
-		\vec{D} = \vec{M} \times B_0 \vec{z_e} = \frac{\text{d} \vec{I}}{\text{d}t} 
+		\vec{D} = \vec{M} \times B_0 \vec{z}_\text{e} = \frac{\text{d} \vec{I}}{\text{d}t} 
 \end{equation}
-
+Dies erzeugt eine aenderung des Gesamtdrehimpulses $I$ welcher ueber den
+gyromagnetischen Faktor $\gamma$ mit dem Magnetischen Moment verbunden ist.
 \begin{equation}
 		\label{eq:dreh}
-		\frac{\text{d} \vec{M}}{\text{d}t} = \gamma \vec{M} \times B_0 \vec{z_e}
+		\frac{\text{d} \vec{M}}{\text{d}t} = \gamma \vec{M} \times B_0
+		\vec{z}_\text{e}
 \end{equation}
-
+Durch die Wahl der B-Feld richtung in $\vec{z}_\text{e}$,
 \begin{equation}
 		\label{eq:ablM}
 		\frac{\text{d} \vec{M_\text{z}}}{\text{d}t} = 0 ,  \hspace{1em}
@@ -52,27 +69,43 @@
 		\frac{\text{d} \vec{M_\text{y}}}{\text{d}t} = \gamma \text{B}_0
 		M_\text{x}, 
 \end{equation}
-
+ ist die Magnetisierungin $z$ eine Konstante und die fuehrt in der x-y-Ebene
+ eine Praessesionsbewegung 
 \begin{equation}
 		\label{eq:schwM}
 		M_\text{z} = \text{const}, \hspace{1em} M_\text{x} = A \cos(\gamma B_0
 		t ), \hspace{1em} M_\text{y} = -A \sin(B_0 t)
 \end{equation}
-
+mit der Lamorfrequenz
 \begin{equation}
 		\label{eq:larmorf}
 		\omega_\text{L} = \gamma B_0
 \end{equation}
+durch. 
 
 \subsection{Relaxationserscheinungen}%
 \label{sub:relaxationserscheinungen}
-
-\begin{eqnarray}
-		\frac{\text{d} M_\text{z}}{\text{d} t} = \frac{M_0 - M_\text{z}}{T_1} \\
-		\frac{\text{d} M_\text{x}}{\text{d} t} = \gamma B_0 M_\text{y} -
-		\frac{M_\text{x}}{T_2} \\
-		\frac{\text{d} M_\text{y}}{\text{d} t} = \gamma B_0 M_\text{x} - \frac{M_\text{y}}{T_2} 
-\end{eqnarray}
+Durch hochfrequente Anregungen kann die Magnetisierung aus der
+Gleichgewichtslage gebracht werden.
+Nach beendigung der Stoerung strebt die Magnetisierung in der Relaxationszeit
+gegen ihren Gleichgewichtswert. 
+Die Bewegungsgleichungen werden die Blochschen Gleichungen genannt
+\begin{align}
+		\frac{\text{d} M_\text{z}}{\text{d} t} &= \frac{M_0 - M_\text{z}}{T_1} \\
+		\frac{\text{d} M_\text{x}}{\text{d} t} &= \gamma B_0 M_\text{y} -
+		\frac{M_\text{x}}{T_2} \\               
+		\frac{\text{d} M_\text{y}}{\text{d} t} &= \gamma B_0 M_\text{x} - \frac{M_\text{y}}{T_2} 
+\end{align}
+wobei zwei verschiedenen Relaxationszeiten auftreten:
+\begin{itemize}
+		\item \textbf{Spin-Gitter-Relaxationszeit/logitudinale:}
+				ist die Relaxationszeit parallel der Feldrichtung. Gibt die zeit
+				an die es dauert bis Spinsysteme in Gitterschwingungen
+				uebergehen vice versa. 
+		\item \textbf{Spin-Spin-Relaxationszeit/transversale:} Relaxationszeit
+				aufgrund der Spin Wechselwirkung von naechsten Nachbarn. Abnahme
+				der zum B-Feld senkrechten Komponente
+\end{itemize}
 
 \subsection{HF-Einstrahlungsvorgaenge}%
 \label{sub:hf_einstrahlungsvorgaenge}
