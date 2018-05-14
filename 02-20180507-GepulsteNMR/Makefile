@@ -51,13 +51,13 @@ build/halftime_sequence.png: scripts/halftime.py
 build/table_messung_D.tex: scripts/make_tables.py
 	python scripts/make_tables.py
 
-build/table_messung_T1.tex: scripts/make_tables.py
-	python scripts/make_tables.py
+build/table_messung_T1.tex: scripts/plot_T1.py data/messung_T1.txt
+	python scripts/plot_T1.py
 
 build/messung_D.png: scripts/plot_D.py
 	python scripts/plot_D.py
 
-build/messung_T1.png: scripts/plot_T1.py
+build/messung_T1.png: scripts/plot_T1.py data/messung_T1.txt
 	python scripts/plot_T1.py
 
 build/burst_sequences.png: scripts/bursts.py

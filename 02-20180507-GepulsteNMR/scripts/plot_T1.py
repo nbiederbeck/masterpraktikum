@@ -1,12 +1,28 @@
 import numpy as np
 from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
+import pandas as pd
 
 
 def plot_T1():
     # Data
+
     tau, U = np.genfromtxt("data/messung_T1.txt", unpack=True)
     x = np.linspace(0, 10000, 10000)
+
+    df = pd.DataFrame(
+        data=np.array([tau, U]).transpose(),
+        columns=[r"$\tau / \si{\milli\second}$", r"$U / \si{\milli\volt}$"],
+    )
+
+    with open("build/table_messung_T1.tex", "w") as ofile:
+        ofile.write(
+            df.to_latex(
+                index=False,
+                escape=False,
+                column_format="S[table-format=5.1] S[table-format=-3.1]",
+            )
+        )
 
     def func(x, T_1, a, m):
         """-a * np.exp(-x / T_1) + m"""
@@ -21,7 +37,7 @@ def plot_T1():
 
     print(func.__doc__)
     for n, p, c in zip(["T_1", "a", "m"], par, np.sqrt(np.diag(cov))):
-        print("{}: {:.2f} +- {:.2f}".format(n, p, c))
+        print(r"{} = {:.2f} \pm {:.2f}".format(n, p, c))
 
     # plotting
     fig, ax = plt.subplots()

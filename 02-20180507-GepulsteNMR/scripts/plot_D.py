@@ -8,6 +8,20 @@ def plot_D():
     tau, U = np.genfromtxt("data/messung_D.txt", unpack=True)
     x = np.linspace(0, 15, 1000)
 
+    df = pd.DataFrame(
+        data=np.array([tau, U]).transpose(),
+        columns=[r"$\tau / \si{\milli\second}$", r"$U / \si{\milli\volt}$"],
+    )
+
+    with open("build/table_messung_D.tex", "w") as ofile:
+        ofile.write(
+            df.to_latex(
+                index=False,
+                escape=False,
+                column_format="S[table-format=2.1] S[table-format=-3.1]",
+            )
+        )
+
     def func(x, D, a, m):
         """-a * np.exp(-x / D) + m"""
         return -a * np.exp(-x / D) + m
