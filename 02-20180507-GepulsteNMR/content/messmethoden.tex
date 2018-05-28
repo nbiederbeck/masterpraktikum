@@ -1,31 +1,31 @@
 \section{Messmethoden}%
 \label{sec:messmethoden}
-In Abbildung \ref{fig:aufbau} ist der Aufbau der gepulsten Kernspinresonanz zu
+In Abbildung~\ref{fig:aufbau} ist der Aufbau der gepulsten Kernspinresonanz zu
 sehen. 
 Dazu wird eine Probe zwischen zwei Polschuhe gebracht und ein magnetisches Feld
 angelegt.
 Senkrecht zum magnetischen Feld wird ein weiteres hochfrequentes Feld angebracht
 und auf die Larmorfrequenz gestellt. 
-Mittels der Dauer lässt sich der Pulses lässt sich die Auslenkung der
+Mittels der Dauer lässt des Pulses lässt sich die Auslenkung der
 der Magnetisierung aus der Gleichgewichtslage einstellen. 
 \begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.3\linewidth]{./build/aufbau.pdf}
-		\caption{Aufbau zur Bestimmung der gepulsten Kernspinresonanz}
+		\caption{Aufbau zur Bestimmung der gepulsten Kernspinresonanz.}%
 		\label{fig:aufbau}
 \end{figure}
-Desweiteren wird die Induktionsspannung in Abhängigkeit der Zeit entlang der $x-y$-Ebene gemessen um aus
-ihr die Präzessionsbewegung der Magnetisierung zu berechnen.
+Des Weiteren wird die Induktionsspannung in Abhängigkeit der Zeit entlang der $x-y$-Ebene gemessen,
+um aus ihr die Präzessionsbewegung der Magnetisierung zu berechnen.
 
-\subsection{Freie Induktionszerfall}%
+\subsection{Freier Induktionszerfall}%
 \label{sub:freie_induktionszerfall}
-Durch das einschalten der Hochfrequenz für $\Delta t_{90}$ wird die
-Magnetisierung in sie $x$-$y$-Ebene gebracht, führt dort Präzessionsbewegungen aus und 
+Durch das Einschalten der Hochfrequenz für $\Delta t_{90}$ wird die
+Magnetisierung in die $x$-$y$-Ebene gebracht, führt dort Präzessionsbewegungen aus und 
 relaxiert anschließend wieder in die Gleichgewichtslage. 
-Das relaxieren der Spins nach einem \SI{90}{\degree} Puls in die
+Das Relaxieren der Spins nach einem \SI{90}{\degree} Puls in die
 Gleichgewichtslage wird als freier Induktionszerfall bezeichnet und ist in
-Abbildung \ref{fig:sign} im Zeitraum 0 bis $\tau$ eingezeichnet.
-Ursachen für den freien Induktionszerfall sind einerseits nächste Nachbarn
+Abbildung~\ref{fig:sign} im Zeitraum 0 bis $\tau$ eingezeichnet.
+Ursachen für den freien Induktionszerfall sind einerseits nächste Nachbar
 Wechselwirkungen, als auch Feldinhomogenitäten, so dass es zur Dephasierung
 entlang der $z$-Achse kommt.
 Die Messbare Relaxationszeit $T_2^*$ beträgt dann
@@ -43,38 +43,38 @@ Zuerst werden die Spins um \SI{90}{\degree} in die $y$-Ebene gedreht und laufen
 darauf zurück in die Gleichgewichtslage.
 Dabei kommt es zur Dephasierung der Larmorfrequenz. 
 Nachdem die Spins soweit dephasiert sind das kein Induktionsstrom mehr gemessen
-werden kann wird mittels eines \SI{180}{\degree} kick die Spinorientierung umgeklappt, 
+werden kann, wird mittels eines \SI{180}{\degree} Pulses die Spinorientierung umgeklappt, 
 sodass diese wieder zusammen laufen.
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.8\linewidth]{./build/signalverlauf.pdf}
-		\caption{}
+		\caption{}%
 		\label{fig:sign}
 \end{figure}
 Dabei treffen sich die dephasierten Spins zum Zeitpunkt $2 \tau$ wieder und
-erzeugen ein Induktionsmaxima der Höhe 
+erzeugen ein Induktionsmaximum der Höhe 
 \begin{equation}
 		\label{eq:}
-		M_\text{y}(t) = M_0 \exp\left( \frac{t}{T_2} \right)
+		M_\text{y}(t) = M_0 \exp\left(-\frac{t}{T_2} \right)
 \end{equation}
-Die Exponentielle Abnahme beruht auf irreversible Wechselwirkung der Spins mit
+Die Exponentielle Abnahme beruht auf irreversiblen Wechselwirkungen der Spins mit
 ihrer Umgebung. 
 
 \subsection{Carr-Purcell-Methode}%
 \label{sub:car_purcell}
 Mittels der Carr-Purcell-Methode lässt sich durch Refokussierung der Echos die
-Amplitude mehrere Echos messen. 
+Amplitude mehrerer Echos messen. 
 Dazu müssen die \SI{180}{\degree} Pulse in äquidistanten Abständen von $2n\tau$
 kommen. 
 Ist der Zeitpunkt des \SI{180}{\degree} Pulses nicht exakt justiert dreht dieser die
-Magnetisierung nicht mehr in die x-y-ebene. 
+Magnetisierung nicht mehr in die x-y-Ebene. 
 Es kommt zur Verstärkung dieses Fehlers weil immer in dieselbe Richtung weiter
 gedreht wird.
 
 \begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.9\linewidth]{./build/pulssequenz.pdf}
-		\caption{}
+		\caption{}%
 		\label{fig:}
 \end{figure}
 
@@ -84,18 +84,18 @@ Die Addition der Fehler kann durch eine spezielle Vorrichtung bei der
 Meiboom-Gill-Methode vermieden werden.
 Dazu wird die Phase des \SI{180}{\degree} Pulses um \SI{90}{\degree} gegenüber
 dem \SI{90}{\degree} Puls phasenverschoben.
-Dies hat zur Folge das die Fehljustierung des Spins um \SI{180}{\degree} 
-$+ \delta$ gedreht wird und dadurch leicht herausklappt. 
+Dies hat zur Folge, dass die Fehljustierung des Spins um $\SI{180}{\degree} 
++ \delta$ gedreht wird und dadurch leicht herausklappt. 
 Zum Zeitpunkt $n \cdot 4 \tau$ kommt es zur Refokussierung in $y$-Richtung.
 Für gradzahlige Echos ergibt sich die richtige Amplitude.
 
 \subsection{Spin-Gitter-Relaxationszeit}%
 \label{sub:spin_gitter_relaxationszeit}
-Zur Bestimmung der Longitudinalen Relaxationszeit wird zunächst ein
+Zur Bestimmung der longitudinalen Relaxationszeit wird zunächst ein
 \SI{180}{\degree}
 Puls eingesetzt. 
 Dieser dreht die Magnetisierung der Probe entlang der $z$-Achse um.
-In folge der Relaxation wird nach einer zeit $\tau$ ein zweiter Puls auf die
+In Folge der Relaxation wird nach einer zeit $\tau$ ein zweiter Puls auf die
 Probe gegeben um die restliche z-Komponente zu messen. 
 Aus den Anfangsbedingungen $M_x(0) = M_y(0) =0, M_z(0)=-M_0$ ergibt sich aus der
 Blochgleichung 
@@ -110,8 +110,8 @@ des Signals die Relaxationszeit $T_1$ bestimmt werden.
 \subsection{Viskosimeter}%
 \label{sub:viskosimeter}
 Zur Viskosität-Messung wird ein Kapillar-Viskosimeter genutzt. 
-Dazu wird ein Volumina mit der zu bestimmenden Flüssigkeit befüllt, welches
-anschließend über die Kapillare ablaufen gelassen wird.
+Dazu wird ein Volumen mit der zu bestimmenden Flüssigkeit befüllt, welche
+anschließend über die Kapillare abläuft.
 Beim Ablaufprozess wird der Druck konstant auf Normaldruck gehalten. 
 Da Reibungeffekt den Ablauf durch die Kapillare bestimmen, fließen viskosere
 Flüssigkeiten langsamer ab, als weniger viskose Flüssigkeiten.
