@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 import pandas as pd
+import uncertainties as unc
 
 from pint import UnitRegistry
 
@@ -42,11 +43,16 @@ def plot_D():
     T_2 = 1.47 * ureg("second")
     gammap = 2.68e8 * ureg("radians per second per tesla")
     G = 8.1e-5 * ureg("tesla per millimeter per radians")
-    D = par[0] * ureg("millisecond") ** -3 * 12 / (gammap ** 2 * G ** 2)
-    print(r"D = {}".format(D.to(ureg("meter ** 2 / second"))))
+    d = unc.ufloat(par[0], np.sqrt(np.diag(cov))[0])
+    D = d * ureg("millisecond") ** -3 * 12 / (gammap ** 2 * G ** 2)
+    print(r"D = {:.2ufLx}".format(D.to(ureg("meter ** 2 / second"))))
     with open("build/D.tex", "w") as ofile:
         print(
-            r"D &= {:.2fLx}".format(D.to(ureg("micrometer ** 2 / second"))),
+            r"D &= {:.3fLx}".format(
+                D.to(ureg("millimeter ** 2 / second"))
+            ).replace(
+                "+/-", r"\pm"
+            ),
             file=ofile,
         )
 
