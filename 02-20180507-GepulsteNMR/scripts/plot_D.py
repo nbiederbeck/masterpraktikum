@@ -29,7 +29,7 @@ def plot_D():
 
     def func(x, d, a, m):
         """a * np.exp(- x**3 * d) + m"""
-        return a * np.exp(- x**3 * d) + m
+        return a * np.exp(-x ** 3 * d) + m
 
     weights = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     p0 = [1, 1, 1]
@@ -39,13 +39,16 @@ def plot_D():
     for n, p, c in zip(["d", "a", "m"], par, np.sqrt(np.diag(cov))):
         print(r"{} &= {} \pm {}".format(n, p, c))
 
-    T_2 = 1.47 * ureg('second')
-    gammap = 2.68e8 * ureg('radians per second per tesla')
-    G = 8.1e-5 * ureg('tesla per millimeter per radians')
-    D = par[0] * ureg('millisecond') ** -3 * 12 / (gammap ** 2 * G ** 2)
-    print(r"D = {}".format(D.to(ureg('meter ** 2 / second'))))
-    with open('build/D.tex', 'w') as ofile:
-        print(r"D &= {:.2fLx}".format(D.to(ureg('micrometer ** 2 / second'))), file=ofile)
+    T_2 = 1.47 * ureg("second")
+    gammap = 2.68e8 * ureg("radians per second per tesla")
+    G = 8.1e-5 * ureg("tesla per millimeter per radians")
+    D = par[0] * ureg("millisecond") ** -3 * 12 / (gammap ** 2 * G ** 2)
+    print(r"D = {}".format(D.to(ureg("meter ** 2 / second"))))
+    with open("build/D.tex", "w") as ofile:
+        print(
+            r"D &= {:.2fLx}".format(D.to(ureg("micrometer ** 2 / second"))),
+            file=ofile,
+        )
 
     fig, ax = plt.subplots()
 

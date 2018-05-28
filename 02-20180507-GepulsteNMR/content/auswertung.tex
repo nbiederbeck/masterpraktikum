@@ -76,23 +76,23 @@ Der Fit und die Peaks sind in Abbildung~\ref{fig:peaks} dargestellt.
 \subsection{Messung Diffusionskoeffizient \texorpdfstring{$D$}{D}}%
 \label{sub:messung_diffusionskoeffizient_d_}
 
-Fuer die Bestimmung des Diffusionskoeffizienten muss der Feldgradient $G$ bekannt sein.
-Dieser wird ueber die Halbwertsbreite $t_{\sfrac{1}{2}}$ des Spin-Echos bestimmt.
+Für die Bestimmung des Diffusionskoeffizienten muss der Feldgradient $G$ bekannt sein.
+Dieser wird über die Halbwertsbreite $t_{\sfrac{1}{2}}$ des Spin-Echos bestimmt.
 
 \subsubsection{Halbwertsbreite}%
 \label{sub:halbwertsbreite}
 
-Aus Gleichung~\eqref{eq:halbwertszeit} laesst sich bei bekannter Halbwertsbreite des Spin-Echos der Feldgradient $G$ bestimmen.
+Aus Gleichung~\eqref{eq:halbwertszeit} lässt sich bei bekannter Halbwertsbreite des Spin-Echos der Feldgradient $G$ bestimmen.
 
 \begin{align}
   \nonumber
   \frac{1}{4} d \gamma G t_{\sfrac{1}{2}} &= \num{2.2} \hspace{1em} \text{\cite{anleitung}} \\
-  \intertext{mit $d = \SI{4.4}{\milli\meter}$ Probendurchmesser, $\gamma = \SI{2.68e8}{\radian\per\second\per\tesla}$ gyromagnetisches Verhaeltnis von Protonen\cite{gammap}}
+  \intertext{mit $d = \SI{4.4}{\milli\meter}$ Probendurchmesser, $\gamma = \SI{2.68e8}{\radian\per\second\per\tesla}$ gyromagnetisches Verhältnis von Protonen\cite{gammap}}
   \label{eq:halbwertszeit}
   \Rightarrow G &= \frac{\num{8.8}}{d \gamma t_{\sfrac{1}{2}}}
 \end{align}
 
-Die Halbwertsbreite wird bestimmt, indem die volle Breite bei halber Hoehe des Spin-Echo-Peaks bestimmt wird (vgl. Abbildung~\ref{fig:halftime_sequence} unten).
+Die Halbwertsbreite wird bestimmt, indem die volle Breite bei halber Höhe des Spin-Echo-Peaks bestimmt wird (vgl. Abbildung~\ref{fig:halftime_sequence} unten).
 
 Es ist
 \begin{align}%
@@ -118,7 +118,7 @@ Somit wird
 
 \subsubsection{Diffusionskoeffizient}%
 \label{sub:diffusionskoeefizient}
-Die Messwerte fuer die Messung des Diffusionskoeffizienten stehen in Tabelle~\ref{tab:messung_D}.
+Die Messwerte für die Messung des Diffusionskoeffizienten stehen in Tabelle~\ref{tab:messung_D}.
 
 \begin{table}[ht]
   \centering
@@ -147,7 +147,6 @@ Der Fit und die Messwerte sind in Abbildung~\ref{fig:messung_D} dargestellt.
 Der Diffusionskoeffizient ergibt sich nach Gleichung~\eqref{eq:diffkoef}:
 \begin{align}%
   \label{eq:d}
-  % D = \SI[]{1.71e-17}{\meter\squared\per\second}
   \input{build/D.tex}
 \end{align}
 
@@ -158,7 +157,7 @@ Der Diffusionskoeffizient ergibt sich nach Gleichung~\eqref{eq:diffkoef}:
 \subsubsection{Viskosität}%
 \label{sub:viskositaet}
 
-Die Viskositaet wird folgendermassen bestimmt:
+Die Viskosität wird folgendermassen bestimmt:
 \begin{align}
   \nonumber
   \eta \left(T\right) &= \alpha \rho \left(t - \delta\right), \\
@@ -174,7 +173,7 @@ Die Viskositaet wird folgendermassen bestimmt:
 
 \subsubsection{Molekülradius}%
 \label{sub:molekuelradius}
-Der Molekülradius berechnet sich ueber die nachstehende Formel:
+Der Molekülradius berechnet sich über die nachstehende Formel:
 \begin{align}
   \label{eq:molekuelradius}
   D = \frac{k T}{6 \pi r \eta}
@@ -184,7 +183,7 @@ Diese Bestimmung wird verglichen mit einer Berechnung aus Molekuelgewicht und Di
 und der Berechnung des kritischen Volumens aus der Van-der-Waals-Gleichung.
 Die Ergebnisse lauten
 \begin{align*}
-  r_\text{Molekuelradius} &= {\left(\frac{M}{\rho N_A}\right)}^{\sfrac{1}{3}} =
+  r_\text{Molekülradius} &= {\left(\frac{M}{\rho N_A}\right)}^{\sfrac{1}{3}} =
     {\left(\frac{\SI{18}{\gram\per\mole}}{\SI{1}{\gram\per\centi\meter\tothe3} N_A}\right)}^{\sfrac{1}{3}} \\
     r_\text{VdW} &= {\left(\frac{3 V_\text{krit.}}{4 \pi}\right)}
     \hspace{1em}\text{, mit } V_\text{krit.} = 3 \cdot b \hspace{1em}\text{, $b$ VdW-Kovolumen}\\

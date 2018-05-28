@@ -72,8 +72,10 @@ def expo_fit_meiboom_gill(data, peakinds):
 
     ax.plot(x, y, "C0x", label="Peaks Meiboom-Gill")
     ax.plot(
-        xs, func(xs, *par), "C1-",
-        label=r"Fit: $T_2 = \SI{" + "{:.2f}".format(par[0]) + "}{\second}$"
+        xs,
+        func(xs, *par),
+        "C1-",
+        label=r"Fit: $T_2 = \SI{" + "{:.2f}".format(par[0]) + "}{\second}$",
     )
 
     ax.set_xlabel(r"$t \:\:/\:\: \si{\second}$")

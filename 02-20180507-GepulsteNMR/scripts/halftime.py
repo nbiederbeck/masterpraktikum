@@ -4,8 +4,9 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 
 from pint import UnitRegistry
+
 ureg = UnitRegistry()
-ureg.default_format = 'Lx'
+ureg.default_format = "Lx"
 
 mpl.rcParams["text.latex.preamble"] = r"\usepackage{xfrac}\usepackage{siunitx}"
 
@@ -57,7 +58,7 @@ def plot_halftime_sequence():
 
 def feldgradient(halftime):
     halftime *= ureg.second
-    gammap = 2.68e8 * ureg('radians per second per tesla')
+    gammap = 2.68e8 * ureg("radians per second per tesla")
     d = 4.4 * ureg.millimeter
     G = 8.8 / (d * gammap * halftime)
     print("G = {}".format(G))

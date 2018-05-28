@@ -48,7 +48,9 @@ def plot_T1():
         x,
         func(x, *par),
         "C1-",
-        label=r"Fit: $T_1 = \SI{" + r"{:.2f}".format(par[0]) + r"}{\milli\second}$",
+        label=r"Fit: $T_1 = \SI{"
+        + r"{:.2f}".format(par[0])
+        + r"}{\milli\second}$",
     )
 
     ax.set_xlabel(r"$\log_{10}(\tau \:\:/\:\: \si{\milli\second})$")
