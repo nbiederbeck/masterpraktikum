@@ -21,8 +21,6 @@ def plot_halftime_sequence():
     ax.legend()
     ax.set_xlabel(r"$t \:\:/\:\: \si{\second}$")
     ax.set_ylabel(r"$U \:\:/\:\: \si{\volt}$")
-    # ax.set_xticks([])
-    # ax.set_yticks([])
 
     peak = halftime[25000:29500]
     peak["1"] -= peak["1"].values[0]
@@ -40,12 +38,9 @@ def plot_halftime_sequence():
     print("Halbwertszeit = {}s".format(halftime_t))
 
     ax.plot(
-        # peak["x-axis"].values[mask],
-        # peak["1"].values[mask],
         halftimes_x,
         halftimes_y,
         "C1x-",
-        # marker='x',
         label=r"$t_{\sfrac{1}{2}} = \SI{"
         + "{:.2f}".format(1e6 * halftime_t)
         + "}{\micro\second}$",
@@ -54,8 +49,6 @@ def plot_halftime_sequence():
     ax.legend()
     ax.set_xlabel(r"$t \:\:/\:\: \si{\second}$")
     ax.set_ylabel(r"$U \:\:/\:\: \si{\volt}$")
-    # ax.set_xticks([])
-    # ax.set_yticks([])
 
     fig.savefig("build/halftime_sequence.png")
 

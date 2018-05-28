@@ -1,7 +1,7 @@
 \section{Auswertung}%
 \label{sec:auswertung}
 
-\subsection{Messung $T_1$}%
+\subsection{Messung \texorpdfstring{$T_1$}{T1}}%
 \label{sub:messung_t_1_}
 
 Für die Messung der longitudinalen Relaxationszeit $T_1$ wird der Zeitabstand
@@ -39,7 +39,7 @@ Ein exponentieller Fit der Form
 Die letzten beiden Messwerte werden hierbei doppelt und vierfach gewichtet,
 da diese aufgrund der langen Messzeit die geringsten Messfehler besitzen.
 
-\subsection{Messung $T_2$}%
+\subsection{Messung \texorpdfstring{$T_2$}{T2}}%
 \label{sub:messung_t_2_}
 
 Die laterale Relaxationszeit $T_2$ wird nach der Meiboom-Gill-Methode bestimmt.
@@ -68,12 +68,12 @@ Der Fit und die Peaks sind in Abbildung~\ref{fig:peaks} dargestellt.
   \includegraphics[width=0.9\linewidth]{build/burst_sequences.png}
   \caption{%
     Burstsequenzen der Meiboom-Gill-Methode (oben) und Carr-Purcell-Methode (unten).
-    Markiert sind die Peaks, die mittels \texttt{scipy.signal.find\_peaks\_cwt}\cite{scipy} gefunden wurden.
+    Markiert sind die Peaks, die mittels \texttt{scipy.signal.find\_peaks\_cwt(x, [100])}\cite{scipy} gefunden wurden.
   }%
   \label{fig:burst_sequences}
 \end{figure}
 
-\subsection{Messung Diffusionskoeffizient $D$}%
+\subsection{Messung Diffusionskoeffizient \texorpdfstring{$D$}{D}}%
 \label{sub:messung_diffusionskoeffizient_d_}
 
 Fuer die Bestimmung des Diffusionskoeffizienten muss der Feldgradient $G$ bekannt sein.
@@ -106,11 +106,6 @@ Somit wird
   G = \SI[]{8.1e-05}{\tesla\per\milli\meter\per\radian}.
 \end{align}
 
-Der Diffusionskoeffizient ergibt sich nach Gleichung~\eqref{eq:diffkoef}:
-\begin{align}%
-  \label{eq:d}
-  D = \SI[]{1.71e-17}{\meter\squared\per\second}
-\end{align}
 
 
 \begin{figure}[ht]
@@ -120,11 +115,27 @@ Der Diffusionskoeffizient ergibt sich nach Gleichung~\eqref{eq:diffkoef}:
   \label{fig:halftime_sequence}
 \end{figure}
 
+
+\subsubsection{Diffusionskoeffizient}%
+\label{sub:diffusionskoeefizient}
+Die Messwerte fuer die Messung des Diffusionskoeffizienten stehen in Tabelle~\ref{tab:messung_D}.
+
 \begin{table}[ht]
   \centering
   \caption{Messwerte für die Bestimmung des Diffusionskoeffizienten.}%
+  \label{tab:messung_D}
   \input{build/table_messung_D.tex}
 \end{table}
+
+Ein exponentieller Fit der Form (vgl. Gleichung~\eqref{eq:magy})
+\begin{align*}
+  U &= a \cdot \exp{\left(- \tau^3 \cdot d\right)} + m \\
+  \intertext{ergibt die Parameter}
+  d &= \SI{0.00067 \pm 0.00013}{\milli\second\tothe3} \\
+  a &= \SI{-606.3 \pm 56.4}{\milli\volt} \\
+  m &= \SI{-77.8 \pm 58.7}{\milli\volt}
+\end{align*}
+Der Fit und die Messwerte sind in Abbildung~\ref{fig:messung_D} dargestellt.
 
 \begin{figure}[ht]
   \centering
@@ -132,6 +143,13 @@ Der Diffusionskoeffizient ergibt sich nach Gleichung~\eqref{eq:diffkoef}:
   \caption{Messwerte für die Bestimmung des Diffusionskoeffizienten und exponentieller Fit.}%
   \label{fig:messung_D}
 \end{figure}
+
+Der Diffusionskoeffizient ergibt sich nach Gleichung~\eqref{eq:diffkoef}:
+\begin{align}%
+  \label{eq:d}
+  % D = \SI[]{1.71e-17}{\meter\squared\per\second}
+  \input{build/D.tex}
+\end{align}
 
 
 \subsection{Eigenschaften der Probe}%
@@ -143,8 +161,13 @@ Der Diffusionskoeffizient ergibt sich nach Gleichung~\eqref{eq:diffkoef}:
 Die Viskositaet wird folgendermassen bestimmt:
 \begin{align}
   \nonumber
-  \eta \left(T\right) &= \alpha \rho \left(t - \delta\right) \\
-  \intertext{mit $\alpha = \SI[]{1.024e-09}{\meter\squared\per\second\squared}$ Eichkonstante der Apparatur, $\delta = \SI[]{0.5}{\second}$ ein Korrekturglied, $\rho = \SI[]{1.0}{\gram\per\centi\meter\cubed}$ die Dichte von Wasser, ist}
+  \eta \left(T\right) &= \alpha \rho \left(t - \delta\right), \\
+  \intertext{%
+    mit $\alpha = \SI[]{1.024e-09}{\meter\squared\per\second\squared}$ Eichkonstante der Apparatur,
+    $\delta = \SI[]{0.5}{\second}$ ein Korrekturglied,
+    $\rho = \SI[]{1.0}{\gram\per\centi\meter\cubed}$ die Dichte von Wasser
+    und $t = \SI{915}{\second}$, ist
+  }
   \label{eq:viskositaet}
   \eta \left(\SI{22}{\celsius}\right)&= \SI[]{0.94}{\milli\pascal\second}.
 \end{align}
@@ -157,10 +180,14 @@ Der Molekülradius berechnet sich ueber die nachstehende Formel:
   D = \frac{k T}{6 \pi r \eta}
 \end{align}
 
-Diese Bestimmung wird verglichen mit einer Berechnung aus Molekuelgewicht und Dichte.
+Diese Bestimmung wird verglichen mit einer Berechnung aus Molekuelgewicht und Dichte
+und der Berechnung des kritischen Volumens aus der Van-der-Waals-Gleichung.
 Die Ergebnisse lauten
-\begin{align}
-  r_{\text{Viskositaet}}&= \SI[]{0.0135}{\meter} \\
-  r_{\text{Molekuelgewicht}}&= \SI[]{0.026}{\meter}
-\end{align}
+\begin{align*}
+  r_\text{Molekuelradius} &= {\left(\frac{M}{\rho N_A}\right)}^{\sfrac{1}{3}} =
+    {\left(\frac{\SI{18}{\gram\per\mole}}{\SI{1}{\gram\per\centi\meter\tothe3} N_A}\right)}^{\sfrac{1}{3}} \\
+    r_\text{VdW} &= {\left(\frac{3 V_\text{krit.}}{4 \pi}\right)}
+    \hspace{1em}\text{, mit } V_\text{krit.} = 3 \cdot b \hspace{1em}\text{, $b$ VdW-Kovolumen}\\
+  \Rightarrow \input{build/radii.tex}
+\end{align*}
 

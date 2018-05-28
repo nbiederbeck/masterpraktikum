@@ -15,7 +15,9 @@ BUILD_FILES = \
 	build/messung_D.png \
 	build/table_messung_D.tex \
 	build/table_messung_T1.tex \
-	build/burst_peaks_mg.png
+	build/burst_peaks_mg.png \
+	build/D.tex \
+	build/radii.tex
 
 OUT_DIR = build
 TEX_CMD = latexmk \
@@ -45,6 +47,10 @@ build/main.pdf: $(BUILD_FILES) FORCE | build
 preview: FORCE | build
 	TEXINPUTS=build: BIBINPUTS=build: max_print_line=1048576 \
 	$(PREVIEW_CMD) main.tex
+
+build/D.tex: build/messung_D.png # rekursive abhaengigkeit
+build/radii.tex: scripts/eigenschaften.py matplotlibrc
+	python scripts/eigenschaften.py
 
 build/halftime_sequence.png: scripts/halftime.py matplotlibrc
 	python scripts/halftime.py
