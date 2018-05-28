@@ -67,6 +67,8 @@ build/messung_D.png: scripts/plot_D.py matplotlibrc
 build/messung_T1.png: scripts/plot_T1.py data/messung_T1.txt matplotlibrc
 	python scripts/plot_T1.py
 
+build/burst_peaks_mg.png: build/burst_sequences.png
+
 build/burst_sequences.png: scripts/bursts.py matplotlibrc
 	python scripts/bursts.py
 
@@ -169,4 +171,4 @@ build:
 clean:
 	rm -rf *.pdf build
 
-.PHONY: all clean FORCE preview
+.PHONY: all clean FORCE preview 
