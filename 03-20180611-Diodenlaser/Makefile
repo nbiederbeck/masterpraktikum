@@ -1,4 +1,8 @@
-BUILD_FILES = \
+BUILD_FILES = $(addprefix build/, \
+	cutawayview.pdf \
+	schematicview.pdf \
+	basicconfiguration.pdf \
+)
 
 OUT_DIR = build
 TEX_CMD = latexmk \
@@ -39,4 +43,32 @@ build:
 clean:
 	rm -rf *.pdf build
 
+
 .PHONY: all clean FORCE preview
+
+
+N = 1
+build/cutawayview.pdf: anleitung_V60_Diodenlaser.pdf | build
+	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+		-dFirstPage=$N \
+		-dLastPage=$N \
+		-sOutputFile=$@ $<
+	pdfcrop $@ $@ --bbox "135 210 505 430"
+	pdfcrop $@ $@
+
+N = 2
+build/schematicview.pdf: anleitung_V60_Diodenlaser.pdf | build
+	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+		-dFirstPage=$N \
+		-dLastPage=$N \
+		-sOutputFile=$@ $<
+	pdfcrop $@ $@ --bbox "-45 260 595 585"
+
+N = 4
+build/basicconfiguration.pdf: anleitung_V60_Diodenlaser.pdf | build
+	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+		-dFirstPage=$N \
+		-dLastPage=$N \
+		-sOutputFile=$@ $<
+	pdfcrop $@ $@ --bbox "70 420 580 600"
+
