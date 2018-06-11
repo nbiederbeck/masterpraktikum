@@ -30,7 +30,7 @@ build/main.pdf: $(BUILD_FILES) FORCE | build
 	$(TEX_CMD) main.tex
 
 
-preview: FORCE | build
+preview: $(BUILD_FILES) FORCE | build
 	TEXINPUTS=build: BIBINPUTS=build: max_print_line=1048576 \
 	$(PREVIEW_CMD) main.tex
 
