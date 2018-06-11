@@ -66,14 +66,8 @@ if __name__ == "__main__":
     r1 = vergleich1_molekulargewicht()
     r2 = vergleich2_kritischerDruck_Temperatur()
     with open("build/radii.tex", "w") as ofile:
+        print(r"r_\text{Viskositaet} &= " + "{}".format(r0), end=" \\\\\n", file=ofile)
         print(
-            r"r_\text{Viskositaet} &= " + "{}".format(r0),
-            end=" \\\\\n",
-            file=ofile,
-        )
-        print(
-            r"r_\text{Molekuelradius} &= " + "{}".format(r1),
-            end=" \\\\\n",
-            file=ofile,
+            r"r_\text{Molekuelradius} &= " + "{}".format(r1), end=" \\\\\n", file=ofile
         )
         print(r"r_\text{VdW} &= " + "{}".format(r2), end="\n", file=ofile)

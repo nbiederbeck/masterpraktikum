@@ -45,15 +45,10 @@ def plot_D():
     G = 8.1e-5 * ureg("tesla per millimeter per radians")
     d = unc.ufloat(par[0], np.sqrt(np.diag(cov))[0])
     D = d * ureg("millisecond") ** -3 * 12 / (gammap ** 2 * G ** 2)
-    print(r"D = {:.2ufLx}".format(D.to(ureg("meter ** 2 / second"))))
+    print(r"D = {:Lx}".format(D.to_base_units()))
     with open("build/D.tex", "w") as ofile:
         print(
-            r"D &= {:.3fLx}".format(
-                D.to(ureg("millimeter ** 2 / second"))
-            ).replace(
-                "+/-", r"\pm"
-            ),
-            file=ofile,
+            r"D &= {:Lx}".format(D.to_base_units()).replace("+/-", r"\pm"), file=ofile
         )
 
     fig, ax = plt.subplots()

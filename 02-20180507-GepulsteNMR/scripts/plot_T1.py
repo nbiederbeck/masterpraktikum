@@ -29,9 +29,7 @@ def plot_T1():
         return -a * np.exp(-x / T_1) + m
 
     # Fit exp function
-    weights = [
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 / 2, 1 / 4
-    ]  # weigh last two 3 times
+    weights = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 / 2, 1 / 4]  # weigh last two 3 times
     p0 = [2400, 1, 1]  # known-to-be T_1, others have default value
     par, cov = curve_fit(func, tau, U, p0=p0, sigma=weights)
 
@@ -48,9 +46,7 @@ def plot_T1():
         x,
         func(x, *par),
         "C1-",
-        label=r"Fit: $T_1 = \SI{"
-        + r"{:.2f}".format(par[0])
-        + r"}{\milli\second}$",
+        label=r"Fit: $T_1 = \SI{" + r"{:.2f}".format(par[0]) + r"}{\milli\second}$",
     )
 
     ax.set_xlabel(r"$\log_{10}(\tau \:\:/\:\: \si{\milli\second})$")
