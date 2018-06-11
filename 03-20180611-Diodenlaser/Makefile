@@ -2,6 +2,8 @@ BUILD_FILES = $(addprefix build/, \
 	cutawayview.pdf \
 	schematicview.pdf \
 	basicconfiguration.pdf \
+	emissionconstruction.pdf \
+	rubidiumemission.pdf \
 )
 
 OUT_DIR = build
@@ -72,3 +74,16 @@ build/basicconfiguration.pdf: anleitung_V60_Diodenlaser.pdf | build
 		-sOutputFile=$@ $<
 	pdfcrop $@ $@ --bbox "70 420 580 600"
 
+build/emissionconstruction.pdf: anleitung_V60_Diodenlaser.pdf | build
+	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+		-dFirstPage=14 \
+		-dLastPage=14 \
+		-sOutputFile=$@ $<
+	pdfcrop $@ $@ --bbox "70 530 580 710"
+
+build/rubidiumemission.pdf: anleitung_V60_Diodenlaser.pdf | build
+	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+		-dFirstPage=17 \
+		-dLastPage=17 \
+		-sOutputFile=$@ $<
+	pdfcrop $@ $@ --bbox "90 532 520 740" 
