@@ -11,7 +11,7 @@
 \usepackage[aux]{rerunfilecheck}
 
 % % deutsche Spracheinstellungen
-\usepackage[ngerman]{babel}
+\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
@@ -58,7 +58,7 @@
 
 % Zahlen und Einheiten
 \usepackage[
-  locale=DE,                   % deutsche Einstellungen
+  locale=US,                   % deutsche Einstellungen
   separate-uncertainty=true,   % immer Fehler mit \pm
   per-mode=symbol-or-fraction, % / in inline math, fraction in display math
 ]{siunitx}
@@ -113,6 +113,7 @@
 % Literaturverzeichnis
 \usepackage[
   backend=biber,
+  sorting=none,
 ]{biblatex}
 % Quellendatenbank
 \addbibresource{lit.bib}

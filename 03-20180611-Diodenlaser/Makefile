@@ -4,6 +4,8 @@ BUILD_FILES = $(addprefix build/, \
 	basicconfiguration.pdf \
 	emissionconstruction.pdf \
 	rubidiumemission.pdf \
+	lasertuning.pdf \
+	pn_diode.png \
 )
 
 OUT_DIR = build
@@ -87,3 +89,16 @@ build/rubidiumemission.pdf: anleitung_V60_Diodenlaser.pdf | build
 		-dLastPage=17 \
 		-sOutputFile=$@ $<
 	pdfcrop $@ $@ --bbox "90 532 520 740" 
+
+build/pn_diode.png:
+	wget https://upload.wikimedia.org/wikipedia/commons/d/d6/Pn-junction-equilibrium.png \
+		-q -O $@
+
+N = 5
+build/lasertuning.pdf: anleitung_V60_Diodenlaser.pdf | build
+	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+		-dFirstPage=$N \
+		-dLastPage=$N \
+		-sOutputFile=$@ $<
+	pdfcrop $@ $@ --bbox "70 445 580 800"
+	pdfcrop $@ $@
