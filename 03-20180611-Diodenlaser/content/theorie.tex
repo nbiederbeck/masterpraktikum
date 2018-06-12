@@ -100,20 +100,51 @@ figure~\ref{fig:four_state_laser}.
 \end{figure}
 
 \subsection{Operation principle of a diode laser}\label{sub:diode-laser}
+The main part of a diode laser is a small LD chip (figure~\ref{fig:cutawayview}) bonded to a heat sink.
+The light is mostly emitted at the front facet, but a small amount is emitted at the back facet,
+where a photodiode is placed to monitor laser output power.
+The two facets have different reflectivities and can be coated to further increase or decrease
+reflectivity.
+They act as partially reflecting mirrors and are the boundaries of the internal (optical) cavity.
+
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.8\linewidth]{build/cutawayview.pdf}
   \caption{Cut-away view of a typical laser diode can\cite{anleitung}.}%
   \label{fig:cutawayview}
 \end{figure}
+
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.8\linewidth]{build/laser_diode_chip.pdf}
   \caption{Schematic view of a laser diode chip\cite{anleitung}.}%
   \label{fig:laser_diode_chip}
 \end{figure}
-\subsection{Tuning of the diode laser}\label{tuning-of-the-diode-laser}
 
+The laser diode chip is shown in figure~\ref{fig:laser_diode_chip}.
+Current is driven from the top to the bottom, which creates electron-hole pairs that
+recombine in the active layer whilst emitting photons.
+The wavelength of the emitted photons is approximately that of the band gap of the semiconductor.
+Since the electron-hole population inversion is restricted to the active layer (see
+figure~\ref{fig:semiconductor_structure}),
+the optical gain is spatially localized.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.9\linewidth]{build/semiconductor_structure.pdf}
+  \caption{Schematic picture of the internal layers of a semiconductor\cite{anleitung}.}%
+  \label{fig:semiconductor_structure}
+\end{figure}
+
+The active layer has higher index of refraction than its surroundings
+which serves as a waveguide by total internal refraction.
+
+A diode layer can be constructed in such a way that it emits a single longitudinal cavity mode,
+and has a linewidth of typically $\Delta \nu \approx \SI{50}{\mega\hertz}$.
+
+\textbf{Write a bit about LEDs here! Page 3 in instructions!}
+
+\subsection{Tuning of the diode laser}\label{tuning-of-the-diode-laser}
 There are many options to alter the lasing function of the diode used in this experiment.
 Each option alters different attributes of the laser, which will be elaborated in the following.
 As a summary their effects are displayed in figure~\ref{fig:lasertuning}.

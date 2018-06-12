@@ -8,6 +8,7 @@ BUILD_FILES = $(addprefix build/, \
 	lasertuning_modehops.pdf \
 	pn_diode.png \
 	laser_diode_chip.pdf \
+	semiconductor_structure.pdf \
 )
 
 OUT_DIR = build
@@ -115,4 +116,12 @@ build/laser_diode_chip.pdf: anleitung_V60_Diodenlaser.pdf | build
 		-dLastPage=2 \
 		-sOutputFile=$@ $<
 	pdfcrop $@ $@ --bbox "50 250 480 600"
+	pdfcrop $@ $@
+
+build/semiconductor_structure.pdf: anleitung_V60_Diodenlaser.pdf | build
+	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+		-dFirstPage=3 \
+		-dLastPage=3 \
+		-sOutputFile=$@ $<
+	pdfcrop $@ $@ --bbox "70 480 500 650"
 	pdfcrop $@ $@
