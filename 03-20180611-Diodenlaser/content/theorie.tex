@@ -32,20 +32,52 @@ The most important effect for lasers is induced emission.
 The energy of an incoming photon induces the emission of another photon.
 The two photons are coherent, which means they have the same phase.
 
-The cavity is used as a resonator in which the photons travel many times through the optical medium
-to induce emission of coherent photons.
+See figure~\ref{fig:two_niveau_laser} for a visualisation of these radiative effects.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{content/zweiniveausystem.png}
+  \caption{Visualisation of radiative effects in two states\cite{anleitung_hene}.}%
+  \label{fig:two_niveau_laser}
+\end{figure}
+
+The cavity is used as a resonator (see figure~\ref{fig:resonator}) in which the photons
+travel many times through the optical medium to induce emission of coherent photons.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{content/resonator.png}
+  \caption{Schematic view of a resonator with one semipermeable mirror and a totally reflective
+  mirror\cite{anleitung_hene}.}%
+  \label{fig:resonator}
+\end{figure}
+
+The difference in frequencies of a laser is calculated as follows:
+\begin{align}\label{eq:free_spectral_range}
+  \Delta \nu &= \frac{c}{2Ln},
+\end{align}
+with $n$ being the refraction index of the optical medium, $L$ the resonator length
+and $c$ the speed of light.
+As seen clearly, by changing the length of the resonator a range of frequency is scanned.
+
 
 \subsection{Diodes}\label{diodes}
 
-A diode is a p-n-dotted semiconductor.
+A diode is a p-n-doped semiconductor.
 In the n-plane electrons are added, that the plane has negative charge.
 On the other hand ions are added to the p-plane so that it has positive charge.
 These so-called electron-hole pairs build an electric field between the planes.
 If current is applied either the current flows through or it is blocked due to the depleted region
-in between the planes (see figure~\ref{fig:depletion_region}).
-% \includegraphics{}
+between the planes (in the middle of the \enquote{space charge region},
+see figure~\ref{fig:depletion_region}).
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{build/pn_diode.png}
+  \caption{Schematic view of a p-n-diode\cite{pn_diode_wiki}.}%
+  \label{fig:depletion_region}
+\end{figure}
 
-A light emitting diode (LED) % when does it emit light?
+A light emitting diode (LED) emits light when activated.
+The recombination of electron-hole pairs releases energy in form of photons.
 
 \subsection{Three state laser}\label{three-state-laser}
 
@@ -60,17 +92,71 @@ In the second excited state electrons can be kicked out by incoming photons, emi
 radiation (induced emission).
 For an example the energy states of a four state laser are shown in
 figure~\ref{fig:four_state_laser}.
-% \includegraphics{}
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.6\linewidth]{content/uebergaenge.jpg}
+  \caption{Energy states and transitions of a four state helium neon laser\cite{anleitung_hene}.}%
+  \label{fig:four_state_laser}
+\end{figure}
 
 \subsection{Tuning of the diode laser}\label{tuning-of-the-diode-laser}
 
 There are many options to alter the lasing function of the diode used in this experiment.
 Each option alters different attributes of the laser, which will be elaborated in the following.
+As a summary their effects are displayed in figure~\ref{fig:lasertuning}.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{build/lasertuning.pdf}
+  \caption{The net gain of the laser in relation to the lasing wavelength, sorted by the different
+  tuning options\cite{anleitung}.}%
+  \label{fig:lasertuning}
+\end{figure}
 
 \subsubsection{Medium gain}\label{medium-gain}
+The medium gain depends on the size of the depleted region, called band gap.
+It is visualized as the broad peak in figure~\ref{fig:lasertuning}.
+Since the location of the band gap depends mainly on the temperature of the laser,
+it is set so that the resulting wavelength is about \SI{780}{\nano\meter},
+the resonance line of rubidium,
+which means a laser temperature of \SI{50}{\celsius}.
 
-\subsubsection{internal cavity}\label{internal-cavity}
+\subsubsection{Internal cavity}\label{internal-cavity}
+The diode forms an optical cavity, which translates to a periodic net gain function
+that is dependent on frequency.
+This is called \enquote{free spectral range} and is defined by
+equation~\eqref{eq:free_spectral_range}.
+In this diode the refraction index is $n = \num{3.6}$\cite{anleitung}.
+This yields $\Delta \nu = \SI{60}{\giga\hertz}$ and $\Delta \lambda = \SI{0.122}{\nano\meter}$.
+The frequency shifts with changes in the laser temperature at \SI{0.05}{\nano\meter\per\celsius},
+which means that with a higher laser current the wavelength of the diode laser changes accordingly.
 
-\subsubsection{grating feedback}\label{grating-feedback}
 
-\subsubsection{external cavity}\label{external-cavity}
+
+\subsubsection{Grating feedback}\label{grating-feedback}
+
+\subsubsection{External cavity}\label{external-cavity}
+
+\subsection{Piezo element}\label{piezo-element}
+
+\subsection{Experiment setup}\label{experiment-setup}
+Due to the diverging lasing light a collimating lens is used directly behind the output facet of
+the diode laser.
+A rotatable diffraction grating is used to point the first Bragg reflection
+\begin{align}
+  n \lambda &= 2 d \sin\!{\vartheta}
+\end{align}
+back into the active layer of the diode laser.
+See figure~\ref{fig:experiment-setup} for a schematic view of the laser component of the
+experiment.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{build/basicconfiguration.pdf}
+  \caption{Schematic view of the laser in the experiment\cite{anleitung}.}%
+  \label{fig:experiment-setup}
+\end{figure}
+
+The laser contains two knobs, a head knob and a side knob.
+These are used to tilt the diffraction grating in two ways.
+
+\texttt{Macht Maxi das?}
