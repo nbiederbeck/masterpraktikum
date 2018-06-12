@@ -5,6 +5,7 @@ BUILD_FILES = $(addprefix build/, \
 	emissionconstruction.pdf \
 	rubidiumemission.pdf \
 	lasertuning.pdf \
+	lasertuning_modehops.pdf \
 	pn_diode.png \
 )
 
@@ -101,4 +102,13 @@ build/lasertuning.pdf: anleitung_V60_Diodenlaser.pdf | build
 		-dLastPage=$N \
 		-sOutputFile=$@ $<
 	pdfcrop $@ $@ --bbox "70 445 580 800"
+	pdfcrop $@ $@
+
+N = 10
+build/lasertuning_modehops.pdf: anleitung_V60_Diodenlaser.pdf | build
+	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+		-dFirstPage=$N \
+		-dLastPage=$N \
+		-sOutputFile=$@ $<
+	pdfcrop $@ $@ --bbox "70 380 580 800"
 	pdfcrop $@ $@

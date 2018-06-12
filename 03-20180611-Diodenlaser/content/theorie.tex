@@ -129,23 +129,53 @@ In this diode the refraction index is $n = \num{3.6}$\cite{anleitung}.
 This yields $\Delta \nu = \SI{60}{\giga\hertz}$ and $\Delta \lambda = \SI{0.122}{\nano\meter}$.
 The frequency shifts with changes in the laser temperature at \SI{0.05}{\nano\meter\per\celsius},
 which means that with a higher laser current the wavelength of the diode laser changes accordingly.
+The laser current additionally changes the wavelength in another way:
+The altered carrier concentration in the active region modulates the path length of the diode,
+and thus the wavelength of the laser.
 
+As seen the temperature changes shift the wavelengths and is itself changed by the laser current.
+The wavelength shift rates are differently in both explained effects, which creates \enquote{mode
+hops}, sudden changes in the operating mode of the laser.
 
+The sensitivity to optical feedback is utilized to simplify the tuning of the laser.
 
 \subsubsection{Grating feedback}\label{grating-feedback}
-
-\subsubsection{External cavity}\label{external-cavity}
-
-\subsection{Piezo element}\label{piezo-element}
-
-\subsection{Experiment setup}\label{experiment-setup}
-Due to the diverging lasing light a collimating lens is used directly behind the output facet of
-the diode laser.
+The dispersed light coming from a grating has a narrow bandwidth.
 A rotatable diffraction grating is used to point the first Bragg reflection
 \begin{align}
   n \lambda &= 2 d \sin\!{\vartheta}
 \end{align}
 back into the active layer of the diode laser.
+This is called \enquote{Littrow configuration}.
+The feedback is used to stabilize the frequencies of the laser.
+
+\subsubsection{External cavity}\label{external-cavity}
+The external cavity ranges from the reflective back of the diode to the grating.
+Due to the much higher cavity length $\Delta \nu \approx \SI{10}{\giga\hertz}$.
+The position of the grating is either changed by hand or with the piezo-electric transducer (see
+section~\ref{sub:piezo-element}).
+
+To operate the laser at the predetermined wavelength of rubidium absorption of
+$\lambda_0 = \SI{780}{\nano\meter}$ the net gains of all four components should
+peak at $\lambda_0$ as illustrated in figure~\ref{fig:lasertuning}.
+
+A scan of various settings and corresponding gains and possible mode hops is
+displayed in figure~\ref{fig:lasertuning_modehops}.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{build/lasertuning_modehops.pdf}
+  \caption{Series of graphs showing different settings of the  components of
+    the laser tuning and their respective mode hops\cite{anleitung}.}%
+  \label{fig:lasertuning_modehops}
+\end{figure}
+
+\subsection{Piezo element}\label{sub:piezo-element}
+Piezoelectric charge accumulates in certain solid materials in response to mechanical stress.
+This effect can be used backwards, as piezo-crystals change their dimensions with applied voltage.
+
+\subsection{Experiment setup}\label{experiment-setup}
+Due to the diverging lasing light a collimating lens is used directly behind the output facet of
+the diode laser.
 See figure~\ref{fig:experiment-setup} for a schematic view of the laser component of the
 experiment.
 
