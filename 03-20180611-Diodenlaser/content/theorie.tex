@@ -20,8 +20,8 @@ When an excited electron relaxes, it is able to emit a photon.
 To excite electrons of the optical medium into states of higher energy, a pump source is used.
 This could be another laser, biological effects, or, as it is in this case, a current.
 
-Now with the electrons of the optical medium in the excited states, there are four(five?) possible
-effects, grouped in two(three?) categories.
+Now with the electrons of the optical medium in the excited states, there are four possible
+effects, grouped in two categories.
 The first group is the non-radiative relaxation, where the energy of the electrons is transferred
 to the medium lattice, the so-called phonons.
 The second group is radiative relaxation, with spontaneous and induced emission.
@@ -36,7 +36,7 @@ See figure~\ref{fig:two_niveau_laser} for a visualisation of these radiative eff
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.8\linewidth]{content/zweiniveausystem.png}
-  \caption{Visualisation of radiative effects in two states\cite{anleitung_hene}.}%
+  \caption{Visualisation of radiative effects with two energy states\cite{anleitung_hene}.}%
   \label{fig:two_niveau_laser}
 \end{figure}
 
@@ -99,6 +99,19 @@ figure~\ref{fig:four_state_laser}.
   \label{fig:four_state_laser}
 \end{figure}
 
+\subsection{Operation principle of a diode laser}\label{sub:diode-laser}
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{build/cutawayview.pdf}
+  \caption{Cut-away view of a typical laser diode can\cite{anleitung}.}%
+  \label{fig:cutawayview}
+\end{figure}
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{build/laser_diode_chip.pdf}
+  \caption{Schematic view of a laser diode chip\cite{anleitung}.}%
+  \label{fig:laser_diode_chip}
+\end{figure}
 \subsection{Tuning of the diode laser}\label{tuning-of-the-diode-laser}
 
 There are many options to alter the lasing function of the diode used in this experiment.
@@ -174,7 +187,7 @@ Piezoelectric charge accumulates in certain solid materials in response to mecha
 This effect can be used backwards, as piezo-crystals change their dimensions with applied voltage.
 
 \subsection{Experiment setup}\label{experiment-setup}
-Due to the diverging lasing light a collimating lens is used directly behind the output facet of
+Due to the strongly diverging light a collimating lens is used directly behind the output facet of
 the diode laser.
 See figure~\ref{fig:experiment-setup} for a schematic view of the laser component of the
 experiment.
@@ -188,5 +201,8 @@ experiment.
 
 The laser contains two knobs, a head knob and a side knob.
 These are used to tilt the diffraction grating in two ways.
-
-\texttt{Macht Maxi das?}
+The head knob rotates the vertical grating angle,
+which should be set so that the diffracted light shines straight through the active layer of the
+diode.
+The side knobs rotates the grating horizontal, i.e.\ it changes the frequency of the diffracted
+light which in turn changes the grating feedback in the diode.

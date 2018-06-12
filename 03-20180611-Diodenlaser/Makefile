@@ -7,6 +7,7 @@ BUILD_FILES = $(addprefix build/, \
 	lasertuning.pdf \
 	lasertuning_modehops.pdf \
 	pn_diode.png \
+	laser_diode_chip.pdf \
 )
 
 OUT_DIR = build
@@ -52,28 +53,25 @@ clean:
 .PHONY: all clean FORCE preview
 
 
-N = 1
 build/cutawayview.pdf: anleitung_V60_Diodenlaser.pdf | build
 	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
-		-dFirstPage=$N \
-		-dLastPage=$N \
+		-dFirstPage=1 \
+		-dLastPage=1 \
 		-sOutputFile=$@ $<
 	pdfcrop $@ $@ --bbox "135 210 505 430"
-	pdfcrop $@ $@
+	# pdfcrop $@ $@
 
-N = 2
 build/schematicview.pdf: anleitung_V60_Diodenlaser.pdf | build
 	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
-		-dFirstPage=$N \
-		-dLastPage=$N \
+		-dFirstPage=2 \
+		-dLastPage=2 \
 		-sOutputFile=$@ $<
 	pdfcrop $@ $@ --bbox "-45 260 595 585"
 
-N = 4
 build/basicconfiguration.pdf: anleitung_V60_Diodenlaser.pdf | build
 	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
-		-dFirstPage=$N \
-		-dLastPage=$N \
+		-dFirstPage=4 \
+		-dLastPage=4 \
 		-sOutputFile=$@ $<
 	pdfcrop $@ $@ --bbox "70 420 580 600"
 
@@ -95,20 +93,26 @@ build/pn_diode.png:
 	wget https://upload.wikimedia.org/wikipedia/commons/d/d6/Pn-junction-equilibrium.png \
 		-q -O $@
 
-N = 5
 build/lasertuning.pdf: anleitung_V60_Diodenlaser.pdf | build
 	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
-		-dFirstPage=$N \
-		-dLastPage=$N \
+		-dFirstPage=5 \
+		-dLastPage=5 \
 		-sOutputFile=$@ $<
 	pdfcrop $@ $@ --bbox "70 445 580 800"
 	pdfcrop $@ $@
 
-N = 10
 build/lasertuning_modehops.pdf: anleitung_V60_Diodenlaser.pdf | build
 	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
-		-dFirstPage=$N \
-		-dLastPage=$N \
+		-dFirstPage=10 \
+		-dLastPage=10 \
 		-sOutputFile=$@ $<
 	pdfcrop $@ $@ --bbox "70 380 580 800"
+	pdfcrop $@ $@
+
+build/laser_diode_chip.pdf: anleitung_V60_Diodenlaser.pdf | build
+	gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+		-dFirstPage=2 \
+		-dLastPage=2 \
+		-sOutputFile=$@ $<
+	pdfcrop $@ $@ --bbox "50 250 480 600"
 	pdfcrop $@ $@
