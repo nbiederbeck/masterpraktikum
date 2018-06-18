@@ -29,13 +29,24 @@ def plot_T1():
         return -a * np.exp(-x / T_1) + m
 
     # Fit exp function
-    weights = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 / 2, 1 / 4]  # weigh last two 3 times
-    p0 = [2400, 1, 1]  # known-to-be T_1, others have default value
+    weights = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]  # weigh last two 3 times
+    p0 = [1, 1, 1]  # known-to-be T_1, others have default value
     par, cov = curve_fit(func, tau, U, p0=p0, sigma=weights)
 
     print(func.__doc__)
-    for n, p, c in zip(["T_1", "a", "m"], par, np.sqrt(np.diag(cov))):
-        print(r"{} = {:.2f} \pm {:.2f}".format(n, p, c))
+    with open("build/T.tex", "w") as ofile:
+        for n, p, c in zip(["T_1", "a", "m"], par, np.sqrt(np.diag(cov))):
+            print(r"{} = {:.2f} \pm {:.2f}".format(n, p, c))
+            print(
+                r"{} &= ".format(n)
+                + "\SI{"
+                + "{:.0f} \pm {:.0f}".format(p, c)
+                + "}"
+                + "{\milli"
+                + r"\{}".format("second" if n == "T_1" else "volt")
+                + ("}" if n == "m" else "}\\\\"),
+                file=ofile,
+            )
 
     # plotting
     fig, ax = plt.subplots()

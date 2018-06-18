@@ -61,7 +61,12 @@ def feldgradient(halftime):
     gammap = 2.68e8 * ureg("radians per second per tesla")
     d = 4.4 * ureg.millimeter
     G = 8.8 / (d * gammap * halftime)
-    print("G = {}".format(G))
+    print("G = {}".format(np.round(G.to("millitesla per meter")), 0))
+    with open("build/G.tex", "w") as ofile:
+        print(
+            "G = {}".format(np.round(G.to("millitesla per meter")), 0),
+            file=ofile,
+        )
 
 
 if __name__ == "__main__":

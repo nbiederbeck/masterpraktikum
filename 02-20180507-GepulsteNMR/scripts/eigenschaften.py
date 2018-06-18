@@ -1,10 +1,11 @@
 from pint import UnitRegistry
 from math import pi
+import numpy as np
 
 from scipy.constants import physical_constants as phyconst
 
 ureg = UnitRegistry()
-ureg.default_format = ".2fLx"
+ureg.default_format = "Lx"
 
 
 def viskos(t, show=False):
@@ -26,21 +27,25 @@ def radius(eta, T=22):
     k_boltzmann = 1.38e-23 * ureg("joule per kelvin")
     T *= ureg("kelvin")
     T += 273 * ureg("kelvin")
-    D = 1.71e-08 * ureg("meter ** 2 per second")
+    # D = 1.71e-08 * ureg("meter ** 2 per second")
+    D = np.load("build/D_magnitude.npy") * ureg(
+        str(np.load("build/D_units.npy"))
+    )
+    print(D)
     r = k_boltzmann * T / (6 * pi * eta * D)
     return r.to("angstrom")
 
 
-def vergleich1_molekulargewicht():
+def vergleich_molekuelradius():
     M = 18 * ureg("gram / mol")
     rho = 1 * ureg("gram / centimeter ** 3")
     avogadro_constant = phyconst["Avogadro constant"]
     avogadro_constant = avogadro_constant[0] * ureg(avogadro_constant[1])
-    r = (M / rho / avogadro_constant) ** (1 / 3)
+    r = 0.74 * (M / (rho * avogadro_constant)) ** (1 / 3)
     return r.to("angstrom")
 
 
-def vergleich2_kritischerDruck_Temperatur():
+def vergleich_VdW():
     molar_mass_water = 18 * ureg("gram per mol")
     molar_gas_constant = phyconst["molar gas constant"]
     molar_gas_constant = molar_gas_constant[0] * ureg(molar_gas_constant[1])
@@ -54,8 +59,8 @@ def vergleich2_kritischerDruck_Temperatur():
     T = (22 + 273) * ureg("kelvin")
 
     V_crit_water = b_water / avogadro_constant
-    V_crit_water = 3 * b_water / avogadro_constant
-    r_crit_water = (V_crit_water / pi / (4 / 3)) ** (1 / 3)
+    # V_crit_water = 3 * b_water / avogadro_constant
+    r_crit_water = (3 * V_crit_water / (pi * 4)) ** (1 / 3)
     return r_crit_water.to("angstrom")
 
 
@@ -63,11 +68,31 @@ if __name__ == "__main__":
     t = 915 * ureg("second")
     eta = viskos(t)
     r0 = radius(eta)
-    r1 = vergleich1_molekulargewicht()
-    r2 = vergleich2_kritischerDruck_Temperatur()
+    r1 = vergleich_molekuelradius()
+    r2 = vergleich_VdW()
     with open("build/radii.tex", "w") as ofile:
         print(r"r_\text{Viskositaet} &= " + "{}".format(r0), end=" \\\\\n", file=ofile)
         print(
-            r"r_\text{Molekuelradius} &= " + "{}".format(r1), end=" \\\\\n", file=ofile
+            r"r_\text{Viskositaet} &= "
+            + "{:.2fLx}".format(r0).replace("+/-", r"\pm"),
+            end=" \\\\\n",
         )
-        print(r"r_\text{VdW} &= " + "{}".format(r2), end="\n", file=ofile)
+        print(
+            r"r_\text{Molekuelradius} &= " + "{:.2fLx}".format(r1),
+            end=" \\\\\n",
+        )
+        print(r"r_\text{VdW} &= " + "{:.2fLx}".format(r2), end="\n")
+        print(
+            r"r_\text{Viskositaet} &= "
+            + "{:.2fLx}".format(r0).replace("+/-", r"\pm"),
+            end=" \\\\\n",
+            file=ofile,
+        )
+        print(
+            r"r_\text{Molekuelradius} &= " + "{:.2fLx}".format(r1),
+            end=" \\\\\n",
+            file=ofile,
+        )
+        print(
+            r"r_\text{VdW} &= " + "{:.2fLx}".format(r2), end="\n", file=ofile
+        )
