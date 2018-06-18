@@ -6,7 +6,7 @@ Dazu wird eine Probe zwischen zwei Polschuhe gebracht und ein magnetisches Feld
 angelegt.
 Senkrecht zum magnetischen Feld wird ein weiteres hochfrequentes Feld angebracht
 und auf die Larmorfrequenz gestellt. 
-Mittels der Dauer lässt des Pulses lässt sich die Auslenkung der
+Mittels der Dauer des Pulses lässt sich die Auslenkung der
 der Magnetisierung aus der Gleichgewichtslage einstellen. 
 \begin{figure}[h]
 		\centering
@@ -16,13 +16,13 @@ der Magnetisierung aus der Gleichgewichtslage einstellen.
 		\label{fig:aufbau}
 \end{figure}
 Des Weiteren wird die Induktionsspannung in Abhängigkeit der Zeit entlang der $x-y$-Ebene gemessen,
-um aus ihr die Präzessionsbewegung der Magnetisierung zu berechnen.
+um aus ihr die Relaxationszeiten $T_1$ und $T_2$ zu berechnen.
 
 \subsection{Freier Induktionszerfall}%
 \label{sub:freie_induktionszerfall}
 Durch das Einschalten der Hochfrequenz für $\Delta t_{90}$ wird die
 Magnetisierung in die $x$-$y$-Ebene gebracht, führt dort Präzessionsbewegungen aus und 
-relaxiert anschließend wieder in die Gleichgewichtslage. 
+relaxiert wieder in die Gleichgewichtslage. 
 Das Relaxieren der Spins nach einem \SI{90}{\degree} Puls in die
 Gleichgewichtslage wird als freier Induktionszerfall bezeichnet und ist in
 Abbildung~\ref{fig:sign} im Zeitraum 0 bis $\tau$ eingezeichnet.
@@ -40,8 +40,8 @@ bestimmt werden.
 \label{sub:spin_echo_verfahren}
 Mittels der Spin-Echo-Methode können durch einen zweiten Puls zeitlich
 konstante Störeffekte zur Relaxationszeitmessung eliminiert werden. 
-Zuerst werden die Spins um \SI{90}{\degree} in die $y$-Ebene gedreht und laufen
-darauf zurück in die Gleichgewichtslage.
+Mittels eines \SI{90}{\degree} Puls werden die Spins in die y-Ebene gedreht
+und relaxieren zurück in die Gleichgewichtslage.
 Dabei kommt es zur Dephasierung der Larmorfrequenz. 
 Nachdem die Spins soweit dephasiert sind das kein Induktionsstrom mehr gemessen
 werden kann, wird mittels eines \SI{180}{\degree} Pulses die Spinorientierung umgeklappt, 
@@ -66,9 +66,9 @@ ihrer Umgebung.
 \label{sub:car_purcell}
 Mittels der Carr-Purcell-Methode lässt sich durch Refokussierung der Echos die
 Amplitude mehrerer Echos messen. 
-Dazu müssen die \SI{180}{\degree} Pulse in äquidistanten Abständen von $2n\tau$
-kommen. 
-Ist der Zeitpunkt des \SI{180}{\degree} Pulses nicht exakt justiert dreht dieser die
+Dazu müssen die \SI{180}{\degree} Pulse in äquidistanten Abständen von $2\tau$
+folgen. 
+Ist die Länge des \SI{180}{\degree} Pulses nicht exakt justiert dreht dieser die
 Magnetisierung nicht mehr in die x-y-Ebene. 
 Es kommt zur Verstärkung dieses Fehlers weil immer in dieselbe Richtung weiter
 gedreht wird.
@@ -97,8 +97,9 @@ Für gradzahlige Echos ergibt sich die richtige Amplitude.
 Zur Bestimmung der longitudinalen Relaxationszeit wird zunächst ein
 \SI{180}{\degree}
 Puls eingesetzt. 
-Dieser dreht die Magnetisierung der Probe entlang der $z$-Achse um.
-In Folge der Relaxation wird nach einer zeit $\tau$ ein zweiter Puls auf die
+Dieser dreht die Magnetisierung der Probe entlang der $z$-Achse um, sodann die
+Spins wieder gegen ihre Gleichgewichtslage relaxieren.
+Nach einer Zeit $\tau$ wird ein zweiter Puls auf die
 Probe gegeben um die restliche z-Komponente zu messen. 
 Aus den Anfangsbedingungen $M_x(0) = M_y(0) =0, M_z(0)=-M_0$ ergibt sich aus der
 Blochgleichung 
