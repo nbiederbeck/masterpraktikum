@@ -12,6 +12,7 @@ logarithmisch aufgetragen.
 
 \begin{table}[ht]
   \centering
+  \sisetup{zero-decimal-to-integer=false}
   \caption{%
     Messwerte für die Bestimmung der longitudinalen Relaxationszeit $T_1$.%
   }%
@@ -125,6 +126,7 @@ Die Messwerte für die Messung des Diffusionskoeffizienten stehen in Tabelle~\re
 
 \begin{table}[ht]
   \centering
+  \sisetup{zero-decimal-to-integer=false}
   \caption{Messwerte für die Bestimmung des Diffusionskoeffizienten.}%
   \label{tab:messung_D}
   \input{build/table_messung_D.tex}
@@ -132,7 +134,7 @@ Die Messwerte für die Messung des Diffusionskoeffizienten stehen in Tabelle~\re
 
 Ein exponentieller Fit der Form (vgl. Gleichung~\eqref{eq:magy})
 \begin{align*}
-  U &= a \cdot \exp{\left(- \tau^3 \cdot d\right)} \cdot c \cdot \exp{\left(-b \frac{\tau}{T_2}\right)}+ m \\
+  U &= a \cdot \exp{\left(- t^3 \cdot d\right)} \cdot \exp{\left(-b \frac{t}{T_2}\right)}+ m \\
   \intertext{ergibt die Parameter}
   \input{build/D_params.tex}
 \end{align*}
@@ -147,6 +149,7 @@ Der Fit und die Messwerte sind in Abbildung~\ref{fig:messung_D} dargestellt.
 
 Der Diffusionskoeffizient ergibt sich nach Gleichung~\eqref{eq:diffkoef}:
 \begin{align}%
+  \nonumber \text{beachte }t &= 2\tau \\
   \label{eq:d}
   \input{build/D.tex}
 \end{align}
@@ -181,13 +184,16 @@ Der Molekülradius berechnet sich über die nachstehende Formel:
 \end{align}
 
 Diese Bestimmung wird verglichen mit einer Berechnung aus Molekülgewicht und Dichte
-und der Berechnung des kritischen Volumens aus der Van-der-Waals-Gleichung.
+und der Berechnung des Volumens aus der Van-der-Waals-Gleichung.
 Die Ergebnisse lauten
 \begin{align*}
-  r_\text{Molekülradius} &= {\left(\frac{M}{\rho N_A}\right)}^{\sfrac{1}{3}} =
-    {\left(\frac{\SI{18}{\gram\per\mole}}{\SI{1}{\gram\per\centi\meter\tothe3} N_A}\right)}^{\sfrac{1}{3}} \\
-    r_\text{VdW} &= {\left(\frac{3 V_\text{krit.}}{4 \pi}\right)}
-    \hspace{1em}\text{, mit } V_\text{krit.} = b \hspace{1em}\text{, $b$ VdW-Kovolumen\cite{vdw_radius}}\\
-  \Rightarrow \input{build/radii.tex}
+  r_\text{Molekülradius}
+    &= {\left(\frac{3}{4\pi} \cdot \num{0.74} \cdot \frac{M}{\rho N_A}\right)}^{\sfrac{1}{3}}
+     = {\left(\frac{3}{4\pi} \cdot \num{0.74} \cdot \frac{\SI{18}{\gram\per\mole}}{\SI{1}{\gram\per\centi\meter\tothe3} N_A}\right)}^{\sfrac{1}{3}} \\
+  r_\text{VdW}
+    &= {\left(\frac{3}{4 \pi} \cdot V\right)}^{\sfrac{1}{3}}
+    \hspace{1em}\text{, mit } V = \frac{b}{4} \text{, $b = \SI{31e-6}{\meter\tothe3\per\mol}$ VdW-Kovolumen\cite{vdw_radius}} \\
+  \Rightarrow
+  \input{build/radii.tex}
 \end{align*}
 

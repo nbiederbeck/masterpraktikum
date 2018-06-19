@@ -52,7 +52,7 @@ preview: FORCE | build
 	$(PREVIEW_CMD) main.tex
 
 build/D.tex build/D_params.tex: build/messung_D.png # rekursive abhaengigkeit
-build/radii.tex: scripts/eigenschaften.py matplotlibrc
+build/radii.tex: build/D_magnitude.npy scripts/eigenschaften.py matplotlibrc
 	python scripts/eigenschaften.py
 
 build/halftime_sequence.png build/G.tex: scripts/halftime.py matplotlibrc
@@ -61,7 +61,7 @@ build/halftime_sequence.png build/G.tex: scripts/halftime.py matplotlibrc
 build/table_messung_T1.tex build/T.tex: scripts/plot_T1.py data/messung_T1.txt matplotlibrc
 	python scripts/plot_T1.py
 
-build/table_messung_D.tex: scripts/plot_D.py data/messung_D.txt matplotlibrc
+build/table_messung_D.tex build/D_magnitude.npy: scripts/plot_D.py data/messung_D.txt matplotlibrc
 	python scripts/plot_D.py
 
 build/messung_D.png: scripts/plot_D.py matplotlibrc

@@ -47,6 +47,20 @@ def plot_T1():
                 + ("}" if n == "m" else "}\\\\"),
                 file=ofile,
             )
+    with open("build/T_1.tex", "w") as ofile:
+        n = "T_1"
+        p = par[0]
+        c = np.sqrt(np.diag(cov))[0]
+        print(
+            r"{} = ".format(n)
+            + "\SI{"
+            + "{:.0f} \pm {:.0f}".format(p, c)
+            + "}"
+            + "{\milli"
+            + r"\{}".format("second" if n == "T_1" else "volt")
+            + "}",
+            file=ofile,
+        )
 
     # plotting
     fig, ax = plt.subplots()
@@ -57,7 +71,9 @@ def plot_T1():
         x,
         func(x, *par),
         "C1-",
-        label=r"Fit: $T_1 = \SI{" + r"{:.2f}".format(par[0]) + r"}{\milli\second}$",
+        label=r"Fit: $T_1 = \SI{"
+        + r"{:.2f}".format(par[0])
+        + r"}{\milli\second}$",
     )
 
     ax.set_xlabel(r"$\log_{10}(\tau \:\:/\:\: \si{\milli\second})$")

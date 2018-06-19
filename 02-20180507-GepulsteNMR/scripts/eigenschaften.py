@@ -41,7 +41,7 @@ def vergleich_molekuelradius():
     rho = 1 * ureg("gram / centimeter ** 3")
     avogadro_constant = phyconst["Avogadro constant"]
     avogadro_constant = avogadro_constant[0] * ureg(avogadro_constant[1])
-    r = 0.74 * (M / (rho * avogadro_constant)) ** (1 / 3)
+    r = (3 / (4 * pi) * 0.74 * M / (rho * avogadro_constant)) ** (1 / 3)
     return r.to("angstrom")
 
 
@@ -53,15 +53,14 @@ def vergleich_VdW():
     avogadro_constant = avogadro_constant[0] * ureg(avogadro_constant[1])
 
     # https://de.wikipedia.org/wiki/Van-der-Waals-Gleichung
-    a_water = 557.29 * 1e-3 * ureg("joule meter ** 3 / mol ** 2")
+    # a_water = 557.29 * 1e-3 * ureg("joule meter ** 3 / mol ** 2")
     b_water = 31 * 1e-6 * ureg("meter ** 3 / mol")
-    p_crit_water = a_water / (27 * b_water ** 2)
-    T = (22 + 273) * ureg("kelvin")
+    # p_water = a_water / (27 * b_water ** 2)
+    # T = (22 + 273) * ureg("kelvin")
 
-    V_crit_water = b_water / avogadro_constant
-    # V_crit_water = 3 * b_water / avogadro_constant
-    r_crit_water = (3 * V_crit_water / (pi * 4)) ** (1 / 3)
-    return r_crit_water.to("angstrom")
+    V_water = b_water / avogadro_constant / 4
+    r_water = (3 / 4 * V_water / pi) ** (1 / 3)
+    return r_water.to("angstrom")
 
 
 if __name__ == "__main__":
@@ -71,7 +70,6 @@ if __name__ == "__main__":
     r1 = vergleich_molekuelradius()
     r2 = vergleich_VdW()
     with open("build/radii.tex", "w") as ofile:
-        print(r"r_\text{Viskositaet} &= " + "{}".format(r0), end=" \\\\\n", file=ofile)
         print(
             r"r_\text{Viskositaet} &= "
             + "{:.2fLx}".format(r0).replace("+/-", r"\pm"),

@@ -30,24 +30,22 @@ def plot_D():
 
     T_2 = 1.47 * ureg("second")
 
-    def func(x, d, a, m, b, c):
-        return a * np.exp(-x ** 3 * d) * c * np.exp(-b * x / T_2.magnitude) + m
+    def func(x, d, a, m, b):
+        return a * np.exp(-x ** 3 * d) * np.exp(-b * x / T_2.magnitude) + m
 
     weights = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    p0 = [1, 1, 1, 1, -700]
+    p0 = [0.0003, -800, 1, 1]
     par, cov = curve_fit(func, tau, U, p0=p0, sigma=weights)
     diag_cov = np.sqrt(np.diag(cov))
 
     par[0] = np.round(par[0], 4)
     diag_cov[0] = np.round(diag_cov[0], 4)
-    par[1] = np.round(par[1], 1)
-    diag_cov[1] = np.round(diag_cov[1], 1)
+    par[1] = np.round(par[1], 0)
+    diag_cov[1] = np.round(diag_cov[1], 0)
     par[2] = np.round(par[2], 0)
     diag_cov[2] = np.round(diag_cov[2], 0)
     par[3] = np.round(par[3], 3)
     diag_cov[3] = np.round(diag_cov[3], 3)
-    par[4] = np.round(par[4], 0)
-    diag_cov[4] = np.round(diag_cov[4], 0)
 
     with open("build/D_params.tex", "w") as ofile:
         for n, p, c in zip(["d", "a", "m", "b", "c"], par, diag_cov):
@@ -75,7 +73,7 @@ def plot_D():
                 + r"{}".format(
                     r"\per\milli\second\tothe3"
                     if n == "d"
-                    else r"\milli\second"
+                    else r""
                     if n == "b"
                     else r"\milli\volt"
                 )
@@ -86,7 +84,7 @@ def plot_D():
     gammap = 2.68e8 * ureg("radians per second per tesla")
     G = 81 * ureg("millitesla per meter")
     d = unc.ufloat(par[0], diag_cov[0])
-    D = d * ureg("millisecond ** -3") * 12 / (gammap ** 2 * G ** 2)
+    D = d * ureg("millisecond ** -3") * 12 / (2 ** 2 * gammap ** 2 * G ** 2)
     D.ito("meter ** 2 / second")
     ureg.default_format = ""
     D_precision = 10

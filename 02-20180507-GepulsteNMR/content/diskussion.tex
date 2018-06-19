@@ -1,12 +1,10 @@
 \section{Diskussion}%
 \label{sec:diskussion}
 Die Messung der longitudinalen Relaxationszeit
-ergibt einen Wert von $T_1 = \SI{2010 \pm 150}{\milli\second}$.
-Hierbei werden im exponentiellen Fit die beiden letzten Messwerte doppelt und vierfach gewichtet,
-um die grosse Messzeit und damit den geringeren relativen Messfehler zu berücksichtigen.
-Der Wert liegt im Rahmen der Ungenauigkeit in der Nähe des korrekten Wertes
-$T_{1, \text{Betreuer}} = \SI{2.4}{\second}$\cite{t1betreuer},
-hier liegt eine Abweichung von $\Delta T_1 = \SI{16\pm6}{\percent}$ vor.
+ergibt einen Wert von $\input{build/T_1.tex}$.
+% Der Wert liegt im Rahmen der Ungenauigkeit in der Nähe des korrekten Wertes
+% $T_{1, \text{Betreuer}} = \SI{2.4}{\second}$\cite{t1betreuer},
+% hier liegt eine Abweichung von $\Delta T_1 = \SI{16\pm6}{\percent}$ vor.
 
 Bei der Messung der lateralen Relaxationszeit werden die Peaks in der Meiboom-Gill-Methode
 durch einen Algorithmus gesucht.
@@ -19,18 +17,28 @@ Dies spiegelt sich in den geringen Fehlern der Parameter (vgl. Gleichung~\eqref{
 Die Bestimmung des Diffusionskoeffizienten hängt maßgeblich von der Bestimmung der Halbwertsbreite des
 Spin-Echo-Peaks ab.
 Diese ist aufgrund von \num{50000} Datenpunkten, die von dem Oszilloskop gespeichert wurden, sehr genau zu bestimmen.
-Dennoch muss hier ein Fehler liegen, denn die folgende Berechnung des Molekülradius
-zeigt eine Abweichung von einer Größenordnung gegenüber den vergleichenden Berechnungen.
-Dieser Fehler kann auch durch die Bestimmung der Viskosität kommen:
-Da weder die Temperatur des Wassers in der Probe noch die der Umgebungsluft gemessen wurde,
-ist die Temperatur von $T = \SI{22}{\celsius}$ nur eine Schätzung.
-
-Weitere Gründe für die Ungenauigkeiten bei den Messwerten sind die
-möglicherweise nicht korrekt eingestellten Parameter an der Apparatur
-(Shim-Parameter, Pulszeiten).
-
-
-Literaturwert (Sauerstoff in Wasser bei \SI{25}{\celsius}):
+% Dennoch muss hier ein Fehler liegen, denn die folgende Berechnung des Molekülradius
+% zeigt eine Abweichung von einer Größenordnung gegenüber den vergleichenden Berechnungen.
+% Dieser Fehler kann auch durch die Bestimmung der Viskosität kommen:
+% Da weder die Temperatur des Wassers in der Probe noch die der Umgebungsluft gemessen wurde,
+% ist die Temperatur von $T = \SI{22}{\celsius}$ nur eine Schätzung.
+Der Literaturwert des Diffusionskoeffizienten von Sauerstoff in Wasser bei \SI{25}{\celsius} liegt bei
 \begin{align}
-  D &= \SI{2.1e-9}{\meter\squared\per\second} \text{, \cite{diffkoeff}}
+  D_{\text{Lit.}} &= \SI{2.1e-9}{\meter\squared\per\second} \text{,~\cite{diffkoeff}}
+  \intertext{verglichen mit dem berechneten}
+  \input{build/D.tex}
 \end{align}
+bedeutet dies eine relative Abweichung von $\Delta D = \SI{9.5}{\percent}$.
+Hierbei jedoch muss berücksichtigt werden, dass die Temperatur während der Messung lediglich
+\SI{22}{\celsius} betrug.
+
+Die Bestimmung des Molekülradius mit den verschiedenen Varianten zum Vergleich liegen alle im Bereich von \SIrange[range-phrase={\text{~bis~}}]{1.2}{1.8}{\angstrom},
+was mit den Literaturwerten von Wasserstoff und Sauerstoff gut übereinstimmt:
+\begin{align*}
+  r_{\text{H}} &= \SI{1.2}{\angstrom} \\
+  r_{\text{O}} &= \SI{1.52}{\angstrom}\text{,~\cite{vdw}}
+\end{align*}
+
+% Weitere Gründe für die Ungenauigkeiten bei den Messwerten sind die
+% möglicherweise nicht korrekt eingestellten Parameter an der Apparatur
+% (Shim-Parameter, Pulszeiten).
