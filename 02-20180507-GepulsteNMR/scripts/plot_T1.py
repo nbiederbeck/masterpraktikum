@@ -35,7 +35,7 @@ def plot_T1():
 
     print(func.__doc__)
     with open("build/T.tex", "w") as ofile:
-        for n, p, c in zip(["T_1", "a", "m"], par, np.sqrt(np.diag(cov))):
+        for n, p, c in zip(["T_1", "a", "m"], np.round(par, -1), np.round(np.sqrt(np.diag(cov)), -1)):
             print(r"{} = {:.2f} \pm {:.2f}".format(n, p, c))
             print(
                 r"{} &= ".format(n)

@@ -1,18 +1,18 @@
 \section{Theorie}%
 \label{sec:theorie}
-Ziel des Versuches ist es die beiden Abklingzeiten einer Probe zu bestimmen. 
+Ziel des Versuches ist es die longitudinale und transversale Abklingzeit einer Probe zu bestimmen.
 Dabei werden verschiedene Messmethoden genutzt und sich mit deren
-Charakteristiken vertraut gemacht. 
+Charakteristiken vertraut gemacht.
 Desweiteren wird die Viskosität, der Molekülradius und die Van der Waals
-Konstante von Wasser bestimmt.
+Radius von Wasser bestimmt.
 \subsection{Magnetisierung im thermischen Gleichgewicht}%
 \label{ssub:magnetieserung_im_thermischen_gleichgewicht}
 Durch das Anlegen eines äußeren magnetischen Feldes $B_0$ spaltet der Spin die Energieniveaus in $2 I
-+ 1$ in äquidistante Energieniveaus auf. 
-Der Abstand der aufgespaltenen Niveaus beträgt 
++ 1$ äquidistante Energieniveaus auf.
+Der Abstand der aufgespaltenen Niveaus beträgt
 \begin{equation}
 		\label{eq:delta_e}
-		\Delta E = \gamma B_0 \hbar. 
+		\Delta E = \gamma B_0 \hbar.
 \end{equation}
 Dies geschieht dadurch, dass die Entartung der Spins durch das Anlegen eines
 Magnetfeldes aufgehoben wird.
@@ -24,13 +24,13 @@ Magnetfeldes aufgehoben wird.
 		\label{fig:aufsp_E}
 \end{figure}
 Die Besetzungswahrscheinlichkeit im thermischen Gleichgewicht ist entsprechend
-der Boltzmanverteilung verteilt:
+der Boltzmannverteilung verteilt:
 \begin{equation}
 		\label{eq:boltzmann}
 		\frac{N(m)}{N(m-1)} = \exp \left( - \frac{\gamma B_0 \hbar}{kT} \right)
 \end{equation}
 Daraus resultiert, dass die Energieniveaus beziehungsweise Orientierungsrichtungen unterschiedlich
-besetzt sind, woraus eine Netto-Kernspinpolarisation entsteht. 
+besetzt sind, woraus eine Netto-Kernspinpolarisation entsteht.
 Für kleine Zeemanaufspaltungen $(m \gamma B_0 \hbar \ll kT)$ lässt sich die
 Kernspinpolarisation für Spin $\sfrac{1}{2}$ bis zur
 linearen Ordnung durch
@@ -40,12 +40,12 @@ linearen Ordnung durch
 		\hbar}{kT}\right)}{\sum_\text{m}\exp\left(-\frac{m \gamma B_0
 		\hbar}{kT}\right)} \approx - \frac{\hbar^2 \gamma B_0}{4 kT}
 \end{equation}
-nähern, welche eine Netto-Magnetisierung $M_0$ erzeugen. 
+nähern, welche eine Netto-Magnetisierung $M_0$ erzeugen.
 Der Erwartungswert der Magnetisierung entspricht dem Mittelwert der
-Kernspinpolarisation, dessen Betrag 
+Kernspinpolarisation, dessen Betrag
 \begin{equation}
 		\label{eq:magn}
-		M_0 = N \frac{\mu_0 \gamma^2 \hbar^2 B_0}{4 kT} 
+		M_0 = N \frac{\mu_0 \gamma^2 \hbar^2 B_0}{4 kT}
 \end{equation}
 ist.
 
@@ -53,15 +53,15 @@ ist.
 \label{sub:larmor_praezession}
 Durch die Aufspaltung der Energieniveaus aufgrund der Zeemaneffekts führen
 die magnetischen Momente eine Präzessionsbewegung um die Achse des von außen
-angelegten magnetischen Feldes durch. 
-Dieser Effekt heißt Larmor-Präzession. 
+angelegten magnetischen Feldes durch.
+Dieser Effekt heißt Larmor-Präzession.
 Durch das magnetische Feld werden die Dipole durch das Drehmoment $\vec{M}$ in
 Feldrichtung gedreht,
 % Auf die Magnetisierung wirkt ein Drehmoment, welches versucht, die Magnetisierung
 % parallel zur Magnetfeldrichtung zu drehen.
 \begin{equation}
 		\label{eq:dreh}
-		\vec{D} = \vec{M} \times B_0 \vec{z}_\text{e} = \frac{\text{d} \vec{I}}{\text{d}t} 
+		\vec{D} = \vec{M} \times B_0 \vec{z}_\text{e} = \frac{\text{d} \vec{I}}{\text{d}t}
 \end{equation}
 was zu einer Änderung des Gesamtdrehimpulses $I$ führt.
 Die Stärke und Richtung des Dipols ist proportional zum gyromagnetischen Faktor,
@@ -78,10 +78,10 @@ Durch die Wahl der B-Feldrichtung in $\vec{z}_\text{e}$,
 		\frac{\text{d} \vec{M_\text{x}}}{\text{d}t} = \gamma \text{B}_0
 		M_\text{y}, \hspace{1em}
 		\frac{\text{d} \vec{M_\text{y}}}{\text{d}t} = \gamma \text{B}_0
-		M_\text{x}, 
+		M_\text{x},
 \end{equation}
  ist die Magnetisierung in $z$ eine Konstante welche in der $x-y$-Ebene
- eine Präzessionsbewegung 
+ eine Präzessionsbewegung
 \begin{equation}
 		\label{eq:schwM}
 		M_\text{z} = \text{const}, \hspace{1em} M_\text{x} = A \cos(\gamma B_0
@@ -92,27 +92,30 @@ mit der Lamorfrequenz
 		\label{eq:larmorf}
 		\omega_\text{L} = \gamma B_0
 \end{equation}
-ausführt. 
+ausführt.
 
 \subsection{Relaxationserscheinungen}%
 \label{sub:relaxationserscheinungen}
 Durch hochfrequente Anregungen kann die Magnetisierung aus der
 Gleichgewichtslage gebracht werden.
-Nach Beendigung der Störung strebt die Magnetisierung in der Relaxationszeit
-$T_\text{i}$ gegen ihren Gleichgewichtswert. 
+Sobald die Spins der Probe aus der Gleichgewichtslage ausgelenkt sind,
+streben sie
+in der Relaxationszeit
+$T_\text{i}$ gegen ihren Gleichgewichtswert.
+Dies passiert auch schon während der eigentlichen Auslenkung.
 Die Bewegungsgleichungen werden die Blochschen Gleichungen genannt
 \begin{align}
 		\frac{\text{d} M_\text{z}}{\text{d} t} &= \frac{M_0 - M_\text{z}}{T_1} \\
 		\frac{\text{d} M_\text{x}}{\text{d} t} &= \gamma B_0 M_\text{y} -
-		\frac{M_\text{x}}{T_2} \\               
-		\frac{\text{d} M_\text{y}}{\text{d} t} &= \gamma B_0 M_\text{x} - \frac{M_\text{y}}{T_2} 
+		\frac{M_\text{x}}{T_2} \\
+		\frac{\text{d} M_\text{y}}{\text{d} t} &= \gamma B_0 M_\text{x} - \frac{M_\text{y}}{T_2}
 \end{align}
 wobei zwei verschiedenen Relaxationszeiten auftreten:
 \begin{itemize}
 		\item \textbf{Spin-Gitter-Relaxationszeit/longitudinal:}
 				Relaxationszeit parallel zur Feldrichtung. Gibt die Zeit
 				an, die es dauert bis Spinsysteme in Gitterschwingungen
-				übergehen vice versa. 
+				übergehen vice versa.
 		\item \textbf{Spin-Spin-Relaxationszeit/transversal:} Relaxationszeit
 				unter anderem aufgrund der Spin Wechselwirkung von nächsten
 				Nachbarn, als auch Feldinhomogenitäten. Abnahme
@@ -122,67 +125,68 @@ wobei zwei verschiedenen Relaxationszeiten auftreten:
 \subsection{HF-Einstrahlungsvorgänge}%
 \label{sub:hf_einstrahlungsvorgaenge}
 Durch das Einstrahlen von Hochfrequenz, welche senkrecht zur Gleichgewichtslage
-der Magnetisierung steht 
+der Magnetisierung steht
 \begin{equation}
 		\label{eq:bhf}
 		\vec{B}_\text{HF} = 2 \vec{B}_1 \cos(\omega t)
 \end{equation}
-lässt diese sich aus der Gleichgewichtslaage bringen. 
+lässt diese sich aus der Gleichgewichtslaage bringen.
 Durch die Transformation der Einheitsvektoren in das mit $B_1$ sich mitbewegende
 System lässt sich die Zeitabhängigkeit des $B_1$ Feldes für einen mitbewegten
-Beobachter eliminieren. 
+Beobachter eliminieren.
 Unter Berücksichtigung, dass die Einheitsvektoren nun zeitabhängige Größen sind,
-lässt sich die zeitliche Ableitung der Magnetisierung darstellen als 
+lässt sich die zeitliche Ableitung der Magnetisierung darstellen als
 \begin{equation}
 		\label{eq:moment}
 		\frac{\text{d}\vec{M}}{\text{d} t} = \gamma \left( \vec{M} \times \left(
 		\vec{B}_\text{ges} + \frac{\vec{\omega}}{\gamma} \right) \right) \ .
 \end{equation}
-Durch das Einführen des effektiven Magnetfeldes 
+Durch das Einführen des effektiven Magnetfeldes
 \begin{equation}
 		\label{eq:sumB}
 		\vec{B}_\text{eff} = \vec{B}_0 + \vec{B}_1 + \frac{\vec{\omega}}{\gamma}
 \end{equation}
 ergibt sich die bekannte Kreiselgleichung, dessen Lösung die
-Präzessionsbewegung der Magnetisierung um die Ruhelage ist. 
+Präzessionsbewegung der Magnetisierung um die Ruhelage ist.
 Da die Lamorfrequenz $\omega_\text{L}$ antiparallel zum angelegeten Feld steht,
-ist der Fall für $\omega = \omega_\text{L}$ von besonderem Interesse da
-$B_\text{eff}$ = $B_1$ ist.
-Dabei beträgt das effektive B-Feld $B_1$ und der Öffnungswinkel der
-Präzession \SI{90}{\degree}. 
-Bleibt das Hochfrequenzfeld für eine Zeit von 
+ist der Fall für $\omega = \omega_\text{L}$ von besonderem Interesse, da
+$B_\text{eff}$ = $B_1$
+% Dabei beträgt das effektive B-Feld $B_1$
+und der Öffnungswinkel der
+Präzession \SI{90}{\degree} ist.
+Bleibt das Hochfrequenzfeld für eine Zeit von
 \begin{equation}
 		\label{eq:90kick}
 		\Delta t_{90} = \frac{\pi}{2 \gamma B_1}
 \end{equation}
 eingeschaltet, werden die Spins aus der Gleichgewichtslage in die y-Ebene
-herausgedreht. 
+herausgedreht.
 Für die doppelte Pulslänge des $\Delta t_{90}$ lässt sich ein \SI{180}{\degree}
 Puls herstellen.
-Dieser entspricht einem Spinflip. 
+Dieser entspricht einem Spinflip.
 
 \subsection{Diffusionsverhalten einer flüssigen Probe}%
 \label{sub:relaxationsverhalten_einer_fluessigen_probe}
-%#Fluessigkeit
+%#Flüssigkeit
 Aufgrund der Brownschen Molekularbewegung und der Inhomogenität des
-magnetischen Feldes wird die Larmorfrequenz eine Funktion der Zeit. 
-Die dephasierten Spins laufen immmer weiter auseinander und koennen durch einen
+magnetischen Feldes wird die Larmorfrequenz eine Funktion der Zeit.
+Die dephasierten Spins laufen immer weiter auseinander und können durch einen
 Spinflip refokussiert werden.
 Dabei behalten sie ihre Richtung bei und laufen nach einem \SI{180}{\degree}
 Puls wieder zusammen.
 Durch die Diffusion wird die Refokussierung der Spins gestört, sodass die
 Signalamplitude schneller, als durch die Relaxationszeit beschrieben, abnimmt.
-Zur Berechnung wird die Diffusionsstromdichte 
+Zur Berechnung wird die Diffusionsstromdichte
 \begin{equation}
-		\vec{j} = -D \nabla n	
+		\vec{j} = -D \nabla n
 \end{equation}
 berechnet, welche von der Diffusionskonstante und den möglichen
-Spineinstellungen abhänigig ist. 
+Spineinstellungen abhänigig ist.
 Der Gradient der Stromdichte entspricht grade der Magnetisierung
 \begin{equation}
 		\frac{\partial M}{\partial t} = - \nabla \vec{J}_\text{M}
 \end{equation}
-was äquivalent für Spin \sfrac{1}{2} Teilchen mit der Aussage 
+was äquivalent für Spin \sfrac{1}{2} Teilchen mit der Aussage
 \begin{equation}
 		\label{eq:dm}
 		\frac{\partial M}{\partial t} = D \Delta \vec{M}
@@ -198,28 +202,28 @@ die Bewegungsgleichung
 		\frac{\partial M_\text{tr}}{\partial t} = \left(- i \omega_\text{L} - i \gamma
 Gz - \frac{1}{T_2} + D \Delta \right) M_\text{tr}
 \end{equation}
-Lösung dieser Gleichung ist 
+Lösung dieser Gleichung ist
 \begin{equation}
 		M_\text{tr} = f(x,y,z,t) \cdot \exp(-i\omega_\text{L}t) \cdot
 		\exp\left(-\frac{t}{T_\text{2}}\right)
 \end{equation}
-wobei $f$ wiederum eine Funktion  
+wobei $f$ wiederum eine Funktion
 \begin{equation}
 		\frac{\partial f}{\partial t} = \left(-i \gamma Gz + D \Delta \right) f
 \end{equation}
 mit implizierter Abhängigkeit der Zeit $t$ ist.
-Der Diffusionsterm wird für die Lösung dieser Gleichung erstmal vernachlässigt 
-und durch die Einführung der Amplitudenfunktion 
+Der Diffusionsterm wird für die Lösung dieser Gleichung erstmal vernachlässigt
+und durch die Einführung der Amplitudenfunktion
 \begin{equation}
 		f(t) = A \exp \left( -i \gamma Gz ( t -2n\tau) \right)
 \end{equation}
-berücksichtigt. Durch sukzessive Einsetzen ergibt sich ein exponentieller
+berücksichtigt. Durch sukzessives Einsetzen ergibt sich ein exponentieller
 Zusammenhang mit der Halbwertsdauer
 \begin{equation}%
   \label{eq:diffkoef}
   T_\text{D} = \frac{3}{D \gamma^2 G^2 \tau^2}
 \end{equation}
-Im folgenden wird berücksichtigt, dass die Magnetisierung einerseits von der
+Im Folgenden wird berücksichtigt, dass die Magnetisierung einerseits von der
 Relaxationszeit $T_2$, als auch andererseits von der Diffusionskonstante abhängig ist.
 \begin{equation}
 		\label{eq:my}
@@ -227,9 +231,9 @@ Relaxationszeit $T_2$, als auch andererseits von der Diffusionskonstante abhäng
 		\frac{t}{T_\text{D}} \right)
 \end{equation}
 Für große $T_D$ ist die Bestimmung der Relaxationszeit möglich unter
-Vernachlässigung der Diffusion. 
+Vernachlässigung der Diffusion.
 Durch hohe Feldgradienten besteht die Möglichkeit $T_D$ klein gegenüber $T_2$
-zu wählen und somit die Relaxationszeit zu bestimmen, indem über den Zeitraum 
+zu wählen und somit die Relaxationszeit zu bestimmen, indem über den Zeitraum
 $t = 2\tau$ die Magnetisierung
 \begin{equation}
 		\label{eq:magy}
