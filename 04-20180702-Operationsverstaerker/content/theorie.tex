@@ -9,19 +9,19 @@ und realen Operationsverstaerker zu veranschaulichen.
 \subsection{idealer Operationsverstaerker}%
 \label{sub:idealer_operationsverstaerker}
 
+\begin{wrapfigure}{l}{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{./build/operationsverstaerker.pdf}
+		\caption{Schaltbild eines idealen Operationsverstaerkers.
+		\cite{anleitung}}
+		\label{fig:opv}
+\end{wrapfigure}
 In einem Schaltbild wird ein Operationsverstaerker durch ein gleichseitiges
 Dreieck gekennzeichnet. 
 An diesem werden zwei Eingangsspannungen angeschlossen, wobei die
 Eingangsspannungen $U_\text{p}$ in Phase
 und $U_\text{n}$ in Gegenphase zur Ausgangsspannung
 $U_\text{a}$ ist.
-\begin{figure}[h]
-		\centering
-		\includegraphics[width=0.5\linewidth]{./build/operationsverstaerker.pdf}
-		\caption{Schaltbild eines idealen Operationsverstaerkers.
-		\cite{anleitung}}
-		\label{fig:opv}
-\end{figure}
 Der Eingang $U_\text{p}$ wird aufgrund seiner Phasenbeziehung zur Ausgangsspannung
 als nicht-invertierender und $U_\text{n}$ als invertierender Eingang bezeichnet. 
 Im linearen Aussteuerungsberreich verstaerkert der Operationsverstaerker die
@@ -41,3 +41,79 @@ Operationsverstaerkers zu sehen.
 		\caption{Kennlinie eines Operationsverstaerkers. \cite{anleitung}}
 		\label{fig:kennlinie}
 \end{figure}
+Fuer den idealen Operationsverstaerker werden die annahmen getroffen das der
+Verstaerkungsfaktor $V = \infty$, der Eingangswiderstand $r_\text{e} =
+\infty$ und der Ausgangswiderstand $r_\text{a} = 0$ ist.
+Die Annahmen des idealen Operationsverstaerkers beschreiben aber nur begrenzt
+die realitaet, weswegen korrekturterme eingefuehrt werden. 
+
+\subsection{Realer Operationsverstaerker}%
+\label{sub:realer_operationsverstaerker}
+
+Zut beschreibung eines realen Operationsverstaerkers muessen noch korrektur
+Therme eingefuehrt werden, welche beim idealen verschwinden. 
+Wird auf beiden eingaengen dieselbe Spannung $U_\text{Gl}$ angelegt, so
+verschwindet nach Formel \ref{eq:??} die Ausgangsspannung beim idealen Opv. 
+Beim realen werden aufgrund von Unsymmetrien dennoch Spannugen gemessen so dass
+sich die Gleichtaktverstaerkung 
+\begin{equation}
+		V_\text{Gl} = \frac{\Delta U_\text{A}}{\Delta U_\text{Gl}}
+\end{equation}
+definiert werden kann.
+Ebenso sind die Eingangswiderstaende endlich, sodass es zu Eingangsstroemen auf
+den beiden Eingaengen $I_\text{p}$ und $I_\text{n}$ kommt.
+Der Offsetstrom wird als die Differenz beider Stroeme definiert 
+\begin{equation}
+		I_0 = I_\text{p} - I_\text{n}
+\end{equation}
+wenn beide Eingangsspannungen verschwinden. 
+Der Eingangsruhestrom $I_\text{B}$ ergibt sich aus dem Mittel der beiden Eingangsstroeme.
+Fuer den Fall das eine Eingangsspannung $U_{i}$ verschwindet ergibt sich der
+Differenzeingangswiderstand $r_\text{D}$ zu
+\begin{equation}
+		r_\text{D} = \frac{\Delta U_\text{i}}{\Delta I_\text{i}} \hspace{2cm} U_\text{j} = 0 
+\end{equation}
+wobei $i,j \in p,n$ und $i \neq j$.
+Der Gleichtakteingangswiderstand ist definiert ueber die Gleichtaktsspannung
+$U_\text{GL}$ und dem Gleichtaktsstrom $I_\text{Gl} = I_\text{p} + I_\text{n}$.
+Die offsetspannung $U_0$ ist die Spannungsdifferenz um die die Eingaenge
+verschoben werden muessen damit die Auspangsspannung $U_\text{a}$ verschwindet.
+\begin{equation}
+		U_0 = U_\text{p} - U_\text{n}
+\end{equation}
+
+\subsection{Linearverstaerker}%
+\label{sub:linearverstaerker}
+Aufgrund des schmalen Aussteuerungsberreich sind Linearverstaerker passe nur
+begrenzt einsetzbar.
+Zur Verbreiterung des Aussterungsbereich der Operationverstaerker mit einem 
+ein Gegenkopplungszweig beschaltet.
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.8\linewidth]{build/linearverstaerker.pdf}
+		\caption{Gegengekoppelter Linearverstaerker}
+		\label{fig:lin}
+\end{figure}
+Dabei wird ein Teil der Ausgangsspannung ueber den Widerstand $R_\text{n}$ ueber
+den Gegenkopplungszweig zum invertierten Eingang zurueck gegeben. 
+Dadurch laesst sich eine Zunahme des Aussteuerungsberreich erreichen, wobei die
+Gesamtverstaerkung $V'$ abnimmt.
+Bei grossen Leerlaufverstaerkungen ist die Spannung $U_\text{n}$ gering, sodass
+sich nach dem ersten Kirchhoffschen Gesetz fuer den Knoten A
+\begin{equation}
+		\frac{U_1}{R_1} + \frac{U_\text{A}}{R_\text{n}} = 0
+\end{equation}
+der Strom Verschwinden muss. 
+Aus dem Verhaeltniss der Eingangs $U_1$ zur Ausgangsspannung $U_\text{A}$ ergibt
+sich der Verstaerkungsfaktor.
+\begin{equation}
+		V' = - \frac{R_\text{N}}{R_1}
+\end{equation}
+Die Verstaerkung ist im Idealfall nur von dem Verhaeltniss der beiden
+Widerstaende abhaenigig. 
+Im realfall besehen noch Abhaenigikeit zwischen der Leerlaufverstaerkung, den
+Eingangs- und Ausgangswiderstaenden usw. 
+
+\begin{equation}
+		U_\text{N} = \frac{U_\text{A}}{V}	
+\end{equation}
