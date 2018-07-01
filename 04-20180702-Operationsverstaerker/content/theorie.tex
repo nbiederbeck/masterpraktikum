@@ -1,1 +1,43 @@
 \section{Theorie}\label{sec:theorie}
+Mit Hilfe eines Operationsverstaerker lassen sich Ausgangsspannungen $U_A$
+erzeugen welche in einem Bereich proportional zur Differenz der beiden
+angelegten Spannungen ist. 
+Ziel des Versuches ist es verschiedene Schaltungen mittels eines
+Operationsverstaerker zu realisieren und die Unterschiede zwischen eines idealen
+und realen Operationsverstaerker zu veranschaulichen.
+
+\subsection{idealer Operationsverstaerker}%
+\label{sub:idealer_operationsverstaerker}
+
+In einem Schaltbild wird ein Operationsverstaerker durch ein gleichseitiges
+Dreieck gekennzeichnet. 
+An diesem werden zwei Eingangsspannungen angeschlossen, wobei die
+Eingangsspannungen $U_\text{p}$ in Phase
+und $U_\text{n}$ in Gegenphase zur Ausgangsspannung
+$U_\text{a}$ ist.
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{./build/operationsverstaerker.pdf}
+		\caption{Schaltbild eines idealen Operationsverstaerkers.
+		\cite{anleitung}}
+		\label{fig:opv}
+\end{figure}
+Der Eingang $U_\text{p}$ wird aufgrund seiner Phasenbeziehung zur Ausgangsspannung
+als nicht-invertierender und $U_\text{n}$ als invertierender Eingang bezeichnet. 
+Im linearen Aussteuerungsberreich verstaerkert der Operationsverstaerker die
+Differenz zwischen den beiden Eingaengen mit dem Verstaerkungsfaktor $V$ linear
+\begin{equation}
+		U_\text{a} = V \left( U_\text{p} - U_\text{n} \right)
+\end{equation}
+wohinauf die Ausgangsspannung bei groeseren eingangsspannung gegen einen
+Saettigungswert strebt.
+Der Verstaerkungsfaktor ist durch die Betriebspannung festgelegt
+und bildet die Verstaerkungsgrenzen $\pm U_\text{B}$  des Linearverstaerkers.
+In Abbildung \ref{fig:kennlinie} ist eine Beispielhafte Kennline eines
+Operationsverstaerkers zu sehen. 
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{build/aussteuerungsbereich.pdf}
+		\caption{Kennlinie eines Operationsverstaerkers. \cite{anleitung}}
+		\label{fig:kennlinie}
+\end{figure}
