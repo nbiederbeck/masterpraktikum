@@ -113,7 +113,55 @@ Die Verstaerkung ist im Idealfall nur von dem Verhaeltniss der beiden
 Widerstaende abhaenigig. 
 Im realfall besehen noch Abhaenigikeit zwischen der Leerlaufverstaerkung, den
 Eingangs- und Ausgangswiderstaenden usw. 
-
+Fuer einen unbelasteten Spannungsteiler ($I_\text{n} = 0$) gilt dass bei einem
+endlichen Leerlaufverstaerkungsfaktor
 \begin{equation}
 		U_\text{N} = \frac{U_\text{A}}{V}	
 \end{equation}
+Anhand der 1 Kirchhoffschen Regel gilt fuer den Punkt $A$
+\begin{equation}
+		\frac{U_\text{N}-U_1}{U_\text{a}-U_1} = \frac{R_1}{R_1 + R_n}
+\end{equation}
+Daraus resultiert fuer den Verstaerkungsfaktor 
+\begin{equation}
+		\frac{1}{V'}= - \frac{U_1}{U_\text{A}} = \frac{1}{V} +
+		\frac{R_1}{R_\text{N}} \left( a + \frac{1}{V} \right) \approx
+		\frac{1}{V} + \frac{R_1}{R_\text{N}}
+\end{equation}
+sodass bei der Wahl von $R_\text{n}/ R_\text{1}$ viel kleiner als die
+Leerlaufverstaerkung $V$ ein idealer Operationverstaerker erhaelt mit einer
+geringerem Verstaerkungsgrad und grossem Aussteuerungsberreich.
+
+\begin{equation}
+		g := \frac{V}{V'}
+\end{equation}
+
+\begin{equation}
+		\frac{\Delta V'}{V'} = \frac{\Delta V}{g V}
+\end{equation}
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.8\linewidth]{build/frequenz_lin.pdf}
+		\caption{}
+		\label{fig:freq}
+\end{figure}
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.8\linewidth]{build/n_inv_elektrometer.pdf}
+		\caption{test}
+		\label{fig:test}
+\end{figure}
+
+\begin{equation}
+		V' = \frac{U_\text{A}}{U_1} = \frac{U_\text{A}}{U_\text{N}} =
+		\frac{R_\text{N} + R_1}{R_1}
+\end{equation}
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.8\linewidth]{build/amperemeter.pdf}
+		\caption{}
+		\label{fig:}
+\end{figure}
