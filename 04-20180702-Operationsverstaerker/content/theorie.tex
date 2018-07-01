@@ -130,29 +130,47 @@ Daraus resultiert fuer den Verstaerkungsfaktor
 \end{equation}
 sodass bei der Wahl von $R_\text{n}/ R_\text{1}$ viel kleiner als die
 Leerlaufverstaerkung $V$ ein idealer Operationverstaerker erhaelt mit einer
-geringerem Verstaerkungsgrad und grossem Aussteuerungsberreich.
-
+geringerem Verstaerkungsgrad, wobei der Verstaerkungsfaktor nur vom Verhaeltniss
+nur von dem Widerstandsverhaeltniss abhaengt.
+Desweiteren wird durch die Gegenkopplung die Stabilitaet der
+Verstaerkerschaltung erhoeht, sowie der Ausgangswiderstand um ein g-faches
+verkleinert.
 \begin{equation}
 		g := \frac{V}{V'}
 \end{equation}
-
+Aequivalent wird die Leerlaufverstaerkung vermindert.
 \begin{equation}
 		\frac{\Delta V'}{V'} = \frac{\Delta V}{g V}
 \end{equation}
-
+Ebenso nimmt die Bandbreite fuer grosse g zu, sodass aufgrund eines grosseren
+Grequenzbandes mehr Frequenzen unverzerrt verstaerkt werden koennen.
+Bildet das Produkt aus Verstaerkung und Bandbreite eine Konstantke wird dies
+durch die Transitfrequenz charakterisiert.
 \begin{figure}[h]
 		\centering
-		\includegraphics[width=0.8\linewidth]{build/frequenz_lin.pdf}
+		\includegraphics[width=0.5\linewidth]{build/frequenz_lin.pdf}
 		\caption{}
 		\label{fig:freq}
 \end{figure}
+Dies ist die Frequenz bei dem die Verstaerkung den Wert eins annimmt.
+Eine charakteristische Bandbreite eines Operationsverstaerkers ist in Abbildung
+\ref{fig:freq} zu sehen.
 
+\subsubsection{Nicht invertierender Operationsverstaerker}%
+\label{ssub:nicht_invertierender_operationsverstaerker}
+
+Aufgrund des geringen Eingangswiderstand kann es bei Spannungsmessungen zu
+Messfehlern mit dem rueckgekoppelten Operationsverstaerker kommen.
+Dies laesst sich verringern wenn der Strom ueber den Rueckkopplungszweig an den
+invertierenden Eingang zurueckgefuehrt wird.
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.8\linewidth]{build/n_inv_elektrometer.pdf}
 		\caption{test}
 		\label{fig:test}
 \end{figure}
+Dabei liegt der Eingangswiderstand $r_\text{e}$ in der Groessenordnung
+\SI{20}{\giga\ohm}.
 
 \begin{equation}
 		V' = \frac{U_\text{A}}{U_1} = \frac{U_\text{A}}{U_\text{N}} =
