@@ -9,6 +9,7 @@ BUILD_FILES = $(addprefix build/, \
 	schwingungsdiffgl\
 	umkehr_diff\
 	umkehr_integrator\
+	tiefpass\
 	) \
 	$(addsuffix .png, \
 	\
@@ -61,7 +62,7 @@ build/linearverstaerker.pdf: anleitung_V51_Operationsverstaerker.pdf | build
 		gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
 		    -dFirstPage=4 -dLastPage=4 \
 		    -sOutputFile=$@ $<
-		pdfcrop --bbox "0 530 600 680"  $@ $@
+		pdfcrop --bbox "150 530 400 680"  $@ $@
 		pdfcrop $@ $@
 
 build/frequenz_lin.pdf: anleitung_V51_Operationsverstaerker.pdf | build
@@ -105,6 +106,11 @@ build/schwingungsdiffgl.pdf: anleitung_V51_Operationsverstaerker.pdf | build
 		    -sOutputFile=$@ $<
 		pdfcrop --bbox "0 80 600 290"  $@ $@
 		pdfcrop $@ $@
+
+build/tiefpass.pdf: | build
+		#maybe you have to install rsvg-convert with sudo pacman -S librsvg2-bin to convert svg -> pdf
+		wget "https://upload.wikimedia.org/wikipedia/commons/e/e8/Tiefpass.svg" -O build/tiefpass.svg
+		rsvg-convert -f pdf -o $@ build/tiefpass.svg
 
 FORCE:
 

@@ -156,6 +156,31 @@ Dies ist die Frequenz bei dem die Verstaerkung den Wert eins annimmt.
 Eine charakteristische Bandbreite eines Operationsverstaerkers ist in Abbildung
 \ref{fig:freq} zu sehen.
 
+\subsection{Tiefpass}%
+\label{sub:tiefpass}
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{build/tiefpass.pdf}
+		\caption{}
+		\label{fig:}
+\end{figure}
+
+Komplexer widerstand $H$ durch Spannungsverhaeltniss beider Leiterschleifen
+$U_a$ und $U_e$.
+\begin{equation}
+		\label{eq:blindwiederstand}
+		H = \frac{Z_\text{C}}{Z_\text{C} + R} 
+\end{equation}
+
+\begin{align}
+		\label{eq:h_betrag}
+		\left| H(\omega) \right| &= \frac{\sfrac{1}{j \omega C}}{\sfrac{1}{j\omega
+		C} + R}  \\
+								 &= \frac{1}{\sqrt{1 + (\omega CR)^2}}
+\end{align}
+
+
 \subsection{Umkehr-Integrator}%
 \label{sub:umkehr_integrator}
 
@@ -186,7 +211,7 @@ Eine charakteristische Bandbreite eines Operationsverstaerkers ist in Abbildung
 \end{figure}
 
 \begin{align}
-		U_\text{A} &= - RC \frac{dU_1}{dt} //
+		U_\text{A} &= - RC \frac{dU_1}{dt} \\
 				   &= - \omega R C U_0 \cos(\omega t)
 \end{align}
 
