@@ -1,13 +1,9 @@
 BUILD_FILES = $(addprefix build/, \
 	$(addsuffix .pdf, \
-	amperemeter \
 	aussteuerungsbereich\
 	dreiecksgen\
-	exponentialgen\
 	frequenz_lin\
 	linearverstaerker\
-	logarithmierer\
-	n_inv_elektrometer\
 	operationsverstaerker\
 	schmitt_trigger\
 	schwingungsdiffgl\
@@ -75,21 +71,6 @@ build/frequenz_lin.pdf: anleitung_V51_Operationsverstaerker.pdf | build
 		pdfcrop --bbox "0 100 600 310"  $@ $@
 		pdfcrop $@ $@
 
-
-build/n_inv_elektrometer.pdf: anleitung_V51_Operationsverstaerker.pdf | build
-		gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
-		    -dFirstPage=6 -dLastPage=6\
-		    -sOutputFile=$@ $<
-		pdfcrop --bbox "0 320 600 477"  $@ $@
-		pdfcrop $@ $@
-
-build/amperemeter.pdf: anleitung_V51_Operationsverstaerker.pdf | build
-		gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
-		    -dFirstPage=7 -dLastPage=7\
-		    -sOutputFile=$@ $<
-		pdfcrop --bbox "0 330 600 495"  $@ $@
-		pdfcrop $@ $@
-
 build/umkehr_integrator.pdf: anleitung_V51_Operationsverstaerker.pdf | build
 		gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
 		    -dFirstPage=8 -dLastPage=8\
@@ -123,20 +104,6 @@ build/schwingungsdiffgl.pdf: anleitung_V51_Operationsverstaerker.pdf | build
 		    -dFirstPage=10 -dLastPage=10\
 		    -sOutputFile=$@ $<
 		pdfcrop --bbox "0 80 600 290"  $@ $@
-		pdfcrop $@ $@
-
-build/logarithmierer.pdf: anleitung_V51_Operationsverstaerker.pdf | build
-		gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
-		    -dFirstPage=12 -dLastPage=12\
-		    -sOutputFile=$@ $<
-		pdfcrop --bbox "0 520 600 688"  $@ $@
-		pdfcrop $@ $@
-
-build/exponentialgen.pdf: anleitung_V51_Operationsverstaerker.pdf | build
-		gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
-		    -dFirstPage=12 -dLastPage=12\
-		    -sOutputFile=$@ $<
-		pdfcrop --bbox "0 135 600 295"  $@ $@
 		pdfcrop $@ $@
 
 FORCE:

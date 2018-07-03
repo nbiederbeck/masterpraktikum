@@ -156,30 +156,88 @@ Dies ist die Frequenz bei dem die Verstaerkung den Wert eins annimmt.
 Eine charakteristische Bandbreite eines Operationsverstaerkers ist in Abbildung
 \ref{fig:freq} zu sehen.
 
-\subsubsection{Nicht invertierender Operationsverstaerker}%
-\label{ssub:nicht_invertierender_operationsverstaerker}
-
-Aufgrund des geringen Eingangswiderstand kann es bei Spannungsmessungen zu
-Messfehlern mit dem rueckgekoppelten Operationsverstaerker kommen.
-Dies laesst sich verringern wenn der Strom ueber den Rueckkopplungszweig an den
-invertierenden Eingang zurueckgefuehrt wird.
-\begin{figure}[h]
-		\centering
-		\includegraphics[width=0.8\linewidth]{build/n_inv_elektrometer.pdf}
-		\caption{test}
-		\label{fig:test}
-\end{figure}
-Dabei liegt der Eingangswiderstand $r_\text{e}$ in der Groessenordnung
-\SI{20}{\giga\ohm}.
+\subsection{Umkehr-Integrator}%
+\label{sub:umkehr_integrator}
 
 \begin{equation}
-		V' = \frac{U_\text{A}}{U_1} = \frac{U_\text{A}}{U_\text{N}} =
-		\frac{R_\text{N} + R_1}{R_1}
+		\int I_\text{C} \, dt = C U_\text{A}
+\end{equation}
+
+\begin{align}
+		U_\text{A} &= - \frac{1}{RC} \int U_\text{0} \sin(\omega t) \, dt \\
+				   &= \frac{U_0}{\omega R C} \cos (\omega t)
+\end{align}
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{build/umkehr_integrator.pdf}
+		\caption{Umkehrgenerator}
+		\label{fig:name}
+\end{figure}
+
+\subsection{Umkehr-Differentiator}%
+\label{sub:umkehr_differentiator}
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{build/umkehr_diff.pdf}
+		\caption{um}
+		\label{fig:}
+\end{figure}
+
+\begin{align}
+		U_\text{A} &= - RC \frac{dU_1}{dt} //
+				   &= - \omega R C U_0 \cos(\omega t)
+\end{align}
+
+\subsection{Schmitt-Trigger}%
+\label{sub:schmitt_trigger}
+
+\begin{equation}
+		\label{eq:schmitt}
+		\frac{R_1}{R_\text{P}} U_\text{B}
 \end{equation}
 
 \begin{figure}[h]
 		\centering
-		\includegraphics[width=0.8\linewidth]{build/amperemeter.pdf}
+		\includegraphics[width=0.5\linewidth]{build/schmitt_trigger.pdf}
+		\caption{Schmitt}
+		\label{fig:}
+\end{figure}
+
+\subsection{Signalgenerator}%
+\label{sub:signalgenerator}
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{build/dreiecksgen.pdf}
 		\caption{}
 		\label{fig:}
 \end{figure}
+
+\subsection{Gedaempfte Sinusschwingung}%
+\label{sub:gedaempfte_sinusschwingung}
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{build/schwingungsdiffgl.pdf}
+		\caption{}
+		\label{fig:}
+\end{figure}
+
+\begin{equation}
+		\label{eq:ov2}
+		U_2 = - \frac{1}{RC} \int \left( U_1 + \frac{\eta}{10} U_\text{A} \right) \, dt
+\end{equation}
+
+\begin{equation}
+		\label{eq:schwingung_diff}
+		\frac{d^2 U_\text{A}}{dt^2} - \frac{\eta}{10 R C} \frac{d
+		U_\text{A}}{dt} + \frac{1}{(RC)^2} U_\text{A} = 0
+\end{equation}
+
+
+\begin{equation}
+		U_\text{A}(t) = U_0 \exp \left( \frac{\eta t}{20 RC} \right) 
+		\sin \left(\frac{t}{RC}\right)
+\end{equation}
