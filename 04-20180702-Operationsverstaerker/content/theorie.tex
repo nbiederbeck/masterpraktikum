@@ -159,86 +159,141 @@ Eine charakteristische Bandbreite eines Operationsverstaerkers ist in Abbildung
 \subsection{Tiefpass}%
 \label{sub:tiefpass}
 
+Der Verstaerkungfaktor des Operationsverstaerkers aufgetragen gegen die Frequenz bildet ein typischen
+Tiefpass.
+Bei diesem werden hohe Frequenzen stark gedaempft. 
+Beispielhaft ist in Abbildung \ref{fig:tiefpass} ein Tiefpass erster Ordnung
+dargestellt.
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/tiefpass.pdf}
-		\caption{}
-		\label{fig:}
+		\caption{Denkbar einfachster Tiefpass erster Ordnung.}
+		\label{fig:tiefpass}
 \end{figure}
-
-Komplexer widerstand $H$ durch Spannungsverhaeltniss beider Leiterschleifen
-$U_a$ und $U_e$.
+Unter beruecksichtigung der Maschenregel laesst sich der Verstaerkungsfaktor bzw
+Daempfungsfaktor des Tiefpass ausdruecken. 
+Dazu wird das Verhaeltniss aus $U_a$ zu $U_e$ gebildet woraus sich der
+Blindwiderstand $H$ ergibt.
 \begin{equation}
 		\label{eq:blindwiederstand}
 		H = \frac{Z_\text{C}}{Z_\text{C} + R} 
 \end{equation}
-
+Der Blindwiderstand $H$ ist eine Funktion der Wechselspannungfrequenz $\omega$
+und dessen Realteil entspricht 
 \begin{align}
 		\label{eq:h_betrag}
 		\left| H(\omega) \right| &= \frac{\sfrac{1}{j \omega C}}{\sfrac{1}{j\omega
 		C} + R}  \\
 								 &= \frac{1}{\sqrt{1 + (\omega CR)^2}}
 \end{align}
-
+dem 'Ersatzwiderstand'.
+Fuer Frequenzen $w > \sfrac{1}{RC}$ wird die Eingangsspannung stark gedaempft und bildet
+die abfallende Flanke in Abbildung \ref{fig:freq}.
 
 \subsection{Umkehr-Integrator}%
 \label{sub:umkehr_integrator}
 
-\begin{equation}
-		\int I_\text{C} \, dt = C U_\text{A}
-\end{equation}
-
-\begin{align}
-		U_\text{A} &= - \frac{1}{RC} \int U_\text{0} \sin(\omega t) \, dt \\
-				   &= \frac{U_0}{\omega R C} \cos (\omega t)
-\end{align}
-
+Durch Rueckkopplung des Ausgangsstrom ueber ein Kondensator laesst sich die
+Eingangsspannung $U_1$ integrieren (vergleiche Abbildung \ref{fig:integrator}).
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/umkehr_integrator.pdf}
 		\caption{Umkehrgenerator}
-		\label{fig:name}
+		\label{fig:integrator}
 \end{figure}
+Die Rueckkopplung funktioniert in aequivalenz zum Linearverstaerker.
+Die Ladung auf dem Kondensator entspricht dem Produkt aus der Ausgangsspannung
+$U_\text{A}$ und der Kapazitaet $C$.
+\begin{equation}
+		\int I_\text{C} \, dt = C U_\text{A}
+\end{equation}
+Unter der Vernachlaessigung des Operationsverstaerkerstroms $I_\text{OV}$ gilt
+fuer den Knotenpunkt A:
+\begin{align}
+		0 = \sum_i I_i =& I_1 + I_\text{OV} + I_\text{C} \\
+		=& \frac{U_1(t)}{R} + 0 + C \cdot \frac{d U_\text{A}(t)}{dt}
+\end{align}
+Unter Beruecksichtigung das die Eingangsspannung von der Zeit abhaengt (z.B.
+Sinusfoermig $U_1(t)= U_0 \cos(\omega t)$) ergibt sich die Integration der Eingangspannung $U_1$ nach
+der Zeit.
+\begin{align}
+		U_\text{A}(t) &= - \frac{1}{RC} \int U_\text{1}(t) \, dt \\
+				   &= \frac{U_0}{\omega R C} \cos (\omega t)
+\end{align}
+Fuer eine sinusfoermige Eingangspannung faellt die Verstaerkung daher linear mit 
+der Frequenz.
+Im allgemeinen koennen beliebig Funktionen integriert werden, wobei es bei
+Unstaetigkeiten zu ueberschwingungen kommen kann (Gibbs'sches Phaenomen).
 
 \subsection{Umkehr-Differentiator}%
 \label{sub:umkehr_differentiator}
-
+Aequivalent zum Integrator laesst sich durch austauschen der Kapazitaet durch
+den Widerstand vice versa die Eingangspannung Differenzieren.
+Ein Schaltbild des Umkehr-Differentiator ist in Abblidung \ref{fig:diff} zu
+sehen.
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/umkehr_diff.pdf}
 		\caption{um}
-		\label{fig:}
+		\label{fig:diff}
 \end{figure}
-
+Fuer den Knotenpunkt vor dem nicht-invertierenden gilt nach der ersten
+Kirchhoffschen Regel:
+\begin{equation}
+		C \frac{d U_1(t)}{dt} + \frac{U_A(t)}{R} = 0
+\end{equation}
+Durch umstellen und einmaliges differenzieren ergibt sich beispielsweise fuer
+eine sinusfoermige Eingangsspannung $U_1(t)$.
 \begin{align}
-		U_\text{A} &= - RC \frac{dU_1}{dt} \\
+		U_\text{A}(t) &= - RC \frac{dU_1(t)}{dt} \\
 				   &= - \omega R C U_0 \cos(\omega t)
 \end{align}
+Beim Differenzieren waechst die Verstaerkung bei einer sinusforemigen
+Eingangsspannung linear mit der Frequenz.
 
 \subsection{Schmitt-Trigger}%
 \label{sub:schmitt_trigger}
 
+Beim Schmitt-Trigger wird ein Teil der Ausgangsspannung auf den nicht
+invertierten Eingang zurueck gegeben.
+Es laesst sich fuer den Knoten vor dem rueckgekoppelten Eingang die Gleichung 
+\begin{equation}
+		\frac{U_1}{R_1} + \frac{U_\text{A}}{R_\text{p}} = 0
+\end{equation}
+aufstellen.
+Sobald die Ausgangsspannung $U_\text{A}$ den Saettigungswert $U_\text{B}$ erreicht kommt es zur
+Verstaerkung wenn 
 \begin{equation}
 		\label{eq:schmitt}
-		\frac{R_1}{R_\text{P}} U_\text{B}
+		U_1 > \frac{R_1}{R_\text{P}} U_\text{B} \ .
 \end{equation}
-
+Die Rueckgekoppelte Spannung ist nun groesser als die Angelegte und der Schalter
+kippt auf den Wert $U_\text{B}$.
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/schmitt_trigger.pdf}
 		\caption{Schmitt}
 		\label{fig:}
 \end{figure}
+Schmitt-Trigger werden zur Erzeugung von Binaeren Signalen und der
+Signalverstaerkung genutzt.
 
 \subsection{Signalgenerator}%
 \label{sub:signalgenerator}
-
+Durch das betreiben des Schmitt triggers mit eier Sinusspannung wird bei
+entsprechender Wahl der Wiederstaende am Ausgang ein Rechtecksignal erzeugt.
+Der Ausgang des Schmitttriggers wird auf den Eingang eines daran anschliessenden
+Integrator gelegt. 
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/dreiecksgen.pdf}
 		\caption{}
 		\label{fig:}
 \end{figure}
+Durch die Integration eines Rechtecksignals wird aus diesem ein Dreiecksignal
+welches am Ausgang des Integrators abgenommen werden kann.
+Die Periode der Dreiecks und Rechtecksspannung ist durch die Periode der
+Eingangspannung $U_1$ festgelegt.
 
 \subsection{Gedaempfte Sinusschwingung}%
 \label{sub:gedaempfte_sinusschwingung}
