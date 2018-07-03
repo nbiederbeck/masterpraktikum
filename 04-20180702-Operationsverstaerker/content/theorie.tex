@@ -91,7 +91,7 @@ ein Gegenkopplungszweig beschaltet.
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/linearverstaerker.pdf}
-		\caption{Gegengekoppelter Linearverstaerker}
+		\caption{Gegengekoppelter Linearverstaerker \cite{anleitung}}
 		\label{fig:lin}
 \end{figure}
 Dabei wird ein Teil der Ausgangsspannung ueber den Widerstand $R_\text{n}$ ueber
@@ -149,7 +149,7 @@ durch die Transitfrequenz charakterisiert.
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/frequenz_lin.pdf}
-		\caption{}
+		\caption{\cite{anleitung}}
 		\label{fig:freq}
 \end{figure}
 Dies ist die Frequenz bei dem die Verstaerkung den Wert eins annimmt.
@@ -167,7 +167,7 @@ dargestellt.
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/tiefpass.pdf}
-		\caption{Denkbar einfachster Tiefpass erster Ordnung.}
+		\caption{Denkbar einfachster Tiefpass erster Ordnung. \cite{wiki}}
 		\label{fig:tiefpass}
 \end{figure}
 Unter beruecksichtigung der Maschenregel laesst sich der Verstaerkungsfaktor bzw
@@ -198,7 +198,7 @@ Eingangsspannung $U_1$ integrieren (vergleiche Abbildung \ref{fig:integrator}).
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/umkehr_integrator.pdf}
-		\caption{Umkehrgenerator}
+		\caption{Umkehrgenerator \cite{anleitung}}
 		\label{fig:integrator}
 \end{figure}
 Die Rueckkopplung funktioniert in aequivalenz zum Linearverstaerker.
@@ -234,7 +234,7 @@ sehen.
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/umkehr_diff.pdf}
-		\caption{um}
+		\caption{um \cite{anleitung}}
 		\label{fig:diff}
 \end{figure}
 Fuer den Knotenpunkt vor dem nicht-invertierenden gilt nach der ersten
@@ -272,7 +272,7 @@ kippt auf den Wert $U_\text{B}$.
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/schmitt_trigger.pdf}
-		\caption{Schmitt}
+		\caption{Schmitt \cite{anleitung}}
 		\label{fig:}
 \end{figure}
 Schmitt-Trigger werden zur Erzeugung von Binaeren Signalen und der
@@ -287,7 +287,7 @@ Integrator gelegt.
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.8\linewidth]{build/dreiecksgen.pdf}
-		\caption{}
+		\caption{ \cite{anleitung}}
 		\label{fig:}
 \end{figure}
 Durch die Integration eines Rechtecksignals wird aus diesem ein Dreiecksignal
@@ -297,27 +297,41 @@ Eingangspannung $U_1$ festgelegt.
 
 \subsection{Gedaempfte Sinusschwingung}%
 \label{sub:gedaempfte_sinusschwingung}
-
+Zur erzeugung einer zu-/abnehmenden Schwingung werden drei Operationsverstaerker
+benoetigt.
+Dabei dienen Zwei der Integration und ein weiterer der Invertierung
+des Signals fuer die Rueckkopplung.
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.8\linewidth]{build/schwingungsdiffgl.pdf}
-		\caption{}
+		\caption{ \cite{anleitung}}
 		\label{fig:}
 \end{figure}
 
+Auf den nicht invertierten Eingang des ersten Operationsverstaerker wird der
+Ausgang des letzten gelegt.
+Dieser Integriert das Ausgangssignal $U_A$ und gibt sein Ausgangsspannung $U_1$ auf
+den Eingang des zweiten Operationsverstaerkers welcher ebenfalls das Signal
+integriert.
 \begin{equation}
 		\label{eq:ov2}
 		U_2 = - \frac{1}{RC} \int \left( U_1 + \frac{\eta}{10} U_\text{A} \right) \, dt
 \end{equation}
-
+Desweiteren wird ein Teil des Ausgangssignal $U_\text{A}$ auf den Eingang des
+zweiten Operationsverstaerkers gelegt, sodass dieser linear mit $\eta$ gedaempft wird.
+Der dritte Operationsverstaerker invertiert das Vorzeiche, sodass die
+Ausgangsspannung durch einen differentialgleichung 2. Ordnung mit linearer
+Ruckstellkraft beschrieben werden kann,
 \begin{equation}
 		\label{eq:schwingung_diff}
 		\frac{d^2 U_\text{A}}{dt^2} - \frac{\eta}{10 R C} \frac{d
 		U_\text{A}}{dt} + \frac{1}{(RC)^2} U_\text{A} = 0
 \end{equation}
-
-
+dessen Loesung 
 \begin{equation}
 		U_\text{A}(t) = U_0 \exp \left( \frac{\eta t}{20 RC} \right) 
 		\sin \left(\frac{t}{RC}\right)
 \end{equation}
+ist.
+Die Schwingungsdauer $T$ kann dem Sinus- und die Abklingdauer $\tau$ kann dem
+Exponentailterm entnommen werden.
