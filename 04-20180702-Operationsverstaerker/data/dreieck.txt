@@ -1,0 +1,2 @@
+# C=20.8nF, R1=0.1kOhm
+# Rp=1kOhm, R=30.2kOhm

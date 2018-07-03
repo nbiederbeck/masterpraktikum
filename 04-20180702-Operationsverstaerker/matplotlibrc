@@ -1,5 +1,5 @@
 # Latex Font Settings
-font.family:         serif
+font.family:         sans-serif
 text.usetex:         True
 text.latex.unicode:  True
 text.latex.preamble: \usepackage[locale=DE]{siunitx}

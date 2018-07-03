@@ -14,7 +14,15 @@ BUILD_FILES = $(addprefix build/, \
 	$(addsuffix .png, \
 	\
 	) \
-)	
+	$(addsuffix .pgf, \
+	lin_verst_01__r1_200__rn_470__u1_100 \
+	lin_verst_02__r1_200__rn_100__u1_100 \
+	lin_verst_03__r1_100__rn_470__u1_100 \
+	lin_verst_04__r1_470__rn_100__u1_100 \
+	differentiator \
+	integrator \
+	) \
+)
 
 OUT_DIR = build
 TEX_CMD = latexmk \
@@ -85,7 +93,7 @@ build/umkehr_diff.pdf: anleitung_V51_Operationsverstaerker.pdf | build
 		    -sOutputFile=$@ $<
 		pdfcrop --bbox "0 140 600 295"  $@ $@
 		pdfcrop $@ $@
-		
+
 build/schmitt_trigger.pdf: anleitung_V51_Operationsverstaerker.pdf | build
 		gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
 		    -dFirstPage=9 -dLastPage=9\
@@ -111,6 +119,12 @@ build/tiefpass.pdf: | build
 		#maybe you have to install rsvg-convert with sudo pacman -S librsvg2-bin to convert svg -> pdf
 		wget "https://upload.wikimedia.org/wikipedia/commons/e/e8/Tiefpass.svg" -O build/tiefpass.svg
 		rsvg-convert -f pdf -o $@ build/tiefpass.svg
+
+build/lin_verst_01__r1_200__rn_470__u1_100.pgf build/lin_verst_02__r1_200__rn_100__u1_100.pgf build/lin_verst_03__r1_100__rn_470__u1_100.pgf build/lin_verst_04__r1_470__rn_100__u1_100.pgf: scripts/plot_lin_verst.py data/lin_verst_01__r1_200__rn_470__u1_100.txt data/lin_verst_02__r1_200__rn_100__u1_100.txt data/lin_verst_03__r1_100__rn_470__u1_100.txt data/lin_verst_04__r1_470__rn_100__u1_100.txt | build
+	python $<
+
+build/differentiator.pgf build/integrator.pgf: scripts/plot_int_diff.py data/differentiator.txt data/integrator.txt
+	python $<
 
 FORCE:
 

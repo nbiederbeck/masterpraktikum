@@ -1,0 +1,1 @@
+# R1=0.1kOhm, Rp=9.6kOhm
