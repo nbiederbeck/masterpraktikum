@@ -1,25 +1,40 @@
 \documentclass[preview]{standalone}
 \begin{document}
-
 \begin{tikzpicture}[scale=1, transform shape]
-% Induced Emission
-\draw [thick] (2,8) -- node [above] {Induced emission} (4,8);
-\draw [thick] (2,7) -- (4,7);
-\draw [blue,dashed] (3,7) -- (3,8);
-\draw [red] (2,7.75) -- (3,7.75);
-\draw [red] (3,7.5) -- (4,7.5);
 
-% Spontanous Emission
-\draw [thick] (6,8) -- node [above] {Spontanous emission} (8,8);
-\draw [thick] (6,7) -- (8,7);
-\draw [blue,dashed] (7,7) -- (7,8);
-\draw [red] (7,7.5) -- (8,7.5);
+
+\usetikzlibrary{decorations.pathmorphing}
+
+\tikzset{%
+  photon/.style   = {red,decorate,decoration={snake},->},
+  electron/.style = {blue,dashed,->},
+  border/.style   = {thick},
+}
+
+\coordinate(abs)  at (2,0);  % Absorption
+\coordinate(spon) at (6,0);  % Spontaneous Emission
+\coordinate(ind)  at (10,0); % Induced Emission
 
 % Absorption
-\draw [thick] (10,8) -- node [above] {Absorption} (12,8);
-\draw [thick] (10,7) -- (12,7);
-\draw [blue,dashed] (11,7) -- (11,8);
-\draw [red] (10,7.5) -- (11,7.5);
-\end{tikzpicture}
+\draw[border]   (abs) ++ (0,1) to node[above]{Absorption} ++ (2,0);
+\draw[border]   (abs) to ++ (2,0);
+\draw[electron] (abs) ++ (1,0) to ++ (0,1);
+\draw[photon]   (abs) ++ (0,0.5) to ++ (1,0);
 
+% Spontaneous Emission
+\draw[border]   (spon) ++ (0,1) to node[above]{Spontaneous emission} ++ (2,0);
+\draw[border]   (spon) to ++ (2,0);
+\draw[electron] (spon) ++ (1,1) to ++ (0,-1);
+\draw[photon]   (spon) ++ (1,0.5) to ++ (1,0);
+
+% Induced Emission
+\draw[border]   (ind) ++ (0,1) to node[above]{Induced emission} ++ (2,0);
+\draw[border]   (ind) to ++ (2,0);
+\draw[electron] (ind) ++ (1,1) to ++ (0,-1);
+\draw[photon]   (ind) ++ (0,0.75) to ++ (1,0);
+\draw[photon]   (ind) ++ (1,0.75) to ++ (1,0);
+\draw[photon]   (ind) ++ (1,0.25) to ++ (1,0);
+
+
+\end{tikzpicture}
 \end{document}
