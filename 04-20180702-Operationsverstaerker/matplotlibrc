@@ -17,8 +17,8 @@ pgf.preamble:  \usepackage[locale=DE]{siunitx}
 pgf.texsystem: lualatex
 
 # Optimize Figures automatically
-# figure.figsize:                  4.58, 2.85  # 0.8\textwidth
-figure.figsize:                  5.73, 3.57  # 1.0\textwidth
+figure.figsize:                  4.58, 2.85  # 0.8\textwidth
+# figure.figsize:                  5.73, 3.57  # 1.0\textwidth
 figure.dpi:                      300
 figure.constrained_layout.use:   True
 figure.constrained_layout.h_pad: 0.1

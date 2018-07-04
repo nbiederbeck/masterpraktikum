@@ -37,7 +37,7 @@ def plot(name):
     fig, ax = plt.subplots()
 
     ax.scatter(nu, U_A / U_1, c="C1", marker="x", label="Messwerte")
-    ax.plot(x, fit(x, *par), label="Fit")
+    ax.plot(x, fit(x, *par), label=r"Fit: $V'={}, \nu_G={}$kHz".format(*np.round(par, 3)))
 
     ax.set_xlabel(r"$\nu \:\:/\:\: \si{\kilo\hertz}$")
     # ax.set_ylabel(r"$U_A \:\:/\:\: \si{\milli\volt}$")

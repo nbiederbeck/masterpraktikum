@@ -6,9 +6,15 @@
 4f
 4g
 4h
-% {\lstinputlisting[firstline=1,lastline=1]{build/lin_verst_01__r1_200__rn_470__u1_100.txt}}
-% {\lstinputlisting[firstline=2,lastline=2]{build/lin_verst_01__r1_200__rn_470__u1_100.txt}}
-\subsection{Linearer Verst\"arker}
+\subsection{Linearverst\"arker}
+Der Verstärkungsfaktor $V$ wird gegen die Frequenz $\nu$ in einem doppellogarithmischen Diagramm aufgetragen.
+Es wird ein ein Fit für Tiefpässe berechnet, nach Gleichung~\eqref{eq:h_betrag}:
+\begin{equation}
+  V = \frac{V'}{\sqrt{1 + {\left(\nu RC\right)}^{2}}}
+\end{equation}
+Die Messwerte sind mit dem Fit in den Abbildungen~\ref{fig:lin_verst_01} bis~\ref{fig:lin_verst_04} dargestellt.
+Die vier verschiedenen Konfigurationen sind in den Abbildungsunterschriften zu finden,
+die Grenzfrequenz $\nu_\text{G} = RC$ in der entsprechenden Legende.
 
 \begin{figure}[ht]
   \centering
@@ -37,6 +43,25 @@
   \caption{Linearer Verst\"arker mit $R_1 = \SI{470}{\kilo\ohm}$, $R_N = \SI{100}{\kilo\ohm}$}
   \label{fig:lin_verst_04}
 \end{figure}
+
+Die Abweichung des Verstärkungsfaktors aus dem Fit mit dem Verhältnis $\sfrac{R_N}{R_1}$
+sind
+\begin{align*}
+  \Delta V_{\ref{fig:lin_verst_01}} &= \num{3.444}\% \\
+  \Delta V_{\ref{fig:lin_verst_02}} &= \num{4.417}\% \\
+  \Delta V_{\ref{fig:lin_verst_03}} &= \num{0.118}\% \\
+  \Delta V_{\ref{fig:lin_verst_04}} &= \num{1.536}\%.
+\end{align*}
+Die aus Gleichung~\eqref{eq:v_strich} bestimmten Leerlaufverstärkungen sind
+\begin{align*}
+  V_{\ref{fig:lin_verst_01}} &= \num{65.88} \\
+  V_{\ref{fig:lin_verst_02}} &= \num{10.82} \\
+  V_{\ref{fig:lin_verst_03}} &= \num{-4002.54} \\
+  V_{\ref{fig:lin_verst_04}} &= \num{-14.06}.
+\end{align*}
+
+Es werden die Phasendifferenzen zwischen Ein- und Ausgangsspannung gegen die Frequenz
+in einem halblogarithmischen Diagramm in Abbildung~\ref{fig:phasendiff} aufgetragen.
 
 \begin{figure}[ht]
   \centering

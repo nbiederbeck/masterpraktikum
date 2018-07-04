@@ -1,7 +1,7 @@
 \section{Theorie}\label{sec:theorie}
 Mit dem Operationsverstärker lassen sich Ausgangsspannungen $U_A$
 erzeugen welche in einem Bereich proportional zur Differenz der beiden
-angelegten Eingangsspannungen ist. 
+angelegten Eingangsspannungen ist.
 Ziel des Versuches ist es, verschiedene Schaltungen mittels eines
 Operationsverstärker zu realisieren und die Unterschiede zwischen eines idealen
 und realen Operationsverstärkers zu veranschaulichen.
@@ -17,13 +17,13 @@ und realen Operationsverstärkers zu veranschaulichen.
 		\label{fig:opv}
 \end{wrapfigure}
 In einem Schaltbild wird ein Operationsverstärker durch ein gleichseitiges
-Dreieck gekennzeichnet. 
+Dreieck gekennzeichnet.
 An diesem werden zwei Eingangsspannungen angelegt, wobei die
 Eingangsspannungen $U_\text{p}$ in Phase
 und $U_\text{n}$ in Gegenphase zur Ausgangsspannung
 $U_\text{a}$ ist.
 Der Eingang $U_\text{p}$ wird aufgrund seiner Phasenbeziehung zur Ausgangsspannung
-als nicht-invertierender und $U_\text{n}$ als invertierender Eingang bezeichnet. 
+als nicht-invertierender und $U_\text{n}$ als invertierender Eingang bezeichnet.
 Im linearen Aussteuerungsbereich verstärkert der Operationsverstärker die
 Differenz zwischen den beiden Eingängen mit dem Verstärkungsfaktor $V$ linear
 \begin{equation}
@@ -35,7 +35,7 @@ Sättigungwert strebt.
 Der Verstärkungsfaktor ist durch die Betriebspannung festgelegt
 und bildet den Sättigungswert $\pm U_\text{B}$  des Linearverstärkers.
 In Abbildung \ref{fig:kennlinie} ist eine beispielhafte Kennlinie eines
-Operationsverstärkers zu sehen. 
+Operationsverstärkers zu sehen.
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/aussteuerungsbereich.pdf}
@@ -46,34 +46,34 @@ Für den idealen Operationsverstärker werden die Annahmen getroffen, dass der
 Verstärkungsfaktor $V = \infty$, der Eingangs-Widerstand $r_\text{e} =
 \infty$ und der Ausgangs-Widerstand $r_\text{a} = 0$ ist.
 Die Annahmen des idealen Operationsverstärkers beschreiben aber nur begrenzt
-die Realität, weswegen Korrekturterme eingeführt werden. 
+die Realität, weswegen Korrekturterme eingeführt werden.
 
 \subsection{Realer Operationsverstärker}%
 \label{sub:realer_operationsverstaerker}
 
-Zur Beschreibung eines realen Operationsverstärkers müssen noch Korrekturterme 
-eingeführt werden, welche beim idealen verschwinden. 
+Zur Beschreibung eines realen Operationsverstärkers müssen noch Korrekturterme
+eingeführt werden, welche beim idealen verschwinden.
 Wird auf beiden Eingängen dieselbe Spannung $U_\text{Gl}$ angelegt, so
 verschwindet nach Formel (\ref{eq:diff}) die Ausgangsspannung beim idealen
-Operationsverstärker. 
+Operationsverstärker.
 Beim Realen werden aufgrund von Unsymmetrien dennoch Spannungen gemessen so, dass
-sich die Gleichtaktverstärkung 
+sich die Gleichtaktverstärkung
 \begin{equation}
 		V_\text{Gl} = \frac{\Delta U_\text{A}}{\Delta U_\text{Gl}}
 \end{equation}
 definiert werden kann.
 Ebenso sind die Eingangs-Widerstände endlich, sodass es zu Eingangsströmen auf
 den beiden Eingängen $I_\text{p}$ und $I_\text{n}$ kommt.
-Der Offset-Strom wird als die Differenz beider Ströme definiert 
+Der Offset-Strom wird als die Differenz beider Ströme definiert
 \begin{equation}
 		I_0 = I_\text{p} - I_\text{n}
 \end{equation}
-wenn beide Eingangsspannungen verschwinden. 
+wenn beide Eingangsspannungen verschwinden.
 Der Eingangsruhestrom $I_\text{B}$ ergibt sich aus dem Mittel der beiden Eingangsströme.
 Für den Fall das eine Eingangsspannung $U_{i}$ verschwindet ergibt sich der
 Differenzeingangs-Widerstand $r_\text{D}$ zu
 \begin{equation}
-		r_\text{D} = \frac{\Delta U_\text{i}}{\Delta I_\text{i}} \hspace{2cm} U_\text{j} = 0 
+		r_\text{D} = \frac{\Delta U_\text{i}}{\Delta I_\text{i}} \hspace{2cm} U_\text{j} = 0
 \end{equation}
 wobei $i,j \in p,n$ und $i \neq j$.
 Der Gleichtakt-Eingangswiderstand ist definiert über die Gleichtaktsspannung
@@ -88,7 +88,7 @@ verschoben werden müssen damit die Ausgangsspannung $U_\text{a}$ verschwindet.
 \label{sub:linearverstaerker}
 Aufgrund des schmalen Aussteuerungsberreich sind Linearverstärker passe nur
 begrenzt einsetzbar.
-Zur Verbreiterung des Aussteuerungsbereich der Operationsverstärker mit einem 
+Zur Verbreiterung des Aussteuerungsbereich der Operationsverstärker mit einem
 ein Gegenkopplungzweig beschaltet.
 \begin{figure}[h]
 		\centering
@@ -97,7 +97,7 @@ ein Gegenkopplungzweig beschaltet.
 		\label{fig:lin}
 \end{figure}
 Dabei wird ein Teil der Ausgangsspannung über den Widerstand $R_\text{n}$ über
-den Gegenkopplungszweig zum invertierten Eingang zurück gegeben. 
+den Gegenkopplungszweig zum invertierten Eingang zurück gegeben.
 Dadurch lässt sich eine Zunahme des Aussteuerungsberreich erreichen, wobei die
 Gesamtverstärkung $V'$ abnimmt.
 Bei großen Leerlaufverstärkungen ist die Spannung $U_\text{n}$ gering, sodass
@@ -105,27 +105,28 @@ sich nach dem ersten Kirchhoff'schen Gesetz für den Knoten A
 \begin{equation}
 		\frac{U_1}{R_1} + \frac{U_\text{A}}{R_\text{n}} = 0
 \end{equation}
-der Strom Verschwinden muss. 
+der Strom Verschwinden muss.
 Aus dem Verhältnis der Eingangs $U_1$ zur Ausgangsspannung $U_\text{A}$ ergibt
 sich der Verstärkungsfaktor.
 \begin{equation}
 		V' = - \frac{R_\text{N}}{R_1}
 \end{equation}
 Die Verstärkung ist im Idealfall nur von dem Verhältnis der beiden
-Widerstände abhängig. 
+Widerstände abhängig.
 Im real Fall besehen noch Abhängigkeit zwischen der Leerlaufverstärkung, den
-Eingangs- und Ausgangs-Widerständen usw. 
+Eingangs- und Ausgangs-Widerständen usw.
 Für einen unbelasteten Spannungsteiler ($I_\text{n} = 0$) gilt dass bei einem
 endlichen Leerlaufverstärkungsfaktor
 \begin{equation}
-		U_\text{N} = \frac{U_\text{A}}{V}	
+		U_\text{N} = \frac{U_\text{A}}{V}
 \end{equation}
 Anhand der 1 Kirchhoff'schen Regel gilt für den Punkt $A$
 \begin{equation}
 		\frac{U_\text{N}-U_1}{U_\text{a}-U_1} = \frac{R_1}{R_1 + R_n}
 \end{equation}
-Daraus resultiert für den Verstärkungsfaktor 
+Daraus resultiert für den Verstärkungsfaktor
 \begin{equation}
+  \label{eq:v_strich}
 		\frac{1}{V'}= - \frac{U_1}{U_\text{A}} = \frac{1}{V} +
 		\frac{R_1}{R_\text{N}} \left( a + \frac{1}{V} \right) \approx
 		\frac{1}{V} + \frac{R_1}{R_\text{N}}
@@ -163,7 +164,7 @@ Eine charakteristische Bandbreite eines Operationsverstärkers ist in Abbildung
 
 Der Verstärkungsfaktor des Operationsverstärkers aufgetragen gegen die Frequenz bildet ein typischen
 Tiefpass.
-Bei diesem werden hohe Frequenzen stark gedämpft. 
+Bei diesem werden hohe Frequenzen stark gedämpft.
 Beispielhaft ist in Abbildung \ref{fig:tiefpass} ein Tiefpass erster Ordnung
 dargestellt.
 \begin{figure}[h]
@@ -173,18 +174,18 @@ dargestellt.
 		\label{fig:tiefpass}
 \end{figure}
 Unter Berücksichtigung der Maschenregel lässt sich der Verstärkungs- bzw.
-Dämpfungs-Faktor des Tiefpass ausdrücken. 
+Dämpfungs-Faktor des Tiefpass ausdrücken.
 Dazu wird das Verhältnis aus $U_a$ zu $U_e$ gebildet woraus sich der
 Blindwiderstand $H$ ergibt.
 \begin{equation}
 		\label{eq:blindwiederstand}
-		H = \frac{Z_\text{C}}{Z_\text{C} + R} 
+		H = \frac{Z_\text{C}}{Z_\text{C} + R}
 \end{equation}
 Der Blindwiderstand $H$ ist eine Funktion der Wechselspannungfrequenz $\omega$
-und dessen Realteil entspricht 
+und dessen Realteil entspricht
 \begin{align}
 		\label{eq:h_betrag}
-		\Re(H(\omega))  &= \Re \left(\frac{\sfrac{1}{j \omega C}}{\sfrac{1}{j\omega 
+		\Re(H(\omega))  &= \Re \left(\frac{\sfrac{1}{j \omega C}}{\sfrac{1}{j\omega
 		C} + R} \right) \\
 								 &= \frac{1}{\sqrt{1 + (\omega CR)^2}}
 \end{align}
@@ -222,7 +223,7 @@ der Zeit.
 		U_\text{A}(t) &= - \frac{1}{RC} \int U_\text{1}(t) \, dt \\
 				   &= \frac{U_0}{\omega R C} \cos (\omega t)
 \end{align}
-Für eine sinusförmige Eingangsspannung fällt die Verstärkung daher linear mit 
+Für eine sinusförmige Eingangsspannung fällt die Verstärkung daher linear mit
 der Frequenz.
 Im allgemeinen können beliebig Funktionen integriert werden, wobei es bei
 Unstetigkeiten zu Überschwingungen kommen kann (Gibbs'sches Phänomen).
@@ -258,13 +259,13 @@ Eingangsspannung linear mit der Frequenz.
 
 Beim Schmitt-Trigger wird ein Teil der Ausgangsspannung auf den nicht
 invertierten Eingang zurück gegeben.
-Es lässt sich für den Knoten vor dem rückgekoppelten Eingang die Gleichung 
+Es lässt sich für den Knoten vor dem rückgekoppelten Eingang die Gleichung
 \begin{equation}
 		\frac{U_1}{R_1} + \frac{U_\text{A}}{R_\text{p}} = 0
 \end{equation}
 aufstellen.
 Sobald die Ausgangsspannung $U_\text{A}$ den Sättigungswert $U_\text{B}$ erreicht kommt es zur
-Verstärkung wenn 
+Verstärkung wenn
 \begin{equation}
 		\label{eq:schmitt}
 		U_1 > \frac{R_1}{R_\text{P}} U_\text{B} \ .
@@ -285,7 +286,7 @@ Signalverstärkung genutzt.
 Durch das Betreiben des Schmitt-Triggers mit einer Sinus-Spannung wird bei
 entsprechender Wahl der Widerstände am Ausgang ein Rechtecksignal erzeugt.
 Der Ausgang des Schmitt-Triggers wird auf den Eingang eines daran anschließenden
-Integrator gelegt. 
+Integrator gelegt.
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.8\linewidth]{build/dreiecksgen.pdf}
@@ -329,9 +330,9 @@ Rückstellkraft beschrieben werden kann,
 		\frac{d^2 U_\text{A}}{dt^2} - \frac{\eta}{10 R C} \frac{d
 		U_\text{A}}{dt} + \frac{1}{(RC)^2} U_\text{A} = 0
 \end{equation}
-dessen Lösung 
+dessen Lösung
 \begin{equation}
-		U_\text{A}(t) = U_0 \exp \left( \frac{\eta t}{20 RC} \right) 
+		U_\text{A}(t) = U_0 \exp \left( \frac{\eta t}{20 RC} \right)
 		\sin \left(\frac{t}{RC}\right)
 \end{equation}
 ist.
