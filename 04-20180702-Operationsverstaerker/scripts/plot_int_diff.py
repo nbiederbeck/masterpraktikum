@@ -4,31 +4,40 @@ from scipy.optimize import curve_fit
 import pandas as pd
 
 
+def fit(x, m, b):
+    return np.exp(np.log(x) * m + b)
+
+
 def plot(name):
     U_A, U_1, nu = np.genfromtxt(name, unpack=True)
+    # nu *= 1000
+    U_A /= 1000  # von milliVolt in Volt
 
     df = pd.DataFrame({
         r"{$\nu \:\:/\:\: \si{\kilo\hertz}$}": nu,
         r"{$U_1 \:\:/\:\: \si{\milli\volt}$}": U_1,
-        r"{$U_A \:\:/\:\: \si{\milli\volt}$}": U_A,
+        r"{$U_A \:\:/\:\: \si{\volt}$}": U_A,
     })
 
     with open(name.replace("data", "build").replace(".txt", "_data.tex"), "w") as ofile:
         df.to_latex(ofile, index=False, column_format="S S S", escape=False)
 
-    x = np.linspace(np.min(nu), np.max(nu))
+    x = np.linspace(np.min(nu), np.max(nu), 1001)
+
+    par, cov = curve_fit(fit, nu, U_A)
+
+    with open(name.replace("data", "build").replace("txt", "tex"), "w") as ofile:
+        for n, p, c in zip(["m", "b"], par, np.sqrt(np.diag(cov))):
+            print("{}: {} \\pm {}".format(n, np.round(p, 3), np.round(c, 3)), file=ofile)
+            print("{}: {} \\pm {}".format(n, np.round(p, 3), np.round(c, 3)))
 
     fig, ax = plt.subplots()
-    scale = 0.8
-    fig.set_size_inches(
-        scale * fig.get_figwidth(), scale * fig.get_figheight()
-    )
 
     ax.scatter(nu, U_A, c="C1", marker="x", label="Messwerte")
-    # ax.plot(x, fit(x, *par), label="Fit")
+    ax.plot(x, fit(x, *par), label="Fit")
 
     ax.set_xlabel(r"$\nu \:\:/\:\: \si{\kilo\hertz}$")
-    ax.set_ylabel(r"$U_A \:\:/\:\: \si{\milli\volt}$")
+    ax.set_ylabel(r"$U_A \:\:/\:\: \si{\volt}$")
     # ax.set_ylabel(r"$V$")
 
     ax.set_xscale("log")

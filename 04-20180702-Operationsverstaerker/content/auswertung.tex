@@ -1,5 +1,11 @@
 \section{Auswertung}%
 \label{sec:auswertung}
+4a,j
+4b
+4d, 4e
+4f
+4g
+4h
 % {\lstinputlisting[firstline=1,lastline=1]{build/lin_verst_01__r1_200__rn_470__u1_100.txt}}
 % {\lstinputlisting[firstline=2,lastline=2]{build/lin_verst_01__r1_200__rn_470__u1_100.txt}}
 \subsection{Linearer Verst\"arker}
@@ -32,7 +38,14 @@
   \label{fig:lin_verst_04}
 \end{figure}
 
-\subsection{Integrator}
+\begin{figure}[ht]
+  \centering
+  \input{build/phases.pgf}
+  \caption{Phasendifferenz der Ein- und Ausgangsspannung aller Verstärker.}
+  \label{fig:phasendiff}
+\end{figure}
+
+\subsection{Umkehrintegrator}
 \begin{figure}[ht]
   \centering
   \input{build/integrator.pgf}
@@ -56,14 +69,14 @@
   \begin{subfigure}[]{\textwidth}
     \centering
     \includegraphics[height=0.3\textheight]{data/scope_264.png}
-    \caption{Integration einer Dreiecksspannung.}
+    \caption{Integration einer Dreieckspannung.}
     \label{subfig:int_dreieck}
   \end{subfigure}
   \caption{Aufnahmen des Oszilloskops von verschiedenen Integrationen.}
   \label{fig:integrationen}
 \end{figure}
 
-\subsection{Differentiator}
+\subsection{Umkehrdifferentiator}
 \begin{figure}[ht]
   \centering
   \input{build/differentiator.pgf}
@@ -87,7 +100,7 @@
   \begin{subfigure}[]{\textwidth}
     \centering
     \includegraphics[height=0.3\textheight]{data/scope_267.png}
-    \caption{Differentiation einer Dreiecksspannung.}
+    \caption{Differentiation einer Dreieckspannung.}
     \label{subfig:dif_dreieck}
   \end{subfigure}
   \caption{Aufnahmen des Oszilloskops von verschiedenen Differentiationen.}
@@ -97,12 +110,23 @@
 \subsection{Schmitt-Trigger}
 \begin{figure}[ht]
   \centering
-  \includegraphics[height=0.3\textheight]{data/scope_268.png}
+  \begin{subfigure}{\textwidth}
+    \centering
+    \includegraphics[height=0.3\textheight]{data/scope_268.png}
+    \caption{Aufnahmen des Oszilloskops.}
+    \label{fig:schmitt_osz}
+  \end{subfigure}
+  \begin{subfigure}{\textwidth}
+    \centering
+    \input{build/schmitt.pgf}
+    \caption{Oszilloskopdaten mit markierter Schwelle der Sinuseingangsspannung.}
+    \label{fig:schmitt_plot}
+  \end{subfigure}
   \caption{Name}
   \label{fig:schmitt}
 \end{figure}
 
-\subsection{Dreiecksgenerator}
+\subsection{Dreieckgenerator}
 \begin{figure}[ht]
   \centering
   \includegraphics[height=0.3\textheight]{data/scope_271.png}
@@ -113,7 +137,18 @@
 \subsection{Ged\"ampfte Schwingung}
 \begin{figure}[ht]
   \centering
-  \includegraphics[height=0.3\textheight]{data/scope_275.png}
+  \begin{subfigure}{\textwidth}
+    \centering
+    \includegraphics[height=0.3\textheight]{data/scope_275.png}
+    \caption{Aufnahmen des Oszilloskops.}
+    \label{fig:}
+  \end{subfigure}
+  \begin{subfigure}{\textwidth}
+    \centering
+    \input{build/gedaempfte_schwingung.pgf}
+    \caption{Oszilloskopdaten mit Fit.}
+    \label{fig:}
+  \end{subfigure}
   \caption{Name}
   \label{fig:gedaempft}
 \end{figure}
