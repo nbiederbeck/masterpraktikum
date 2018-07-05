@@ -1,11 +1,5 @@
 \section{Auswertung}%
 \label{sec:auswertung}
-4a,j
-4b
-4d, 4e
-4f
-4g
-4h
 \subsection{Linearverst\"arker}
 Der Verstärkungsfaktor $V$ wird gegen die Frequenz $\nu$ in einem doppellogarithmischen Diagramm aufgetragen.
 Es wird ein ein Fit für Tiefpässe berechnet, nach Gleichung~\eqref{eq:h_betrag}:
@@ -14,7 +8,7 @@ Es wird ein ein Fit für Tiefpässe berechnet, nach Gleichung~\eqref{eq:h_betrag
 \end{equation}
 Die Messwerte sind mit dem Fit in den Abbildungen~\ref{fig:lin_verst_01} bis~\ref{fig:lin_verst_04} dargestellt.
 Die vier verschiedenen Konfigurationen sind in den Abbildungsunterschriften zu finden,
-die Grenzfrequenz $\nu_\text{G} = RC$ in der entsprechenden Legende.
+die Grenzfrequenz $\nu_\text{G} = RC$ und der Verstärkungsfaktor $V'$ in der entsprechenden Legende.
 
 \begin{figure}[ht]
   \centering
@@ -62,6 +56,7 @@ Die aus Gleichung~\eqref{eq:v_strich} bestimmten Leerlaufverstärkungen sind
 
 Es werden die Phasendifferenzen zwischen Ein- und Ausgangsspannung gegen die Frequenz
 in einem halblogarithmischen Diagramm in Abbildung~\ref{fig:phasendiff} aufgetragen.
+Es ist zu erkennen, dass bei der Grenzfrequenz $\nu_\text{G}$ auch die Phasendifferenz abnimmt.
 
 \begin{figure}[ht]
   \centering
@@ -70,69 +65,72 @@ in einem halblogarithmischen Diagramm in Abbildung~\ref{fig:phasendiff} aufgetra
   \label{fig:phasendiff}
 \end{figure}
 
+\FloatBarrier
 \subsection{Umkehrintegrator}
+Ein Umkehrintegrator wird mit den Bauteilen $R = \SI{9.6}{\kilo\ohm}$ und $C = \SI{20.8}{\nano\farad}$ bestückt.
+Es werden die Eingangsspannungen Sinus-, Dreieck-, und Rechteckspannung integriert und die Oszilloskopaufnahmen in den Abbildungen~\ref{subfig:int_sinus} bis~\ref{subfig:int_dreieck} dargestellt.
+
+Da
+\begin{align*}
+  U_\text{A} &\propto \frac{U_0}{\omega}
+\end{align*}
+gilt (vgl.\ Gleichung~\eqref{eq:integrator}),
+wird ein linearer Fit der Form
+\begin{align*}
+  \exp{\left(\log{\left(x\right)} \cdot m + b\right)}
+\end{align*}
+berechnet und in einem doppellogarithmisches Diagramm in Abbildung~\ref{fig:int} aufgetragen.
+Die Fitparameter ergeben sich zu
+\begin{align*}
+  m &= \SI{-0.952 \pm 0.012}{\volt\per\kilo\hertz} \\
+  b &= \SI{-1.42 \pm 0.052}{\volt}.
+\end{align*}
+
 \begin{figure}[ht]
   \centering
   \input{build/integrator.pgf}
-  \caption{}
+  \caption{Linearer Fit der frequenzabhängigen Ausgangsspannung des Integrators.}
   \label{fig:int}
-\end{figure}
-\begin{figure}[ht]
-  \centering
-  \begin{subfigure}[]{\textwidth}
-    \centering
-    \includegraphics[height=0.3\textheight]{data/scope_262.png}
-    \caption{Integration einer Sinusspannung.}
-    \label{subfig:int_sinus}
-  \end{subfigure}
-  \begin{subfigure}[]{\textwidth}
-    \centering
-    \includegraphics[height=0.3\textheight]{data/scope_263.png}
-    \caption{Integration einer Rechteckspannung.}
-    \label{subfig:int_rechteck}
-  \end{subfigure}
-  \begin{subfigure}[]{\textwidth}
-    \centering
-    \includegraphics[height=0.3\textheight]{data/scope_264.png}
-    \caption{Integration einer Dreieckspannung.}
-    \label{subfig:int_dreieck}
-  \end{subfigure}
-  \caption{Aufnahmen des Oszilloskops von verschiedenen Integrationen.}
-  \label{fig:integrationen}
 \end{figure}
 
 \subsection{Umkehrdifferentiator}
+Ein Umkehrdifferentiator wird ebenfalls mit den Bauteilen $R = \SI{9.6}{\kilo\ohm}$ und $C = \SI{20.8}{\nano\farad}$ bestückt.
+Es werden die Eingangsspannungen Sinus-, Dreieck-, und Rechteckspannung differentiert und die Oszilloskopaufnahmen in den Abbildungen~\ref{subfig:dif_sinus} bis~\ref{subfig:dif_dreieck} dargestellt.
+
+Im Falle des Umkehrdifferentiators gilt
+\begin{align*}
+  U_\text{A} &\propto {U_0} \cdot {\omega}
+\end{align*}
+(vgl.\ Gleichung~\eqref{eq:differentiator}).
+Es wird ein linearer Fit der Form
+\begin{align*}
+  \exp{\left(\log{\left(x\right)} \cdot m + b\right)}
+\end{align*}
+berechnet und in einem doppellogarithmisches Diagramm in Abbildung~\ref{fig:int} aufgetragen.
+Die Fitparameter ergeben sich zu
+\begin{align*}
+  m &= \SI{1.041 \pm 0.019}{\volt\per\kilo\hertz} \\
+  b &= \SI{-0.824 \pm 0.011}{\volt} .
+\end{align*}
 \begin{figure}[ht]
   \centering
   \input{build/differentiator.pgf}
-  \caption{}
+  \caption{Linearer Fit der frequenzabhängigen Ausgangsspannung des Differentiators.}
   \label{fig:dif}
-\end{figure}
-\begin{figure}[ht]
-  \centering
-  \begin{subfigure}[]{\textwidth}
-    \centering
-    \includegraphics[height=0.3\textheight]{data/scope_265.png}
-    \caption{Differentiation einer Sinusspannung.}
-    \label{subfig:dif_sinus}
-  \end{subfigure}
-  \begin{subfigure}[]{\textwidth}
-    \centering
-    \includegraphics[height=0.3\textheight]{data/scope_266.png}
-    \caption{Differentiation einer Rechteckspannung.}
-    \label{subfig:dif_rechteck}
-  \end{subfigure}
-  \begin{subfigure}[]{\textwidth}
-    \centering
-    \includegraphics[height=0.3\textheight]{data/scope_267.png}
-    \caption{Differentiation einer Dreieckspannung.}
-    \label{subfig:dif_dreieck}
-  \end{subfigure}
-  \caption{Aufnahmen des Oszilloskops von verschiedenen Differentiationen.}
-  \label{fig:integrationen}
 \end{figure}
 
 \subsection{Schmitt-Trigger}
+Es wird ein Schmitt-Trigger mit $R_1 = \SI{0.1}{\kilo\ohm}$ und $R_\text{P} = \SI{9.6}{\kilo\ohm}$ realisiert.
+In Abbildung~\ref{fig:schmitt} ist die Oszilloskopaufnahme des Schmitt-Triggers dargestellt.
+Die Sinusspannung beim Triggerpunkt, markiert mit einem \enquote{x}, beträgt
+\begin{align*}
+  U_\text{Exp.} &= \SI{0.143}{\volt}, \\
+  \intertext{es wird}
+  U_\text{Theo.} &= U_B \cdot \frac{R_1}{R_\text{P}} = \SI{1.53}{\volt} \\
+  \intertext{mit $U_B = \SI{14.7}{\volt}$ erwartet. Dies ergibt eine relative Abweichung von}
+  \Delta U_\text{Schmitt} &= \SI{6.536}{\percent}.
+\end{align*}
+
 \begin{figure}[ht]
   \centering
   \begin{subfigure}{\textwidth}
@@ -147,33 +145,65 @@ in einem halblogarithmischen Diagramm in Abbildung~\ref{fig:phasendiff} aufgetra
     \caption{Oszilloskopdaten mit markierter Schwelle der Sinuseingangsspannung.}
     \label{fig:schmitt_plot}
   \end{subfigure}
-  \caption{Name}
+  \caption{Messwerte des Schmitt-Triggers.}
   \label{fig:schmitt}
 \end{figure}
 
 \subsection{Dreieckgenerator}
+Ein Dreieckgenerator wird mit den Bauteilen
+$C = \SI{20.8}{\nano\farad}$,
+$R_1 = \SI{0.1}{\kilo\ohm}$,
+$R_\text{P} = \SI{1}{\kilo\ohm}$,
+$R = \SI{30.2}{\kilo\ohm}$
+gebaut.
+In Abbildung~\ref{fig:dreieck_generator} wird ein Foto des Oszilloskops dargestellt.
 \begin{figure}[ht]
   \centering
   \includegraphics[height=0.3\textheight]{data/scope_271.png}
-  \caption{Name}
+  \caption{Oszilloskopaufnahme des Dreieckgenerators.}
   \label{fig:dreieck_generator}
 \end{figure}
 
+Die Frequenz und Amplitude der Dreieckspannung sind
+\begin{align*}
+  \nu &= \SI{1.99}{\kilo\hertz} \\
+  A &= \SI{1.37}{\volt}.
+\end{align*}
+
 \subsection{Ged\"ampfte Schwingung}
+% =================================
+
 \begin{figure}[ht]
   \centering
   \begin{subfigure}{\textwidth}
     \centering
     \includegraphics[height=0.3\textheight]{data/scope_275.png}
-    \caption{Aufnahmen des Oszilloskops.}
-    \label{fig:}
+    \caption{Aufnahmen des Oszilloskops.}%
+    \label{fig:gedaempft_oszilloskop}
   \end{subfigure}
   \begin{subfigure}{\textwidth}
     \centering
     \input{build/gedaempfte_schwingung.pgf}
-    \caption{Oszilloskopdaten mit Fit.}
-    \label{fig:}
+    \caption{Oszilloskopdaten mit Fit.}%
+    \label{fig:gedaempft_fit}
   \end{subfigure}
-  \caption{Name}
+  \caption{Messwerte und Fit der gedämpften Schwingung.}%
   \label{fig:gedaempft}
 \end{figure}
+
+Die Betriebsspannung wird auf $U_B = \pm \SI{1.95}{\volt}$ gestellt.
+Die gedämpfte Schwingung ist in Abbildung~\ref{fig:gedaempft} dargestellt.
+Es wird ein linearer Fit der Form
+\begin{equation}
+  % U = \log{\left(x\right)} \cdot m + b
+U = U_0 \cdot \exp{\left(\frac{-t}{\tau}\right)} \cdot \sin{\left(t \cdot \omega  + \phi\right)} + b
+\end{equation}
+in einem logarithmischen Diagramm (vgl.~\ref{fig:gedaempft_fit}) aufgetragen.
+Die Parameter des Fits sind
+\begin{align*}
+  U_0 &= \SI{-0.463 \pm 0.005}{\volt} \\
+  \omega &= \SI{4260.068 \pm 2.527}{\kilo\hertz} \\
+  \tau &= \SI{0.005 \pm 0.0}{\second} \\
+  b &= \SI{-0.023 \pm 0.0}{\volt} \\
+  \phi &= \si{-8.075 \pm 0.01}.
+\end{align*}

@@ -187,9 +187,9 @@ und dessen Realteil entspricht
 		\label{eq:h_betrag}
 		\Re(H(\omega))  &= \Re \left(\frac{\sfrac{1}{j \omega C}}{\sfrac{1}{j\omega
 		C} + R} \right) \\
-								 &= \frac{1}{\sqrt{1 + (\omega CR)^2}}
+    &= \frac{1}{\sqrt{1 + (\omega CR)^2}} \label{eq:tiefpass}
 \end{align}
-dem 'Ersatzwiderstand'.
+dem \enquote{Ersatzwiderstand}.
 Für Frequenzen $w > \sfrac{1}{RC}$ wird die Eingangsspannung stark gedämpft und bildet
 die abfallende Flanke in Abbildung \ref{fig:freq}.
 
@@ -221,7 +221,7 @@ Sinusförmig $U_1(t)= U_0 \cos(\omega t)$) ergibt sich die Integration der Einga
 der Zeit.
 \begin{align}
 		U_\text{A}(t) &= - \frac{1}{RC} \int U_\text{1}(t) \, dt \\
-				   &= \frac{U_0}{\omega R C} \cos (\omega t)
+                  &= \frac{U_0}{\omega R C} \cos (\omega t) \label{eq:integrator}
 \end{align}
 Für eine sinusförmige Eingangsspannung fällt die Verstärkung daher linear mit
 der Frequenz.
@@ -249,7 +249,7 @@ Durch umstellen und einmaliges differenzieren ergibt sich beispielsweise für
 eine sinusförmige Eingangsspannung $U_1(t)$.
 \begin{align}
 		U_\text{A}(t) &= - RC \frac{dU_1(t)}{dt} \\
-				   &= - \omega R C U_0 \cos(\omega t)
+                  &= - \omega R C U_0 \cos(\omega t) \label{eq:differentiator}
 \end{align}
 Beim Differenzieren wächst die Verstärkung bei einer sinusförmigen
 Eingangsspannung linear mit der Frequenz.
@@ -333,7 +333,7 @@ Rückstellkraft beschrieben werden kann,
 dessen Lösung
 \begin{equation}
 		U_\text{A}(t) = U_0 \exp \left( \frac{\eta t}{20 RC} \right)
-		\sin \left(\frac{t}{RC}\right)
+    \sin \left(\frac{t}{RC}\right) \label{eq:tau}
 \end{equation}
 ist.
 Die Schwingungsdauer $T$ kann dem Sinus- und die Abklingdauer $\tau$ kann dem

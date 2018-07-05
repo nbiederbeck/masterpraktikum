@@ -28,13 +28,17 @@ def plot(name):
 
     x = np.linspace(np.min(nu), np.max(nu), 1001)
 
-    par, cov = curve_fit(fit, nu, U_A / U_1, p0=[rn / r1, 0.1])
+    par, cov = curve_fit(fit, nu, U_A / U_1, p0=[rn / r1, 1])
     V_ = par[0]
 
     rel_diff_V = np.abs(np.round(((V_ - (rn / r1)) / (rn / r1) * 100), 3))
-    V = 1.0 / (1.0 / V_ - r1 / rn)
+    V = 1.0 / ((1.0 / V_) - (r1 / rn))
+
+    print(r"V \cdot \nu_G = {}".format(V_ * par[1]))
 
     fig, ax = plt.subplots()
+    scale = 1.0
+    fig.set_size_inches(fig.get_figwidth() * scale, fig.get_figheight() * scale)
 
     ax.scatter(nu, U_A / U_1, c="C1", marker="x", label="Messwerte")
     ax.plot(x, fit(x, *par), label=r"Fit: $V'={}, \nu_G={}$kHz".format(*np.round(par, 3)))

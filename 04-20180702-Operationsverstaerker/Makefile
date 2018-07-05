@@ -123,10 +123,10 @@ build/tiefpass.pdf: | build
 		wget "https://upload.wikimedia.org/wikipedia/commons/e/e8/Tiefpass.svg" -O build/tiefpass.svg
 		rsvg-convert -f pdf -o $@ build/tiefpass.svg
 
-build/lin_verst_01__r1_200__rn_470__u1_100.pgf build/lin_verst_02__r1_200__rn_100__u1_100.pgf build/lin_verst_03__r1_100__rn_470__u1_100.pgf build/lin_verst_04__r1_470__rn_100__u1_100.pgf: scripts/plot_lin_verst.py data/lin_verst_01__r1_200__rn_470__u1_100.txt data/lin_verst_02__r1_200__rn_100__u1_100.txt data/lin_verst_03__r1_100__rn_470__u1_100.txt data/lin_verst_04__r1_470__rn_100__u1_100.txt | build
+build/lin_verst_01__r1_200__rn_470__u1_100.pgf build/lin_verst_02__r1_200__rn_100__u1_100.pgf build/lin_verst_03__r1_100__rn_470__u1_100.pgf build/lin_verst_04__r1_470__rn_100__u1_100.pgf build/phases.pgf: scripts/plot_lin_verst.py data/lin_verst_01__r1_200__rn_470__u1_100.txt data/lin_verst_02__r1_200__rn_100__u1_100.txt data/lin_verst_03__r1_100__rn_470__u1_100.txt data/lin_verst_04__r1_470__rn_100__u1_100.txt | build
 	python $<
 
-build/differentiator.pgf build/integrator.pgf build/phases.pgf: scripts/plot_int_diff.py data/differentiator.txt data/integrator.txt | build
+build/differentiator.pgf build/integrator.pgf: scripts/plot_int_diff.py data/differentiator.txt data/integrator.txt | build
 	python $<
 
 build/gedaempfte_schwingung.pgf: scripts/plot_gedaempfte_schwingung.py data/scope_274.csv | build
