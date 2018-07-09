@@ -10,8 +10,8 @@
 \end{wrapfigure}
 For further observation with a laser, you have to adjust it first. 
 First thing to do is to calibrate the current to achieve population inversion. 
-For making the laser light visible the laser is pointed to a businesscardholder
-which is filmed by a ccd sensor.
+For making the laser light visible the laser is pointed to a IR Card 
+which is filmed by a charge coupled device (ccd sensor).
 To achieve the minimal current to lase by induced emission, alternately the head
 knob and side knob positions are optimized.
 Every time stimulated emission is produced, the laser current is reduced a
@@ -51,7 +51,7 @@ By moving both knobs over full range, no more flashes can be generated.
 \label{sub:anregen_rubidium}
 
 To stimulate the rubidium gas the beam has to pass the chamber, that no
-light is sprinkled at the border of the chamber. 
+light is at the border of the chamber. 
 Figure~\ref{fig:hole_emission} shows how the measuring instruments have to be
 arranged to measure the light intensity.
 \begin{figure}[h]
@@ -64,14 +64,17 @@ arranged to measure the light intensity.
 A photo diode is placed behind the Rb-cell to measure the laser light which
 passes the cell.
 The voltage of the photo diode is increased and shown on an oscilloscope. 
-The side knob has to be calibrated to attain the right frequency for stimulating
-the gas. 
+With the side knob the grating lattice can be rotated to change frequence of the
+cavity to attain the right frequency for stimulating the gas.
 A grating is put into the beam to reduce the contrast so that the beam angle
 can be seen with the help of a ccd camera. 
 If in the camera a small beam is visible, searched frequency is be found. 
-The middle beam of side knob variation should be chosen because it has the
-strongest gain.
-An example for fluorescing rubidium is shown in figure~\ref{fig:ionized}.
+% Da der Resonator mehrere Moden besitzt werden die Eigenfrequenzen des
+% Resonators gesucht bei dem das Gas stimuliert wird und die mittlere der
+% Frequenen gewählt, da diese die größte Verstärkung besitzt.
+There can be differerent eigenfrequencies generated in the spectrum of the
+cavity to produce stimulated emission.
+The middle one is chosen because it has the strongest gain.
 \begin{figure}[h]
 		\centering
 		\includegraphics[width=0.4\linewidth]{./content/pictures/fluorescence.jpg}
@@ -79,12 +82,14 @@ An example for fluorescing rubidium is shown in figure~\ref{fig:ionized}.
 				\SI{69.9}{\milli\ampere} laser current.}%
 		\label{fig:ionized}
 \end{figure}
+An example for fluorescing rubidium is shown in figure~\ref{fig:ionized}.
 After the rubidium is fluoresced, the goal is to measure the absorption spectrum. 
 
 \subsection{Absorption spectrum}%
 \label{sub:absorbtion_spectrum}
-
-An absorption spectrum is dependent from the frequency. 
+% Um die Resonanzstellen des Gases zu treffen muess der Resonator durchgestimmt
+% werden.
+To find resonanz of the gas, the cavity modes has to be tuned. 
 To achieve a variation in frequency a piezo element is used. 
 The piezo element is at the diffraction grating to variate the length of the
 external cavity. 
@@ -114,7 +119,9 @@ transmission can be plotted.
 \end{figure}
 In figure~\ref{fig:piezotest} the yellow line shows the voltage at the piezo
 element which causes frequency variation proportional to voltage.
-The green line is photon stream. 
+% Die grüne linie ist der gemessene Photonenfluss. Dieser ist proportinal zum
+% Absorptionsspektrum eines mit photonen beschossenen Objektes.
+The green line is the measured photon stream. 
 Hops in the photon stream are horizontal modes caused by the piezo element.
 They are of no further interest.
 Mode hopping can be reduced by modulation with the piezo voltage. 
