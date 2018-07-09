@@ -2,12 +2,14 @@
 \label{sec:auswertung}
 \subsection{Linearverst\"arker}
 Der Verstärkungsfaktor $V$ wird gegen die Frequenz $\nu$ in einem doppellogarithmischen Diagramm aufgetragen.
-Es wird ein ein Fit für Tiefpässe berechnet, nach Gleichung~\eqref{eq:h_betrag}:
+Es wird ein ein Fit den Verstärkungsfaktor für Tiefpässe berechnet, nach Gleichung~\eqref{eq:h_betrag}:
 \begin{equation}
   V = \frac{a}{\sqrt{1 + {\left(\nu RC\right)}^{2}}} + c
 \end{equation}
-Die Messwerte sind mit dem Fit in den Abbildungen~\ref{fig:lin_verst_01} bis~\ref{fig:lin_verst_04} dargestellt.
-Die vier verschiedenen Konfigurationen sind in den Abbildungsunterschriften zu finden,
+Die Messwerte der Verstärkungsfaktoren in Abhängigkeit der Frequenz
+sind mit dem Fit in den Abbildungen~\ref{fig:lin_verst_01} bis~\ref{fig:lin_verst_04} dargestellt.
+Die vier verschiedenen Konfigurationen der beiden Widerstände (vgl. Abbildung~\ref{fig:lin})
+sind in den Abbildungsunterschriften zu finden,
 die Grenzfrequenz $\nu_\text{G} = RC$ und der Verstärkungsfaktor $V' = a + c$ in der entsprechenden Legende.
 
 \begin{figure}[ht]
@@ -56,7 +58,7 @@ Die aus Gleichung~\eqref{eq:v_strich} bestimmten Leerlaufverstärkungen sind
 
 Es werden die Phasendifferenzen zwischen Ein- und Ausgangsspannung gegen die Frequenz
 in einem halblogarithmischen Diagramm in Abbildung~\ref{fig:phasendiff} aufgetragen.
-Es ist zu erkennen, dass bei der Grenzfrequenz $\nu_\text{G}$ auch die Phasendifferenz abnimmt.
+Es ist zu erkennen, dass bei der Grenzfrequenz $\nu_\text{G}$ sowohl die Ausgangsspannung als auch die Phasendifferenz abnimmt.
 
 \begin{figure}[ht]
   \centering
@@ -67,7 +69,7 @@ Es ist zu erkennen, dass bei der Grenzfrequenz $\nu_\text{G}$ auch die Phasendif
 
 \FloatBarrier
 \subsection{Umkehrintegrator}
-Ein Umkehrintegrator wird mit den Bauteilen $R = \SI{9.6}{\kilo\ohm}$ und $C = \SI{20.8}{\nano\farad}$ bestückt.
+Ein Umkehrintegrator wird mit den Bauteilen $R = \SI{9.6}{\kilo\ohm}$ und $C = \SI{20.8}{\nano\farad}$ beschaltet.
 Es werden die Eingangsspannungen Sinus-, Dreieck-, und Rechteckspannung integriert und die Oszilloskopaufnahmen in den Abbildungen~\ref{subfig:int_sinus} bis~\ref{subfig:int_dreieck} dargestellt.
 
 Da
@@ -94,7 +96,7 @@ Die Fitparameter ergeben sich zu
 \end{figure}
 
 \subsection{Umkehrdifferentiator}
-Ein Umkehrdifferentiator wird ebenfalls mit den Bauteilen $R = \SI{9.6}{\kilo\ohm}$ und $C = \SI{20.8}{\nano\farad}$ bestückt.
+Ein Umkehrdifferentiator wird ebenfalls mit den Bauteilen $R = \SI{9.6}{\kilo\ohm}$ und $C = \SI{20.8}{\nano\farad}$ beschaltet.
 Es werden die Eingangsspannungen Sinus-, Dreieck-, und Rechteckspannung differentiert und die Oszilloskopaufnahmen in den Abbildungen~\ref{subfig:dif_sinus} bis~\ref{subfig:dif_dreieck} dargestellt.
 
 Im Falle des Umkehrdifferentiators gilt
@@ -122,11 +124,11 @@ Die Fitparameter ergeben sich zu
 \subsection{Schmitt-Trigger}
 Es wird ein Schmitt-Trigger mit $R_1 = \SI{0.1}{\kilo\ohm}$ und $R_\text{P} = \SI{9.6}{\kilo\ohm}$ realisiert.
 In Abbildung~\ref{fig:schmitt} ist die Oszilloskopaufnahme des Schmitt-Triggers dargestellt.
-Die Sinusspannung beim Triggerpunkt, markiert mit einem \enquote{x}, beträgt
+Die Sinusspannung beim Triggerpunkt, beispielhaft markiert mit einem \enquote{x}, beträgt
 \begin{align*}
   U_\text{Exp.} &= \SI{0.143}{\volt}, \\
   \intertext{es wird}
-  U_\text{Theo.} &= U_B \cdot \frac{R_1}{R_\text{P}} = \SI{1.53}{\volt} \\
+  U_\text{Theo.} &= U_B \cdot \frac{R_1}{R_\text{P}} = \SI{0.153}{\volt} \\
   \intertext{mit $U_B = \SI{14.7}{\volt}$ erwartet. Dies ergibt eine relative Abweichung von}
   \Delta U_\text{Schmitt} &= \SI{6.536}{\percent}.
 \end{align*}
@@ -156,7 +158,8 @@ $R_1 = \SI{0.1}{\kilo\ohm}$,
 $R_\text{P} = \SI{1}{\kilo\ohm}$,
 $R = \SI{30.2}{\kilo\ohm}$
 gebaut.
-In Abbildung~\ref{fig:dreieck_generator} wird ein Foto des Oszilloskops dargestellt.
+In Abbildung~\ref{fig:dreieck_generator} wird ein Oszilloskopbild
+der Ausgangsspannung des Dreieckgenerators dargestellt.
 \begin{figure}[ht]
   \centering
   \includegraphics[height=0.3\textheight]{data/scope_271.png}
@@ -164,10 +167,10 @@ In Abbildung~\ref{fig:dreieck_generator} wird ein Foto des Oszilloskops dargeste
   \label{fig:dreieck_generator}
 \end{figure}
 
-Die Frequenz und Amplitude der Dreieckspannung sind
+Die Frequenz und Amplitude der Dreieckspannung werden am Oszilloskop abgelesen:
 \begin{align*}
   \nu &= \SI{1.99}{\kilo\hertz} \\
-  A &= \SI{1.37}{\volt}.
+  A &= \SI{1.37}{\volt}
 \end{align*}
 
 \subsection{Ged\"ampfte Schwingung}
@@ -178,7 +181,7 @@ Die Frequenz und Amplitude der Dreieckspannung sind
   \begin{subfigure}{\textwidth}
     \centering
     \includegraphics[height=0.3\textheight]{data/scope_275.png}
-    \caption{Aufnahmen des Oszilloskops.}%
+    \caption{Aufnahme des Oszilloskops.}%
     \label{fig:gedaempft_oszilloskop}
   \end{subfigure}
   \begin{subfigure}{\textwidth}
@@ -193,12 +196,12 @@ Die Frequenz und Amplitude der Dreieckspannung sind
 
 Die Betriebsspannung wird auf $U_B = \pm \SI{1.95}{\volt}$ gestellt.
 Die gedämpfte Schwingung ist in Abbildung~\ref{fig:gedaempft} dargestellt.
-Es wird ein linearer Fit der Form
+Es wird ein Fit der Form
 \begin{equation}
   % U = \log{\left(x\right)} \cdot m + b
 U = U_0 \cdot \exp{\left(\frac{-t}{\tau}\right)} \cdot \sin{\left(t \cdot \omega  + \phi\right)} + b
 \end{equation}
-in einem logarithmischen Diagramm (vgl.~\ref{fig:gedaempft_fit}) aufgetragen.
+in einem logarithmischen Diagramm (vgl. Abbildung~\ref{fig:gedaempft_fit}) aufgetragen.
 Die Parameter des Fits sind
 \begin{align*}
   U_0 &= \SI{-0.463 \pm 0.005}{\volt} \\
@@ -207,7 +210,7 @@ Die Parameter des Fits sind
   b &= \SI{-0.023 \pm 0.004}{\volt} \\
   \phi &= \SI{-8.075 \pm 0.01}{\radian}.
 \end{align*}
-Daraus ergeben sich mit Gleichung~\eqref{eq:schwingung_diff} und~\eqref{eq:tau}
+Daraus ergeben sich nach Gleichung~\eqref{eq:schwingung_diff} und~\eqref{eq:tau}
 \begin{align*}
   \Delta \omega &= \num{11.39}\% \\
     \Delta \tau &= \num{12.05}\%.
