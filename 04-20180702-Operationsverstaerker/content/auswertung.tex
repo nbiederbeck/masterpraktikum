@@ -4,11 +4,11 @@
 Der Verstärkungsfaktor $V$ wird gegen die Frequenz $\nu$ in einem doppellogarithmischen Diagramm aufgetragen.
 Es wird ein ein Fit für Tiefpässe berechnet, nach Gleichung~\eqref{eq:h_betrag}:
 \begin{equation}
-  V = \frac{V'}{\sqrt{1 + {\left(\nu RC\right)}^{2}}}
+  V = \frac{a}{\sqrt{1 + {\left(\nu RC\right)}^{2}}} + c
 \end{equation}
 Die Messwerte sind mit dem Fit in den Abbildungen~\ref{fig:lin_verst_01} bis~\ref{fig:lin_verst_04} dargestellt.
 Die vier verschiedenen Konfigurationen sind in den Abbildungsunterschriften zu finden,
-die Grenzfrequenz $\nu_\text{G} = RC$ und der Verstärkungsfaktor $V'$ in der entsprechenden Legende.
+die Grenzfrequenz $\nu_\text{G} = RC$ und der Verstärkungsfaktor $V' = a + c$ in der entsprechenden Legende.
 
 \begin{figure}[ht]
   \centering
@@ -41,17 +41,17 @@ die Grenzfrequenz $\nu_\text{G} = RC$ und der Verstärkungsfaktor $V'$ in der en
 Die Abweichung des Verstärkungsfaktors aus dem Fit mit dem Verhältnis $\sfrac{R_N}{R_1}$
 sind
 \begin{align*}
-  \Delta V_{\ref{fig:lin_verst_01}} &= \num{3.444}\% \\
-  \Delta V_{\ref{fig:lin_verst_02}} &= \num{4.417}\% \\
-  \Delta V_{\ref{fig:lin_verst_03}} &= \num{0.118}\% \\
-  \Delta V_{\ref{fig:lin_verst_04}} &= \num{1.536}\%.
+  \Delta V_{\ref{fig:lin_verst_01}} &= \num{3.036}\% \\
+  \Delta V_{\ref{fig:lin_verst_02}} &= \num{2.691}\% \\
+  \Delta V_{\ref{fig:lin_verst_03}} &= \num{0.245}\% \\
+  \Delta V_{\ref{fig:lin_verst_04}} &= \num{8.604}\%.
 \end{align*}
 Die aus Gleichung~\eqref{eq:v_strich} bestimmten Leerlaufverstärkungen sind
 \begin{align*}
-  V_{\ref{fig:lin_verst_01}} &= \num{65.88} \\
-  V_{\ref{fig:lin_verst_02}} &= \num{10.82} \\
-  V_{\ref{fig:lin_verst_03}} &= \num{-4002.54} \\
-  V_{\ref{fig:lin_verst_04}} &= \num{-14.06}.
+  V_{\ref{fig:lin_verst_01}} &= \num{75.07} \\
+  V_{\ref{fig:lin_verst_02}} &= \num{-19.08} \\
+  V_{\ref{fig:lin_verst_03}} &= \num{-1921.62} \\
+  V_{\ref{fig:lin_verst_04}} &= \num{  8.60}.
 \end{align*}
 
 Es werden die Phasendifferenzen zwischen Ein- und Ausgangsspannung gegen die Frequenz
@@ -203,7 +203,12 @@ Die Parameter des Fits sind
 \begin{align*}
   U_0 &= \SI{-0.463 \pm 0.005}{\volt} \\
   \omega &= \SI{4260.068 \pm 2.527}{\kilo\hertz} \\
-  \tau &= \SI{0.005 \pm 0.0}{\second} \\
-  b &= \SI{-0.023 \pm 0.0}{\volt} \\
-  \phi &= \si{-8.075 \pm 0.01}.
+  \tau &= \SI{0.0047 \pm 0.0001}{\second} \\
+  b &= \SI{-0.023 \pm 0.004}{\volt} \\
+  \phi &= \SI{-8.075 \pm 0.01}{\radian}.
+\end{align*}
+Daraus ergeben sich mit Gleichung~\eqref{eq:schwingung_diff} und~\eqref{eq:tau}
+\begin{align*}
+  \Delta \omega &= \num{11.39}\% \\
+    \Delta \tau &= \num{12.05}\%.
 \end{align*}

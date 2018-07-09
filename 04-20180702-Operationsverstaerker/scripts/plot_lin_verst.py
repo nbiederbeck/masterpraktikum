@@ -6,8 +6,8 @@ import pandas as pd
 
 # def fit(nu, V, nu_g):
 #     return V / (np.sqrt(1 + (nu / nu_g) ** 2))
-def fit(nu, V, RC):
-    return V / np.sqrt(1 + (nu * RC) ** 2)
+def fit(nu, V_, RC, c):
+    return V_ / np.sqrt(1 + (nu * RC) ** 2) + c
 
 
 def plot(name):
@@ -28,20 +28,30 @@ def plot(name):
 
     x = np.linspace(np.min(nu), np.max(nu), 1001)
 
-    par, cov = curve_fit(fit, nu, U_A / U_1, p0=[rn / r1, 1])
-    V_ = par[0]
-
-    rel_diff_V = np.abs(np.round(((V_ - (rn / r1)) / (rn / r1) * 100), 3))
-    V = 1.0 / ((1.0 / V_) - (r1 / rn))
-
-    print(r"V \cdot \nu_G = {}".format(V_ * par[1]))
-
     fig, ax = plt.subplots()
     scale = 1.0
     fig.set_size_inches(fig.get_figwidth() * scale, fig.get_figheight() * scale)
 
-    ax.scatter(nu, U_A / U_1, c="C1", marker="x", label="Messwerte")
-    ax.plot(x, fit(x, *par), label=r"Fit: $V'={}, \nu_G={}$kHz".format(*np.round(par, 3)))
+    # U_1 -= U_1[-1]*0.99
+    # U_A -= U_A[-1]*0.99
+    V_mess = U_A / U_1
+
+    if "04" not in name:
+        n = 1
+        par, cov = curve_fit(fit, nu[:-n], V_mess[:-n], p0=[rn / r1, 0.1, 0])
+    else:
+        n = 4
+        par, cov = curve_fit(fit, nu[:-n], V_mess[:-n], p0=[rn / r1, 0.1, 0])
+
+    V_ = par[0] + par[-1]
+
+    rel_diff_V = np.abs(np.round(((V_ - (rn / r1)) / (rn / r1) * 100), 3))
+    V = 1.0 / ((1.0 / V_) - (r1 / rn))
+
+    print(r"V_ \cdot \nu_G = {}".format(V_ * par[1]))
+
+    ax.scatter(nu, V_mess, c="C1", marker="x", label="Messwerte")
+    ax.plot(x, fit(x, *par), label=r"Fit: $V'={}, \nu_G={}$kHz".format(*np.round([V_, par[1]], 3)))
 
     ax.set_xlabel(r"$\nu \:\:/\:\: \si{\kilo\hertz}$")
     # ax.set_ylabel(r"$U_A \:\:/\:\: \si{\milli\volt}$")
@@ -57,7 +67,7 @@ def plot(name):
     fig.savefig("build/{}.pgf".format(name[5:-4]), bbox_inches='tight', pad_inches=0)
 
     with open(name.replace("data", "build").replace("txt", "tex"), "w") as ofile:
-        for n, p, c in zip(["V", "nu_g"], par, np.sqrt(np.diag(cov))):
+        for n, p, c in zip(["V_", "nu_g", "c"], par, np.sqrt(np.diag(cov))):
             print("{}: {} \\pm {}".format(n, np.round(p, 3), np.round(c, 3)), file=ofile)
             print("{}: {} \\pm {}".format(n, np.round(p, 3), np.round(c, 3)))
         print("Rel Diff V_mess, V_theo: {}%".format(rel_diff_V))
