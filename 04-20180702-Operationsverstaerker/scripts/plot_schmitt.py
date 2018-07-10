@@ -27,7 +27,9 @@ def plot(name):
     scheitelspannung = np.round(U_B * R1 / Rp, 3)
     print("Scheitelspannung: {}".format(scheitelspannung))
 
-    diff_scheit_triggered = np.abs(np.round(((sin_at_trigger - scheitelspannung) / scheitelspannung) * 100, 3))
+    diff_scheit_triggered = np.abs(
+        np.round(((sin_at_trigger - scheitelspannung) / scheitelspannung) * 100, 3)
+    )
     print("Relative Abweichung: {}%".format(diff_scheit_triggered))
 
     axr.scatter(x[trigger_point], ch2[trigger_point], marker="x")

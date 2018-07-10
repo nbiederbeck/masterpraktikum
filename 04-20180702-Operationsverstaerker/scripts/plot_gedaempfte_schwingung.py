@@ -13,9 +13,7 @@ def fit(t, U0, w, tau, b, phi):
 
 
 def plot(name):
-    x, ch1, ch2 = np.genfromtxt(
-        name, delimiter=",", skip_header=3, unpack=True
-    )
+    x, ch1, ch2 = np.genfromtxt(name, delimiter=",", skip_header=3, unpack=True)
 
     start_index = np.where(x >= 1e-3)[0][0]
     x = x[start_index:]

@@ -13,11 +13,13 @@ def plot(name):
     # nu *= 1000
     U_A /= 1000  # von milliVolt in Volt
 
-    df = pd.DataFrame({
-        r"{$\nu \:\:/\:\: \si{\kilo\hertz}$}": nu,
-        r"{$U_1 \:\:/\:\: \si{\milli\volt}$}": U_1,
-        r"{$U_A \:\:/\:\: \si{\volt}$}": U_A,
-    })
+    df = pd.DataFrame(
+        {
+            r"{$\nu \:\:/\:\: \si{\kilo\hertz}$}": nu,
+            r"{$U_1 \:\:/\:\: \si{\milli\volt}$}": U_1,
+            r"{$U_A \:\:/\:\: \si{\volt}$}": U_A,
+        }
+    )
 
     with open(name.replace("data", "build").replace(".txt", "_data.tex"), "w") as ofile:
         df.to_latex(ofile, index=False, column_format="S S S", escape=False)
@@ -28,7 +30,9 @@ def plot(name):
 
     with open(name.replace("data", "build").replace("txt", "tex"), "w") as ofile:
         for n, p, c in zip(["m", "b"], par, np.sqrt(np.diag(cov))):
-            print("{}: {} \\pm {}".format(n, np.round(p, 3), np.round(c, 3)), file=ofile)
+            print(
+                "{}: {} \\pm {}".format(n, np.round(p, 3), np.round(c, 3)), file=ofile
+            )
             print("{}: {} \\pm {}".format(n, np.round(p, 3), np.round(c, 3)))
 
     fig, ax = plt.subplots()
@@ -51,10 +55,7 @@ def plot(name):
 
 
 def main():
-    filenames = [
-        "data/integrator.txt",
-        "data/differentiator.txt",
-    ]
+    filenames = ["data/integrator.txt", "data/differentiator.txt"]
     for name in filenames:
         plot(name)
 

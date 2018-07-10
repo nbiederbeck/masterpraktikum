@@ -17,12 +17,14 @@ def plot(name):
 
     U_A, phi, U_1, nu = np.genfromtxt(name, unpack=True)
 
-    df = pd.DataFrame({
-        r"{$\nu \:\:/\:\: \si{\kilo\hertz}$}": nu,
-        r"{$\phi \:\:/\:\: \si{\degree}$}": phi,
-        r"{$U_1 \:\:/\:\: \si{\milli\volt}$}": U_1,
-        r"{$U_A \:\:/\:\: \si{\milli\volt}$}": U_A,
-    })
+    df = pd.DataFrame(
+        {
+            r"{$\nu \:\:/\:\: \si{\kilo\hertz}$}": nu,
+            r"{$\phi \:\:/\:\: \si{\degree}$}": phi,
+            r"{$U_1 \:\:/\:\: \si{\milli\volt}$}": U_1,
+            r"{$U_A \:\:/\:\: \si{\milli\volt}$}": U_A,
+        }
+    )
     with open(name.replace("data", "build").replace(".txt", "_data.tex"), "w") as ofile:
         df.to_latex(ofile, index=False, column_format="S S S S", escape=False)
 
@@ -51,7 +53,11 @@ def plot(name):
     print(r"V_ \cdot \nu_G = {}".format(V_ * par[1]))
 
     ax.scatter(nu, V_mess, c="C1", marker="x", label="Messwerte")
-    ax.plot(x, fit(x, *par), label=r"Fit: $V'={}, \nu_G={}$kHz".format(*np.round([V_, par[1]], 3)))
+    ax.plot(
+        x,
+        fit(x, *par),
+        label=r"Fit: $V'={}, \nu_G={}$kHz".format(*np.round([V_, par[1]], 3)),
+    )
 
     ax.set_xlabel(r"$\nu \:\:/\:\: \si{\kilo\hertz}$")
     # ax.set_ylabel(r"$U_A \:\:/\:\: \si{\milli\volt}$")
@@ -63,12 +69,14 @@ def plot(name):
     ax.legend()
 
     fig.tight_layout(pad=0)
-    fig.savefig("build/{}.png".format(name[5:-4]), bbox_inches='tight', pad_inches=0)
-    fig.savefig("build/{}.pgf".format(name[5:-4]), bbox_inches='tight', pad_inches=0)
+    fig.savefig("build/{}.png".format(name[5:-4]), bbox_inches="tight", pad_inches=0)
+    fig.savefig("build/{}.pgf".format(name[5:-4]), bbox_inches="tight", pad_inches=0)
 
     with open(name.replace("data", "build").replace("txt", "tex"), "w") as ofile:
         for n, p, c in zip(["V_", "nu_g", "c"], par, np.sqrt(np.diag(cov))):
-            print("{}: {} \\pm {}".format(n, np.round(p, 3), np.round(c, 3)), file=ofile)
+            print(
+                "{}: {} \\pm {}".format(n, np.round(p, 3), np.round(c, 3)), file=ofile
+            )
             print("{}: {} \\pm {}".format(n, np.round(p, 3), np.round(c, 3)))
         print("Rel Diff V_mess, V_theo: {}%".format(rel_diff_V))
         print("Leerlaufverstaerkung V: {}".format(V))
@@ -83,7 +91,11 @@ def plot_phase(names):
         U_As.append(np.genfromtxt(name, unpack=True)[0])
         phases.append(np.genfromtxt(name, unpack=True)[1])
         nus.append(np.genfromtxt(name, unpack=True)[3])
-        settings.append(r"$r_1 = {}\,\Omega, \:\: r_N = {}\,\Omega$".format(name[22:25], name[30:33]))
+        settings.append(
+            r"$r_1 = {}\,\Omega, \:\: r_N = {}\,\Omega$".format(
+                name[22:25], name[30:33]
+            )
+        )
 
     fig, ax = plt.subplots()
     axr = ax.twinx()
@@ -101,8 +113,8 @@ def plot_phase(names):
     # ax.legend(loc="lower left")
     ax.legend()
     fig.tight_layout(pad=0)
-    fig.savefig("build/phases.png", bbox_inches='tight', pad_inches=0)
-    fig.savefig("build/phases.pgf", bbox_inches='tight', pad_inches=0)
+    fig.savefig("build/phases.png", bbox_inches="tight", pad_inches=0)
+    fig.savefig("build/phases.pgf", bbox_inches="tight", pad_inches=0)
     # r1 = float(name[22:25])
     # rn = float(name[30:33])
     # u1 = float(name[38:41])
