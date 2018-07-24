@@ -5,7 +5,7 @@ import pandas as pd
 
 
 def fit(x, m, b):
-    return np.exp(np.log(x) * m + b)
+    return np.exp(np.log(2 * np.pi * x) * m + b)
 
 
 def plot(name):
@@ -26,7 +26,7 @@ def plot(name):
 
     x = np.linspace(np.min(nu), np.max(nu), 1001)
 
-    par, cov = curve_fit(fit, nu, U_A)
+    par, cov = curve_fit(fit, nu, U_A / U_1)
 
     with open(name.replace("data", "build").replace("txt", "tex"), "w") as ofile:
         for n, p, c in zip(["m", "b"], par, np.sqrt(np.diag(cov))):
@@ -37,11 +37,11 @@ def plot(name):
 
     fig, ax = plt.subplots()
 
-    ax.scatter(nu, U_A, c="C1", marker="x", label="Messwerte")
+    ax.scatter(nu, U_A / U_1, c="C1", marker="x", label="Messwerte")
     ax.plot(x, fit(x, *par), label="Fit")
 
     ax.set_xlabel(r"$\nu \:\:/\:\: \si{\kilo\hertz}$")
-    ax.set_ylabel(r"$U_A \:\:/\:\: \si{\volt}$")
+    ax.set_ylabel(r"$V'_\text{exp}$")
     # ax.set_ylabel(r"$V$")
 
     ax.set_xscale("log")

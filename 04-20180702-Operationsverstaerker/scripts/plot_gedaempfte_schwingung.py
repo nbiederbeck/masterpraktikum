@@ -47,7 +47,7 @@ def plot(name):
 
     fig, ax = plt.subplots()
 
-    ax.scatter(x, ch1, marker="x", label="Gedämpfte Schwingung, Messung")
+    ax.scatter(x, ch1, s=2, marker=".", label="Gedämpfte Schwingung, Messung")
     ax.plot(lin, fit(lin, *par), color="C1", label="Fit")
 
     ax.set_xlabel(r"$t \:\:/\:\: \si{\second}$")

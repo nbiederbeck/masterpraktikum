@@ -20,19 +20,28 @@ def plot(name):
     axr.set_ylabel(r"$U \:\:/\:\: \si{\volt}$")
     ax.set_xlabel(r"$t \:\:/\:\: \si{\milli\second}$")
 
-    trigger_point = np.argmax(ch2[1:] - ch2[:-1]) - 2
-    sin_at_trigger = np.round(ch2[trigger_point], 3)
-    print("Höhe des Sinus beim Triggerpunkt: {}".format(sin_at_trigger))
+    trig_pos = np.argmax(ch2[1:] - ch2[:-1]) - 2
+    sin_trig_pos = np.round(ch2[trig_pos], 3)
+    print("Höhe des Sinus beim positiven Triggerpunkt: {}".format(sin_trig_pos))
+
+    trig_neg = np.argmin(ch2[1:] - ch2[:-1]) - 2
+    sin_trig_neg = np.round(ch2[trig_neg], 3)
+    print("Höhe des Sinus beim negativen Triggerpunkt: {}".format(sin_trig_neg))
 
     scheitelspannung = np.round(U_B * R1 / Rp, 3)
     print("Scheitelspannung: {}".format(scheitelspannung))
 
     diff_scheit_triggered = np.abs(
-        np.round(((sin_at_trigger - scheitelspannung) / scheitelspannung) * 100, 3)
+        np.round(((sin_trig_pos - scheitelspannung) / scheitelspannung) * 100, 3)
     )
-    print("Relative Abweichung: {}%".format(diff_scheit_triggered))
+    print("Relative Abweichung Pos: {}%".format(diff_scheit_triggered))
+    diff_scheit_triggered = np.abs(
+        np.round(((sin_trig_neg - -scheitelspannung) / -scheitelspannung) * 100, 3)
+    )
+    print("Relative Abweichung Neg: {}%".format(diff_scheit_triggered))
 
-    axr.scatter(x[trigger_point], ch2[trigger_point], marker="x")
+    axr.scatter(x[trig_pos], ch2[trig_pos], marker="x", color="C0")
+    axr.scatter(x[trig_neg], ch2[trig_neg], marker="x", color="C0")
 
     fig.legend()
 
