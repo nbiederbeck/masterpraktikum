@@ -60,6 +60,7 @@ def plot(name):
     fig.tight_layout(pad=0)
     fig.savefig("build/gedaempfte_schwingung.png")
     fig.savefig("build/gedaempfte_schwingung.pgf")
+    fig.savefig("build/gedaempfte_schwingung.pdf")
 
 
 def main():
