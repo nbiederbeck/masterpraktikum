@@ -5,21 +5,8 @@ from scipy.optimize import curve_fit
 import pandas as pd
 
 
-# def fit(nu, V, nu_g):
-#     return V / (np.sqrt(1 + (nu / nu_g) ** 2))
 def fit(nu, V_, RC, c):
     return V_ / np.sqrt(1 + (2 * np.pi * nu * RC) ** 2) + c
-
-
-# def wrapper(names):
-#     delta_R, V_, delta_V, V_nuG = [], [], [], []
-#     for name in names:
-#         a, b, c, d = plot(name)
-#         delta_R.append(a)
-#         V_.append(b)
-#         delta_V.append(c)
-#         V_nuG.append(d)
-#         print(a, b, c, d)
 
 
 def plot(name):
@@ -38,7 +25,12 @@ def plot(name):
         }
     )
     with open(name.replace("data", "build").replace(".txt", "_data.tex"), "w") as ofile:
-        df.to_latex(ofile, index=False, column_format="S S S S", escape=False)
+        df.to_latex(
+            ofile,
+            index=False,
+            column_format=r"S S[round-mode=places, round-precision=0, table-format=3.0] S[round-mode=places, round-precision=0, table-format=3.0] S[round-mode=places, round-precision=0, table-format=3.0]",
+            escape=False,
+        )
 
     x = np.linspace(np.min(nu), np.max(nu), 1001)
 

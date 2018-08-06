@@ -37,14 +37,14 @@ Der Verstärkungsfaktor ist durch die Betriebspannung $U_\text{B}$ festgelegt
 Linearverstärkers bildet.
 In Abbildung \ref{fig:kennlinie} ist eine beispielhafte Kennlinie eines
 Operationsverstärkers zu sehen.
-\begin{figure}[h]
+\begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/aussteuerungsbereich.pdf}
 		\caption{Kennlinie eines Operationsverstärkers. \cite{anleitung}}
 		\label{fig:kennlinie}
 \end{figure}
 Für den idealen Operationsverstärker werden die Annahmen getroffen, dass der
-Verstärkungsfaktor $V = \infty$, die beiden Eingangs-Widerstände $r_\text{e} 
+Verstärkungsfaktor $V = \infty$, die beiden Eingangs-Widerstände $r_\text{e}
 = \infty$ und der Ausgangs-Widerstand $r_\text{a} = 0$ ist.
 Die Annahmen des idealen Operationsverstärkers beschreiben aber nur begrenzt
 die Realität, weswegen Korrekturterme eingeführt werden.
@@ -86,12 +86,12 @@ verschoben werden müssen, damit die Ausgangsspannung $U_\text{a}$ verschwindet
 \end{equation}
 
 \subsection{Linearverstärker}%
-\label{sub:linearverstaerker}
+\label{sub:linearverstaerker1}
 Aufgrund des schmalen Aussteuerungsberreich sind Linearverstärker nur
 begrenzt einsetzbar.
 Zur Verbreiterung des Aussteuerungsbereich wird der Operationsverstärker mit einem
 Gegenkopplungzweig beschaltet.
-\begin{figure}[h]
+\begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/linearverstaerker.pdf}
 		\caption{Gegengekoppelter Linearverstärker.\cite{anleitung}}
@@ -161,7 +161,7 @@ Frequenzbandes mehr Frequenzen unverzerrt verstärkt werden können.
 Die Transitfrequenz $\nu_\text{g}$ ist durch das Produkt aus Verstärkung und
 Bandbreite definiert, welches bei gegengekoppelten Zweigen eine Konstante
 bildet.
-\begin{figure}[h]
+\begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/frequenz_lin.pdf}
 		\caption{Charakteristische Bandbreite eines Operationsverstärkers.\cite{anleitung}}
@@ -178,7 +178,7 @@ Der Verstärkungsfaktor des Operationsverstärkers aufgetragen gegen die Frequen
 Bei diesem werden hohe Frequenzen stark gedämpft.
 Beispielhaft ist in Abbildung \ref{fig:tiefpass} ein Tiefpass erster Ordnung
 dargestellt.
-\begin{figure}[h]
+\begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/tiefpass.pdf}
 		\caption{Simpler Tiefpass erster Ordnung. \cite{wiki}}
@@ -196,13 +196,13 @@ Der Blindwiderstand $H$ ist eine Funktion der Wechselspannungfrequenz $\omega$
 und dessen Realteil entspricht
 \begin{align}
 		\Re(H(\omega))  &= \Re \left(\frac{\sfrac{1}{j \omega C}}{\sfrac{1}{j\omega
-		C} + R} \right) \nonumber \\
+    C} + R} \right) \label{eq:h_betrag} \\
 		&= \frac{1}{\sqrt{1 + (\frac{\omega}{\Delta \omega} )^2}} \,
-		\hspace{1cm} \text{mit} \Delta \omega = \frac{1}{RC}
+		\hspace{1cm} \text{mit } \Delta \omega = \frac{1}{RC}
 		\label{eq:tiefpass}
 \end{align}
 dem \enquote{Ersatzwiderstand}.
-Für Frequenzen oberhalb der Bandbreite $\Delta \omega$ wird die Eingangsspannung 
+Für Frequenzen oberhalb der Bandbreite $\Delta \omega$ wird die Eingangsspannung
 stark gedämpft und bildet die abfallende Flanke in Abbildung \ref{fig:freq}.
 
 \subsection{Umkehr-Integrator}%
@@ -210,7 +210,7 @@ stark gedämpft und bildet die abfallende Flanke in Abbildung \ref{fig:freq}.
 
 Durch Rückkopplung des Ausgangsstroms über ein Kondensator lässt sich die
 Eingangsspannung $U_1$ integrieren (vergleiche Abbildung \ref{fig:integrator}).
-\begin{figure}[h]
+\begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/umkehr_integrator.pdf}
 		\caption{Umkehrgenerator \cite{anleitung}}
@@ -231,7 +231,7 @@ für den Knotenpunkt A:
 Unter Berücksichtigung, dass die Eingangsspannung von der Zeit abhängt (z.B.
 sinusförmig $U_1(t)= U_0 \cos(\omega t)$) ergibt sich die Integration der Eingangsspannung $U_1$ nach der Zeit:
 \begin{align}
-		U_\text{A}(t) &= - \frac{1}{RC} \int U_\text{1}(t) \, \text{dt} \nonumber \\
+  U_\text{A}(t) &= - \frac{1}{RC} \int U_\text{1}(t) \, \text{dt} \label{eq:integrator_before} \\
                   &= \frac{U_0}{\omega R C} \cos (\omega t) \label{eq:integrator}
 \end{align}
 Für eine sinusförmige Eingangsspannung fällt die Verstärkung daher linear mit
@@ -245,7 +245,7 @@ Unstetigkeiten zu Überschwingungen kommen kann (Gibbs'sches Phänomen).
 den Widerstand vice versa die Eingangsspannung differenzieren.
 Ein Schaltbild des Umkehr-Differentiators ist in Abbildung~\ref{fig:diff} zu
 sehen.
-\begin{figure}[h]
+\begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/umkehr_diff.pdf}
 		\caption{Schaltbild des Umkehr-Differentiators.\cite{anleitung}}
@@ -266,7 +266,7 @@ Beim Differenzieren wächst die Verstärkung bei einer sinusförmigen
 Eingangsspannung linear mit der Frequenz.
 
 \subsection{Schmitt-Trigger}%
-\label{sub:schmitt_trigger}
+\label{sub:schmitt_trigger1}
 
 Beim Schmitt-Trigger wird ein Teil der Ausgangsspannung auf den
 nicht-invertierenden Eingang zurückgegeben.
@@ -276,13 +276,13 @@ Es lässt sich für den Knoten vor dem rückgekoppelten Eingang die Gleichung
 		\frac{U_1}{R_1} + \frac{U_\text{A}}{R_\text{p}} = 0
 \end{equation}
 aufstellen.
-Der Schmitt-Trigger dient als Linearverstärker bis die Ungleichung 
+Der Schmitt-Trigger dient als Linearverstärker bis die Ungleichung
 \begin{equation}
 		\label{eq:schmitt}
 		U_1 > \frac{R_1}{R_\text{P}} U_\text{B} \ .
 \end{equation}
-erfüllt wird. 
-Sinkt die Eingangsspannung unter den Wert 
+erfüllt wird.
+Sinkt die Eingangsspannung unter den Wert
 \begin{equation}
 		% \label{eq:schmitt}
 		\label{eq:m_ub}
@@ -291,11 +291,11 @@ Sinkt die Eingangsspannung unter den Wert
 fällt der Wert auf den negativen Sättigungswert $-U_\text{B}$.
 Durch den Schmitt-Trigger welcher den Bistabile Kippstufe untergeordent werden
 kann, lassen sich Beispielsweise Rechteckspannungen erzeugen.
-\begin{figure}[h]
+\begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/schmitt_trigger.pdf}
 		\caption{Schaltbild eines Schmitt-Triggers. \cite{anleitung}}
-		\label{fig:schmitt}
+    \label{fig:schmitt_theo}
 \end{figure}
 Schmitt-Trigger werden zur Erzeugung von binären Signalen und der
 Signalverstärkung genutzt.
@@ -314,7 +314,7 @@ welche wiederum auf den Schmitt-Trigger zurückgegeben wird.
 % entsprechender Wahl der Widerstände und hinreichend großen Eingangspannungen, am Ausgang ein Rechtecksignal erzeugt.
 % Der Ausgang des Schmitt-Triggers wird auf den Eingang eines daran anschließenden
 % Integrators gelegt.
-\begin{figure}[h]
+\begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.8\linewidth]{build/dreiecksgen.pdf}
 		\caption{Schaltbild eines Rechteck- sowie Dreieck-Signalgenerators. \cite{anleitung}}
@@ -322,23 +322,23 @@ welche wiederum auf den Schmitt-Trigger zurückgegeben wird.
 \end{figure}
 Übersteigt die Rückgekoppelte Spannung den Wert der Ungleichung (\ref{eq:m_ub})
 so kippt der Schmitt-Trigger auf den Wert $-U_\text{B}$.
-Dies erzeugt entsprechend die andere Flanke des Dreieckgenerators, sodass die 
-Frequenz der Dreiecksspannung nurnoch von der Integrationskonstanten so wie 
+Dies erzeugt entsprechend die andere Flanke des Dreieckgenerators, sodass die
+Frequenz der Dreiecksspannung nurnoch von der Integrationskonstanten so wie
 dem Teilerverhältniss des Mittkopplungszweig abhängig ist.
 
 
 % Durch die Integration eines Rechtecksignals wird aus diesem ein Dreieck-Signal,
 % welches am Ausgang des Integrators abgenommen werden kann.
-% Das Ausgangssignal des Dreieckgenerators wird zurück auf den Eingang des 
+% Das Ausgangssignal des Dreieckgenerators wird zurück auf den Eingang des
 % Schmitt-Trigger gegeben.
-% Durch die Rückkopplung des Dreiecksignals ist 
+% Durch die Rückkopplung des Dreiecksignals ist
 \subsection{Gedämpfte Sinusschwingung}%
 \label{sub:gedaempfte_sinusschwingung}
 Zur Erzeugung einer ent-/gedämpften Schwingung werden drei Operationsverstärker
 benötigt.
 Dabei dienen zwei OPs der Integration und ein weiterer der Invertierung
 des Signals für die Rückkopplung.
-\begin{figure}[h]
+\begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.8\linewidth]{build/schwingungsdiffgl.pdf}
 		\caption{Schaltbild zur Erzeugung gedämpfter und entdämpften Schwingungen. \cite{anleitung}}
@@ -372,7 +372,7 @@ dessen Lösung
 ist.
 Die Schwingungsdauer $T$ kann dem Sinusterm
 \begin{equation}
-	T = 2 \pi R C	
+	T = 2 \pi R C
 \end{equation}
 und die Abklingdauer $\tau$ kann dem
 Exponentailterm
