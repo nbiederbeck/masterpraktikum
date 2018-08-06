@@ -15,7 +15,7 @@ A laser consists of three components:
   \item cavity / resonator
 \end{enumerate}
 
-When an excited electron relaxes, it is able to emit a photon.
+When an excited electron relaxes, it emits a photon.
 To excite electrons of the optical medium into states of higher energy, a pump source is used.
 This could be another laser, chemical effects, or, as it is in this case, a current.
 
@@ -45,7 +45,8 @@ travel many times through the optical medium to induce emission of coherent phot
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.8\linewidth]{content/resonator.png}
+  % \includegraphics[width=0.8\linewidth]{content/resonator.png}
+  \input{content/tikz/resonator.tex}
   \caption{Schematic view of a resonator with one semipermeable mirror and a totally reflective
   mirror\cite{anleitung_hene}.}%
   \label{fig:resonator}
@@ -60,7 +61,19 @@ and $c$ the speed of light.
 Apparently, by changing the length of the resonator a range of frequency is scanned.
 
 
-\subsection{Diodes}\label{diodes}
+\subsection{Diode laser}\label{diode-laser}
+As stated earlier a diode laser is far cheaper and tinier than other lasers and therefore is used in this
+experiment.
+Diode lasers are used to create a beam that is intensive, adjustable and narrow,
+with the following characteristics:
+\begin{align}
+  \Delta \nu &< \SI{1}{\mega\hertz}, \\
+  \Delta \lambda &< \SI{1e-6}{\nano\meter}.
+\end{align}
+
+In the following sections the operating principle of diode lasers is explained.
+
+\subsubsection{Diodes}\label{diodes}
 
 A diode is a p-n-doped semiconductor.
 In the n-plane electrons were added, that the plane has negative charge.
@@ -79,14 +92,15 @@ see figure~\ref{fig:depletion_region}).
 A light emitting diode (LED) emits photons through the released energy
 of the recombination of electron-hole pairs.
 
-\subsection{Three state laser}\label{three-state-laser}
 
-According to the Boltzmann distribution the ground state is always most populated in thermal
+\subsubsection{Three state laser}\label{three-state-laser}
+
+According to the Fermi-Dirac distribution the ground state is always most populated in thermal
 equilibrium.
 At least three states are needed to achieve population inversion: The pump source excites the electrons from
 the ground state up to the highest excited state.
 The lifetime $\tau_1$ of electrons in this energy state is very short, the electrons relax
-spontaneously two the second but lower excited state, where they have a much longer lifetime
+spontaneously to the second but lower excited state, where they have a much longer lifetime
 $\tau_2 \gg \tau_1$.
 In the second excited state electrons can be kicked out by incoming photons, emitting coherent
 radiation (induced emission).
@@ -99,7 +113,7 @@ figure~\ref{fig:four_state_laser}.
   \label{fig:four_state_laser}
 \end{figure}
 
-\subsection{Operation principle of a diode laser}\label{sub:diode-laser}
+\subsubsection{Operation principle of a diode laser}\label{sub:diode-laser}
 The main part of a diode laser is a small LD chip (figure~\ref{fig:cutawayview}) bonded to a heat sink.
 The light is mostly emitted at the front facet, but a small amount is emitted at the back facet,
 where a photodiode is placed to monitor laser output power.
@@ -150,6 +164,16 @@ Therefore the output light is broad-band spontaneous emission, acting like an LE
 Above a threshold $I_0$ the ratio of gain and optical losses flips and the diode begins to lase.
 
 \subsection{Tuning of the diode laser}\label{tuning-of-the-diode-laser}
+Bare diode lasers have two undesirable side effects:
+\begin{enumerate}
+  \item Their linewidth is large compared to atomic transitions.
+  \item They are extremely sensitive to optical feedback.
+\end{enumerate}
+Both effects can be compensated with controlled grating feedback.
+
+In this section, the tuning of the laser is elaborated,
+to control the frequency and optical feedback.
+
 There are many options to alter the lasing function of the diode used in this experiment.
 Each option alters different attributes of the laser, which will be elaborated in the following.
 As a summary their effects are displayed in figure~\ref{fig:lasertuning}.
@@ -162,12 +186,11 @@ As a summary their effects are displayed in figure~\ref{fig:lasertuning}.
 \end{figure}
 
 \subsubsection{Medium gain}\label{medium-gain}
-The medium gain depends on the size of the depleted region, called band gap.
+The medium gain depends on the size of the band gap of the semiconductor.
 It is visualized as the broad peak in figure~\ref{fig:lasertuning}.
 Since the location of the band gap depends mainly on the temperature of the laser,
 it is set so that the resulting wavelength is about \SI{780}{\nano\meter},
-the resonance line of rubidium,
-which means a laser temperature of \SI{50}{\celsius}.
+the resonance line of rubidium.
 
 \subsubsection{Internal cavity}\label{internal-cavity}
 The diode forms an optical cavity, which translates to a periodic net gain function
@@ -218,9 +241,10 @@ displayed in figure~\ref{fig:lasertuning_modehops}.
   \label{fig:lasertuning_modehops}
 \end{figure}
 
-\subsection{Piezo element}\label{sub:piezo-element}
+\subsubsection{Piezo element}\label{sub:piezo-element}
 Piezoelectric charge accumulates in certain solid materials in response to mechanical stress.
-This effect can be used backwards, as piezo-crystals change their dimensions with applied voltage.
+This effect can be used backwards, as piezo-crystals change their dimensions with applied voltage,
+which is used to alter the length of the external cavity.
 
 \subsection{Experiment setup}\label{experiment-setup}
 Due to the strongly diverging light a collimating lens is used directly behind the output facet of
