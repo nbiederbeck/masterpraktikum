@@ -10,6 +10,7 @@ def main():
     fig.tight_layout()
     fig.savefig("build/plot.png")
     fig.savefig("build/plot.pgf")
+    fig.savefig("build/plot.pdf")
 
 
 if __name__ == "__main__":

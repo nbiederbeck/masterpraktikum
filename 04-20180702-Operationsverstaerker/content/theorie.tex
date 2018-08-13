@@ -196,7 +196,7 @@ Der Blindwiderstand $H$ ist eine Funktion der Wechselspannungfrequenz $\omega$
 und dessen Realteil entspricht
 \begin{align}
 		\Re(H(\omega))  &= \Re \left(\frac{\sfrac{1}{j \omega C}}{\sfrac{1}{j\omega
-    C} + R} \right) \label{eq:h_betrag} \\
+    C} + R} \right) \nonumber \\
 		&= \frac{1}{\sqrt{1 + (\frac{\omega}{\Delta \omega} )^2}} \,
 		\hspace{1cm} \text{mit } \Delta \omega = \frac{1}{RC}
 		\label{eq:tiefpass}
@@ -213,7 +213,7 @@ Eingangsspannung $U_1$ integrieren (vergleiche Abbildung \ref{fig:integrator}).
 \begin{figure}[ht]
 		\centering
 		\includegraphics[width=0.5\linewidth]{build/umkehr_integrator.pdf}
-		\caption{Umkehrgenerator \cite{anleitung}}
+		\caption{Schaltbild des Umkehr-Integrators.\cite{anleitung}}
 		\label{fig:integrator}
 \end{figure}
 Die Rückkopplung funktioniert äquivalent zum Linearverstärker.
@@ -231,7 +231,7 @@ für den Knotenpunkt A:
 Unter Berücksichtigung, dass die Eingangsspannung von der Zeit abhängt (z.B.
 sinusförmig $U_1(t)= U_0 \cos(\omega t)$) ergibt sich die Integration der Eingangsspannung $U_1$ nach der Zeit:
 \begin{align}
-  U_\text{A}(t) &= - \frac{1}{RC} \int U_\text{1}(t) \, \text{dt} \label{eq:integrator_before} \\
+  U_\text{A}(t) &= - \frac{1}{RC} \int U_\text{1}(t) \, \text{dt} \nonumber \\
                   &= \frac{U_0}{\omega R C} \cos (\omega t) \label{eq:integrator}
 \end{align}
 Für eine sinusförmige Eingangsspannung fällt die Verstärkung daher linear mit
@@ -371,12 +371,12 @@ dessen Lösung
 \end{equation}
 ist.
 Die Schwingungsdauer $T$ kann dem Sinusterm
-\begin{equation}
+\begin{equation}\label{eq:T_theo}
 	T = 2 \pi R C
 \end{equation}
 und die Abklingdauer $\tau$ kann dem
-Exponentailterm
-\begin{equation}
+Exponentialterm
+\begin{equation}\label{eq:tau_theo}
 		\tau = \frac{20 R C}{|\eta|}
 \end{equation}
 entnommen werden.
