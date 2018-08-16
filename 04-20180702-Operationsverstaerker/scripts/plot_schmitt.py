@@ -46,8 +46,9 @@ def plot(name):
     fig.legend()
 
     fig.tight_layout(pad=0)
-    fig.savefig("build/schmitt.png", bbox_inches=0, pad_inches=0)
-    fig.savefig("build/schmitt.pgf", bbox_inches=0, pad_inches=0)
+    # fig.savefig("build/schmitt.png", bbox_inches=0, pad_inches=0)
+    # fig.savefig("build/schmitt.pgf", bbox_inches=0, pad_inches=0)
+    fig.savefig("build/schmitt.pdf", bbox_inches=0, pad_inches=0)
 
 
 def main():

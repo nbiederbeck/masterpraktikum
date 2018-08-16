@@ -23,7 +23,13 @@ def plot(name):
     peakx, peaky = x[ch1 > 0][peaks], ch1[ch1 > 0][peaks]
     peakx, peaky = x, ch1
 
-    par, cov = curve_fit(fit, peakx, peaky, p0=[1.6, 1 / 0.01, 0.01, 1, 0.0])
+    par, cov = curve_fit(
+        fit,
+        peakx,
+        peaky,
+        p0=[1.6, 1 / 0.01, 0.01, 1, 0.0],
+        bounds=([-np.inf] * 5, [np.inf] * 5),
+    )
     lin = np.linspace(np.min(x), np.max(peakx) * 1.3, 1001)
 
     R = 10e3
@@ -58,8 +64,9 @@ def plot(name):
     ax.legend()
 
     fig.tight_layout(pad=0)
-    fig.savefig("build/gedaempfte_schwingung.png")
-    fig.savefig("build/gedaempfte_schwingung.pgf")
+    # fig.savefig("build/gedaempfte_schwingung.png")
+    # fig.savefig("build/gedaempfte_schwingung.pgf")
+    fig.savefig("build/gedaempfte_schwingung.pdf")
 
 
 def main():

@@ -1,4 +1,4 @@
-\section*{Anhang}\label{sec:anhang}
+\section{Anhang}\label{sec:anhang}
 
 \subsection*{Linearer Verst\"arker}
 
@@ -45,6 +45,7 @@
   \centering
   \caption{Messwerte des Differentiators.}
   \label{tab:dif}
+  % \sisetup{add-decimal-zero=false}
   \input{build/differentiator_data.tex}
 \end{table}
 
@@ -55,20 +56,21 @@
   \centering
   \begin{subfigure}[]{\textwidth}
     \centering
-    \includegraphics[height=0.3\textheight]{data/scope_262.png}
-    \caption{Integration einer Sinusspannung.}
+    \includegraphics[height=0.28\textheight]{data/scope_262.png}
+    \caption{Integration einer Sinusspannung (grün) ergibt eine Cosinusspannung (gelb).}
     \label{subfig:int_sinus}
   \end{subfigure}
   \begin{subfigure}[]{\textwidth}
     \centering
-    \includegraphics[height=0.3\textheight]{data/scope_263.png}
-    \caption{Integration einer Rechteckspannung.}
+    \includegraphics[height=0.28\textheight]{data/scope_263.png}
+    \caption{Integration einer Rechteckspannung (grün) ergibt eine Dreieckspannung (gelb).}
     \label{subfig:int_rechteck}
   \end{subfigure}
   \begin{subfigure}[]{\textwidth}
     \centering
-    \includegraphics[height=0.3\textheight]{data/scope_264.png}
-    \caption{Integration einer Dreieckspannung.}
+    \includegraphics[height=0.28\textheight]{data/scope_264.png}
+    \caption{Integration einer Dreieckspannung (grün) ergibt eine Spannung mit quadratischer
+    Funktion (gelb).}
     \label{subfig:int_dreieck}
   \end{subfigure}
   \caption{Aufnahmen des Oszilloskops von verschiedenen Integrationen.}
@@ -80,20 +82,20 @@
   \centering
   \begin{subfigure}[]{\textwidth}
     \centering
-    \includegraphics[height=0.3\textheight]{data/scope_265.png}
-    \caption{Differentiation einer Sinusspannung.}
+    \includegraphics[height=0.28\textheight]{data/scope_265.png}
+    \caption{Differentiation einer Sinusspannung (grün) ergibt eine Cosinusspannung (gelb).}
     \label{subfig:dif_sinus}
   \end{subfigure}
   \begin{subfigure}[]{\textwidth}
     \centering
-    \includegraphics[height=0.3\textheight]{data/scope_266.png}
-    \caption{Differentiation einer Rechteckspannung.}
+    \includegraphics[height=0.28\textheight]{data/scope_266.png}
+    \caption{Differentiation einer Rechteckspannung (grün) ergibt eine Delta-Distribution (gelb).}
     \label{subfig:dif_rechteck}
   \end{subfigure}
   \begin{subfigure}[]{\textwidth}
     \centering
-    \includegraphics[height=0.3\textheight]{data/scope_267.png}
-    \caption{Differentiation einer Dreieckspannung.}
+    \includegraphics[height=0.28\textheight]{data/scope_267.png}
+    \caption{Differentiation einer Dreieckspannung (grün) ergibt eine Rechteckspannung (gelb).}
     \label{subfig:dif_dreieck}
   \end{subfigure}
   \caption{Aufnahmen des Oszilloskops von verschiedenen Differentiationen.}

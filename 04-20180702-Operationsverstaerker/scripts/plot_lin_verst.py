@@ -5,21 +5,8 @@ from scipy.optimize import curve_fit
 import pandas as pd
 
 
-# def fit(nu, V, nu_g):
-#     return V / (np.sqrt(1 + (nu / nu_g) ** 2))
 def fit(nu, V_, RC, c):
-    return V_ / np.sqrt(1 + (2 * np.pi * nu * RC) ** 2) + c
-
-
-# def wrapper(names):
-#     delta_R, V_, delta_V, V_nuG = [], [], [], []
-#     for name in names:
-#         a, b, c, d = plot(name)
-#         delta_R.append(a)
-#         V_.append(b)
-#         delta_V.append(c)
-#         V_nuG.append(d)
-#         print(a, b, c, d)
+    return V_ / np.sqrt(1 + (nu * RC) ** 2) + c
 
 
 def plot(name):
@@ -38,7 +25,12 @@ def plot(name):
         }
     )
     with open(name.replace("data", "build").replace(".txt", "_data.tex"), "w") as ofile:
-        df.to_latex(ofile, index=False, column_format="S S S S", escape=False)
+        df.to_latex(
+            ofile,
+            index=False,
+            column_format=r"S[round-mode=figures, zero-decimal-to-integer=true] S[round-mode=places, round-precision=0, table-format=3.0] S[round-mode=places, round-precision=0, table-format=3.0] S[round-mode=places, round-precision=0, table-format=3.0]",
+            escape=False,
+        )
 
     x = np.linspace(np.min(nu), np.max(nu), 1001)
 
@@ -69,8 +61,8 @@ def plot(name):
     ax.plot(
         x,
         fit(x, *par),
-        label=r"Fit: $V'_{\text{exp}}="
-        + r"{}, \nu_G={}$kHz".format(*np.round([V_, nu_g], 1)),
+        label=r"Fit: $V_{\text{exp}}="
+        + r"{}, \nu_G={}$kHz".format(*np.round([V_, nu_g], 2 if "04" in name else 1)),
     )
 
     ax.set_xlabel(r"$\nu \:\:/\:\: \si{\kilo\hertz}$")
@@ -86,8 +78,9 @@ def plot(name):
     ax.legend()
 
     fig.tight_layout(pad=0)
-    fig.savefig("build/{}.png".format(name[5:-4]), bbox_inches="tight", pad_inches=0)
-    fig.savefig("build/{}.pgf".format(name[5:-4]), bbox_inches="tight", pad_inches=0)
+    # fig.savefig("build/{}.png".format(name[5:-4]), bbox_inches="tight", pad_inches=0)
+    # fig.savefig("build/{}.pgf".format(name[5:-4]), bbox_inches="tight", pad_inches=0)
+    fig.savefig("build/{}.pdf".format(name[5:-4]), bbox_inches="tight", pad_inches=0)
 
     with open(name.replace("data", "build").replace("txt", "tex"), "w") as ofile:
         par[1] = 1.0 / par[1]
@@ -148,8 +141,10 @@ def plot_phase(names):
 
     ax.legend()
     fig.tight_layout(pad=0)
-    fig.savefig("build/phases.png", bbox_inches="tight", pad_inches=0)
-    fig.savefig("build/phases.pgf", bbox_inches="tight", pad_inches=0)
+    # fig.savefig("build/phases.png", bbox_inches="tight", pad_inches=0)
+    # fig.savefig("build/phases.pgf", bbox_inches="tight", pad_inches=0)
+    fig.savefig("build/phases.pdf", bbox_inches="tight", pad_inches=0)
+
     # r1 = float(name[22:25])
     # rn = float(name[30:33])
     # u1 = float(name[38:41])
