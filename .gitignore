@@ -9,3 +9,6 @@ build/
 
 # Compiled and downloaded documents
 *.pdf
+
+# Keep fritzing
+!00-Mikroprozessor/weatherstation_rpi2.pdf
