@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as tick
 from scipy.optimize import curve_fit
 import pandas as pd
+from textable import TexTable
 
 from textable import TexTable
 
@@ -33,6 +34,13 @@ def plot(name):
             column_format=r"S[round-mode=figures, zero-decimal-to-integer=true] S[round-mode=places, round-precision=0, table-format=3.0] S[round-mode=places, round-precision=0, table-format=3.0] S[round-mode=places, round-precision=0, table-format=3.0]",
             escape=False,
         )
+
+    table = TexTable(
+        df,
+        name.replace("data", "build").replace(".txt", "_data") + "_textable",
+        r"S[round-mode=figures, zero-decimal-to-integer=true] S[round-mode=places, round-precision=0, table-format=3.0] S[round-mode=places, round-precision=0, table-format=3.0] S[round-mode=places, round-precision=0, table-format=3.0]",
+    )
+    table.generate_pdf()
 
     x = np.linspace(np.min(nu), np.max(nu), 1001)
 
