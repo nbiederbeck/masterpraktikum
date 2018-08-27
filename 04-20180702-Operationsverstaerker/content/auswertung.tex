@@ -231,20 +231,37 @@ der Ausgangsspannung des Dreieckgenerators dargestellt.
 
 Die Frequenz und Amplitude der Dreieckspannung werden am Oszilloskop abgelesen.
 Die Theoriewerte werden aus Gleichung~\eqref{eq:schmitt} (Schmitt-Triggerpunkt, außerdem gelbe Linie in Abbildung~\ref{fig:dreieck_generator})
-und Gleichung~\eqref{eq:integrator} berechnet.
+und Gleichung~\eqref{eq:integrator} berechnet:
 \begin{align*}
-  A_\text{exp} &= \SI{1.37}{\volt} \\
-  A_\text{theo} &= \SI{1.28}{\volt} \\
-  \Rightarrow \Delta A &= \SI{7}{\percent}
+  U_A &= \frac{-1}{RC} \int_{t_1}^{t_2} U_1(t) \text{d}t \\
+  \intertext{mit $U_1(t) = \pm U_B$ die Ausgangsspannung des Schmitt-Triggers,}
+  &= \frac{-1}{RC} U_B \left(t_2 - t_1\right).
+  \intertext{Ab hier ist $\Delta t \coloneqq \left(t_2 - t_1\right)$ eine halbe Periode: $\Delta
+  t = \sfrac{T}{2}$.
+  Sei
+  $U_A(t_2) = \sfrac{R_1}{R_P} U_B$
+  und
+  $U_A(t_1) = -\sfrac{R_1}{R_P} U_B$, so ist
+  }
+  -2 \frac{R_1}{R_P} U_B &= \frac{-1}{RC} U_B \Delta t
+  \intertext{und daher}
+  T = 2 \Delta t &= 4 \frac{R_1 RC}{R_P}.
+\end{align*}
+
+Die Amplitude ist
+\begin{align*}
+  A_\text{theo} &= U_B \frac{R_1}{R_P} = \SI{1.47}{\volt} \\
+  A_\text{exp} &= \SI{1.28}{\volt} \\
+  \Rightarrow \Delta A &= \SI{13}{\percent}.
 \end{align*}
 
 % Hierfür wird Gleichung~\eqref{eq:integrator_before} integriert, sodass für die Integrationsgrenzen $U(t_1) = \SI{0}{\volt}$ und $U(t_2) = U_S$ gilt, mit der Spannung beim Umschalten des Schmitt-Triggers $U_S$.
 Die Frequenz der generierten Dreieckspannung wird am Oszilloskop abgelesen.
-Es ist
+Es sind
 \begin{align*}
-  \nu_\text{theo} &= \frac{2 \pi}{RC} = \SI{10}{\kilo\hertz} \\
+  \nu_\text{theo} &= \frac{1}{T} = \SI{3.98}{\kilo\hertz} \\
   \nu_\text{exp}  &= \SI{1.99}{\kilo\hertz} \\
-  \Rightarrow \Delta \nu &= \SI{80}{\percent}
+  \Rightarrow \Delta \nu &= \SI{50}{\percent}.
 \end{align*}
 
 \subsection{Ged\"ampfte Schwingung}
@@ -284,15 +301,15 @@ Die Parameter des Fits sind
   b &= \SI{-0.023 \pm 0.004}{\volt} \\
   \phi &= \SI{-8.075 \pm 0.01}{\radian}.
 \end{align*}
-Daraus ergeben sich nach Gleichung~\eqref{eq:T_theo} und~\eqref{eq:tau_theo} mit
+ Nach Gleichung~\eqref{eq:T_theo} und~\eqref{eq:tau_theo} ergeben sich mit
 \begin{align*}
   R &= \SI{10}{\kilo\ohm} \\
-  C &= \SI{20.8}{\nano\farad} \\
-  %
-  \omega_\text{theo} &= \frac{2 \pi}{T} \\
-  \\
-  \omega_\text{theo} &= \SI{4800}{\per\second} \\
+  C &= \SI{20.8}{\nano\farad},
+\end{align*}
+die Theoriewerte und relativen Abweichungen der Fitparameter
+\begin{align*}
+  \omega_\text{theo} &= \frac{2\pi}{T} = \frac{1}{R C} = \SI{4800}{\per\second} \\
   \Rightarrow \Delta \omega &= \num{11}\% \\
-  \tau_\text{theo} &= \SI{4.2}{\milli\second} \\
+  \tau_\text{theo} &= 20 RC = \SI{4.2}{\milli\second} \\
   \Rightarrow \Delta \tau &= \num{12}\%.
 \end{align*}

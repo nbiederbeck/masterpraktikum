@@ -38,6 +38,7 @@ def plot(name):
     tau_theo = 20 * R * C
     f = 1.0 / T
     omega = f * 2 * 3.1415962
+    omega = 1 / (R * C)
     print("tau_theo / s", tau_theo)
     print("Delta tau / %", 100 * np.abs(1 - par[2] / tau_theo))
     print("f_theo / Hz", f)
