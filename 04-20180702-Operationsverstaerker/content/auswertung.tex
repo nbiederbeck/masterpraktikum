@@ -46,6 +46,12 @@ die Grenzfrequenz $\nu_\text{G}$ und der Verstärkungsfaktor $V_\text{exp}$ in d
 Die Messergebnisse und theoretischen Werte der vier Konfigurationen der linearen Verstärker
 sind in Tabelle~\ref{tab:vergleich} aufgetragen.
 Hierbei ist $V_\text{exp}$ der Fitparameter aus Gleichung~\eqref{eq:fit_tiefpass}.
+Gleichung~\eqref{eq:v_strich} wird nach dem Leerlaufverstärker $V$ umgestellt:
+\begin{align}
+  \frac{1}{V'} &= \frac{1}{V} + \frac{R_1}{R_N} \nonumber \\
+  \Rightarrow \frac{1}{V} &= \frac{1}{V'} - \frac{R_1}{R_N} \nonumber \\
+  \Rightarrow V &= \frac{1}{\frac{1}{V'} - \frac{R_1}{R_N}}
+\end{align}
 \begin{table}[ht]
   \centering
   \caption{Vergleich der Konfigurationen der linearen Verstärker.}
@@ -60,7 +66,8 @@ Hierbei ist $V_\text{exp}$ der Fitparameter aus Gleichung~\eqref{eq:fit_tiefpass
       S[table-format=3.1]
   }
     \toprule
-    {Nr.} & {$\sfrac{R_N}{R_1}$} & {$V_\text{exp}$} & {$\Delta V / \%$} & {$\nu_\text{G} / \si{\kilo\hertz}$} &  {$V'_\text{exp} \cdot \nu_\text{G}$} & {$V$ (Gl.~\eqref{eq:v_strich})} \\
+    {Nr.} & {$\sfrac{R_N}{R_1}$} & {$V_\text{exp}$} & {$\Delta V / \%$} & {$\nu_\text{G}
+    / \si{\kilo\hertz}$} &  {$V'_\text{exp} \cdot \nu_\text{G} / \si{\kilo\hertz}$} & {$V$} \\
     \midrule
     1 & 2.35  & \num{2.2 \pm 0.01} & 6  & \num{1.7 \pm 1.4} & 3.8 & 39.2   \\
     2 & 0.5   & \num{0.2 \pm 0.01} & 51 & \num{2.4 \pm 0.5} & 0.6  & 0.5   \\
@@ -87,24 +94,31 @@ Es ist zu erkennen, dass bei der Grenzfrequenz $\nu_\text{G}$ sowohl die Ausgang
 \subsubsection{Umkehrintegrator}
 Ein Umkehrintegrator wird mit den Bauteilen $R = \SI{9.6}{\kilo\ohm}$ und $C = \SI{20.8}{\nano\farad}$ beschaltet.
 Es werden die Eingangsspannungen Sinus-, Dreieck-, und Rechteckspannung integriert und die Oszilloskopaufnahmen in den Abbildungen~\ref{subfig:int_sinus} bis~\ref{subfig:int_dreieck} dargestellt.
-Die Sinusspannung wird in eine Cosinusspannung integriert (vgl. Abbildung~\ref{subfig:int_sinus}),
-die Rechteckspannung wird in eine Dreieckspannung integriert (vgl. Abbildung~\ref{subfig:int_rechteck})
-und die Dreieckspannung wird in eine parabolische Funktion der Form $y = a \cdot x - b \cdot x^2 \cdot \text{sgn}(x)$ integriert (vgl. Abbildung~\ref{subfig:int_dreieck}).
+Die Sinusspannung wird zu einer Cosinusspannung integriert (vgl. Abbildung~\ref{subfig:int_sinus}),
+die Rechteckspannung wird zu einer Dreieckspannung integriert (vgl. Abbildung~\ref{subfig:int_rechteck})
+und die Dreieckspannung wird zu einer parabolische Funktion der Form $y = a \cdot x - b \cdot x^2 \cdot \text{sgn}(x)$ integriert (vgl. Abbildung~\ref{subfig:int_dreieck}).
 Da
 \begin{align*}
-  U_\text{A} &\propto \frac{U_0}{\omega}
+  U_\text{A} &\propto \frac{U_0}{\omega} \eqqcolon m
 \end{align*}
 gilt (vgl.\ Gleichung~\eqref{eq:integrator}),
 wird ein linearer Fit der Form
 \begin{align*}
-  V'_\text{theo} &= \exp\!{\left(\log\!{\left(\frac{2 \pi \nu}{\SI{1}{\hertz}}\right)} \cdot
-  \frac{\SI{1}{\hertz}}{\omega} + V_0 \right)}
+  V'_\text{theo} &=
+    \exp\!{\left(
+      \ln\!{\left(
+        \frac{2 \pi \nu}{\SI{1}{\per\second}}
+      \right)}
+      \cdot
+      m
+      + V_0
+    \right)}
 \end{align*}
 berechnet, um eine Gerade in doppeltlogarithmischer Darstellung zu erhalten,
 und in einem doppellogarithmischen Diagramm in Abbildung~\ref{fig:int} aufgetragen.
 Die Fitparameter ergeben sich zu
 \begin{align*}
-  \omega &= \SI{-1.05 \pm 0.02}{\kilo\hertz} \\
+  m &= \num{-1.05 \pm 0.02} \\
   V_0 &= \num{-5.34 \pm 0.03}.
 \end{align*}
 
@@ -118,34 +132,45 @@ Die Fitparameter ergeben sich zu
 \subsubsection{Umkehrdifferentiator}
 Ein Umkehrdifferentiator wird ebenfalls mit den Bauteilen $R = \SI{9.6}{\kilo\ohm}$ und $C = \SI{20.8}{\nano\farad}$ beschaltet.
 Es werden die Eingangsspannungen Sinus-, Dreieck-, und Rechteckspannung differentiert und die Oszilloskopaufnahmen in den Abbildungen~\ref{subfig:dif_sinus} bis~\ref{subfig:dif_dreieck} dargestellt.
-Die Sinusspannung wird in eine Cosinusspannung differentiert (vgl. Abbildung~\ref{subfig:int_sinus}),
-die Rechteckspannung wird in eine Delta-Distribution differentiert (vgl. Abbildung~\ref{subfig:int_rechteck})
-und die Dreieckspannung wird in eine Rechteckspannung  differentiert (vgl. Abbildung~\ref{subfig:int_dreieck}).
+Die Sinusspannung wird zu einer Cosinusspannung differentiert (vgl. Abbildung~\ref{subfig:int_sinus}),
+die Rechteckspannung wird zu einer Delta-Distribution differentiert (vgl. Abbildung~\ref{subfig:int_rechteck})
+und die Dreieckspannung wird zu einer Rechteckspannung  differentiert (vgl. Abbildung~\ref{subfig:int_dreieck}).
 
 Im Falle des Umkehrdifferentiators gilt
 \begin{align*}
-  U_\text{A} &\propto {U_0} \cdot {\omega}
+  U_\text{A} &\propto {U_0} \cdot {\omega} \eqqcolon m
 \end{align*}
 (vgl.\ Gleichung~\eqref{eq:differentiator}).
 Es wird ein linearer Fit der Form
 \begin{align*}
-  V'_\text{theo} &= \exp{\left(\log{\left(\frac{2 \pi \nu}{\SI{1}{\hertz}}\right)} \cdot
-\frac{\omega}{\SI{1}{\hertz}} + V_0 \right)}
+  V'_\text{theo} &=
+    \exp\!{\left(
+      \ln\!{\left(
+        \frac{2 \pi \nu}{\SI{1}{\per\second}}
+      \right)}
+      \cdot
+      m
+      + V_0
+    \right)}
 \end{align*}
 berechnet und in einem doppellogarithmisches Diagramm in Abbildung~\ref{fig:int} aufgetragen.
 Die Fitparameter ergeben sich zu
 \begin{align*}
-  \omega &= \SI{1.04 \pm 0.02}{\kilo\hertz} \\
+  m &= \num{1.04 \pm 0.02} \\
   V_0 &= \num{-8.41 \pm 0.04} .
 \end{align*}
 
-Für einen vergleichbaren Wert wird
-\begin{align*}
-  \left|\omega_\text{theo}\right| &= \log\!{\left(\frac{1}{RC}\right)} = \SI{1.6}{\kilo\hertz} \\
-  \intertext{bestimmt, sodass für beide Schaltungen etwa}
-  \Delta \omega &= \num{38}\%
-\end{align*}
-gilt.
+Da $m$ der Steigung des Fits entspricht, wird somit deutlich, dass die in
+Gleichungen~\eqref{eq:integrator} und~\eqref{eq:differentiator} hergeleiteten Proportionalitäten
+bestätigt werden.
+
+% Für einen vergleichbaren Wert wird
+% \begin{align*}
+%   \left|\omega_\text{theo}\right| &= \log\!{\left(\frac{1}{RC}\right)} = \SI{1.6}{\kilo\hertz} \\
+%   \intertext{bestimmt, sodass für beide Schaltungen etwa}
+%   \Delta \omega &= \num{38}\%
+% \end{align*}
+% gilt.
 
 \begin{figure}[ht]
   \centering
@@ -154,6 +179,7 @@ gilt.
   \label{fig:dif}
 \end{figure}
 
+\FloatBarrier
 \subsection{Schmitt-Trigger}
 Es wird ein Schmitt-Trigger mit $R_1 = \SI{0.1}{\kilo\ohm}$ und $R_\text{P} = \SI{9.6}{\kilo\ohm}$ realisiert.
 In Abbildung~\ref{fig:schmitt} ist die Oszilloskopaufnahme des Schmitt-Triggers dargestellt.
@@ -193,6 +219,7 @@ $R_1 = \SI{0.1}{\kilo\ohm}$,
 $R_\text{P} = \SI{1}{\kilo\ohm}$,
 $R = \SI{30.2}{\kilo\ohm}$
 gebaut.
+Es wird eine Betriebsspannung von $U_B = \SI{14.7}{\volt}$ angelegt.
 In Abbildung~\ref{fig:dreieck_generator} wird ein Oszilloskopbild
 der Ausgangsspannung des Dreieckgenerators dargestellt.
 \begin{figure}[ht]

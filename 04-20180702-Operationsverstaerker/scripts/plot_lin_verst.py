@@ -4,6 +4,8 @@ import matplotlib.ticker as tick
 from scipy.optimize import curve_fit
 import pandas as pd
 
+from textable import TexTable
+
 
 def fit(nu, V_, RC, c):
     return V_ / np.sqrt(1 + (nu * RC) ** 2) + c
