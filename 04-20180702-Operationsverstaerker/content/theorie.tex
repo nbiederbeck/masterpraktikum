@@ -152,12 +152,13 @@ Faktor $g$ verkleinert:
 \begin{equation}
 		g := \frac{V}{V'} \, .
 \end{equation}
-Äquivalent werden die nicht-kontrollierbaren Schwankungen vermindert:
+Äquivalent werden die nicht-kontrollierbaren Schwankungen der
+Leerlaufverstärkung vermindert:
 \begin{equation}
 		\frac{\Delta V'}{V'} = \frac{\Delta V}{g V} \, .
 \end{equation}
-Ebenso nimmt die Bandbreite $\Delta \omega$ für große $g$ zu, sodass aufgrund eines großeren
-Frequenzbandes mehr Frequenzen unverzerrt verstärkt werden können.
+Ebenso nimmt die Bandbreite $\Delta \nu$ für große $g$ zu, sodass 
+mehr Frequenzen unverzerrt verstärkt werden können.
 Die Transitfrequenz $\nu_\text{g}$ ist durch das Produkt aus Verstärkung und
 Bandbreite definiert, welches bei gegengekoppelten Zweigen eine Konstante
 bildet.
@@ -196,9 +197,9 @@ Der Blindwiderstand $H$ ist eine Funktion der Wechselspannungfrequenz $\omega$
 und dessen Realteil entspricht
 \begin{align}
 		\Re(H(\omega))  &= \Re \left(\frac{\sfrac{1}{j \omega C}}{\sfrac{1}{j\omega
-    C} + R} \right) \nonumber \\
-		&= \frac{1}{\sqrt{1 + (\frac{\omega}{\Delta \omega} )^2}} \,
-		\hspace{1cm} \text{mit } \Delta \omega = \frac{1}{RC}
+		C} + R} \right) \nonumber \\
+		&= \frac{1}{\sqrt{1 + (\frac{\nu}{\Delta \nu} )^2}} \,
+		\hspace{1cm} \text{mit} \Delta \nu= \frac{1}{2 \pi RC}
 		\label{eq:tiefpass}
 \end{align}
 dem \enquote{Ersatzwiderstand}.
@@ -281,15 +282,16 @@ Der Schmitt-Trigger dient als Linearverstärker bis die Ungleichung
 		\label{eq:schmitt}
 		U_1 > \frac{R_1}{R_\text{P}} U_\text{B} \ .
 \end{equation}
-erfüllt wird.
-Sinkt die Eingangsspannung unter den Wert
+erfüllt wird, wobei fortan die Ausgangsspannung des Schmitt-Trigger den
+Sättigungswert $U_\text{B}$ annimmt. 
+Sinkt die Eingangsspannung unter den Wert 
 \begin{equation}
 		% \label{eq:schmitt}
 		\label{eq:m_ub}
 		U_1 < - \frac{R_1}{R_\text{P}} U_\text{B} \ .
 \end{equation}
 fällt der Wert auf den negativen Sättigungswert $-U_\text{B}$.
-Durch den Schmitt-Trigger welcher den Bistabile Kippstufe untergeordent werden
+Durch den Schmitt-Trigger welcher den Bistabile Kippstufen untergeordent werden
 kann, lassen sich Beispielsweise Rechteckspannungen erzeugen.
 \begin{figure}[ht]
 		\centering
@@ -304,11 +306,11 @@ Signalverstärkung genutzt.
 \label{sub:signalgenerator}
 
 Zum Betreiben eines Rechteck- und Dreieck-Signalgenerator werden
-ein Schmitt-Trigger sowie ein Differentiator benötigt (siehe Abbildung
+ein Schmitt-Trigger sowie ein Integrator benötigt (siehe Abbildung
 \ref{fig:sig}).
-Dazu wird, die mit dem Schmitt-Trigger erzeugte, konstante Ausgangsspannung $U_\text{B}$
-auf den nicht-invertierenden Eingang des Differentiator gelegt.
-Der Differentiator erzeugt eine Flanke eines Dreiecksignals $U_\text{A}$
+Dazu wird die mit dem Schmitt-Trigger erzeugte, konstante Ausgangsspannung $+ U_\text{B}$
+auf den nicht-invertierenden Eingang des Integrators gelegt.
+Der Integrator erzeugt eine abfallende Flanke eines Dreiecksignals $U_\text{A}$
 welche wiederum auf den Schmitt-Trigger zurückgegeben wird.
 % Durch das Anregen des Schmitt-Triggers mit einer Sinusspannung wird bei
 % entsprechender Wahl der Widerstände und hinreichend großen Eingangspannungen, am Ausgang ein Rechtecksignal erzeugt.
@@ -320,11 +322,12 @@ welche wiederum auf den Schmitt-Trigger zurückgegeben wird.
 		\caption{Schaltbild eines Rechteck- sowie Dreieck-Signalgenerators. \cite{anleitung}}
 		\label{fig:sig}
 \end{figure}
-Übersteigt die Rückgekoppelte Spannung den Wert der Ungleichung (\ref{eq:m_ub})
+Unterschreitet die Rückgekoppelte Spannung den Wert der Ungleichung (\ref{eq:m_ub})
 so kippt der Schmitt-Trigger auf den Wert $-U_\text{B}$.
-Dies erzeugt entsprechend die andere Flanke des Dreieckgenerators, sodass die
-Frequenz der Dreiecksspannung nurnoch von der Integrationskonstanten so wie
-dem Teilerverhältniss des Mittkopplungszweig abhängig ist.
+Durch die Integration der Eingangspannung $-U_\text{B}$ wird in analogie zur
+positiven Eingangspannung die ansteigende Flanke des Dreiecksignals erzeugt.
+Die Frequenz der Dreiecksspannung ist nur noch von der Integrationskonstanten so wie 
+dem Teilerverhältniss des Mittkopplungszweig abhängig.
 
 
 % Durch die Integration eines Rechtecksignals wird aus diesem ein Dreieck-Signal,
