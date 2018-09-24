@@ -1,5 +1,20 @@
 \begin{frame}[t]{Wettervorhersage}
   \begin{block}{Recurrent Neural Network \tiny\alert{(work in progress)}}
-    Perfekt für Zeitreihenanalysen
+    \begin{itemize}
+      \item Perfekt für Zeitreihenanalysen
+    \end{itemize}
+    \begin{align*}
+      \left(\begin{matrix}
+          \texttt{Zeit} \\
+          \texttt{Temperaturen} \\
+          \texttt{Luftdruck} \\
+          \texttt{Luftfeuchtigkeit} \\
+          \texttt{Wolkenklasse} \\
+      \end{matrix}\right)
+      \Longrightarrow \texttt{Wetter in der Zukunft}
+    \end{align*}
+    \begin{itemize}
+      \item Lernt bei jedem neuen Datenpunkt neu
+    \end{itemize}
   \end{block}
 \end{frame}
