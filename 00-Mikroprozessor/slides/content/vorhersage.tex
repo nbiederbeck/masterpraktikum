@@ -1,28 +1,49 @@
-\begin{frame}[t]{Wettervorhersage}
-  \begin{block}{Recurrent Neural Network \tiny\alert{(work in progress)}}
-    \begin{itemize}
-      \item Perfekt f\"ur Zeitreihenanalysen
-    \end{itemize}
-    \begin{align*}
-      \left(\begin{matrix}
-          \texttt{Zeit} \\
-          \texttt{Temperaturen} \\
-          \texttt{Luftdruck} \\
-          \texttt{Luftfeuchtigkeit} \\
-          \texttt{Wolkenklasse} \\
-      \end{matrix}\right)
-      \Longrightarrow \texttt{Wetter in der Zukunft}
-    \end{align*}
-    \begin{columns}[onlytextwidth]
-      \begin{column}{0.48\textwidth}
-        \begin{itemize}
-          \item Lernt bei jedem neuen Datenpunkt neu
-        \end{itemize}
-      \end{column}
-      \begin{column}{0.48\textwidth}
-        \centering
-        \includegraphics[height=0.2\textheight]{picture/neuralnet_brain.png}
-      \end{column}
-    \end{columns}
-  \end{block}
+% \begin{frame}[t]{Wettervorhersage}
+% 	\begin{block}{Recurrent Neural Network \tiny\alert{(work in progress)}}
+% 		\begin{itemize}
+% 			\item Perfekt f\"ur Zeitreihenanalysen
+% 		\end{itemize}
+% 		\begin{align*}
+% 			\left(\begin{matrix}
+% 					\texttt{Zeit} \\
+% 					\texttt{Temperaturen} \\
+% 					\texttt{Luftdruck} \\
+% 					\texttt{Luftfeuchtigkeit} \\
+% 					\texttt{Wolkenklasse} \\
+% 			\end{matrix}\right)
+% 			\Longrightarrow \texttt{Wetter in der Zukunft}
+% 		\end{align*}
+% 		\begin{columns}[onlytextwidth]
+% 			\begin{column}{0.48\textwidth}
+% 				\begin{itemize}
+% 					\item Lernt bei jedem neuen Datenpunkt neu
+% 				\end{itemize}
+% 			\end{column}
+% 			\begin{column}{0.48\textwidth}
+% 				\centering
+% 				\includegraphics[height=0.2\textheight]{picture/neuralnet_brain.png}
+% 			\end{column}
+% 		\end{columns}
+% 	\end{block}
+% \end{frame}
+
+\begin{frame}[c]{Wettervorhersage}
+	\begin{block}{Recurrent Neural Network \tiny\alert{(work in progress)}}
+				\begin{itemize}
+					\item Perfekt f\"ur Zeitreihenanalysen
+					\item $\vec{y}_\text{n+1} = f(\vec{y}_\text{n}, \vec{y}_\text{n-1},
+						\ldots, \vec{y}_\text{n-m})$
+						\begin{itemize}
+							\item[-] $\vec{y}_\text{n}$ = (\texttt{Temperatur}, \texttt{Luftdruck},
+						\texttt{Luftfeuchtigkeit}, \texttt{Wolkenklasse}, \ldots)$^\intercal$
+						\end{itemize}
+					\item Lernt bei jedem neuen Datenpunkt neu
+					\item \alert{eine neues Anwendungbeispiel in der Lehre für
+						RNN's}
+				\end{itemize}
+				\vspace{-0.7cm}
+				\flushright{
+				\includegraphics[width=0.2\textwidth]{picture/neuralnet_brain.png}
+			}
+	\end{block}
 \end{frame}
