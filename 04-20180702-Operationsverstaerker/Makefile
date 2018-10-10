@@ -37,7 +37,7 @@ all: build/main.pdf
 
 anleitung_V51_Operationsverstaerker.pdf:
 	wget http://129.217.224.2/HOMEPAGE/PHYSIKER/MASTER/SKRIPT/V51.pdf -q \
-		--user TUDoFP --password WS1718 \
+		--user TUDoFP --password WS1819 \
 		-O $@
 
 

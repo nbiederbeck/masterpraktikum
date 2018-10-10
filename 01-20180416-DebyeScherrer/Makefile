@@ -18,7 +18,7 @@ all: $(BUILD_FILES)
 
 anleitung_V41_DebyeScherrer.pdf:
 	wget http://129.217.224.2/HOMEPAGE/PHYSIKER/MASTER/SKRIPT/V41.pdf -q \
-		--user TUDoFP --password WS1718 \
+		--user TUDoFP --password WS1819 \
 		-O anleitung_V41_DebyeScherrer.pdf
 
 
