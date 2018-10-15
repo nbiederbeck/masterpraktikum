@@ -2,9 +2,10 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import signal
+from glob import glob 
 
 class larmor_sweep:
-    def __init__(self, csvPath, upperTLim=2.5e-3, lowerTLim=-1.5e-5):
+    def __init__(self, csvPath, spulenU, upperTLim=2.5e-3, lowerTLim=-1.5e-5):
         df = pd.read_csv(csvPath)
         data = pd.DataFrame(
                 df.loc[18:].values[:,3:5],
@@ -14,6 +15,7 @@ class larmor_sweep:
         self.data = data[self.mask].reset_index()
         self.lowerTLim = lowerTLim
         self.upperTLim = upperTLim
+        self.spulenU = spulenU
 
     def find_peaks(self, distance=None):
         if distance==None:
@@ -36,9 +38,10 @@ class larmor_sweep:
             "tPeaks": self.tPeaks,
             "uPeaks": self.uPeaks,
             "time": self.data.time,
-            "voltage": self.data.voltage
+            "voltage": self.data.voltage,
+            "spulenU": self.spulenU,
             })
-        df.to_pickle(path)
+        df.to_pickle(path+ str(int(self.spulenU))+ ".pkl")
 
 class plotter:
     def __init__(self):
@@ -64,11 +67,15 @@ class plotter:
         plt.close()
 
 def main():
-    # lam = larmor_sweep('data/TEK0007.CSV')
-    # lam.save_info('test')
+    # csvPath = 'data/firstPeak/'
+    # for U in np.linspace(1,10,10):
+    #     print('Processing U=: ', U)
+    #     lam = larmor_sweep(csvPath+str(int(U))+'V.CSV', U)
+    #     lam.save_info('data/')
+    # print('Done')
 
     plttr = plotter()
-    plttr.load_data('test')
+    plttr.load_data('data/7.pkl')
     plttr.plot_exp('test.pdf')
 
 if __name__ == '__main__':
