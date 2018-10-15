@@ -16,7 +16,7 @@ all: build/main.pdf
 
 anleitung_V21_OptischePumpen.pdf:
 	wget http://129.217.224.2/HOMEPAGE/PHYSIKER/MASTER/SKRIPT/V21n_TeachSpin_new.pdf -q \
-		--user TUDoFP --password WS1718 -O $@
+		--user TUDoFP --password WS1819 -O $@
 
 
 build/main.pdf: $(BUILD_FILES) FORCE | build
