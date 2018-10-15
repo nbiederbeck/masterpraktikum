@@ -1,4 +1,8 @@
 BUILD_FILES = $(addprefix build/, \
+	$(addsuffix .pdf, \
+		aufspaltungen \
+		aufbau \
+	) \
 )
 
 OUT_DIR = build
@@ -12,6 +16,23 @@ PREVIEW_CMD = \
 
 
 all: build/main.pdf
+
+build/aufbau.pdf: anleitung_V21_OptischePumpen.pdf | build
+		gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+		-dFirstPage=16 \
+			-dLastPage=16 \
+		-sOutputFile=$@ $<
+		pdfcrop --bbox "0 385 600 650"  $@ $@
+		pdfcrop $@ $@
+
+
+build/aufspaltungen.pdf: anleitung_V21_OptischePumpen.pdf | build
+		gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+		-dFirstPage=4 \
+			-dLastPage=4 \
+		-sOutputFile=$@ $<
+		pdfcrop --bbox "0 160 600 545"  $@ $@
+		pdfcrop $@ $@
 
 
 anleitung_V21_OptischePumpen.pdf:
@@ -41,4 +62,3 @@ clean:
 
 
 .PHONY: all clean FORCE preview
-
