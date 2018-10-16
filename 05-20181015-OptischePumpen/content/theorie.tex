@@ -1,3 +1,13 @@
+% todo:
+% Kapitel 1.1 (Termschema und Zeeman-Aufspaltung):
+%   Spin, Kernspin, Bahndrehimpuls, Lande-Faktor,
+%   Bohrsches Magneton Richtungsquantelung, Hyperfeinstruktur
+% Kapitel 1.2 (Optisches Pumpen):
+%   Boltzmann-Verteilung, Besetzungsinversion, Pumpvorgang,
+%   Auswahlregeln, Spontane/Induzierte Emission,
+%   Polarisation, Transparenz
+% Kapitel 1.4 (Transiente Effekte):
+%   Larmor-Frequenz, Anregung, e-Funktion
 \section{Theorie}%
 \label{sec:theorie}
 
@@ -43,19 +53,42 @@ Es werden außerdem die Quantenzahlen $j, s, l$ definiert, die zu den jeweiligen
 gehören.
 
 Beim Anlegen eines äußeren Magnetfeldes $\vec{B}$ wechselwirkt das magnetische Moment mit diesem.
-Das mag. Moment $\vec{\mu}_{\text{J}}$ präzidiert um die Feldrichtung von
+Das magnetische Moment $\vec{\mu}_{\text{J}}$ präzidiert um die Feldrichtung von
 $\vec{B}$ und somit mittelt sich die senkrechte Komponente raus.
-Aufgrund der Richtungsquantelung kann diese nur ganzzahlige Werte annehmen:
+Aufgrund der Richtungsquantelung kann die parallele Komponente nur ganzzahlige Werte annehmen:
 \begin{equation}
   E_\text{mag} = m_\text{j} g_{\text{J}} \mu_\text{B} B,
 \end{equation}
-wobei $m_\text{j}$ die Werte $-j \ldots +j$ annehmen kann.
+wobei $m_\text{j}$ die Werte $-j,~\ldots,~+j$ annehmen kann.
 
 Es spalten sich also die Energieniveaus beim Anlegen eines Feldes in $2j + 1$ Unterniveaus auf.
 Dies wird als Zeeman-Effekt bezeichnet.
 
 
+\subsubsection{Einfluss des Kernspins}%
+\label{sub:einfluss_des_kernspins}
 
+Die eben angestellten Betrachtungen setzen einen Kernspin von $\mathbf{I} = 0$
+voraus.
+Dies ist im Allgemeinen nicht der Fall.
+Auch in diesem Experiment haben die Rubidiumisotope einen von null verschiedenen Kernspin
+$\mathbf{I} \neq 0$.
+
+Es wird eine neue Quantenzahl $m_\text{f}$ für den Gesamtdrehimpuls
+\begin{equation}
+  \vec{F} = \vec{J} + \vec{\mathbf{I}}
+\end{equation}
+eingeführt, welche von $-F$ bis $F$ laufen kann.
+Hierbei kann $F$ die Werte
+$\left|\vec{\mathbf{I}} - \vec{J}\right|$ bis $\vec{\mathbf{I}} + \vec{J}$
+annehmen.
+
+Die Aufspaltung der Energieniveaus in Folge des Kernspins heißt
+Hyperfeinstruktur, die weitere Aufspaltung in $2F + 1$ Unterniveaus ist dann
+der Zeeman-Effekt bei Anlegen eines äußeren Magnetfeldes.
+
+In Abbildung~\ref{fig:aufspaltungen} sind die Aufspaltungen beispielhaft
+dargestellt.
 
 \begin{figure}[ht]
   \centering
@@ -67,19 +100,160 @@ Dies wird als Zeeman-Effekt bezeichnet.
   \label{fig:aufspaltungen}
 \end{figure}
 
-\textit{Spin, Kernspin, Bahndrehimpuls, Land\'e-Faktor, Bohrsches Magneton,
-Richtungsquantelung, Hyperfeinstruktur}
 
 \subsection{Optisches Pumpen}%
 \label{sub:optisches_pumpen}
 
-\textit{Boltzmann-Verteilung, Besetzungsinversion, Pumpvorgang, Auswahlregeln,
-Spontane/Induzierte Emission, Polarisation, Transparenz}
+Das Optische Pumpen wird verwendet, um eine Besetzungsinversion zu erhalten.
 
-\textit{Quadratischer Zeeman-Effekt}
+Im thermischen Gleichgewicht ist der Grundzustand immer höher besetzt, als die
+anderen Zustände.
+Es muss eine Besetzungsinversion hergestellt werden, um Relaxationsvorgänge im
+Medium beobachten zu können.
+
+Diese Relaxationsvorgänge sind induzierte und spontane Emission von
+Lichtquanten.
+Aufgrund der Energie-Zeit-Unschärfe können höherenergetische Elektronen die
+niedrigeren Energiezustände sehen und sich auf diese setzen.
+Das ist die spontane Emission.
+Bei der induzierten Emission werden Elektronen von Photonen angeregt,
+und das bei der Relaxation entstehende Photon ist mit dem induzierenden Photon
+in Phase und hat die selbe Wellenlänge.
+
+Damit induzierte Emission stattfinden kann, muss die Energie des eingestrahlten Photon
+genau der Energiedifferenz zwischen zwei Zuständen entsprechen:
+\begin{align}
+  h \nu &= E_2 - E_1, \\
+  \intertext{was bei benachbarten Zeeman-Niveaus}
+  \label{eq:zeeman_energie}
+  h \nu &= g_\text{F} \mu_\text{B} B
+\end{align}
+entspricht.
+
+Ein Alkali-Atom hat den Grundzustand
+${}^2\!S_{\sfrac{1}{2}}$
+und die beiden angeregten Zustände
+${}^2\!P_{\sfrac{1}{2}}$
+und
+${}^2\!P_{\sfrac{3}{2}}$
+(vgl. Abbildung~\ref{fig:dublett}).
+Im vorliegenden Experiment wird nur $D_1$-Licht betrachtet,
+sodass nur der Grundzustand und der erste angeregte Zustand im Folgenden
+betrachtet werden.
+Aufgrund des Gesamtdrehimpulses, der in beiden Zuständen $J = \frac{1}{2}$ ist,
+kann $m_\text{J}$ nur die Werte $\pm\sfrac{1}{2}$ annehmen.
+Somit werden die Zustände bei angelegtem äußerem Magnetfeld in zwei
+Zeeman-Unterniveaus gespalten.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.6\linewidth]{build/dublett.pdf}
+  \caption{%
+    Dublettstruktur in Alkali-Spektren.\cite{anleitung}
+    Es ist das typische $D_1$-$D_2$-Dublett zu sehen.
+    Die Quantenzahlen sind eingetragen.
+  }%
+  \label{fig:dublett}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.6\linewidth]{build/auswahlregeln.pdf}
+  \caption{%
+    Zeeman-Aufspaltung des Grundzustandes und ersten angeregten
+  Zustandes eines Alkali-Atoms ohne Kernspin.\cite{anleitung}
+  }%
+  \label{fig:auswahlregeln}
+\end{figure}
+
+Zwischen diesen Unterniveaus existieren vier Übergänge, siehe hierzu
+Abbildung~\ref{fig:auswahlregeln}.
+Es sind mit $\Delta m_\text{J} = 0$ die $\pi$-Übergänge linear polarisierten
+Lichtes gekennzeichnet und bei den $\sigma$-Übergängen handelt es sich um
+zirkular polarisiertes Licht.
+
+Wird nun rechtszirkular polarisiertes $D_1$-Licht in eine Dampfzelle von Rubidium
+gestrahlt, so werden die Elektronen im untersten Zustand
+(${}^2\!S_{\sfrac{1}{2}}$, $m_\text{J} = - \sfrac{1}{2}$)
+in den obersten
+(${}^2\!P_{\sfrac{1}{2}}$, $m_\text{J} = + \sfrac{1}{2}$)
+gehoben.
+Elektronen in den angeregten Zuständen können durch spontane Emission wieder
+in niedrigere Zustände fallen,
+da aber der Grundzustand ständig gepumpt wird,
+leert sich dieser zunehmend.
+In Folge dessen kann das $D_1$-Licht nicht mehr absorbiert werden und das Gas
+wird durchsichtig (vgl. Abbildung~\ref{fig:transparenz}).
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.6\linewidth]{build/transparenz.pdf}
+  \caption{%
+    Zunehmende Transparenz einer Alkali-Dampfzelle.\cite{anleitung}
+    Bei Einstrahlung von $D_1$-Licht wird der ($m_\text{J}
+    = - \sfrac{1}{2}$)-Zustand leer gepumpt, sodass keine weiteren Photonen
+    absorbiert werden können.
+  }
+  \label{fig:transparenz}
+\end{figure}
+
+
+
+
+\subsection{Präzisionsmessung der Zeeman-Aufspaltung}%
+\label{sub:prazisionsmessung_der_zeeman_aufspaltung}
+
+Bei einem nicht vorhandenen Magnetfeld ist die Dampfzelle undurchsichtig,
+da die Energieniveaus nicht aufgespalten sind und somit der Grundzustand nicht
+leergepumpt werden kann.
+Somit lässt sich durch Einstellen von externen Magnetfeldern das Erdmagnetfeld
+kompensieren und ausmessen.
+
+Bei Anlegen eines frequenzvariablen Hochfrequenzfeldes spalten die
+Energieniveaus auf
+und der Grundzustand kann gepumpt werden.
+Erreicht das Magnetfeld den Wert
+\begin{align}
+  B_\text{m} &= \frac{4 \pi m_e}{e g_\text{J}} \nu, \\
+  \intertext{also gerade die Energiedifferenz}
+  h \nu &= g_\text{J} \mu_\text{B} B_\text{m} \Delta m_\text{J},
+\end{align}
+so wird Elektronenemission induziert und der Grundzustand wird teilweise wieder
+bevölkert.
+Dieser wird jedoch gleichzeitig auch weiter gepumpt, sodass eine
+Resonanzstelle wie in Abbildung~\ref{fig:resonanz} sichtbar wird.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.7\linewidth]{build/resonanz.pdf}
+  \caption{%
+    Transparenz der Dampfzelle in Abhängigkeit des angelegten
+    Hochfrequenzfeldes.\cite{anleitung}
+    Der Dip bei $B_\text{m}$ ist die Resonanzstelle, bei der die
+    Energiedifferenz gerade der Energie der eingestrahlten Photonen entspricht.
+  }%
+  \label{fig:resonanz}
+\end{figure}
+
+
+Bei hoher Magnetfeldern müssen Terme höherer Ordnung berücksichtigt werden.
+So lautet die Zeeman-Energie statt~\eqref{eq:zeeman_energie}
+\begin{equation}
+  E = g_\text{F} \mu_\text{B} B + {g_\text{F}}^2 {\mu_\text{B}}^2 {B}^2 \frac{\left(1
+  - 2 m_\text{F} \right)}{\Delta E_\text{Hy}},
+\end{equation}
+wobei $\Delta E_\text{Hy}$ die Hyperfeinstrukturaufspaltung zwischen den
+Niveaus $F$ und $F + 1$ ist.
+Dieser sogenannte \textit{Quadratische Zeeman-Effekt} ist also abhängig von
+der Quantenzahl $m_\text{F}$.
 
 
 \subsection{Transiente Effekte}%
 \label{sub:transiente_effekte}
 
-\textit{Larmor-Frequenz, Anregung, e-Funktion}
+\subsection{Helmholtzspule}%
+\label{sub:helmholtzspule}
+Das Magnetfeld im Zentrum einer Helmholtzspule ist
+\begin{align}
+  B(0) &= \mu_{0} \cdot \frac{8 \cdot I \cdot N}{\sqrt{125} \cdot R}.
+\end{align}

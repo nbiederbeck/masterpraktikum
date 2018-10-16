@@ -2,6 +2,10 @@ BUILD_FILES = $(addprefix build/, \
 	$(addsuffix .pdf, \
 		aufspaltungen \
 		aufbau \
+		dublett \
+		auswahlregeln \
+		transparenz \
+		resonanz \
 	) \
 )
 
@@ -17,10 +21,46 @@ PREVIEW_CMD = \
 
 all: build/main.pdf
 
+build/resonanz.pdf: anleitung_V21_OptischePumpen.pdf | build
+		gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+		-dFirstPage=11 \
+		-dLastPage=11 \
+		-sOutputFile=$@ $<
+		pdfcrop --bbox "100 110 600 250"  $@ $@
+		pdfcrop $@ $@
+
+
+build/transparenz.pdf: anleitung_V21_OptischePumpen.pdf | build
+		gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+		-dFirstPage=8 \
+		-dLastPage=8 \
+		-sOutputFile=$@ $<
+		pdfcrop --bbox "0 370 420 530"  $@ $@
+		pdfcrop $@ $@
+
+
+build/auswahlregeln.pdf: anleitung_V21_OptischePumpen.pdf | build
+		gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+		-dFirstPage=6 \
+		-dLastPage=6 \
+		-sOutputFile=$@ $<
+		pdfcrop --bbox "0 470 420 677"  $@ $@
+		pdfcrop $@ $@
+
+
+build/dublett.pdf: anleitung_V21_OptischePumpen.pdf | build
+		gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+		-dFirstPage=5 \
+		-dLastPage=5 \
+		-sOutputFile=$@ $<
+		pdfcrop --bbox "0 125 600 295"  $@ $@
+		pdfcrop $@ $@
+
+
 build/aufbau.pdf: anleitung_V21_OptischePumpen.pdf | build
 		gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
 		-dFirstPage=16 \
-			-dLastPage=16 \
+		-dLastPage=16 \
 		-sOutputFile=$@ $<
 		pdfcrop --bbox "0 385 600 650"  $@ $@
 		pdfcrop $@ $@
@@ -29,7 +69,7 @@ build/aufbau.pdf: anleitung_V21_OptischePumpen.pdf | build
 build/aufspaltungen.pdf: anleitung_V21_OptischePumpen.pdf | build
 		gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
 		-dFirstPage=4 \
-			-dLastPage=4 \
+		-dLastPage=4 \
 		-sOutputFile=$@ $<
 		pdfcrop --bbox "0 160 600 545"  $@ $@
 		pdfcrop $@ $@
