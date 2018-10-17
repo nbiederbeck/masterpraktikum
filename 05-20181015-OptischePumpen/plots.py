@@ -89,7 +89,30 @@ class static_experiment:
 
     def kernspins(self):
         self.J = 1/2
-        self.g_j = 2/3
+        self.g_j = 2.0023
+        
+        def kernspin(lande):
+            return self.J * (self.g_j/lande - 1)
+
+        lande_85, lande_87 = self.lande_Faktoren()
+        I_85 = kernspin(lande_85)
+        I_87 = kernspin(lande_87)
+        print('Der Kernspin ist: ', I_85, ' und ', I_87)
+        return I_85, I_87
+
+    def isotopen_ratio(self):
+        self.amplitude_85 = 13
+        self.amplitude_87 = 7
+        self.ratio = self.amplitude_85 / self.amplitude_87
+        print('Das Verhätniss 85/87 ist: ', self.ratio)
+        return self.ratio
+
+    def squared_zee(self):
+        delta_E = 2e-24
+        B = 1.0
+
+        print('Zeemann linear: ', lin_zee)
+        print('Zeemann squared: ', squared_zee)
 
 
 
@@ -186,7 +209,10 @@ def statisch():
     stc.calc_earth_b_static()
     nu, B, params, stds = stc.frequenz_B_fit()
     stc.horizontal_E_Feld()
-    stc.lande_Faktoren()
+    # stc.lande_Faktoren()
+    stc.kernspins()
+    stc.isotopen_ratio()
+    stc.squared_zee()
     
     plttr = plotter()
     plttr.plot_nu_b(nu, B, params)
