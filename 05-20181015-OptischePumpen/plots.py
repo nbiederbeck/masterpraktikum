@@ -103,18 +103,20 @@ class static_experiment:
     def isotopen_ratio(self):
         self.amplitude_85 = 13
         self.amplitude_87 = 7
-        self.ratio = self.amplitude_85 / self.amplitude_87
+        self.ratio = np.round(self.amplitude_85 / self.amplitude_87,2)
         print('Das Verhätniss 85/87 ist: ', self.ratio)
         return self.ratio
 
     def squared_zee(self):
         delta_E = 2e-24
-        B = 1.0
-
+        B = 0.5
+        M_F = 1
+        lin_zee =  self.lande[0] * constants.physical_constants[
+                'Bohr magneton'][0]*B
+        squared_zee = lin_zee ** 2 * (1-2* M_F) / delta_E
         print('Zeemann linear: ', lin_zee)
         print('Zeemann squared: ', squared_zee)
-
-
+        return lin_zee, squared_zee
 
 class larmor_sweep:
     def __init__(self, csvPath, spulenU, upperTLim=2.5e-3, lowerTLim=-1e-5):
@@ -142,11 +144,11 @@ class larmor_sweep:
         self.tPeaks = self.data['time'][peaks]
         self.uPeaks = self.data['voltage'][peaks]
         self.tDist = self.tPeaks.values[1:] - self.tPeaks.values[:-1]
-        return self.tPeaks, self.uPeaks
+        return ufloat(np.mean(self.tDist), np.std(self.tDist))
 
 
     def save_info(self, path, find_peaks_dict={}):
-        self.find_peaks(*find_peaks_dict)
+        # self.find_peaks(*find_peaks_dict)
         df = {
                 "lowerTLim": self.lowerTLim, 
                 "upperTLim": self.upperTLim,
@@ -222,22 +224,24 @@ def sweep():
     csvPath = 'data/firstPeak/'
     TLim = np.array([10.,10.,1.5,2.5,2.5,1.5,1.5,2.5,
         2.5,1.5])*1e-3
+    T = []
     for U in range(1, 11):
         uStr = str(int(U))
 
         print('Processing U=: ', U)
         lam = larmor_sweep(csvPath + uStr + 'V.CSV', U,
                 upperTLim=TLim[U-1])
+        T.append(lam.find_peaks()) 
         lam.save_info(csvPath)
 
-        print('Plotting U=: ', U)
-        plttr.load_data(csvPath + uStr +'.pkl')
-        plttr.plot_exp('build/peaks_' + uStr + '.png')
+        # print('Plotting U=: ', U)
+        # plttr.load_data(csvPath + uStr +'.pkl')
+        # plttr.plot_exp('build/peaks_' + uStr + '.png')
     print('Done')
 
 def main():
-    statisch()
-    #sweep()
+    # statisch()
+    sweep()
 
 if __name__ == '__main__':
     main()
