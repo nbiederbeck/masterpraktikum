@@ -37,6 +37,7 @@ class static_experiment:
         self.nu, self.p1_s, self.p1_h, self.p2_s, \
                 self.p2_h = np.genfromtxt(
                         'data/task_c.txt', unpack=True)
+        self.nu *= 1e3
         self.spu = spulen()
 
     def calc_earth_b_static(self):
@@ -50,18 +51,45 @@ class static_experiment:
     def frequenz_B_fit(self):
         B1 = self.spu.calc_b_gesamt(self.p1_s, self.p1_h)
         B2 = self.spu.calc_b_gesamt(self.p2_s, self.p2_h)
+        self.params = []
+        self.std = []
 
         def f(x, m, b):
             return m * x + b
 
-        params = []
-        std = []
         for B, nu in zip([B1,B2], [self.nu, self.nu]):
             popt, pcov = curve_fit(f, nu, B)
             cov = np.sqrt(np.diag(pcov))
-            std.append(cov)
-            params.append(popt)
-        return nu, [B1, B2], params, std
+            self.std.append(cov)
+            self.params.append(popt)
+        return nu, [B1, B2], self.params, self.std
+
+    def horizontal_E_Feld(self):
+        self.frequenz_B_fit()
+        B_Erde = []
+        for x in range(2):
+            B_Erde.append(ufloat(self.params[x][1], self.std[x][1]))
+        print('Das Magnetfeld der Erde beträgt: ', 
+                np.mean(B_Erde),' T')
+        return np.mean(B_Erde)
+
+
+    def lande_Faktoren(self):
+        self.frequenz_B_fit()
+        self.lande = []
+        for x in range(2):
+            quot = ufloat(self.params[x][0], self.std[x][0])
+            self.lande.append(
+                4 * np.pi * constants.m_e  / (constants.e * quot)
+                    )
+        print('Die Landefaktoren betragen:')
+        print('Rb^85: ', self.lande[0])
+        print('Rb^87: ', self.lande[1])
+        return self.lande[0], self.lande[1]
+
+    def kernspins(self):
+        self.J = 1/2
+        self.g_j = 2/3
 
 
 
@@ -117,14 +145,14 @@ class plotter:
     def load_data(self, path):
         self.df = pickle.load(open(path, 'rb'))
 
-    def plot_nu_b(self, nu, b, params, figPath='build/test.pdf'):
+    def plot_nu_b(self, nu, b, params, figPath='build/static_B.pdf'):
         def f(x, m, b):
             return m * x + b
 
         fig = plt.figure()
         ax = fig.add_subplot(111)
         x_sample = np.linspace(0,max(nu), 3)
-        label = [r'Rb$^{78}$', r'Rb$^{80}$']
+        label = [r'Rb$^{87}$', r'Rb$^{85}$']
         for x in range(2):
             ax.plot(nu, b[x], 'x')
             ax.plot(x_sample, f(x_sample, *params[x]), label=label[x])
@@ -157,6 +185,8 @@ def statisch():
     stc = static_experiment()
     stc.calc_earth_b_static()
     nu, B, params, stds = stc.frequenz_B_fit()
+    stc.horizontal_E_Feld()
+    stc.lande_Faktoren()
     
     plttr = plotter()
     plttr.plot_nu_b(nu, B, params)
