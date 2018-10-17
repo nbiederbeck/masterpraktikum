@@ -2,23 +2,23 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import signal, constants
-from scipy.spatial.distance import cdist
+from scipy.optimize import curve_fit
 from glob import glob 
 import pickle
-from uncertainties import ufloat
+from uncertainties import ufloat, unumpy
 
 
 class spulen:
     def __init__(self):
         self.spulen = {
                 'sweep': {
-                    'radius': 16.39*10-2, 'N': 11, 'R': 1.0
+                    'radius': 16.39e-2, 'N': 11, 'R': 1.0
                     },
                 "horizontal" : {
-                    'radius': 15.79*10-2, 'N': 154, 'R': 0.5
+                    'radius': 15.79e-2, 'N': 154, 'R': 0.5
                     },
                 "vertical" : {
-                    'radius': 11.735*10-2, 'N': 20, 'R': 0.5
+                    'radius': 11.735e-2, 'N': 20, 'R': 0.5
                     }
                 }
 
@@ -26,6 +26,44 @@ class spulen:
         return constants.mu_0 * 8 * (U/self.spulen[spule]['R']) *   \
             self.spulen[spule]['N'] / ( np.sqrt(125) *          \
             self.spulen[spule]['radius'] )
+
+    def calc_b_gesamt(self, U_sweep, U_horiz):
+        B_Sweep = self.calc_b_helmoltz("sweep", U_sweep)
+        B_Horiz = self.calc_b_helmoltz("horizontal", U_horiz)
+        return B_Sweep + B_Horiz
+
+class static_experiment:
+    def __init__(self):
+        self.nu, self.p1_s, self.p1_h, self.p2_s, \
+                self.p2_h = np.genfromtxt(
+                        'data/task_c.txt', unpack=True)
+        self.spu = spulen()
+
+    def calc_earth_b_static(self):
+        s = self.spu.calc_b_helmoltz('sweep', 0.32)
+        v = self.spu.calc_b_helmoltz('vertical', 0.12)
+        print('Magnetfeld der Erde')
+        print('Verticale komponente : ', v, 'T')
+        print('Horizontale komponente : ', s, 'T')
+        return s, v
+
+    def frequenz_B_fit(self):
+        B1 = self.spu.calc_b_gesamt(self.p1_s, self.p1_h)
+        B2 = self.spu.calc_b_gesamt(self.p2_s, self.p2_h)
+
+        def f(x, m, b):
+            return m * x + b
+
+        params = []
+        std = []
+        for B, nu in zip([B1,B2], [self.nu, self.nu]):
+            popt, pcov = curve_fit(f, nu, B)
+            cov = np.sqrt(np.diag(pcov))
+            std.append(cov)
+            params.append(popt)
+        return nu, [B1, B2], params, std
+
+
 
 class larmor_sweep:
     def __init__(self, csvPath, spulenU, upperTLim=2.5e-3, lowerTLim=-1e-5):
@@ -79,6 +117,25 @@ class plotter:
     def load_data(self, path):
         self.df = pickle.load(open(path, 'rb'))
 
+    def plot_nu_b(self, nu, b, params, figPath='build/test.pdf'):
+        def f(x, m, b):
+            return m * x + b
+
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        x_sample = np.linspace(0,max(nu), 3)
+        label = [r'Rb$^{78}$', r'Rb$^{80}$']
+        for x in range(2):
+            ax.plot(nu, b[x], 'x')
+            ax.plot(x_sample, f(x_sample, *params[x]), label=label[x])
+        ax.set_xlim(xmin=0)
+        # ax.set_ylim(0.05*min(b.flatten()), 1.05*max(b.flatten()))
+        ax.set_xlabel(r'$\nu$ / kHz')
+        ax.set_ylabel('B / T')
+        ax.legend(loc='best')
+        fig.savefig(figPath)
+        plt.close()
+
     def plot_exp(self, figPath):
         fig = plt.figure()
         ax = fig.add_subplot(111)
@@ -97,21 +154,24 @@ class plotter:
         plt.close()
 
 def statisch():
-    spu = spulen()
-    s = spu.calc_b_helmoltz('sweep', 0.32)
-    v = spu.calc_b_helmoltz('vertical', 0.12)
-    print('B-Feld: ', s, v)
-    pass
+    stc = static_experiment()
+    stc.calc_earth_b_static()
+    nu, B, params, stds = stc.frequenz_B_fit()
+    
+    plttr = plotter()
+    plttr.plot_nu_b(nu, B, params)
 
 def sweep():
-    csvPath = 'data/firstPeak/'
     plttr = plotter()
-    TLim = np.array([10.,10.,1.5,2.5,2.5,1.5,1.5,2.5,2.5,1.5])*1e-3
+    csvPath = 'data/firstPeak/'
+    TLim = np.array([10.,10.,1.5,2.5,2.5,1.5,1.5,2.5,
+        2.5,1.5])*1e-3
     for U in range(1, 11):
         uStr = str(int(U))
 
         print('Processing U=: ', U)
-        lam = larmor_sweep(csvPath + uStr + 'V.CSV', U, upperTLim=TLim[U-1])
+        lam = larmor_sweep(csvPath + uStr + 'V.CSV', U,
+                upperTLim=TLim[U-1])
         lam.save_info(csvPath)
 
         print('Plotting U=: ', U)
