@@ -209,7 +209,7 @@ leergepumpt werden kann.
 Somit lässt sich durch Einstellen von externen Magnetfeldern das Erdmagnetfeld
 kompensieren und ausmessen.
 
-Bei Anlegen eines frequenzvariablen Hochfrequenzfeldes spalten die
+Bei Anlegen eines frequenzvariablen Hochfrequenzfeldes (RF) spalten die
 Energieniveaus auf
 und der Grundzustand kann gepumpt werden.
 Erreicht das Magnetfeld den Wert
@@ -250,6 +250,51 @@ der Quantenzahl $m_\text{F}$.
 
 \subsection{Transiente Effekte}%
 \label{sub:transiente_effekte}
+
+Wird das RF-Feld schnell ein- und ausgeschaltet, während seine Frequenz auf eine
+Resonanz eingestellt ist, und es senkrecht zum äußeren Magnetfeld steht,
+so stellen sich sogenannte transiente Effekte ein.
+
+Die resonante Frequenz ist
+\begin{align}
+  \omega_0 &= 2 \pi \nu_0 = g_\text{F} \frac{\mu_0}{h} B_0, \\
+  \intertext{wobei unter der Verwendung des gyromagnetischen Verhältnis}
+  \gamma &= g_\text{F} \frac{\mu_0}{h} \\
+  \intertext{die Larmor-Frequenz definiert wird:}
+  \omega_0 &= \gamma B_0.
+\end{align}
+
+Beim Anschalten des senkrechten RF-Feldes wird der Elektronenspin aus der
+Ruhelage im Magnetfeld ausgelenkt.
+Aufgrund des Eigenspins stellt sich eine Präzessionsbewegung ein.
+
+Diese Präzessionsbewegung kann beschrieben werden, indem in das Eigensystem des
+Elektrons gewechselt wird.
+Hier lässt sich das linear oszillierende Magnetfeld durch zwei überlagerte
+gegenläufig zirkular polarisierte Magnetfelder beschreiben.
+Dabei ist
+\begin{align}
+  B_\text{eff} &= B + \frac{\omega}{\gamma}.
+\end{align}
+
+Dabei ist das Feld, das mit $+\omega$ rotiert, in Phase mit der
+Präzession und das Feld mit $-\omega$ so schnell, dass der Effekt auf das
+Elektron im Mittel Null ist.
+
+Da im rotierten Koordinatensystem der Gesamtspin $F$ mit der Larmor-Frequenz um
+$B_\text{RF} = B_\text{eff}$ rotiert, ist die Periode
+\begin{align}
+  \label{eq:larmor_periode}
+  T &= \frac{1}{\gamma B_\text{RF}}.
+\end{align}
+Die Periode nimmt offenbar mit steigendem Magnetfeld ab.
+
+Im Resonanzfall ist also die Relation der Perioden bei verschiedenen Rubidiumisotopen
+\begin{align}
+  \label{eq:resonanz_perioden}
+  \frac{T_{87}}{T_{85}} &= \frac{\gamma_{85}}{\gamma_{87}}.
+\end{align}
+
 
 \subsection{Helmholtzspule}%
 \label{sub:helmholtzspule}
