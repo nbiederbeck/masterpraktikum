@@ -119,7 +119,7 @@ class static_experiment:
         return lin_zee, squared_zee
 
 class larmor_sweep:
-    def __init__(self, csvPath, spulenU, upperTLim=2.5e-3, lowerTLim=-1e-5):
+    def __init__(self, csvPath, spulenU, upperTLim=2.5e-3, lowerTLim=-2e-2):
         df = pd.read_csv(csvPath)
         data = pd.DataFrame(
                 df.loc[18:].values[:,3:5],
@@ -144,7 +144,8 @@ class larmor_sweep:
         self.tPeaks = self.data['time'][peaks]
         self.uPeaks = self.data['voltage'][peaks]
         self.tDist = self.tPeaks.values[1:] - self.tPeaks.values[:-1]
-        return ufloat(np.mean(self.tDist), np.std(self.tDist))
+        self.tDist = ufloat(np.mean(self.tDist), np.std(self.tDist))
+        return self.tDist.nominal_value, self.tDist.std_dev
 
 
     def save_info(self, path, find_peaks_dict={}):
@@ -155,7 +156,7 @@ class larmor_sweep:
                 "uMean": self.uMean,
                 "tPeaks": self.tPeaks,
                 "uPeaks": self.uPeaks,
-                "tDist": ufloat(np.mean(self.tDist), np.std(self.tDist)),
+                "tDist": self.tDist,
                 "time": self.data.time.values,
                 "voltage": self.data.voltage,
                 "spulenU": self.spulenU,
@@ -189,7 +190,7 @@ class plotter:
         fig.savefig(figPath)
         plt.close()
 
-    def plot_exp(self, figPath):
+    def plot_peaks(self, figPath):
         fig = plt.figure()
         ax = fig.add_subplot(111)
         ax.plot(self.df["time"], self.df["voltage"])
@@ -206,6 +207,29 @@ class plotter:
         fig.savefig(figPath)
         plt.close()
 
+    def f_hyp(self, U, a, b, c):
+        return a + b / (U + c)
+
+    def fit_hyperbel(self, U, T):
+        print('U: ', U)
+        print('T: ', T)
+        popt, pcov = curve_fit(self.f_hyp, U, T)
+        return popt, np.sqrt(np.diag(pcov))
+
+    def plot_U_T(self, U, T, figPath):
+        mT = np.array(T)*1000
+        popt, cov = self.fit_hyperbel(U, mT)
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        ax.plot(U, mT, 'x')
+        ax.plot(np.linspace(1,10, 50), self.f_hyp(np.linspace(1,10, 50),
+            *popt))
+        ax.set_xlabel('U / V')
+        ax.set_ylabel('T / ms')
+        fig.savefig(figPath)
+        plt.close()
+        return popt, cov
+
 def statisch():
     stc = static_experiment()
     stc.calc_earth_b_static()
@@ -219,29 +243,39 @@ def statisch():
     plttr = plotter()
     plttr.plot_nu_b(nu, B, params)
 
-def sweep():
+def sweep(isotope, TLim):
     plttr = plotter()
-    csvPath = 'data/firstPeak/'
-    TLim = np.array([10.,10.,1.5,2.5,2.5,1.5,1.5,2.5,
-        2.5,1.5])*1e-3
+    csvPath = 'data/'+isotope +'/'
     T = []
+    Std_t = []
     for U in range(1, 11):
         uStr = str(int(U))
 
         print('Processing U=: ', U)
         lam = larmor_sweep(csvPath + uStr + 'V.CSV', U,
                 upperTLim=TLim[U-1])
-        T.append(lam.find_peaks()) 
+        t, std_t = lam.find_peaks()
+        T.append(t)
+        Std_t.append(std_t)
         lam.save_info(csvPath)
 
-        # print('Plotting U=: ', U)
-        # plttr.load_data(csvPath + uStr +'.pkl')
-        # plttr.plot_exp('build/peaks_' + uStr + '.png')
+        print('Plotting U=: ', U)
+        plttr.load_data(csvPath + uStr +'.pkl')
+        plttr.plot_peaks('build/'+isotope+ '_' + uStr + '.png')
+    print('T: ', T)
+    print('Std_t: ', Std_t)
+    plttr.plot_U_T(np.linspace(1,10,10), T, 
+            'build/' + isotope+ '.pdf')
     print('Done')
 
 def main():
     # statisch()
-    sweep()
+    firstTLim = np.array([10.,10.,1.5,2.5,2.5,1.5,1.5,2.5,
+        2.5,1.5])*1e-3
+    secondTLim = np.array([10.,10.,1.5,2.5,2.5,1.5,1.5,2.5,
+        2.5,1.5])*1e-2
+    sweep('firstPeak', firstTLim)
+    sweep('secondPeak', secondTLim)
 
 if __name__ == '__main__':
     main()
