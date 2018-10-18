@@ -71,14 +71,14 @@ class static_experiment:
             self.std.append(cov)
             self.params.append(popt)
         df = pd.DataFrame({
-            r'a': self.params[0],
-            r'$\Delta$ a': self.std[0],
-            r'b': self.params[1],
-            r'$\Delta$ b': self.std[0],
+            r'a / Ts': [self.params[0][0],self.params[1][0]] ,
+            r'$\Delta$ a / Ts': [self.std[0][0],self.std[1][0]],
+            r'b / T': [self.params[0][1],self.params[1][1]],
+            r'$\Delta$ b / T': [self.std[0][1],self.std[1][1]],
             })
         with open('build/lin_params.tex', 'w') as tf:
             tf.write(df.to_latex(
-                column_format='SSSS', 
+                column_format='SSS[scientific-notation =true]S', 
                 escape=False, 
                 index=False, 
                 sparsify=True))
@@ -164,13 +164,14 @@ class static_experiment:
 
     def squared_zee(self):
         delta_E = 2e-24
-        B = 0.5
+        B = 1e-3
         M_F = 1
         lin_zee =  self.lande[0] * constants.physical_constants[
                 'Bohr magneton'][0]*B
         squared_zee = lin_zee ** 2 * (1-2* M_F) / delta_E
         print('Zeemann linear: ', lin_zee)
         print('Zeemann squared: ', squared_zee)
+        print('Zeemann quotient: ', 100*squared_zee/lin_zee)
         return lin_zee, squared_zee
 
 class larmor_sweep:
@@ -324,15 +325,16 @@ def sweep(isotope, TLim, selectedU):
     print('Params', params)
     print('Done')
 
-    return selectedU, T
+    return selectedU, T, params
 
 def main():
-    # statisch()
+    statisch()
     firstTLim = np.array([10.,10.,1.5,2.5,2.5,1.5,1.5,2.5,
         2.5,1.5])*1e-3
     secondTLim = np.array([5,2,2.1,5,3,3,3,3, 3,3])*1e-3
-    U1, T1 = sweep('firstPeak', firstTLim, range(1,11))
-    U2, T2 = sweep('secondPeak', secondTLim, range(3,11))
+    selectedU = [1,2,4,5,6,7,8,9,10]
+    U1, T1, params1= sweep('firstPeak', firstTLim, selectedU)
+    U2, T2, params2 = sweep('secondPeak', secondTLim, range(3,11))
 
     df = pd.DataFrame({ 'U / V': U1, 'T / s': T1, })
     with open('build/T1.tex', 'w') as tf:
@@ -341,6 +343,8 @@ def main():
     df = pd.DataFrame({ 'U / V': U2, 'T / s': T2, })
     with open('build/T2.tex', 'w') as tf:
         tf.write(df.to_latex(column_format='S[zero-decimal-to-integer=true,table-format=2.0]S[round-mode=figures,round-precision=3,table-format=1.3e2,scientific-notation=true]', escape=False, index=False, sparsify=True))
+
+    print('b1/b2: ', params2[1] / params1[1])
 
 if __name__ == '__main__':
     main()
