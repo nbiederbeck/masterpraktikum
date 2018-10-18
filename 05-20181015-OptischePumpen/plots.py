@@ -51,6 +51,14 @@ class static_experiment:
     def frequenz_B_fit(self):
         B1 = self.spu.calc_b_gesamt(self.p1_s, self.p1_h)
         B2 = self.spu.calc_b_gesamt(self.p2_s, self.p2_h)
+
+        df = pd.DataFrame({
+            r'$\nu$ / \si{\kilo\hertz}': self.nu/1e3,
+            r'$B_{85}$ / \si{\micro\tesla}': np.round(B1*1e6,2),
+            r'$B_{87}$ / \si{\micro\tesla}': np.round(B2*1e6,2)
+            })
+        with open('build/b_nu.tex', 'w') as tf:
+            tf.write(df.to_latex(column_format='S[zero-decimal-to-integer=true,table-format=4.0]SS', escape=False, index=False, sparsify=True))
         self.params = []
         self.std = []
 
@@ -62,6 +70,18 @@ class static_experiment:
             cov = np.sqrt(np.diag(pcov))
             self.std.append(cov)
             self.params.append(popt)
+        df = pd.DataFrame({
+            r'a': self.params[0],
+            r'$\Delta$ a': self.std[0],
+            r'b': self.params[1],
+            r'$\Delta$ b': self.std[0],
+            })
+        with open('build/lin_params.tex', 'w') as tf:
+            tf.write(df.to_latex(
+                column_format='SSSS', 
+                escape=False, 
+                index=False, 
+                sparsify=True))
         return nu, [B1, B2], self.params, self.std
 
     def horizontal_E_Feld(self):
@@ -85,6 +105,21 @@ class static_experiment:
         print('Die Landefaktoren betragen:')
         print('Rb^85: ', self.lande[0])
         print('Rb^87: ', self.lande[1])
+        df = pd.DataFrame({
+            '': [r'Rb$_{85}$', r'Rb$_{87}$'],
+            r'$g_\text{theo}$': [r'$\sfrac{1}{2}$', r'$\sfrac{1}{3}$'],
+            r'$g_\text{exp}$': [self.lande[0].nominal_value,
+                self.lande[1].nominal_value],
+            r'$\Delta g_\text{exp}$': [self.lande[0].std_dev,
+                self.lande[1].std_dev]
+            })
+        with open('build/lande.tex', 'w') as tf:
+            tf.write(df.to_latex(
+                column_format='SS[table-format=2.0]S[round-mode=places,round-precision=3,table-format=0.3]S[round-mode=places,round-precision=3,table-format=0.3]', 
+                escape=False, 
+                index=False, 
+                sparsify=True))
+        
         return self.lande[0], self.lande[1]
 
     def kernspins(self):
@@ -98,6 +133,26 @@ class static_experiment:
         I_85 = kernspin(lande_85)
         I_87 = kernspin(lande_87)
         print('Der Kernspin ist: ', I_85, ' und ', I_87)
+        df = pd.DataFrame({
+            '': [
+                r'Rb$_{85}$', 
+                r'Rb$_{87}$'],
+            r'$I_\text{theo}$': [
+                r'$\sfrac{3}{2}$', 
+                r'$\sfrac{5}{2}$'],
+            r'$I_\text{exp}$': [
+                I_85.nominal_value,
+                I_87.nominal_value],
+            r'$\Delta I_\text{exp}$': [
+                I_85.std_dev,
+                I_87.std_dev]
+            })
+        with open('build/kernspin.tex', 'w') as tf:
+            tf.write(df.to_latex(
+                column_format='SS[table-format=2.0]S[round-mode=places,round-precision=3,table-format=0.3]S[round-mode=places,round-precision=3,table-format=0.3]', 
+                escape=False, 
+                index=False, 
+                sparsify=True))
         return I_85, I_87
 
     def isotopen_ratio(self):
@@ -119,7 +174,7 @@ class static_experiment:
         return lin_zee, squared_zee
 
 class larmor_sweep:
-    def __init__(self, csvPath, spulenU, upperTLim=2.5e-3, lowerTLim=-2e-2):
+    def __init__(self, csvPath, spulenU, upperTLim=2.5e-3, lowerTLim=-1e-5):
         df = pd.read_csv(csvPath)
         data = pd.DataFrame(
                 df.loc[18:].values[:,3:5],
@@ -135,12 +190,12 @@ class larmor_sweep:
 
     def find_peaks(self, distance=None):
         if distance==None:
-            distance=sum(self.mask)/20
+            distance=sum(self.mask)/8
         self.uMean = np.mean(self.data['voltage'])
         peaks, _ = signal.find_peaks(
                 self.data['voltage'], 
                 height=self.uMean, 
-                distance=sum(self.mask)/10)
+                distance=sum(self.mask)/20)
         self.tPeaks = self.data['time'][peaks]
         self.uPeaks = self.data['voltage'][peaks]
         self.tDist = self.tPeaks.values[1:] - self.tPeaks.values[:-1]
@@ -243,12 +298,12 @@ def statisch():
     plttr = plotter()
     plttr.plot_nu_b(nu, B, params)
 
-def sweep(isotope, TLim):
+def sweep(isotope, TLim, selectedU):
     plttr = plotter()
     csvPath = 'data/'+isotope +'/'
     T = []
     Std_t = []
-    for U in range(1, 11):
+    for U in selectedU:
         uStr = str(int(U))
 
         print('Processing U=: ', U)
@@ -264,18 +319,28 @@ def sweep(isotope, TLim):
         plttr.plot_peaks('build/'+isotope+ '_' + uStr + '.png')
     print('T: ', T)
     print('Std_t: ', Std_t)
-    plttr.plot_U_T(np.linspace(1,10,10), T, 
-            'build/' + isotope+ '.pdf')
+    popt, cov = plttr.plot_U_T(selectedU, T, 'build/' + isotope+ '.pdf')
+    params = unumpy.uarray(popt, cov)
+    print('Params', params)
     print('Done')
+
+    return selectedU, T
 
 def main():
     # statisch()
     firstTLim = np.array([10.,10.,1.5,2.5,2.5,1.5,1.5,2.5,
         2.5,1.5])*1e-3
-    secondTLim = np.array([10.,10.,1.5,2.5,2.5,1.5,1.5,2.5,
-        2.5,1.5])*1e-2
-    sweep('firstPeak', firstTLim)
-    sweep('secondPeak', secondTLim)
+    secondTLim = np.array([5,2,2.1,5,3,3,3,3, 3,3])*1e-3
+    U1, T1 = sweep('firstPeak', firstTLim, range(1,11))
+    U2, T2 = sweep('secondPeak', secondTLim, range(3,11))
+
+    df = pd.DataFrame({ 'U / V': U1, 'T / s': T1, })
+    with open('build/T1.tex', 'w') as tf:
+        tf.write(df.to_latex(column_format='S[zero-decimal-to-integer=true,table-format=2.0]S[round-mode=figures,round-precision=3,table-format=1.3e2,scientific-notation=true]', escape=False, index=False, sparsify=True))
+    
+    df = pd.DataFrame({ 'U / V': U2, 'T / s': T2, })
+    with open('build/T2.tex', 'w') as tf:
+        tf.write(df.to_latex(column_format='S[zero-decimal-to-integer=true,table-format=2.0]S[round-mode=figures,round-precision=3,table-format=1.3e2,scientific-notation=true]', escape=False, index=False, sparsify=True))
 
 if __name__ == '__main__':
     main()
