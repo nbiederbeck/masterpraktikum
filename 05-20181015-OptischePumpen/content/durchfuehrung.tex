@@ -4,8 +4,20 @@
 \subsection{Versuchsaufbau}%
 \label{sub:versuchsaufbau}
 
+Der Versuchsaufbau ist in Abbildung~\ref{fig:aufbau} dargestellt.
+
 Eine Rubidiumgaslampe wird als Spektrallampe verwendet, da diese
-das benötigte $D_1$\=/Licht ausstrahlt.
+unter anderem das benötigte $D_1$\=/Licht ausstrahlt.
+Das Licht wird mittels Sammellinse kollimiert.
+Anschließend wird mittels Interferenzfilter das $D_1$\=/Licht gefiltert.
+Mittels Polarisationsfilter und $\lambda/4$-Platte wird zirkular polarisierter
+Licht erzeugt.
+
+Das Licht fällt in eine Dampfzelle, die auf \SI{50}{\celsius} erhitzt ist.
+Das Erhitzen führt dazu, dass die Energieniveaus angereichert werden.
+Das aus der Dampfzelle austretende Licht wird wieder fokussiert und auf ein
+Si-Photoelement gegeben.
+Dieses ist über einen Linearverstärker an ein Oszilloskop angeschlossen.
 
 \begin{figure}[ht]
   \centering
@@ -14,5 +26,82 @@ das benötigte $D_1$\=/Licht ausstrahlt.
   \label{fig:aufbau}
 \end{figure}
 
+Es werden drei Helmhotzspulenpaare in dem Versuchsaufbau verwendet.
+Eine Vertikalfeldspule mit
+$R = \SI{11.735}{\centi\meter}$ und $N = \num{20}$
+wird verwendet, um die vertikale Komponente des Erdmagnetfelds zu annulieren
+und so auszumessen.
+
+Die horizontale Komponente des Erdmagnetfelds wird grob über die Ausrichtung
+des Aufbaus im Raum kompensiert,
+feiner über die Horizontalfeldspule mit
+$R = \SI{15.97}{\centi\meter}$ und $N = \num{154}$.
+
+Die dritte Spule steht auch horizontal und wird als Sweep-Spule verwendet.
+Sie hat
+$R = \SI{16.39}{\centi\meter}$ und $N = \num{11}$
+und liegt direkt auf der Horizontalfeldspule.
+Mit der Sweep-Spule kann ein Magnetfeldbereich abgefahren werden.
+
+
 \subsection{Messprogramm}%
 \label{sub:messprogramm}
+
+Zuerst wird die Strahlintensität maximiert, indem die Linsen in die Fokuspunkte
+gestellt werden.
+Dann werden die weiteren optischen Elemente eingesetzt und der Aufbau mit einer
+schwarzen Decke abgedeckt.
+
+Im Oszilloskop wird der Recorder-Ausgang der Sweep-Spule auf Kanal~1 und die
+Photodiodenspannung auf Kanal~2 gegeben.
+Das Display wird auf das $XY$\=/Format gestellt.
+Es sollte ein Dip wie in Abbildung~\ref{fig:resonanz} zu sehen sein.
+Davon wird auch ein Foto angefertigt.
+Zur Kompensation des Erdmagnetfelds wird dieser Dip auf eine minimale Breite
+eingestellt.
+
+
+\subsubsection{Bestimmung der Kernspins}%
+\label{sub:bestimmung_der_kernspins}
+
+Die Frequenzen an der RF-Spule werden zwischen \SI{100}{\kilo\hertz} und
+\SI{1}{\mega\hertz} in Schritten von \SI{100}{\kilo\hertz} variiert.
+
+Das Horizontalfeld wird so eingestellt, dass die Resonanzstellen zu sehen sind
+und
+die Resonanzstellen werden dann mittels Sweep-Spule direkt angefahren.
+
+Es werden die Spulenspannungen der Horizontalfeldspule und Sweep-Spule
+an den entsprechenden Ausgängen mit einem Multimeter gemessen.
+
+Aus diesen Messungen lassen sich die Land\'e-Faktoren der beiden Rubidium
+Isotope bestimmen, aus denen wiederum die jeweiligen Kernspins bestimmt werden
+können.
+
+\subsubsection{Bestimmung des Isotopenverhältnisses}%
+\label{sub:bestimmung_des_isotopenverhaltnisses}
+
+Das Isotopenverhältnis lässt sich auf zwei Arten bestimmen.
+Aus dem aufgenommenen Foto (s.o.) und Daten des Dips können die
+Amplituden der Resonanzstellen verglichen werden.
+
+Die zweite Möglichkeit nutzt die transienten Effekte.
+Hierfür wird die Frequenz wieder auf \SI{100}{\kilo\hertz} gestellt,
+und die Resonanzstelle ausgewählt.
+Es wird ein zweiter Funktionsgenerator an \enquote{Input TF Modulation}
+angelegt, der eine Rechteckspannung mit \SI{5}{\hertz} ausgibt.
+Der Ausgang wird zusätzlich auf den ersten Kanal des Oszilloskops gelegt, das
+sich im $YT$\=/Modus befindet, und als Trigger verwendet.
+Die Mittelungsfunktion des Oszilloskops wird aktiviert.
+
+Es ist eine ansteigende Kurve zu sehen.
+Dies ist die Auslenkung des Elektronenspins aus der Ruhelage.
+
+Der Trigger wird auf die fallende Flanke gestellt und es wird horizontal
+gezoomt.
+Jetzt ist die oszillierende Relaxation in die Ruhelage sichtbar.
+Die Periode der Oszillation wird bestimmt und gegen die Amplitude des
+RF\=/Generators aufgetragen.
+Die Amplitude wird zwischen \SI{1}{\volt} und \SI{10}{\volt} variiert.
+Für beide Resonanzstellen wird eine Hyperbel gefittet.
+Das Verhältnis der Steigungen der Hyperbeln entspricht dem Isotopenverhältnis.
