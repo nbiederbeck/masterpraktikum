@@ -2,7 +2,7 @@
 \label{sec:auswertung}
 
 Ziel der Auswertung ist es einerseits das Verhältniss der Radiumisotope
-$^{85}$Rd und $^{87}$Rd zu bestimmen, sowie die Landefaktoren $g_\text{F}$ und
+$^{85}$Rd und $^{87}$Rd zu bestimmen, sowie die Land\'efaktoren $g_\text{F}$ und
 den Kernspins $I$.
 Desweiteren wird das Magnetfeld einerseits über eine statische und dynamische
 Methode bestommen.
@@ -69,7 +69,7 @@ Tabelle~\ref{tab:lin_params}.
 
 \begin{table}[h]
 	\centering
-	\caption{Lineare Fitparameter zur Bestimmung des Landefaktors und des
+	\caption{Lineare Fitparameter zur Bestimmung des Land\'efaktors und des
 	Erdmagnetfeldes.}
 	\label{tab:lin_params}
 	\sisetup{%
@@ -82,15 +82,19 @@ Tabelle~\ref{tab:lin_params}.
 
 
 
-\subsection{Landefaktoren und Kernmoment der Rubidium Isotope}%
+\subsection{Land\'efaktoren und Kernmoment der Rubidium Isotope}%
 \label{sub:landefaktoren_der_rubidium_isotope}
+Die Land\'efaktoren werden entsprechend Gleichhung~\ref{eq:??} aus der Steigung
+des Fittes in Abbildung~\ref{fig:??} bestimmt. 
+Durch Umformen ergeben sich die in der Tabelle~\ref{tab:lande} aufgeführten
+Land\'efaktoren $g_\text{exp}$ und die theoretischen Werte $g_\text{theo}$.
 
 
 \begin{table}[h]
 	\centering
 	\caption{Die Abgeleiteten größen Land\'efaktor und Kernspin aus der Steigung
 	$\nu$ gegen B.}
-	\label{tab:label}
+	\label{tab:lande}
 	\begin{subtable}[t]{0.4\textwidth}
 	\centering
 	\caption{Land\'efaktoren}
@@ -110,79 +114,106 @@ Tabelle~\ref{tab:lin_params}.
 \end{table}
 \subsection{quadratischer Zeemanneffekt}%
 \label{sub:quadratischer_zeemanneffekt}
-
-B = $\SI{1}{\milli\tesla}$
+Der quadratische Zeemanneffekt führt zu einer Energieabsenkung. 
+Er liefert erst bei größeren Feldstärken sifnifikanten Beiträge.
+Zur Abschätzung wird eine Feldstärke von B=$\SI{1}{\milli\tesla}$ 
+und die Land\'efaktoren von Rubidium angenommen und die Energien entsprechend
+Formel~\ref{eq:??} ausgerechnet.
 \begin{equation}
 	\frac{E_\text{squ} = \SI{1.04 +- 0.01e-29}{\joule}}{E_\text{lin} = 
 		\SI{4.57 +- 0.02e-27}{\joule}} \approx 0.2 \%
 \end{equation}
-
-
+Er kann bei kleinen Feldern von um die \SI{100}{\micro\tesla} vernachlässigt werden.
 
 \subsection{Bestimmung des Isotopenverhaeltniss}%
 \label{sub:bestimmung_des_isotopenverhaeltniss}
-
+Zur Bestimmung des Isotopenverhaeltniss wird einerseits eine statische Methode
+wwelche auf dem Amplitudenverhältniss der Transmissionslinien beruht und
+andererseits eine dynamische über die Rabi-Oszilationen gemessen.
 \subsubsection{statisch}%
 \label{ssub:statisch}
-
+Das Amplitudenverhältniss kann aus der Ambildung~\ref{fig:??} abgelesen werde.
+Dabei entspricht die erste Transmissionslinien dem $^{85}$Rb und die zweite dem
+$^{85}$Rb Isotope.
+Es wird ein Amplitudenverhältniss von 
 \begin{equation}
 	\frac{A_{85}}{A_{87}} = \frac{\SI{2.6}{\volt}}{\SI{1.4}{\volt}} = 1.86 
 \end{equation}
+gemessen, was von dem natürlichen um \SI{100}{\percent} abweicht.
+Augenscheinlich wurde das Rubidiumgas mit dem $^{??}$Rb Isotope angereichert um
+bessere optische Eigenschaften zu erreichen.
+
 
 \subsubsection{dynamisch}%
 \label{ssub:dynamisch}
 
-
+Zur Bestimmung des Isotopenverhältniss werden bei einer RF-Frequenz von
+\SI{100}{\kilo\hertz} die Spulenspannung variert und die Oszilationen gemessen.
+Die entsprechende Schwingungsdauern bei den verschiedenen Spannungen sind in
+Tabelle~\ref{tab:schw} aufgetragen.
+Die Ozsillationen entstehen nachdem ein Zustand entladen wurde und anschliesend
+ein .......
+Ein Oszilloskopbild ist für beide Resonanzstellen in Abbildung~\ref{fig:osz} zu
+sehen.
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[c]{0.45\textwidth}
 	\begin{center}
 	\includegraphics[width=\textwidth]{./picture/Peak_1.JPG}
 	\end{center}
-	\caption{Peak 1}
+	\caption{$^{85}$Rb}
 	\label{fig:}
 	\end{subfigure}
 	\begin{subfigure}[c]{0.45\textwidth}
 	\begin{center}
 	\includegraphics[width=\textwidth]{./picture/Peak_2.JPG}
 	\end{center}
-	\caption{Peak 2}
+	\caption{$^{87}$Rb}
 	\label{fig:}
 	\end{subfigure}
-	\caption{}
-	\label{fig:}
+	\caption{Ladung und Entladung der Angeregten und Anschließende Oszillationen}
+	\label{fig:osz}
 \end{figure}
-
+Die Periodendauern werden bestimmt indem mit der \texttt{scipy.signal.find\_peaks}
+Funktion die Extrema der periodischen Funktionen vestimmt werden. 
+Bei kleinen Spulenspannungen kommt es dabei zu Untergrundrauschen und der
+Beeinflussung durch die hohen Magnetfelder nebenstehende Experimente (Abbildung
+\ref{fig:85a}), sodass die Periode nicht mehr eindeutig bestimmt werden kann. 
+Desweiteren wurd die zeitliche Auflösung bei zur Bestimmung der Periodendauer
+der zweiten Transmissionslinien etwas zu grob gewählt, sodass die zum Teil sehr
+groß ist.
+Die bestimmten Periodendauern sind in Tabelle~\ref{tab:schw} aufgelistet.
 \begin{table}[h]
 	\centering
 	\caption{caption}
-	\label{tab:label}
+	\label{tab:schw}
 	\begin{subtable}[t]{0.4\textwidth}
 	\centering
-	\caption{caption}
+	\caption{$^{85}$Rb}
 		\input{build/T1.tex}
 	\end{subtable}
 	\begin{subtable}[t]{0.4\textwidth}
 	\centering
-	\caption{caption}
+	\caption{$^{87}$Rb}
 		\input{build/T2.tex}
 	\end{subtable}
 \end{table}
-
+In der Abbildung~\ref{fig:periode} wurden die Feldstärken gegen die Spulenspannungen
+aufgetragen und die Messdaten mit der Funktion~\ref{eq:fit} gefittet.
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[c]{0.45\textwidth}
 	\begin{center}
 		\includegraphics[width=\textwidth]{build/firstPeak_9.png}
 	\end{center}
-	\caption{}
+	\caption{$^{85}$Rb \SI{10}{\volt}}
 	\label{fig:}
 	\end{subfigure}
 	\begin{subfigure}[c]{0.45\textwidth}
 	\begin{center}
 		\includegraphics[width=\textwidth]{build/secondPeak_9.png}
 	\end{center}
-	\caption{}
+	\caption{$^{87}$Rb \SI{10}{\volt}}
 	\label{fig:}
 	\end{subfigure}
 
@@ -190,47 +221,51 @@ B = $\SI{1}{\milli\tesla}$
 	\begin{center}
 		\includegraphics[width=\textwidth]{picture/firstPeak_3.png}
 	\end{center}
-	\caption{}
-	\label{fig:}
+	\caption{$^{85}$Rb \SI{1}{\volt}}
+	\label{fig:85a}
 	\end{subfigure}
 	\begin{subfigure}[c]{0.45\textwidth}
 	\begin{center}
 		\includegraphics[width=\textwidth]{build/secondPeak_3.png}
 	\end{center}
-	\caption{}
+	\caption{$^{87}$Rb \SI{3}{\volt}}
 	\label{fig:}
 	\end{subfigure}
 	\caption{}
-	\label{fig:}
+	\label{fig:periode}
 \end{figure}
-
 \begin{equation}
+	\label{eq:fit}
 	T(U) = a + \frac{b}{U + c}
 \end{equation}
-
-\begin{equation}
-	\frac{b_{85}}{b_{87}} =
-	\frac{\SI{10.7+-9.0}{\second\per\volt}}{\SI{6.6+-3.5}{\second\per\volt}} = \num{1.6 +- 1.6}
-\end{equation}
-
+Die Ergebniss sind in Abbildung~\ref{fig:fitexp} dargestellt.
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[c]{0.45\textwidth}
 	\begin{center}
 		\includegraphics[width=\textwidth]{build/firstPeak.pdf}
 	\end{center}
-	\caption{}
+	\caption{$^{85}$Rb}
 	\label{fig:}
 	\end{subfigure}
 	\begin{subfigure}[c]{0.45\textwidth}
 	\begin{center}
 	\includegraphics[width=\textwidth]{build/secondPeak.pdf}
 	\end{center}
-	\caption{}
+	\caption{$^{87}$Rb}
 	\label{fig:}
 	\end{subfigure}
 	\caption{}
-	\label{fig:}
+	\label{fig:fitexp}
 \end{figure}
-
-
+Aus den Verhältnissen der Steigungsparameter $b$ der Fits wird das
+Isotopenverhältniss von dem Rubidiumgas abgeschätzt. 
+Es beträgt
+\begin{equation}
+	\frac{b_{85}}{b_{87}} =
+	\frac{\SI{10.7+-9.0}{\second\per\volt}}{\SI{6.6+-3.5}{\second\per\volt}} =
+	\num{1.6 +- 1.6} \ .
+\end{equation}
+Das natürliche Rubidium Verhältniss ist x:x.
+Dies ist ein hinweis darauf, dass das verwendete Gemisch möglicherweise für
+bessere optische Eigenschaften mit dem $^{85}$Rb Isotop angereichert ist. 
