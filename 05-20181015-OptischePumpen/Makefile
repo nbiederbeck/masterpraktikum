@@ -80,9 +80,12 @@ anleitung_V21_OptischePumpen.pdf:
 		--user TUDoFP --password WS1819 -O $@
 
 
-build/main.pdf: $(BUILD_FILES) FORCE | build
+build/main.pdf: $(BUILD_FILES) plots FORCE | build
 	TEXINPUTS=build: BIBINPUTS=build: max_print_line=1048576 \
 	$(TEX_CMD) main.tex
+
+plots: plots.py
+	python $<
 
 
 preview: $(BUILD_FILES) FORCE | build
