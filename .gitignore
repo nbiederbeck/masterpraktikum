@@ -12,3 +12,6 @@ build/
 
 # Keep fritzing
 !00-Mikroprozessor/weatherstation_rpi2.pdf
+
+# Ignore pickle files
+*.pkl
