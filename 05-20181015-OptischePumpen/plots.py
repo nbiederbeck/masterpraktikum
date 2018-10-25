@@ -247,8 +247,8 @@ class plotter:
         x_sample = np.linspace(0, max(nu), 3)
         label = [r"Rb$^{87}$", r"Rb$^{85}$"]
         for x in range(2):
-            ax.plot(nu/1e3, b[x]/1e6, 'x')
-            ax.plot(x_sample/1e3, f(x_sample, *params[x])/1e6, label=label[x])
+            ax.plot(nu/1e3, b[x]*1e6, 'x')
+            ax.plot(x_sample/1e3, f(x_sample, *params[x])*1e6, label=label[x])
         ax.set_xlim(xmin=0)
         # ax.set_ylim(0.05*min(b.flatten()), 1.05*max(b.flatten()))
         ax.set_xlabel(r'$\nu$ / kHz')
@@ -283,12 +283,13 @@ class plotter:
     def plot_U_T(self, U, T, figPath):
         mT = np.array(T) * 1000
         popt, cov = self.fit_hyperbel(U, mT)
-        fig = plt.figure()
+        fig = plt.figure(figsize=(3,2))
         ax = fig.add_subplot(111)
         ax.plot(U, mT, "x")
         ax.plot(np.linspace(1, 10, 50), self.f_hyp(np.linspace(1, 10, 50), *popt))
         ax.set_xlabel("U / V")
         ax.set_ylabel("T / ms")
+        plt.tight_layout()
         fig.savefig(figPath)
         plt.close()
         return popt, cov
