@@ -247,13 +247,13 @@ class plotter:
         x_sample = np.linspace(0, max(nu), 3)
         label = [r"Rb$^{87}$", r"Rb$^{85}$"]
         for x in range(2):
-            ax.plot(nu, b[x], "x")
-            ax.plot(x_sample, f(x_sample, *params[x]), label=label[x])
+            ax.plot(nu/1e3, b[x]/1e6, 'x')
+            ax.plot(x_sample/1e3, f(x_sample, *params[x])/1e6, label=label[x])
         ax.set_xlim(xmin=0)
         # ax.set_ylim(0.05*min(b.flatten()), 1.05*max(b.flatten()))
-        ax.set_xlabel(r"$\nu$ / kHz")
-        ax.set_ylabel("B / T")
-        ax.legend(loc="best")
+        ax.set_xlabel(r'$\nu$ / kHz')
+        ax.set_ylabel('B / $\si{\micro \\tesla}$')
+        ax.legend(loc='best')
         fig.savefig(figPath)
         plt.close()
 

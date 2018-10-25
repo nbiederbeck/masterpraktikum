@@ -4,8 +4,8 @@
 Ziel der Auswertung ist es einerseits das Verhältniss der Radiumisotope
 $^{85}$Rd und $^{87}$Rd zu bestimmen, sowie die Land\'efaktoren $g_\text{F}$ und
 den Kernspins $I$.
-Desweiteren wird das Magnetfeld einerseits über eine statische und dynamische
-Methode bestommen.
+Desweiteren wird das Erdmagnetfeld, einerseits über eine statische 
+und andererseits über eine dynamische Methode bestimmen.
 \subsection{Statische Bestimmung des Erdmagnetfeldes}%
 \label{sub:statische_bestimmung_des_erdmagnetfeldes}
 \begin{wrapfigure}[15]{l}{0.45\textwidth}
@@ -15,7 +15,7 @@ Methode bestommen.
 	einer Anregungsfrequenz von \SI{100}{\kilo\hertz}.}
 	\label{fig:transmission}
 \end{wrapfigure}
-Das Magnetfeld der Helmholtzspulen wird anhand von Formel~\ref{eq:??} 
+Das Magnetfeld der Helmholtzspulen wird anhand von Formel~\ref{eq:helm}
 berechnet. 
 Dazu wird das Magnetfeld der Sweepspule und der horizontalen addiert. 
 Durch das Wechseln der Sweepspule vom contiunus auf den statischen Betrieb
@@ -36,13 +36,12 @@ Es ergibt sich ein Magnetfeld von
 
 \subsubsection{Dynamische Methode}%
 \label{ssub:dynamische_methode}
-Zur Bestimmung des Magnetfeldes über die Dynamische Methode, werden die
+Zur Bestimmung des Erdmagnetfeldes über die dynamische Methode, werden die
 Resonanzstellen der beiden Isotope vermessen und linear gefittet.
 Die angelegten magnetischen Felder $B$ sind in Abhängigkeit der Frequenz in
 Tabelle~\ref{tab:b_nu} aufgeführt.
 Die Magnetfelder $B$ aufgetragen gegen die Anregungsfrequenzen $\nu$ sind in
 Abbildung~\ref{fig:static_B} zu sehen.
-
 \begin{table}[h]
 	\centering
 	\caption{Magnetfeld zur Einstellung der Resonanz der Rubidium Isotope.}
@@ -54,9 +53,8 @@ Abbildung~\ref{fig:static_B} zu sehen.
 	}
 		\input{build/b_nu.tex}
 \end{table}
-
-Die Messwerte werden linear gefittet und der y-Achsenabschnitt $b$ spricht genau den
-Offset den das Erdmangnetfeld erzeugt.
+Die Messwerte werden linear gefittet und der y-Achsenabschnitt $b$ 
+entspricht genau den Offset, den das Erdmangnetfeld erzeugt.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\linewidth]{build/static_B.pdf}
@@ -66,7 +64,6 @@ Offset den das Erdmangnetfeld erzeugt.
 \end{figure}
 Das zur Erdmangnetfeld kompensation benötigte Feld entspricht dem Wert $b$ aus
 Tabelle~\ref{tab:lin_params}.
-
 \begin{table}[h]
 	\centering
 	\caption{Lineare Fitparameter zur Bestimmung des Land\'efaktors und des
@@ -79,17 +76,12 @@ Tabelle~\ref{tab:lin_params}.
 	}
 	\input{build/lin_params.tex}
 \end{table}
-
-
-
 \subsection{Land\'efaktoren und Kernmoment der Rubidium Isotope}%
 \label{sub:landefaktoren_der_rubidium_isotope}
-Die Land\'efaktoren werden entsprechend Gleichhung~\ref{eq:??} aus der Steigung
-des Fittes in Abbildung~\ref{fig:??} bestimmt. 
+Die Land\'efaktoren werden entsprechend Gleichhung~\ref{eq:lande} aus der Steigung
+des Fittes in Abbildung~\ref{fig:static_B} bestimmt. 
 Durch Umformen ergeben sich die in der Tabelle~\ref{tab:lande} aufgeführten
 Land\'efaktoren $g_\text{exp}$ und die theoretischen Werte $g_\text{theo}$.
-
-
 \begin{table}[h]
 	\centering
 	\caption{Die Abgeleiteten größen Land\'efaktor und Kernspin aus der Steigung
@@ -109,7 +101,6 @@ Land\'efaktoren $g_\text{exp}$ und die theoretischen Werte $g_\text{theo}$.
 	\end{subtable}
 \end{table}
 
-
 \begin{table}[h]
 \end{table}
 \subsection{quadratischer Zeemanneffekt}%
@@ -118,7 +109,7 @@ Der quadratische Zeemanneffekt führt zu einer Energieabsenkung.
 Er liefert erst bei größeren Feldstärken sifnifikanten Beiträge.
 Zur Abschätzung wird eine Feldstärke von B=$\SI{1}{\milli\tesla}$ 
 und die Land\'efaktoren von Rubidium angenommen und die Energien entsprechend
-Formel~\ref{eq:??} ausgerechnet.
+Formel~\ref{eq:quad_zee} ausgerechnet.
 \begin{equation}
 	\frac{E_\text{squ} = \SI{1.04 +- 0.01e-29}{\joule}}{E_\text{lin} = 
 		\SI{4.57 +- 0.02e-27}{\joule}} \approx 0.2 \%
@@ -132,15 +123,15 @@ wwelche auf dem Amplitudenverhältniss der Transmissionslinien beruht und
 andererseits eine dynamische über die Rabi-Oszilationen gemessen.
 \subsubsection{statisch}%
 \label{ssub:statisch}
-Das Amplitudenverhältniss kann aus der Ambildung~\ref{fig:??} abgelesen werde.
+Das Amplitudenverhältniss kann aus der Ambildung~\ref{fig:transmission} abgelesen werde.
 Dabei entspricht die erste Transmissionslinien dem $^{85}$Rb und die zweite dem
-$^{85}$Rb Isotope.
-Es wird ein Amplitudenverhältniss von 
+$^{87}$Rb Isotope.  Es wird ein Amplitudenverhältniss von 
 \begin{equation}
 	\frac{A_{85}}{A_{87}} = \frac{\SI{2.6}{\volt}}{\SI{1.4}{\volt}} = 1.86 
 \end{equation}
-gemessen, was von dem natürlichen um \SI{100}{\percent} abweicht.
-Augenscheinlich wurde das Rubidiumgas mit dem $^{??}$Rb Isotope angereichert um
+gemessen, was von dem natürlichen um \SI{39.4}{\percent} und vom angegebenen
+theoretischen Wert um \SI{20}{\percent} abweicht.
+Augenscheinlich wurde das Rubidiumgas mit dem $^{87}$Rb Isotope angereichert um
 bessere optische Eigenschaften zu erreichen.
 
 
@@ -151,10 +142,8 @@ Zur Bestimmung des Isotopenverhältniss werden bei einer RF-Frequenz von
 \SI{100}{\kilo\hertz} die Spulenspannung variert und die Oszilationen gemessen.
 Die entsprechende Schwingungsdauern bei den verschiedenen Spannungen sind in
 Tabelle~\ref{tab:schw} aufgetragen.
-Die Ozsillationen entstehen nachdem ein Zustand entladen wurde und anschliesend
-ein .......
-Ein Oszilloskopbild ist für beide Resonanzstellen in Abbildung~\ref{fig:osz} zu
-sehen.
+Ein Oszilloskopbild ist für beide Resonanzstellen in 
+Abbildung~\ref{fig:osz} zu sehen.
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[c]{0.45\textwidth}
@@ -174,18 +163,19 @@ sehen.
 	\caption{Ladung und Entladung der Angeregten und Anschließende Oszillationen}
 	\label{fig:osz}
 \end{figure}
-Die Periodendauern werden bestimmt indem mit der \texttt{scipy.signal.find\_peaks}
-Funktion die Extrema der periodischen Funktionen vestimmt werden. 
+Die Periodendauern werden bestimmt, indem mit der \texttt{scipy.signal.find\_peaks}
+Funktion die Extrema der periodischen Funktionen bestimmt werden. 
 Bei kleinen Spulenspannungen kommt es dabei zu Untergrundrauschen und der
-Beeinflussung durch die hohen Magnetfelder nebenstehende Experimente (Abbildung
-\ref{fig:85a}), sodass die Periode nicht mehr eindeutig bestimmt werden kann. 
-Desweiteren wurd die zeitliche Auflösung bei zur Bestimmung der Periodendauer
-der zweiten Transmissionslinien etwas zu grob gewählt, sodass die zum Teil sehr
-groß ist.
+Beeinflussung durch die hohen Magnetfelder, der nebenstehende Experimente 
+(Abbildung~\ref{fig:85a}), sodass die Periode nicht mehr eindeutig 
+bestimmt werden kann. 
+Desweiteren wurde die zeitliche Auflösung, zur Bestimmung der Periodendauer
+der zweiten Transmissionslinien etwas zu grob gewählt, sodass die 
+Schrittweite zum Teil sehr groß ist.
 Die bestimmten Periodendauern sind in Tabelle~\ref{tab:schw} aufgelistet.
 \begin{table}[h]
 	\centering
-	\caption{caption}
+	\caption{Periodendauern der Larmorschwingungen}
 	\label{tab:schw}
 	\begin{subtable}[t]{0.4\textwidth}
 	\centering
@@ -198,7 +188,7 @@ Die bestimmten Periodendauern sind in Tabelle~\ref{tab:schw} aufgelistet.
 		\input{build/T2.tex}
 	\end{subtable}
 \end{table}
-In der Abbildung~\ref{fig:periode} wurden die Feldstärken gegen die Spulenspannungen
+In der Abbildung~\ref{fig:periode} sind die Feldstärken gegen die Spulenspannungen
 aufgetragen und die Messdaten mit der Funktion~\ref{eq:fit} gefittet.
 \begin{figure}[h]
 	\centering
@@ -231,7 +221,7 @@ aufgetragen und die Messdaten mit der Funktion~\ref{eq:fit} gefittet.
 	\caption{$^{87}$Rb \SI{3}{\volt}}
 	\label{fig:}
 	\end{subfigure}
-	\caption{}
+	\caption{Larmorschwingungen in Abhängigkeit der Spulenspannung}
 	\label{fig:periode}
 \end{figure}
 \begin{equation}
@@ -255,7 +245,7 @@ Die Ergebniss sind in Abbildung~\ref{fig:fitexp} dargestellt.
 	\caption{$^{87}$Rb}
 	\label{fig:}
 	\end{subfigure}
-	\caption{}
+	\caption{Periodendauer der Larmorschwingungen}
 	\label{fig:fitexp}
 \end{figure}
 Aus den Verhältnissen der Steigungsparameter $b$ der Fits wird das
@@ -266,6 +256,7 @@ Es beträgt
 	\frac{\SI{10.7+-9.0}{\second\per\volt}}{\SI{6.6+-3.5}{\second\per\volt}} =
 	\num{1.6 +- 1.6} \ .
 \end{equation}
-Das natürliche Rubidium Verhältniss ist x:x.
-Dies ist ein hinweis darauf, dass das verwendete Gemisch möglicherweise für
-bessere optische Eigenschaften mit dem $^{85}$Rb Isotop angereichert ist. 
+Das natürliche Rubidium Verhältniss ist in 5:2.
+Dies ist ein Hinweis darauf, dass das verwendete Gemisch möglicherweise für
+bessere optische Eigenschaften mit dem $^{87}$Rb Isotop angereichert ist. 
+Das für den Versuch angegebene Isotopenverhältniss ist \num{1.5}.
