@@ -112,11 +112,11 @@ class static_experiment:
             quot = ufloat(self.params[x][0], self.std[x][0])
             self.lande.append(4 * np.pi * constants.m_e / (constants.e * quot))
         print("Die Landefaktoren betragen:")
-        print("Rb^85: ", self.lande[0])
-        print("Rb^87: ", self.lande[1])
+        print("Rb^87: ", self.lande[0])
+        print("Rb^85: ", self.lande[1])
         df = pd.DataFrame(
             {
-                "": [r"Rb$_{85}$", r"Rb$_{87}$"],
+                "": [r"Rb$_{87}$", r"Rb$_{85}$"],
                 r"$g_\text{theo}$": [r"$\sfrac{1}{2}$", r"$\sfrac{1}{3}$"],
                 r"$g_\text{exp}$": [
                     self.lande[0].nominal_value,
@@ -147,13 +147,13 @@ class static_experiment:
         def kernspin(lande):
             return self.J * (self.g_j / lande - 1)
 
-        lande_85, lande_87 = self.lande_Faktoren()
+        lande_87, lande_85 = self.lande_Faktoren()
         I_85 = kernspin(lande_85)
         I_87 = kernspin(lande_87)
         print("Der Kernspin ist: ", I_85, " und ", I_87)
         df = pd.DataFrame(
             {
-                "": [r"Rb$_{85}$", r"Rb$_{87}$"],
+                "": [r"Rb$_{87}$", r"Rb$_{85}$"],
                 r"$I_\text{theo}$": [r"$\sfrac{3}{2}$", r"$\sfrac{5}{2}$"],
                 r"$I_\text{exp}$": [I_85.nominal_value, I_87.nominal_value],
                 r"$\Delta I_\text{exp}$": [I_85.std_dev, I_87.std_dev],
