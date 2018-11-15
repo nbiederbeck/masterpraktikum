@@ -12,31 +12,37 @@
 \colorlet{lightmblue}{mblue!50}
 \colorlet{lightmyellow}{myellow!50}
 
-
-\tikzset{
-	every rectangle node/.style={
-		draw,
+\tikzstyle{sArrow} = [shorten >=9pt, shorten <=9pt, line width=1pt, ]
+	
+\tikzstyle{rect} = [
 		shape=rectangle, 
 		line width=1.5pt,
 		inner sep=4pt,
+		minimum height=0.7cm,
 		draw=myellow,
 		fill=mblue,
 		text=white,
-	},
-	every circle node/.style={
+]
+
+\tikzstyle{circ} = [
 		double,
+		shape=circle,
 		line width=0.7pt,
 		inner sep=4pt,
 		draw=lightmyellow,
 		fill=lightmblue,
 		text=white,
-	},
-}
+		]
 
-\tikzstyle{normalArrow} = [
-thick, 
--Stealth, 
-shorten >=9pt, 
-shorten <=9pt,
-line width=1pt
-]
+\tikzstyle{info} = [
+		font= \tiny \itshape,
+		inner sep=0.5cm,
+		align=center,
+	]
+
+\tikzstyle{infocirc} = [
+		font= \small,
+		inner sep=0.05cm,
+		shape=circle,
+	]
+
