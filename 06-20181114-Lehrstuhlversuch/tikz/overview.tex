@@ -3,7 +3,7 @@
 
 \begin{document}
 \begin{tikzpicture} [
-	node distance=2.5cm,
+	node distance=2.5cm and 0cm,
 	]
 	\node (tlsI) 	[rect] {Magic I};
 	\node (tlsII) [rect, right of=tlsI] {Magic II};
@@ -18,17 +18,15 @@
 
 	\node (Sstar) [rect, below of=Star] {Superstar};
 	
-	\node (CMCD) 	[circ, below of=Sstar] {MC};
+	\node (quate) [rect, below of=Sstar] {quate};
+	
+	\node (CMCD) 	[circ, below of=quate] {MC};
 	\node (COND) 	[circ, left of=CMCD] {On};
 	\node (COFFD) [circ, right of=CMCD] {Off};
 	
-	\node (quate) [rect, xshift=-1.25cm, below of=CMCD] 
-		{quate};
+	\node (coach) [rect, below of=CMCD, xshift=1.25cm] {coach};
 	
-	\node (coach) [rect, right of=quate] {coach};
-	
-	\node (melibea) [rect, below of=quate, xshift=1.25cm] 
-		{Melibea};
+	\node (melibea) [rect, below of=coach, xshift=-1.25cm] {Melibea};
 	
 	\node (caspar) [rect, below of=melibea] {Caspar};
 	\node (odie) [rect, left of=caspar] {Odie};
@@ -47,24 +45,29 @@
 
 	\draw[-Stealth, sArrow] (Star.south) 	-- 	(Sstar.north);
 	
-	\draw[-Stealth, sArrow] (Sstar.south) 	-- 	(COND.north);
-	\draw[-Stealth, sArrow] (Sstar.south) 	-- 	(COFFD.north);
-	\draw[-Stealth, sArrow] (Sstar.south) 	-- 	(CMCD.north);
-
-	\draw[Stealth-Stealth, sArrow, draw=black!50] (COND.south) 	-- 	(quate.north);
-	\draw[Stealth-Stealth, sArrow, draw=black!50] (COFFD.south) -- 	(quate.north);
-	\draw[Stealth-Stealth, sArrow, draw=black!50] (CMCD.south) 	-- 	(quate.north);
-	\node [infocirc, draw=black!50, text=black!50, above of=quate, yshift=-1.0cm] {1};
-
-	\draw[-Stealth, sArrow] (COFFD.south) -- 	(coach.north);
-	\draw[-Stealth, sArrow] (CMCD.south) 	-- 	(coach.north);
-	\node [infocirc, draw=black, text=black, above of=coach, yshift=-1.0cm] {2};
+	\draw[-Stealth, sArrow] (Sstar.south) -- (quate.north);
 	
+	\draw[-Stealth, sArrow] (quate.south) -- (CMCD.north);
+	\draw[-Stealth, sArrow] (quate.south) -- (COND.north);
+	\draw[-Stealth, sArrow] (quate.south) -- (COFFD.north);
+
+	% \node [infocirc, draw=black, text=black, above of=coach, yshift=-1.0cm] {2};
+	
+	\draw[-Stealth, sArrow] (COFFD.south) -- (coach.north);
+	\draw[-Stealth, sArrow, draw=black!40] (CMCD.south) -- 
+		node [sloped, above, text=black!70] {train} (coach.north);
+	\draw[-Stealth, sArrow, draw=black!70] (CMCD.south) --  
+		node [sloped, above, text=black!70] {test} (melibea.north);
+	\draw[-Stealth, sArrow] (COND.south) -- (melibea.north);
 	\draw[-Stealth, sArrow] (coach.south) -- 	(melibea.north);
-	\draw[-Stealth, sArrow] (quate.south) 	-- 	(melibea.north);
 
-	% \draw[-Stealth, sArrow] (melibea.south) -- 	(coach.north);
-	% \draw[-Stealth, sArrow] (melibea.south) 	-- 	(coach.north);
+	\draw[-Stealth, sArrow] (melibea.south) -- 	(odie.north);
+	\draw[-Stealth, sArrow] (melibea.south) 	-- 	(caspar.north);
+	\draw[-Stealth, sArrow] (melibea.south) 	-- 	(flute.north);
 
+	\draw[-Stealth, sArrow] (flute.south) 	-- 	(unfold.north);
+	\path[-Stealth, sArrow, out=270, in=260, looseness=1.5] 
+		(odie.south) edge node [loop below] {PSF, $\theta^2$-cut} 
+		(caspar.220);
 \end{tikzpicture}
 \end{document}
