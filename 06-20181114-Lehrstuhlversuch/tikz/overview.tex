@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{magic}
+
+\begin{document}
+\begin{tikzpicture} [
+	node distance=2.5cm,
+	]
+	\node (tlsI) 	[rectangle] {Magic I};
+	\node (tlsII) [rectangle, right of=tlsI] {Magic II};
+
+	\node (MCD) 	[circle, below of=tlsI, xshift=1.25cm] {MC-Daten};
+	\node (OND) 	[rectangle, left of=MCD] {ON-Daten};
+	\node (OFFD) 	[rectangle, right of=MCD] {OFF-Daten};
+
+	\node (Star) 	[rectangle, below of=MCD] {Star};
+
+
+	\draw[normalArrow] (tlsI.south) 	--  (OND.north);
+	\draw[normalArrow] (tlsI.south) 	-- 	(OFFD.north); 
+	\draw[normalArrow] (tlsII.south) 	-- 	(OND.north);
+	\draw[normalArrow] (tlsII.south) 	-- 	(OFFD.north);
+
+	\draw[normalArrow] (OND.south) 		-- 	(Star.north);
+	\draw[normalArrow] (OFFD.south) 	-- 	(Star.north);
+	\draw[normalArrow] (MCD.south) 		-- 	(Star.north);
+\end{tikzpicture}
+\end{document}

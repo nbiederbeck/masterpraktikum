@@ -78,8 +78,12 @@ Tabelle~\ref{tab:lin_params}.
 \end{table}
 \subsection{Land\'efaktoren und Kernmoment der Rubidium Isotope}%
 \label{sub:landefaktoren_der_rubidium_isotope}
-Die Land\'efaktoren werden entsprechend Gleichung~\ref{eq:lande} aus der Steigung
-des Fits in Abbildung~\ref{fig:static_B} bestimmt.
+Die Land\'efaktoren entsprechend Gleichung~\ref{eq:lande} aus der Steigung
+des Fits in Abbildung~\ref{fig:static_B} bestimmt werden und mit der dynamischen
+Methode evaluiert werden.
+\subsubsection{Landefaktoren bestimmen}%
+\label{sub:landefaktoren_bestimmen}
+
 Durch Umformen ergeben sich die in der Tabelle~\ref{tab:lande} aufgeführten
 Land\'efaktoren $g_\text{exp}$ und die theoretischen Werte $g_\text{theo}$.
 \begin{table}[h]
@@ -101,45 +105,10 @@ Land\'efaktoren $g_\text{exp}$ und die theoretischen Werte $g_\text{theo}$.
 	\end{subtable}
 \end{table}
 
-\begin{table}[h]
-\end{table}
-\subsection{Quadratischer Zeemanneffekt}%
-\label{sub:quadratischer_zeemanneffekt}
-Der quadratische Zeemanneffekt führt zu einer Energieabsenkung.
-Er liefert erst bei größeren Feldstärken signifikante Beiträge.
-Zur Abschätzung wird eine Feldstärke von $B=\SI{1}{\milli\tesla}$
-und die Land\'efaktoren von Rubidium angenommen und die Energien entsprechend
-Formel~\ref{eq:quad_zee} ausgerechnet.
-\begin{equation}
-	\frac{E_\text{squ} = \SI{1.04 +- 0.01e-29}{\joule}}{E_\text{lin} =
-		\SI{4.57 +- 0.02e-27}{\joule}} \approx 0.2 \%
-\end{equation}
-Er kann bei kleinen Feldern von um die \SI{100}{\micro\tesla} vernachlässigt werden.
-
-\subsection{Bestimmung des Isotopenverhältnis}%
-\label{sub:bestimmung_des_isotopenverhaeltniss}
-Zur Bestimmung des Isotopenverhältnis wird einerseits eine statische Methode,
-welche auf dem Amplitudenverhältnis der Transmissionslinien beruht,
-und andererseits eine dynamische über die Rabi-Oszillationen gemessen.
-\subsubsection{Statische Methode}%
-\label{ssub:statisch}
-Das Amplitudenverhältnis kann aus der Abbildung~\ref{fig:transmission} abgelesen werde.
-Dabei entspricht die erste Transmissionslinie dem $^{85}$Rb und die zweite dem
-$^{87}$Rb Isotop.
-Es wird ein Amplitudenverhältnis von
-\begin{equation}
-	\frac{A_{85}}{A_{87}} = \frac{\SI{2.6}{\volt}}{\SI{1.4}{\volt}} = \num{1.86}
-\end{equation}
-gemessen, was von dem natürlichen um \SI{39.4}{\percent} und vom angegebenen
-theoretischen Wert um \SI{20}{\percent} abweicht.
-Augenscheinlich wurde das Rubidiumgas mit dem $^{87}$Rb Isotope angereichert,
-um bessere optische Eigenschaften zu erreichen.
-
-
-\subsubsection{Dynamische Methode}%
+\subsubsection{Dynamische Methode zum Evaluieren der Land\'efaktoren-Verhältniss}%
 \label{ssub:dynamisch}
 
-Zur Bestimmung des Isotopenverhältnis werden bei einer RF-Frequenz von
+Zur Bestimmung des Land\'efaktor-Verhältniss werden bei einer RF-Frequenz von
 \SI{100}{\kilo\hertz} die Spulenspannung variiert und die Oszillationen gemessen.
 Die entsprechende Schwingungsdauern bei den verschiedenen Spannungen sind in
 Tabelle~\ref{tab:schw} aufgetragen.
@@ -253,14 +222,41 @@ Die Ergebnisse sind in Abbildung~\ref{fig:fitexp} dargestellt.
 	\label{fig:fitexp}
 \end{figure}
 Aus den Verhältnissen der Steigungsparameter $b$ der Fits wird das
-Isotopenverhältnis von dem Rubidiumgas abgeschätzt.
+Lan\'efaktor-Verhältniss entsprechend Formel~\ref{eq:lande} von den
+Rubidiumisotopen abgeschätzt.
 Es beträgt
 \begin{equation}
-	\frac{b_{85}}{b_{87}} =
+	\frac{b_{87}}{b_{85}} =
 	\frac{\SI{10.7+-9.0}{\second\per\volt}}{\SI{6.6+-3.5}{\second\per\volt}} =
 	\num{1.6 +- 1.6}.
 \end{equation}
-Das natürliche Rubidium Verhältnis ist etwa 5:2.
-Dies ist ein Hinweis darauf, dass das verwendete Gemisch möglicherweise für
-bessere optische Eigenschaften mit dem $^{87}$Rb-Isotop angereichert ist.
-Das für den Versuch angegebene Isotopenverhältnis ist 3:1.
+Das theoretische Land\'efaktor-Verhältniss liegt bei \sfrac{3}{2}.
+
+\subsection{Quadratischer Zeemanneffekt}%
+\label{sub:quadratischer_zeemanneffekt}
+Der quadratische Zeemanneffekt führt zu einer Energieabsenkung.
+Er liefert erst bei größeren Feldstärken signifikante Beiträge.
+Zur Abschätzung wird eine Feldstärke von $B=\SI{1}{\milli\tesla}$
+und die Land\'efaktoren von Rubidium angenommen und die Energien entsprechend
+Formel~\ref{eq:quad_zee} ausgerechnet.
+\begin{equation}
+	\frac{E_\text{squ} = \SI{1.04 +- 0.01e-29}{\joule}}{E_\text{lin} =
+		\SI{4.57 +- 0.02e-27}{\joule}} \approx 0.2 \%
+\end{equation}
+Er kann bei kleinen Feldern von um die \SI{100}{\micro\tesla} vernachlässigt werden.
+
+\subsection{Bestimmung des Isotopenverhältnis}%
+\label{sub:bestimmung_des_isotopenverhaeltniss}
+Zur Bestimmung des Isotopenverhältnis wird eine statische Methode,
+welche auf dem Amplitudenverhältnis der Transmissionslinien beruht genutzt.
+Das Amplitudenverhältnis kann aus der Abbildung~\ref{fig:transmission} abgelesen werde.
+Dabei entspricht die erste Transmissionslinie dem $^{85}$Rb und die zweite dem
+$^{87}$Rb Isotop.
+Es wird ein Amplitudenverhältnis von
+\begin{equation}
+	\frac{A_{85}}{A_{87}} = \frac{\SI{2.6}{\volt}}{\SI{1.4}{\volt}} = \num{1.86}
+\end{equation}
+gemessen, was von dem natürlichen um \SI{39.4}{\percent} und vom angegebenen
+theoretischen Wert um \SI{20}{\percent} abweicht.
+Augenscheinlich wurde das Rubidiumgas mit dem $^{87}$Rb Isotope angereichert,
+um bessere optische Eigenschaften zu erreichen.

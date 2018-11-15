@@ -1,0 +1,42 @@
+\RequirePackage{tikz}
+
+\usetikzlibrary{
+	arrows.meta,
+	graphs,
+	shapes.geometric,
+	petri
+}
+
+\definecolor{mblue}{RGB}{43, 50, 122}
+\definecolor{myellow}{RGB}{228, 188, 15}
+\colorlet{lightmblue}{mblue!50}
+\colorlet{lightmyellow}{myellow!50}
+
+
+\tikzset{
+	every rectangle node/.style={
+		draw,
+		shape=rectangle, 
+		line width=1.5pt,
+		inner sep=4pt,
+		draw=myellow,
+		fill=mblue,
+		text=white,
+	},
+	every circle node/.style={
+		double,
+		line width=0.7pt,
+		inner sep=4pt,
+		draw=lightmyellow,
+		fill=lightmblue,
+		text=white,
+	},
+}
+
+\tikzstyle{normalArrow} = [
+thick, 
+-Stealth, 
+shorten >=9pt, 
+shorten <=9pt,
+line width=1pt
+]
