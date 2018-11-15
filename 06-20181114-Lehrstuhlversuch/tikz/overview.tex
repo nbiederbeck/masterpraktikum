@@ -1,5 +1,6 @@
 \documentclass{standalone}
 \usepackage{magic}
+\usepackage{standalone}
 
 \begin{document}
 \begin{tikzpicture} [
@@ -69,5 +70,14 @@
 	\path[-Stealth, sArrow, out=270, in=260, looseness=1.5] 
 		(odie.south) edge node [loop below] {PSF, $\theta^2$-cut} 
 		(caspar.220);
+
+	\node (theta) 	[shape=circle, draw=mblue, right of=Star, 
+	path picture={
+		\node at (path picture bounding box.center){
+              \includegraphics[width=3cm]{theta2}
+					};
+				}, line width=1, minimum width=3.5cm, xshift=1cm] {};
+	
+	\path[-Stealth, sArrow, out=270, in=0, looseness=1.5] (theta.south) edge (Sstar.east);
 \end{tikzpicture}
 \end{document}
