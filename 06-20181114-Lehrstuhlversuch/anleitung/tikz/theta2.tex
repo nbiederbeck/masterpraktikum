@@ -1,0 +1,41 @@
+\documentclass{standalone}
+\usepackage{magic}
+\usetikzlibrary{patterns}
+
+\begin{document}
+\begin{tikzpicture} 
+
+	\coordinate (t1) at (0,0.5);
+	\coordinate (t2) at (3.5,0);
+	\coordinate (rp) at (1.86,2.18);
+	\coordinate (Rp) at (1.96,2.68);
+	\coordinate (tp) at (3.10,2.96);
+
+
+	\fill[fill=myellow!30] (t1) ellipse [fill=yellow, 
+		x radius= 1cm, y radius= .5cm, rotate=45] ;
+	\fill[fill=myellow!60] (t1) ellipse [x radius= 0.5cm, y radius= .25cm,
+		rotate=45];
+	\fill[fill=myellow!90] (t1) ellipse [x radius= 0.25cm, y radius= .125cm,
+		rotate=45];
+	
+	\fill[fill=myellow!30] (t2) ellipse [fill=yellow, x radius= 1cm, y radius=
+		.5cm, rotate=-60];
+	\fill[fill=myellow!60] (t2) ellipse [x radius= 0.5cm, y radius= .25cm,
+		rotate=-60];
+	\fill[fill=myellow!90] (t2) ellipse [x radius= 0.25cm, y radius= .125cm,
+		rotate=-60];
+
+	\draw (t1) -- node [sloped, above, font=\small] {Rekonstruiert} ++(48:3.3cm);
+	\draw [dashed] (t1) -- node [sloped, below, font=\small] {Hillas} ++(42:3.4cm);
+
+	\draw [dashed] (t2) -- ++(127:3.3cm);
+	\draw (t2) -- ++(120:3.3cm);
+
+	\draw [draw=black!50, Stealth-Stealth, shorten <=1pt, shorten >=1pt] (Rp) 
+		-- node [sloped, below, text=black!70, font=\small] {$\theta^2$} (tp);
+	\fill [fill=mblue] 		(rp) circle (0.05);
+	\fill [fill=mblue] 		(Rp) circle (0.05);
+	\fill [fill=myellow] 	(tp) circle (0.05);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,52 @@
+\RequirePackage{tikz}
+
+\usetikzlibrary{
+	arrows.meta,
+	graphs,
+	shapes.geometric,
+	backgrounds,
+	fit,
+	% petri,
+}
+
+\definecolor{mblue}{RGB}{43, 50, 122}
+\definecolor{myellow}{RGB}{228, 188, 15}
+\colorlet{lightmblue}{mblue!50}
+\colorlet{lightmyellow}{myellow!50}
+
+\tikzstyle{sArrow} = [shorten >=9pt, shorten <=9pt, line width=1pt, ]
+	
+\tikzstyle{rect} = [
+		shape=rectangle, 
+		line width=1.5pt,
+		inner sep=4pt,
+		minimum height=0.7cm,
+		draw=myellow,
+		fill=mblue,
+		text=white,
+		font=\sffamily \bfseries,
+]
+
+\tikzstyle{circ} = [
+		double,
+		shape=circle,
+		line width=0.7pt,
+		inner sep=4pt,
+		draw=lightmyellow,
+		fill=lightmblue,
+		text=white,
+		font=\sffamily \bfseries,
+		]
+
+\tikzstyle{info} = [
+		font= \tiny \itshape,
+		inner sep=0.5cm,
+		align=center,
+	]
+
+\tikzstyle{infocirc} = [
+		font= \small,
+		inner sep=0.05cm,
+		shape=circle,
+	]
+
