@@ -1,8 +1,31 @@
 \section{MARS}%
 \label{sec:mars}
 
+MARS ist ein Software-Paket, das in \texttt{C++} geschrieben ist.
+Es beinhaltet zum einen Container, um die aufgenommenen Daten zu speichern,
+zum anderen viele Ausführbare,
+mit denen die gesamte Analysekette für MAGIC ausgeführt wird.
+
+Die Hauptprogramme werden im Folgenden näher erklärt.
+Dabei sind sie so angeordnet, dass die Ergebnisse der einzelnen
+Programme die Eingangsdaten der nächsten sind.
+
+\subsection{Sorcerer}%
+\label{sub:sorcerer}
+
+Das Programm Sorcerer (Simple, Outright Raw Calibration; Easy, Reliable
+Extraction Routines) wird verwendet, um Rohdaten zu kalibireren.
+Es soll nicht weiter ausgeführt werden, da mit bereits kalibrierten Daten
+gearbeitet wird.
+
 \subsection{Star}%
 \label{sub:star}
+
+Star wird verwendet, um auf kalibrierten Daten
+das Image Cleaning %(s.\ \ref{sub:imagecleaning})
+durchzuführen.
+Im Anschluss werden die Hillas Parameter ausgerechnet.
+
 
 \subsection{Superstar}%
 \label{sub:superstar}
