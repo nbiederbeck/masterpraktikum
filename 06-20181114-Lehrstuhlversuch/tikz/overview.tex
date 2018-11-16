@@ -78,6 +78,15 @@
 					};
 				}, line width=1, minimum width=3.5cm, xshift=1cm] {};
 	
-	\path[-Stealth, sArrow, out=270, in=0, looseness=1.5] (theta.south) edge (Sstar.east);
+	\node (hillas) 	[shape=circle, draw=mblue, left of=Sstar, 
+	path picture={
+		\node at (path picture bounding box.center){
+              \includegraphics[width=2.5cm]{hillas}
+					};
+				}, line width=1, minimum width=3.5cm, xshift=-1cm] {};
+	
+	\path[-Stealth, sArrow, out=270, in=0, looseness=0.9] (theta.south) edge (Sstar.east);
+	\path[-Stealth, sArrow, out=90, in=180, looseness=0.8] (hillas.north) edge
+	(Star.west);
 \end{tikzpicture}
 \end{document}
