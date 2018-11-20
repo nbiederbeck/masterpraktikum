@@ -1,7 +1,6 @@
 SUBDIRS := $(sort $(wildcard */))
 
-all: 01 02 03 04 05
-	# $(foreach dir, $(SUBDIRS), $(MAKE) -C $(dir); )
+all: 01 02 03 04 05 06
 
 01:
 	$(MAKE) -C ./01-20180416-DebyeScherrer
@@ -18,7 +17,8 @@ all: 01 02 03 04 05
 05:
 	$(MAKE) -C ./05-20181015-OptischePumpen
 
-
+06:
+	$(MAKE) -C ./06-20181114-Lehrstuhlversuch
 
 
 clean:
