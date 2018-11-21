@@ -1,51 +1,68 @@
 \subsection{Star}%
 \label{sub:star}
-Ziel von Star ist die Berechnung von gecleanten Kamerabildern und die Berechnung
-der Hillasparameter auf den Daten. 
+Ziel von Star ist die Berechnung von gereinigten Kamerabildern und die Berechnung
+der Hillas Parameter auf den Daten.
 
-\subsubsection*{Theorie}
-image cleanining ist noetig weil, Bilder von falsch getriggerten PMTs
-verrrauscht sind, diffuses Licht. Zur berechnung der Hauptachse werden dazu die
-Bilder vom diffusen Untergrund befreit.
-% Die Daten in einem getriggerten Event gehören nicht alle zu einem
-% Tscherenkvoschauer.
-% Um die folgenden Algorithmen zu verbessern,
-% müssen Pixel, die nicht zum Schauer gehören, entfernt werden.
+\paragraph{Theorie}
+Sobald das Teleskop ein Event triggert,
+speichert es Daten von jedem PMT.\@
+Diese Daten enthalten neben dem eigentlichen Tscherenkowlicht auch
+Rauschen von elektronischen Bauteilen,
+Nachthimmelhintergrund (NSB:\ Night Sky Background) z.B.\ des Mondes,
+und andere Störungen.
 
-Dazu werden zur jeder anvisierten Quellposition (On-Position) ebensolange Daten
-wo kein Gammafluss (Off-Daten) erwatet wird genommen.
-Der Untergrund ist abhaengig von der Temperatur der PMTs welches mit
-elektronischem Rauschen korreliert ist, der Wolkendecke, der observierten
-Quellposition, ...
-Mittels eines (likelihood test) wird der Untergrund verworfen.
-Jeweils ein Beispiel für ein Kamerabild vor und nach dem Cleaning ist in
+\subparagraph{Image Cleaning}
+Um sinnvoll die Hillas Parameter bestimmen zu können,
+müssen die Daten bereinigt werden.
+Dazu werden alle Pixel verworfen, die wahrscheinlich nicht zu den
+vom Tscherenkowschauer ausgelösten Pixeln gehören.
+Des Weiteren ist gutes Image Cleaning in der Lage,
+% um einen konstanten Photostream zu bereinigen,
+niederenergetische Ereignisse vom Untergrund zu trennen und damit
+für einen geringen Energie-Schwellwert zu sorgen.
+
+Zu jeder anvisierten Quellposition (\textit{On}) werden
+genau so lang Daten aufgenommen,
+wo kein Gammafluss (\textit{Off}) erwartet wird.
+Da insbesondere der NSB abhängig von der Zeit und Quellposition ist,
+müssen bei jeder Observation zusätzliche Off-Daten aufgenommen werden.
+
+Jeweils ein Beispiel für ein Kamerabild vor und nach dem Image Cleaning ist in
 Abbildung~\ref{fig:cleaning} dargestellt.
+
 \begin{figure}[htpb]
 	\centering
 	\begin{subfigure}[c]{0.35\linewidth}
-		\includegraphics[width=\linewidth]{pictures/uncleaned.pdf}
-		\caption{nicht bereinigte Daten}
+		% \includegraphics[width=\linewidth]{pictures/uncleaned.pdf}
+		\caption{Kamerabild.}%
 		\label{fig:uncleaned}
 	\end{subfigure}
 	\begin{subfigure}[c]{0.35\linewidth}
-		\includegraphics[width=\linewidth]{pictures/cleaned.pdf}
-		\caption{bereinigte Daten}
+		% \includegraphics[width=\linewidth]{pictures/cleaned.pdf}
+		\caption{Bereinigtes Kamerabild.}%
 		\label{fig:cleaned}
 	\end{subfigure}
-	\caption{Cleaning der Kamerabildern zur berrechnung der Hillas Parameter.}
+	\caption{Bereinigung der Kamerabilder zur Berechnung der Hillas Parameter.}%
 	\label{fig:cleaning}
 \end{figure}
-Tscherenkvoschauer erzeugen in der Kamera Ellipsenförmige Events. 
+
+\subparagraph{Hillas Parameter}%
+\label{spar:hillas_parameter}
+
+Tscherenkowschauer erzeugen in der Kamera Ellipsenförmige Events.
 Anhand der Größe der Ellipse und deren Richtung lässt sich die Energie des
 Events bestimmen und die Richtung rekonstruieren.
-Dazu wird auf den gecleanten Kamerabildern die Hillas Parameter bestimmt.
+Dazu wird auf den gereinigten Kamerabildern die Hillas Parameter bestimmt.
+
 
 \begin{wrapfigure}[15]{o}{0.4\textwidth}
 	\centering
 	\includegraphics[width=0.8\linewidth]{tikz/build/hillas.pdf}
-	\caption{Hillasparameter eines Schauers.}
+	\caption{Hillas Parameter eines Schauers.}%
 	\label{fig:hillas}
 \end{wrapfigure}
+
+
 Die Hillas Parameter sind width, length, size, con core, disp und theta.
 \textit{Width} ist die Nebenachse und \textit{length} die Hauptachse der Ellipse. 
 \textit{Size} entspricht der Anzahl an Photonen die im Schauer detektiert wurden.
