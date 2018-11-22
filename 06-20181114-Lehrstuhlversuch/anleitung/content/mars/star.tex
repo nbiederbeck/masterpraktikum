@@ -1,7 +1,7 @@
 \subsection{Star}%
 \label{sub:star}
 Ziel von Star ist die Berechnung von gereinigten Kamerabildern und die Berechnung
-der Hillas Parameter auf den Daten.
+der Image Parameter auf den Daten.
 
 \paragraph{Theorie}
 Sobald das Teleskop ein Event triggert,
@@ -12,7 +12,7 @@ Nachthimmelhintergrund (NSB:\ Night Sky Background) z.B.\ des Mondes,
 und andere Störungen.
 
 \subparagraph{Image Cleaning}
-Um sinnvoll die Hillas Parameter bestimmen zu können,
+Um sinnvoll die Image Parameter bestimmen zu können,
 müssen die Daten bereinigt werden.
 Dazu werden alle Pixel verworfen, die wahrscheinlich nicht zu den
 vom Tscherenkowschauer ausgelösten Pixeln gehören.
@@ -64,40 +64,50 @@ Abbildung~\ref{fig:cleaning} dargestellt.
     \caption{Bereinigtes Kamerabild.}%
     \label{fig:cleaned}
   \end{subfigure}
-  \caption{Bereinigung der Kamerabilder zur Berechnung der Hillas Parameter.}%
+  \caption{Bereinigung der Kamerabilder zur Berechnung der Image Parameter.}%
   \label{fig:cleaning}
 \end{figure}
 
-\subparagraph{Hillas Parameter}%
-\label{spar:hillas_parameter}
+\subparagraph{Image Parameter}%
+\label{spar:image_parameter}
 
-Tscherenkowschauer erzeugen in der Kamera Ellipsenförmige Events.
-Anhand der Größe der Ellipse und deren Richtung lässt sich die Energie des
-Events bestimmen und die Richtung rekonstruieren.
-Dazu wird auf den gereinigten Kamerabildern die Hillas Parameter bestimmt.
+Tscherenkowschauer erzeugen in der Kamera ellipsenförmige Events.
+Unter anderem anhand der Größe der Ellipse und deren Ausrichtung
+lässt sich die Energie des
+Primärteilchens bestimmen und die Richtung rekonstruieren.
+Dazu werden auf den gereinigten Kamerabildern die Image Parameter bestimmt.
+Die Image Parameter entsprechen teilweise den Hillas Parametern,
+und sind zweckmäßig erweitert.
 
 
 \begin{wrapfigure}[15]{o}{0.4\textwidth}
   \centering
   \includegraphics[width=0.8\linewidth]{tikz/build/hillas.pdf}
-  \caption{Hillas Parameter eines Schauers.}%
+  \caption{Image Parameter eines Schauers.}%
   \label{fig:hillas}
 \end{wrapfigure}
 
+Die Image Parameter \textit{length} und \textit{width} geben die Hauptachsen
+der Ellipse an.
+Da hadronische Schauer höhere transversale Entwicklung zeigen, ist
+\textit{width} dazu geeignet, sie von Gammaschauern zu trennen.
+\textit{Size} beschreibt die gesamte Anzahl an Photoelektronen im Schauerbild.
+Die Anzahl an Photoelektronen verhält sich proportional zur Energie des
+Primärteilchens.
+\textit{CoG} (Center of Gravity) beschreibt den Schauerschwerpunkt im Kamerabild.
+\textit{Conc-n} ist der Anteil der Photoelektronen in den $n$ hellsten Pixeln,
+und beschreibt somit die Kompaktheit des Schauers.
+Da gammainduzierte Schauer sehr kopmakt sind, ist dies auch eine gute
+Trennvariable für Gamma/Handron-Separation.
+\textit{Leakage1/2} beschreibt den Anteil des Signals in den \textit{1/2} äußeren
+Pixelringen.
+Dieser Parameter gibt eine Abschätzung,
+ob Teile des Schauers außerhalb des Kamerabildes liegen.
+\textit{Alpha} beschreibt den Winkel zwischen Hauptachse der Ellipse und
+der Linie vom CoG zum Referenzpunkt (z.B.\ erwartete Quellposition).
+Da gammainduzierte Schauer Richtung Quelle zeigen,
+ist es ebenfalls ein trennstarker Parameter.
+\textit{Dist} ist die Entfernung vom CoG zum Referenzpunkt.
 
-Die Hillas Parameter sind width, length, size, con core, disp und theta.
-\textit{Width} ist die Nebenachse und \textit{length} die Hauptachse der Ellipse. 
-\textit{Size} entspricht der Anzahl an Photonen die im Schauer detektiert wurden.
-Da sich der Schwerpunk des Schauers in der Regel nicht mit dem Mittelpunkt der
-Ellipse deckt ist dafür der Parameter \textit{Con Core} eingeführt.
-Anhand der Parameter \textit{Size} lässt sich der Parameter \textit{dist}
-schätzen der die Entferunung des Schauerschwerpunkt zur Rekonstruierten
-Quellposition ist.
-Die rekonstruierte Quellposition findet sich entsprechend der Orientierung der
-Ellipse in einem Abstand von \textit{dist} von dem Schauerschwerpunkt entfernt.
-Der Parameter \textit{theta} gibt an wie weit die rekonstruierte von der wahren
-Quellposition entfernt ist.
-123456789 Satz der noch ersetzt werden sollte damit man schauen kann ob die wrapfigure
-richtig funktioniert und schoen aussieht.
 
 \paragraph{Durchführung}
