@@ -1,4 +1,31 @@
 \subsection{Coach}%
 \label{sub:coach}
 
+\paragraph{Theorie}%
+\label{par:theorie}
+Decision Trees erklaeren
+Forrest als besonders robustes modell ...
 
+
+\paragraph{Durchführung}%
+In der \texttt{coach.rc} sind die Pfade anzupassen. 
+Die Monte Carlo Daten sind in ein Trainingsdatensatz 
+und einem Testdatensatz aufgeteilt.
+Die Trainingsdaten sind durch das Kürzel 
+\texttt{*\_wr\_1*} gekennzeichnet. 
+Desweiteren ist der Zenith sinnvoll einzustellen.
+Zur erzeugung schneller Ergebnisse kann die Anzahl an Trees auf \num{50}
+reduziert werden.
+Es sind die Argumente \texttt{-RFgh}, \texttt{-LUTs} und
+\texttt{-RFdisp} zum erstellen eines RandomForrest für 
+die Gamma-/Hadron-Seperation, eines Look-Up-Tables und 
+eines Energie-Schätzers.
+\begin{lstlisting}
+	coach -q -b	\
+		--config=coach.rc \
+		-RFgh \
+		-LUTs \
+		-RFdisp 
+\end{lstlisting}
+Als Output werden drei Modelle erzeugt welche in den Folgenden Analyseschritte
+auf echten einem Testdatensatz evaluiert und echte Daten verarbeitet.

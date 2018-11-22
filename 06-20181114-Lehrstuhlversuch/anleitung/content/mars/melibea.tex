@@ -1,4 +1,16 @@
 \subsection{Melibea}%
 \label{sub:melibea}
 
-
+\begin{lstlisting}
+	melibea -q -b --stereo \
+		--config=melibea_stereo.rc \
+		--rf-erec \
+		--calcstereodisp \
+		--calcdisprf \
+		--calcdisp2rf \
+		--disp-rf-sstrained \
+		--rftree=PATH_RF.root \
+		--etab=PATH_Energy_Table.root \
+		--rfdisptree=PATH_disp1/DispRF.root \
+		--rfdisp2tree=PATH_disp2/DispRF.root \
+\end{lstlisting}
