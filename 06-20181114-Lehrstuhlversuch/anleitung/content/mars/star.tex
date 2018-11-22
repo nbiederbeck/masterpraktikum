@@ -28,35 +28,44 @@ Da insbesondere der NSB abhängig von der Zeit und Quellposition ist,
 müssen bei jeder Observation zusätzliche Off-Daten aufgenommen werden.
 
 Das aktuell angewandte Image Cleaning heißt \textit{Sum Image Cleaning}.
-Die Pixel werden zu Clustern aus 2--4 nächsten Nachbarn zusammengefasst.
-Es wird überprüft, ob die Summe an Photonen einen gewissen Grenzwert
-übersteigt.
-Ist dies der nicht Fall, werden die Pixel verworfen.
-Die so entstehenden Pixel-Inseln werden in der Ankunftszeit geschnitten.
-Hierfür werden die mittleren Ankunftszeiten der Inseln von der größten Insel
-berechnet und ab einer zu großen Abweichung verworfen.
-Pixel der übrigbleibenden Inseln werden zusätzlich gereinigt:
-Es gibt eine absolute Grenze, unter der die Pixel verworfen werden.
-Dann werden die Nachbarn der so übrig gebliebenen Pixel untersucht.
-Sie werden wieder unter einer bestimmten Grenze verworfen.
+Es besteht aus drei Schritten.
+Zuerst werde die Pixel zu Clustern aus 2--4 nächsten Nachbarn zusammengefasst.
+Es wird überprüft, ob die Summe an Photonen in einem Cluster
+einen gewissen clustergrößenabhängigen Grenzwert übersteigt.
+Ist dies der Fall, überstehen die Pixel das Cleaning.
+Als zweites werden Schnitte auf der Ankunftszeit der so entstandenen
+Pixel-Inseln gemacht.
+Es werden die mittleren Ankunftszeiten jeder Insel bestimmt.
+Weichen die Ankunftszeiten der Inseln zu stark von der Ankunftszeit der größten Insel ab,
+werden die Pixel der Insel verworfen.
+Pixel der übrigbleibenden Inseln werden im dritten Schritt gereinigt,
+wobei zwei Grenzwerte $Q_{1} > Q_{2}$ existieren.
+Im ersten Schritt wird geprüft,
+ob die Pixel über dem
+Grenzwert $Q_{1}$ liegen,
+und ob sie einen Cluster mit mindestens zwei Pixeln bilden.
+Ist dies der Fall,
+werden zusätzlich angrenzende Pixel,
+die über dem Grenzwert $Q_{2}$ liegen,
+hinzugefügt.
 
 Jeweils ein Beispiel für ein Kamerabild vor und nach dem Image Cleaning ist in
 Abbildung~\ref{fig:cleaning} dargestellt.
 
 \begin{figure}[htpb]
-	\centering
-	\begin{subfigure}[c]{0.35\linewidth}
-		% \includegraphics[width=\linewidth]{pictures/uncleaned.pdf}
-		\caption{Kamerabild.}%
-		\label{fig:uncleaned}
-	\end{subfigure}
-	\begin{subfigure}[c]{0.35\linewidth}
-		% \includegraphics[width=\linewidth]{pictures/cleaned.pdf}
-		\caption{Bereinigtes Kamerabild.}%
-		\label{fig:cleaned}
-	\end{subfigure}
-	\caption{Bereinigung der Kamerabilder zur Berechnung der Hillas Parameter.}%
-	\label{fig:cleaning}
+  \centering
+  \begin{subfigure}[c]{0.48\linewidth}
+    \includegraphics[width=\linewidth]{pictures/uncleaned.png}
+    \caption{Kamerabild.}%
+    \label{fig:uncleaned}
+  \end{subfigure}
+  \begin{subfigure}[c]{0.48\linewidth}
+    \includegraphics[width=\linewidth]{pictures/cleaned.png}
+    \caption{Bereinigtes Kamerabild.}%
+    \label{fig:cleaned}
+  \end{subfigure}
+  \caption{Bereinigung der Kamerabilder zur Berechnung der Hillas Parameter.}%
+  \label{fig:cleaning}
 \end{figure}
 
 \subparagraph{Hillas Parameter}%
@@ -69,10 +78,10 @@ Dazu wird auf den gereinigten Kamerabildern die Hillas Parameter bestimmt.
 
 
 \begin{wrapfigure}[15]{o}{0.4\textwidth}
-	\centering
-	\includegraphics[width=0.8\linewidth]{tikz/build/hillas.pdf}
-	\caption{Hillas Parameter eines Schauers.}%
-	\label{fig:hillas}
+  \centering
+  \includegraphics[width=0.8\linewidth]{tikz/build/hillas.pdf}
+  \caption{Hillas Parameter eines Schauers.}%
+  \label{fig:hillas}
 \end{wrapfigure}
 
 
@@ -91,4 +100,4 @@ Quellposition entfernt ist.
 123456789 Satz der noch ersetzt werden sollte damit man schauen kann ob die wrapfigure
 richtig funktioniert und schoen aussieht.
 
-\subsubsection*{Durchführung}
+\paragraph{Durchführung}
