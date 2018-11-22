@@ -1,6 +1,7 @@
 \documentclass[tikz=true]{standalone}
 \usepackage{magic}
-\usetikzlibrary{patterns, decorations.pathreplacing, angles, quotes}
+\usepackage{gensymb}
+\usetikzlibrary{patterns, decorations.pathreplacing,decorations.text, angles, quotes, calc}
 
 \begin{document}
 \begin{tikzpicture} 
@@ -9,26 +10,44 @@
       inner sep=4.7cm, line width=0.8cm, ] (hexagon) {};
 	\node[ regular polygon, regular polygon sides=6, draw=mblue,
 		inner sep=5.0cm, line width=0.2cm, ] (hexagon) at (0,0) {};
-	\node (lek) at (0,6.6) {leakage2};
+	\node (lek) at (0,6.6) {leakage};
 
-	\node [circle, fill=blue] (sp) {};
+	\fill (0, 3) circle (0.15cm) coordinate (on) node [above, yshift=.2cm] {on};
+	\fill (0, 0) circle (0.15cm) coordinate (ca) node [below, yshift=-.2cm] {Center of Camera};
+	\fill (0,-3) circle (0.15cm) coordinate (off) node [above, yshift=.2cm] {off};
+	
+	\draw[draw=black!50, postaction={
+			decorate, text=black!50, 
+			decoration={
+				text effects along path,
+				text={ \ 0.4\degree \ }, 
+				text align=center, 
+				text effects/.cd, 
+				text along path, 
+				every character/.style={fill=white, yshift=-0.5ex}}}] (ca) circle (3);
 
 	\node (CoG) at (3.5,-2) {};
 	\fill[fill=myellow!20] (CoG)++(0.3,-0.519) ellipse 
 		[fill=yellow, x radius= 3cm, y radius= 1cm, rotate=-65] coordinate (CoE);
 	\fill[fill=myellow!50] (CoG)++(0.2,-0.346) ellipse 
-		[fill=yellow, x radius= 1.8cm, y radius= 0.7cm, rotate=-65] ;
+		[fill=yellow, x radius= 1.8cm, y radius= 0.7cm, rotate=-65];
 	\fill[fill=myellow!90] (CoG) ellipse 
-		[fill=yellow, x radius= 0.5cm, y radius= 0.3cm, rotate=-65] ;
+		[fill=yellow, x radius= 0.5cm, y radius= 0.3cm, rotate=-65];
 	
 	\draw [draw=black, dashed] (CoE)++(115:-3.5cm) -- ++(115:12cm) coordinate (ep) ;
 	\draw [draw=black] (CoE)++(115:-3.0cm) -- node [sloped, above right] {width}
 		++(115:6cm);
 	\draw [draw=black] (CoE)++(205:-1.0cm) -- node [sloped, above right] {length}
 		++(205:2cm);
-	\draw [Stealth-Stealth, draw=black] (CoG) -- node [sloped, below] {DIST} (sp);
+	\draw [Stealth-Stealth, draw=black] (CoG) -- node [sloped, below] {DIST} (on);
 	
-	\pic["ALPHA", draw, angle radius = 3.0cm] {angle = ep--CoG--sp};
+	\fill ($(CoE)+(115:6cm)$) circle (0.15cm) coordinate (EP) node [right,
+		xshift=.2cm, fill=white] {rek. Pos.};
+
+	\draw [Stealth-Stealth, draw=black] (EP) -- node [sloped, below] {theta} (on);
+
+
+	\pic["ALPHA", draw, angle radius = 3.0cm] {angle = ep--CoG--on};
 	
 \end{tikzpicture}
 \end{document}
