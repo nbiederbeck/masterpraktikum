@@ -1,16 +1,29 @@
 \subsection{Melibea}%
 \label{sub:melibea}
 
+\paragraph{Durchführung}%
+
+Für Stereo-Analysen muss die Konfigurationsdatei \texttt{melibea\_stereo.rc}
+verwendet werden.
+Es gibt keine notwendigen Anpassungen in dieser Datei.
+
 \begin{lstlisting}
-	melibea -q -b --stereo \
-		--config=melibea_stereo.rc \
-		--rf-erec \
-		--calcstereodisp \
-		--calcdisprf \
-		--calcdisp2rf \
-		--disp-rf-sstrained \
-		--rftree=PATH_RF.root \
-		--etab=PATH_Energy_Table.root \
-		--rfdisptree=PATH_disp1/DispRF.root \
-		--rfdisp2tree=PATH_disp2/DispRF.root \
+  # <PATH-TO> entspricht dem RF.outpath aus coach!
+  melibea -q -b -f \
+    --stereo \
+    --config=melibea_stereo.rc \
+    --rf-erec \
+    --calcstereodisp \
+    --calcdisprf \
+    --calcdisp2rf \
+    --disp-rf-sstrained \
+    --rftree=<PATH-TO>/RF.root \
+    --etab=<PATH-TO>/Energy_Table.root \
+    --rfdisptree=<PATH-TO>/disp1/DispRF.root \
+    --rfdisp2tree=<PATH-TO>/disp2/DispRF.root \
+    --ind=<INPUT-DIRECTORY> \
+    --out=<OUTPUT-DIRECTORY> \
+    --log=<OUTPUT-DIRECTORY>/melibea.log
+  # Ausserdem bei Monte Carlo
+    -mc
 \end{lstlisting}

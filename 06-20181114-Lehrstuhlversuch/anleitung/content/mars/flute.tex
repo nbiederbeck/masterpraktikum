@@ -1,4 +1,13 @@
 \subsection{Flute}%
 \label{sub:flute}
 
+\paragraph{Durchführung}%
 
+Die Konfigurationsdatei \texttt{flute.rc} wird verwendet.
+Es müssen die Felder \texttt{flute.data} und \texttt{flute.mcdata} angepasst werden.
+Es werden die von Melibea prozessierten Daten und Monte Carlos genutzt.
+
+
+\begin{lstlisting}
+  flute -q -b --config=flute.rc
+\end{lstlisting}

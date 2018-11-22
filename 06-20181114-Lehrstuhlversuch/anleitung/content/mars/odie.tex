@@ -1,4 +1,13 @@
 \subsection{Odie}%
 \label{sub:odie}
 
+\paragraph{Durchführung}%
 
+Die Konfigurationsdatei \texttt{odie.rc} wird verwendet.
+Es muss das Feld \texttt{Odie.dataName} angepasst werden.
+Es gilt wieder, mit Wildcards die von Melibea prozessierten Daten zu nutzen
+(Bsp.: \texttt{*\_Q\_*.root}).
+
+\begin{lstlisting}
+  odie -q -b --config=odie.rc
+\end{lstlisting}

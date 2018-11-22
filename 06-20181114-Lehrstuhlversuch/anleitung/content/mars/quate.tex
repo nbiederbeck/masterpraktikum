@@ -5,34 +5,38 @@ Quate ist ein Programm,
 das Mittelwerte von einem Parametersatz ausrechnet,
 und Daten selektiert und klassifiziert.
 Durch das Aussortieren kann die Analyse vereinfacht werden da so die Monte Carlo
-Simmulation von unwahrscheinlichen ereignissen erspart bleibt. 
+Simulation von unwahrscheinlichen Ereignissen erspart bleibt.
 
-(Wir sollten noch erwAhnen das wir Crab observieren damit der Richtige zenit
-winkel rausgesucht werden kann.)
+{\color{red}(Wir sollten noch erwähnen das wir Crab observieren damit der richtige Zenitwinkel rausgesucht werden kann.)}
 
 \paragraph{Durchführung}%
-Das Programm \texttt{quate} wird über die 
-\texttt{quate.rc}-File bedient.
-In diesem werden Einstellungen getroffen, 
+Das Programm \texttt{quate} wird über die
+Datei \texttt{quate.rc} konfiguriert.
+In dieser werden Einstellungen getroffen,
 sodass die Daten sinnvoll prozessiert werden.
-Dazu ist der Azimut und Zenit entsprechend der zu 
-observierenden Quelle einzustellen. 
+Dazu ist der Azimut und Zenit entsprechend der zu
+observierenden Quelle einzustellen.
 Dies ist über die Parameter \texttt{AzMin},
 \texttt{AzMax}, \texttt{ZdMin} und \texttt{ZdMin}
 möglich.
-ZusAtzlich ist der Parameter 
-\texttt{MinAerosolTrans9km = 0.9} anzupassen, 
-damit ... berücktsichtigt wird.
-Überlegen Sie sich bei welche Daten das prozessieren sinnvoll ist, 
-\textit{(On/ Off/ MC)} und führen Sie dies durch.
+Zusätzlich ist der Parameter
+\texttt{MinAerosolTrans9km = 0.8} anzupassen,
+damit {\color{red}\ldots} berücksichtigt wird.
+Überlegen Sie sich,
+bei welche Daten das Selektieren sinnvoll ist
+(On/Off/MC)
+und führen Sie dieses durch.
 Geben Sie dafür die entsprechenden Pfade zu den Daten an.
+
 \begin{lstlisting}
-	quate -b -s \
-		--config=quate.rc \
-		--out=OUT_PATH \ 
-		--ind=IND_PATH 
+  quate -b -s -q \
+    --stereo \
+    --config=quate.rc \
+    --out=<OUTPUT-DIRECTORY> \
+    --ind=<INPUT-DIRECTORY>
 \end{lstlisting}
-Das Programm \texttt{coach} erstellt jeweils ein Ordner 
-\texttt{bad} und \texttt{good},
-wo die einzelnen Runs einsortiert werden. 
+
+Quate erstellt im \texttt{<INPUT-DIRECTORY>}
+jeweils ein Ordner \texttt{bad} und \texttt{good},
+in denen symbolische Links zu den jeweils ausgewählten Dateien liegen.
 Dies ist für die folgenden Analyseschritte wichtig.

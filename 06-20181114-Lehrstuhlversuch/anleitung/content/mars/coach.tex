@@ -3,29 +3,44 @@
 
 \paragraph{Theorie}%
 \label{par:theorie}
-Decision Trees erklaeren
-Forrest als besonders robustes modell ...
+Decision Trees erklären
+Forest als besonders robustes Modell \ldots
 
 
 \paragraph{Durchführung}%
-In der \texttt{coach.rc} sind die Pfade anzupassen. 
-Die Monte Carlo Daten sind in ein Trainingsdatensatz 
+In der \texttt{coach.rc} sind die Pfade
+\texttt{RF.mcdata},
+\texttt{RF.data},
+und \texttt{RF.outpath}
+anzupassen.
+Es sollen hier die Rootfiles mittels Wildcards angegeben werden
+(Bsp.: \texttt{*.root}).
+Die Monte Carlo Daten sind in einen Trainingsdatensatz
 und einem Testdatensatz aufgeteilt.
-Die Trainingsdaten sind durch das Kürzel 
-\texttt{*\_wr\_1*} gekennzeichnet. 
-Desweiteren ist der Zenith sinnvoll einzustellen.
-Zur erzeugung schneller Ergebnisse kann die Anzahl an Trees auf \num{50}
+Die Trainingsdaten sind durch die Endung
+\texttt{*\_wr\_1.root} gekennzeichnet.
+Desweiteren ist der Zenit sinnvoll einzustellen.
+Zur schnelleren Erzeugung von Ergebnissen kann die Anzahl an
+Entscheidungsbäumen auf \num{50}
 reduziert werden.
-Es sind die Argumente \texttt{-RFgh}, \texttt{-LUTs} und
-\texttt{-RFdisp} zum erstellen eines RandomForrest für 
-die Gamma-/Hadron-Seperation, eines Look-Up-Tables und 
-eines Energie-Schätzers.
+Es sind die Argumente
+\texttt{-RFgh}, \texttt{-LUTs}, und \texttt{-RFdisp}
+zum Erstellen eines Random Forest für die Gamma-/Hadron-Seperation,
+einer Look-Up-Table für die Energieschätzung,
+und eines weiteren Random Forest für zusätzliche Energieschätzung.
+
 \begin{lstlisting}
-	coach -q -b	\
-		--config=coach.rc \
-		-RFgh \
-		-LUTs \
-		-RFdisp 
+  coach -q -b	\
+    --config=coach.rc \
+    -RFgh \
+    -LUTs \
+    -RFdisp
+  # oder parallel zur schnelleren Rechnung:
+  coach -q -b --config=coach.rc -RFgh
+  coach -q -b --config=coach.rc -LUTs
+  coach -q -b --config=coach.rc -RFdisp
 \end{lstlisting}
-Als Output werden drei Modelle erzeugt welche in den Folgenden Analyseschritte
-auf echten einem Testdatensatz evaluiert und echte Daten verarbeitet.
+
+Es werden vier Dateien erzeugt,
+die als weitere Eingangsdaten für die folgenden Analyseschritte verwendet
+werden.
