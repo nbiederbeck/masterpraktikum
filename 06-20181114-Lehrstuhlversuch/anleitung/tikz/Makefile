@@ -1,4 +1,4 @@
-all: build/overview.pdf
+all: build/overview.pdf build/imgParam.pdf
 
 build:
 	mkdir -p $@
@@ -8,6 +8,10 @@ build/hillas.pdf: hillas.tex | build
 		$<
 
 build/theta2.pdf: theta2.tex | build
+	latexmk --pdf --output-directory=build --halt-on-error --interaction=nonstopmode \
+		$<
+
+build/imgParam.pdf: ./imgParam.tex | build
 	latexmk --pdf --output-directory=build --halt-on-error --interaction=nonstopmode \
 		$<
 
