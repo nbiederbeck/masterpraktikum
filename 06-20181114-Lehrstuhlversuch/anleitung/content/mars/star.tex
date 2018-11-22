@@ -27,6 +27,19 @@ wo kein Gammafluss (\textit{Off}) erwartet wird.
 Da insbesondere der NSB abhängig von der Zeit und Quellposition ist,
 müssen bei jeder Observation zusätzliche Off-Daten aufgenommen werden.
 
+Das aktuell angewandte Image Cleaning heißt \textit{Sum Image Cleaning}.
+Die Pixel werden zu Clustern aus 2--4 nächsten Nachbarn zusammengefasst.
+Es wird überprüft, ob die Summe an Photonen einen gewissen Grenzwert
+übersteigt.
+Ist dies der nicht Fall, werden die Pixel verworfen.
+Die so entstehenden Pixel-Inseln werden in der Ankunftszeit geschnitten.
+Hierfür werden die mittleren Ankunftszeiten der Inseln von der größten Insel
+berechnet und ab einer zu großen Abweichung verworfen.
+Pixel der übrigbleibenden Inseln werden zusätzlich gereinigt:
+Es gibt eine absolute Grenze, unter der die Pixel verworfen werden.
+Dann werden die Nachbarn der so übrig gebliebenen Pixel untersucht.
+Sie werden wieder unter einer bestimmten Grenze verworfen.
+
 Jeweils ein Beispiel für ein Kamerabild vor und nach dem Image Cleaning ist in
 Abbildung~\ref{fig:cleaning} dargestellt.
 
