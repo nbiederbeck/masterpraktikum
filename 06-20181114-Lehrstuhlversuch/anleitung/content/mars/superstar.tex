@@ -1,4 +1,43 @@
 \subsection{Superstar}%
 \label{sub:superstar}
 
+Da MAGIC ein Stereoteleskop ist,
+müssen die Daten beider Teleskope gemeinsam analysiert werden.
+Superstar wird verwendet,
+um die Image Parameter der gereinigten Daten beider
+Teleskope zu einer Stereo-Parameter Datei zusammenzuführen.
+Dabei werden weitere Parameter bestimmt,
+die nur aus den Informationen beider Teleskope gewonnen werden können.
 
+\paragraph{Theorie}%
+
+\begin{wrapfigure}[15]{o}{0.4\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{tikz/build/theta2.pdf}
+  \caption{Stereoparameter eines Schauers.}%
+  \label{fig:reco}
+\end{wrapfigure}
+
+Da die Quellposition in verschiedene Bereichen der beiden Kamerasensoren
+liegt,
+weise die Ellipsen unterschiedliche Orientierung auf.
+Aus dem Schnittpunkt zweier Geraden,
+die durch die Hauptachsen der Ellipsen gehen,
+wird die rekonstruierte Quellposition bestimmt.
+
+Auf die ähnliche Art wird über eine Koordinatentrafo vom Kamerasystem ins
+Erdsystem der Aufprallpunkt des Schauers auf dem Erdboden
+bestimmt.
+
+% \textit{Height of shower max},
+% \textit{Cherenkov radius},
+% \textit{Cherenkov density},
+
+Außerdem werden die Einzelergebnisse der beiden Teleskope verglichen,
+um weitere Parameter zu bestimmen.
+Für die \textit{Energy discrepancy} wird
+ein $\chi^2$-Test durchgeführt,
+wobei angenommen wird,
+dass die wahre Energie in beiden Teleskopen identisch ist.
+Die Richtungsrekonstruktionen beider Teleskope werden verglichen,
+und die Differenz in \textit{DISP difference} gespeichert.
