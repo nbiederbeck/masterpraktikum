@@ -4,5 +4,35 @@
 Quate ist ein Programm,
 das Mittelwerte von einem Parametersatz ausrechnet,
 und Daten selektiert und klassifiziert.
+Durch das Aussortieren kann die Analyse vereinfacht werden da so die Monte Carlo
+Simmulation von unwahrscheinlichen ereignissen erspart bleibt. 
+
+(Wir sollten noch erwAhnen das wir Crab observieren damit der Richtige zenit
+winkel rausgesucht werden kann.)
 
 \paragraph{Durchführung}%
+Das Programm \texttt{quate} wird über die 
+\texttt{quate.rc}-File bedient.
+In diesem werden Einstellungen getroffen, 
+sodass die Daten sinnvoll prozessiert werden.
+Dazu ist der Azimut und Zenit entsprechend der zu 
+observierenden Quelle einzustellen. 
+Dies ist über die Parameter \texttt{AzMin},
+\texttt{AzMax}, \texttt{ZdMin} und \texttt{ZdMin}
+möglich.
+ZusAtzlich ist der Parameter 
+\texttt{MinAerosolTrans9km = 0.9} anzupassen, 
+damit ... berücktsichtigt wird.
+Überlegen Sie sich bei welche Daten das prozessieren sinnvoll ist, 
+\textit{(On/ Off/ MC)} und führen Sie dies durch.
+Geben Sie dafür die entsprechenden Pfade zu den Daten an.
+\begin{lstlisting}
+quate -b -s \
+	--config=quate.rc \
+	--out=OUT_PATH \ 
+	--ind=IND_PATH 
+\end{lstlisting}
+Das Programm \texttt{coach} erstellt jeweils ein Ordner 
+\texttt{bad} und \texttt{good},
+wo die einzelnen Runs einsortiert werden. 
+Dies ist für die folgenden Analyseschritte wichtig.
