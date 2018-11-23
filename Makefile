@@ -18,7 +18,7 @@ all: 01 02 03 04 05 06
 	$(MAKE) -C ./05-20181015-OptischePumpen
 
 06:
-	$(MAKE) -C ./06-20181114-Lehrstuhlversuch
+	$(MAKE) -C ./06-20181114-Lehrstuhlversuch/anleitung
 
 
 clean:
