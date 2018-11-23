@@ -3,11 +3,31 @@
 
 Quate ist ein Programm,
 das Mittelwerte von einem Parametersatz ausrechnet,
-und Daten selektiert und klassifiziert.
-Durch das Aussortieren kann die Analyse vereinfacht werden da so die Monte Carlo
-Simulation von unwahrscheinlichen Ereignissen erspart bleibt.
+und Daten selektiert und teilt die Datein in die Klassen gut und schlecht ein.
+Durch das Aussortieren kann gewährleistet werden, 
+dass die Monte Carlo Simmulation sich mehr mit den Daten deckt. 
 
-{\color{red}(Wir sollten noch erwähnen das wir Crab observieren damit der richtige Zenitwinkel rausgesucht werden kann.)}
+\paragraph{Theorie}%
+\label{par:theorie}
+% Ziel der Analyse ist es die Unsicherheiten z.B. des Flusses so gering wie
+% möglich zu halten. 
+Primärteilchen schauern in einer Höhe von \SIrange{10}{20}{\kilo\meter}
+auf.
+Da die Entwicklung des Schauers vom Dichteprofil der Atmosphäre abhängig ist, 
+ist es wichtig dieses zu kennen. 
+Das Dichteprofil variiert abhängig vom Wetter. 
+Weitere Instrumente, z.B. Lidar messen Eigenschaften der Atmosphäre.
+Dazu misst Lidar die Licht Transmission.
+Ziel ist es einen Datensatz zu erstellen,
+mit wenig variierenden und gut simmulierbaren Wetterbedingungen.
+
+Die Wirkungsquerschnitte der Schauerprozesse sind dichteabhängig.
+Zur guten Rekonstruktion eines Schauers muss deswegen die Dichteverteilung
+bekannt sein.
+Dies Reduziert die Unsicherheiten auf die abgeleiteten Größen. 
+
+{\color{red}(Wir sollten noch erwähnen das wir Crab observieren damit der
+richtige Zenitwinkel rausgesucht werden kann. Aerosol)}
 
 \paragraph{Durchführung}%
 Das Programm \texttt{quate} wird über die
@@ -26,7 +46,7 @@ damit {\color{red}\ldots} berücksichtigt wird.
 bei welche Daten das Selektieren sinnvoll ist
 (On/Off/MC)
 und führen Sie dieses durch.
-Geben Sie dafür die entsprechenden Pfade zu den Daten an.
+Geben Sie dazu als \texttt{<INPUT-DIRECTORY>} die entsprechenden Pfade zu den Daten an.
 
 \begin{lstlisting}
   quate -b -s -q \
@@ -35,8 +55,7 @@ Geben Sie dafür die entsprechenden Pfade zu den Daten an.
     --out=<OUTPUT-DIRECTORY> \
     --ind=<INPUT-DIRECTORY>
 \end{lstlisting}
-
 Quate erstellt im \texttt{<INPUT-DIRECTORY>}
-jeweils ein Ordner \texttt{bad} und \texttt{good},
+jeweils einen Ordner \texttt{bad} und \texttt{good},
 in denen symbolische Links zu den jeweils ausgewählten Dateien liegen.
 Dies ist für die folgenden Analyseschritte wichtig.

@@ -3,9 +3,54 @@
 
 \paragraph{Theorie}%
 \label{par:theorie}
-Decision Trees erklären
-Forest als besonders robustes Modell \ldots
 
+\subparagraph{Gamma/Hadron-Seperation}
+Die Teleskope triggern drei Arten von Events. 
+Neben den eigentlichen Luftschauern welche durch Protonen 
+oder Gamma verursacht werden,
+erzeugen Myonen oder versentliche trigger weitere Events.
+Myonen erzeugen ringförmige Ereignisse in der Kamera.
+Versentliche Triggers entstehen z.B. durch NSB und elekronisches Rauschen.
+
+Für die Analyse einer Quelle ist es wichtig das Signal (Gammaschauer) vom 
+Untergrund (alles andere) zu seperieren.
+Da Untergrundevents um mehrere größenordnungen häufiger auftreten (1:\num{e5})
+geschieht dies durch ein multidimensionales maschinelles Klassifizierung 
+System (Random Forest).
+
+Ziel des Modell ist es Gammas dem Wert 0 und Untergrund den Wert 1 zuzuweisen.
+Dazu werden für unabhängige Entscheidungsbäume, 
+einer begrenzten Tiefe, 
+der Informationsgehalt maximiert.
+Durch Mittelung eines Events über alle trainierten Bäume entseht ein Wert
+zwischen eindeutig Gamma und eindeutig Hadron, welcher als Hadroness bezeichnet
+wird.
+Durch schnitte auf diesem Wert kann eine Seperation durchgeführt werden.
+
+\paragraph{Energierekonstruktion}%
+\label{par:energie}
+
+Die Energie des Gammas ist beinahe proportional
+zur Anzahl der Tscherenkowphotonen
+und somit der Photoelektronen in der Kamera,
+jedoch hängt die Menge an detektiertem Licht von weiteren Parametern,
+wie unter anderem Winkel der Kamera und Lage des Schauers im Kamerabild, ab.
+
+In MARS wird die Energie des Primärteilchens auf zwei Arten rekonstruiert.
+
+\subparagraph{Look-up Tables}
+Für eine Look-up Table werden Monte Carlo Gammas
+in ausgewählten Parametern gebinnt.
+Diesen Bins wird eine mittlere Energie aller
+zugehörigen Gammas zugewiesen.
+Bei realen Events werden die Parameter mit der Tabelle verglichen
+und so eine Energie geschätzt.
+Es muss darauf geachtet werden,
+dass die Bins möglichst homogen und mit ausreichend Statistik gefüllt sind.
+
+\subparagraph{Random Forest}
+Außerdem wird eine Random Forest Regression (s.o.)
+zur Bestimmung der Energie durchgeführt.
 
 \paragraph{Durchführung}%
 In der \texttt{coach.rc} sind die Pfade
@@ -41,6 +86,6 @@ und eines weiteren Random Forest für zusätzliche Energieschätzung.
   coach -q -b --config=coach.rc -RFdisp
 \end{lstlisting}
 
-Es werden vier Dateien erzeugt,
+Es werden fünf Dateien erzeugt,
 die als weitere Eingangsdaten für die folgenden Analyseschritte verwendet
 werden.
