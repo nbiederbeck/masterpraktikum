@@ -1,10 +1,13 @@
 \subsection{Coach}%
 \label{sub:coach}
-
+Coach trainiert Modelle zur Separation von Signal und Untergrund, 
+sowie der Rekonstuktion von Energie und Richtung.
 \paragraph{Theorie}%
 \label{par:theorie}
+{\color{red}Hier sollten am besten fuenf halbe sätze stehen damit hier nicht zwei title aufeinander
+folgen. Bin aber nicht so kreativ hier so viel hin zu schreiben.}
 
-\subparagraph{Gamma/Hadron-Seperation}
+\subparagraph{Gamma/Hadron-Separation}
 Die Teleskope triggern drei Arten von Events. 
 Neben den eigentlichen Luftschauern welche durch Protonen 
 oder Gamma verursacht werden,
@@ -13,7 +16,7 @@ Myonen erzeugen ringförmige Ereignisse in der Kamera.
 Versentliche Triggers entstehen z.B. durch NSB und elekronisches Rauschen.
 
 Für die Analyse einer Quelle ist es wichtig das Signal (Gammaschauer) vom 
-Untergrund (alles andere) zu seperieren.
+Untergrund (alles andere) zu separieren.
 Da Untergrundevents um mehrere größenordnungen häufiger auftreten (1:\num{e5})
 geschieht dies durch ein multidimensionales maschinelles Klassifizierung 
 System (Random Forest).
@@ -25,9 +28,9 @@ der Informationsgehalt maximiert.
 Durch Mittelung eines Events über alle trainierten Bäume entseht ein Wert
 zwischen eindeutig Gamma und eindeutig Hadron, welcher als Hadroness bezeichnet
 wird.
-Durch schnitte auf diesem Wert kann eine Seperation durchgeführt werden.
+Durch schnitte auf diesem Wert kann eine Separation durchgeführt werden.
 
-\paragraph{Energierekonstruktion}%
+\subparagraph{Energierekonstruktion}%
 \label{par:energie}
 
 Die Energie des Gammas ist beinahe proportional
@@ -36,21 +39,20 @@ und somit der Photoelektronen in der Kamera,
 jedoch hängt die Menge an detektiertem Licht von weiteren Parametern,
 wie unter anderem Winkel der Kamera und Lage des Schauers im Kamerabild, ab.
 
-In MARS wird die Energie des Primärteilchens auf zwei Arten rekonstruiert.
+In MARS wird die Energie des Primärteilchens auf zwei Arten rekonstruiert:
+\begin{description}
+	\item[\quad Look-up Tables] Für eine Look-up Table werden Monte Carlo 
+		Gammas in ausgewählten Parametern gebinnt.
+		Diesen Bins wird eine mittlere Energie aller
+		zugehörigen Gammas zugewiesen.
+		Bei realen Events werden die Parameter mit der Tabelle verglichen
+		und so eine Energie geschätzt.
+		Es muss darauf geachtet werden,
+		dass die Bins möglichst homogen und mit ausreichend Statistik gefüllt sind.
+	\item[\quad Random Forest] Außerdem wird eine Random Forest Regression (s.o.)
+		zur Bestimmung der Energie durchgeführt.
+\end{description}
 
-\subparagraph{Look-up Tables}
-Für eine Look-up Table werden Monte Carlo Gammas
-in ausgewählten Parametern gebinnt.
-Diesen Bins wird eine mittlere Energie aller
-zugehörigen Gammas zugewiesen.
-Bei realen Events werden die Parameter mit der Tabelle verglichen
-und so eine Energie geschätzt.
-Es muss darauf geachtet werden,
-dass die Bins möglichst homogen und mit ausreichend Statistik gefüllt sind.
-
-\subparagraph{Random Forest}
-Außerdem wird eine Random Forest Regression (s.o.)
-zur Bestimmung der Energie durchgeführt.
 
 \paragraph{Durchführung}%
 In der \texttt{coach.rc} sind die Pfade
@@ -70,7 +72,7 @@ Entscheidungsbäumen auf \num{50}
 reduziert werden.
 Es sind die Argumente
 \texttt{-RFgh}, \texttt{-LUTs}, und \texttt{-RFdisp}
-zum Erstellen eines Random Forest für die Gamma-/Hadron-Seperation,
+zum Erstellen eines Random Forest für die Gamma-/Hadron-Separation,
 einer Look-Up-Table für die Energieschätzung,
 und eines weiteren Random Forest für zusätzliche Energieschätzung.
 
