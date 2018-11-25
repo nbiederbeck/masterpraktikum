@@ -1,41 +1,52 @@
 \documentclass{standalone}
 \usepackage{magic}
-\usetikzlibrary{patterns}
+\usetikzlibrary{patterns,decorations.pathreplacing}
 
 \begin{document}
 \begin{tikzpicture} 
 
-	\coordinate (t1) at (0,0.5);
-	\coordinate (t2) at (3.5,0);
-	\coordinate (rp) at (1.86,2.18);
-	\coordinate (Rp) at (1.96,2.68);
-	\coordinate (tp) at (3.10,2.96);
+	\coordinate (t1) at (0.5,1);
+	\coordinate (t2) at (2.5,0.5);
 
-
-	\fill[fill=myellow!30] (t1) ellipse [fill=yellow, 
-		x radius= 1cm, y radius= .5cm, rotate=45] ;
-	\fill[fill=myellow!60] (t1) ellipse [x radius= 0.5cm, y radius= .25cm,
-		rotate=45];
-	\fill[fill=myellow!90] (t1) ellipse [x radius= 0.25cm, y radius= .125cm,
-		rotate=45];
+	% Ellipsen 
+	\fill[fill=myellow!20] (t1) ellipse [fill=yellow, 
+		x radius= 1.0cm, y radius= .5cm, rotate=45];
+	\fill[fill=myellow!40] (t1)++(0.1,0.1) ellipse [fill=yellow, 
+		x radius= 0.7cm, y radius= .3cm, rotate=45];
+	\fill[fill=myellow!60] (t1)++(0.2,0.2) ellipse [fill=yellow, 
+		x radius= 0.4cm, y radius= .2cm, rotate=45];
+	\fill[fill=myellow!99] (t1)++(0.3,0.3) ellipse [fill=yellow, 
+		x radius= 0.1cm, y radius= .1cm, rotate=45] coordinate (CoGI);
 	
-	\fill[fill=myellow!30] (t2) ellipse [fill=yellow, x radius= 1cm, y radius=
-		.5cm, rotate=-60];
-	\fill[fill=myellow!60] (t2) ellipse [x radius= 0.5cm, y radius= .25cm,
-		rotate=-60];
-	\fill[fill=myellow!90] (t2) ellipse [x radius= 0.25cm, y radius= .125cm,
-		rotate=-60];
+	\fill[fill=myellow!20] (t2) ellipse [fill=yellow, x radius= .9cm, y radius=
+		.4cm, rotate=-60];
+	\fill[fill=myellow!40] (t2)++(-0.05,0.0866) ellipse [fill=yellow, 
+		x radius= .6cm, y radius= .25cm, rotate=-60];
+	\fill[fill=myellow!60] (t2)++(-0.10,0.1732) ellipse [fill=yellow, 
+		x radius= .35cm, y radius= .15cm, rotate=-60];
+	\fill[fill=myellow!99] (t2)++(-0.15,0.2598) ellipse [fill=yellow, 
+		x radius= .1cm, y radius= .1cm, rotate=-60] coordinate (CoGII);
 
-	\draw (t1) -- node [sloped, above, font=\small] {Rekonstruiert} ++(48:3.3cm);
-	\draw [dashed] (t1) -- node [sloped, below, font=\small] {Hillas} ++(42:3.4cm);
+	% Schwerpunkte der Ellipsen
+	\draw [dashed, draw=black!70] (t1)++(45:-2.0cm) -- ++(45:5.9cm);
+	\draw [dashed, draw=black!70] (t2)++(120:-2.0cm) -- ++(120:5.8cm);
+	
+	% rekonstruierte Positionen
+	\fill [mblue!50] (CoGI)++(45:-2.1cm) circle (2pt);
+	\fill [mblue!50] (CoGI)++(45:2.1cm) circle (2pt);
+	\fill [mblue!50] (CoGII)++(120:-1.7cm) circle (2pt) coordinate (RPI);
+	\fill [mblue!99] (CoGII)++(120:1.7cm) circle (2pt) coordinate (RPII);
+	\node [above left] (label) at (RPII) {rek. Pos.};
+	
+	% Abstandsmass
+	\draw[draw=black!70, decoration={brace,mirror,raise=6pt}, decorate] 
+		(CoGII) -- node[sloped, below=8pt] {DISP} (RPI);
+	\draw[draw=black!70, decoration={brace,mirror,raise=6pt}, decorate] 
+		(CoGII) -- node[sloped, above=8pt] {DISP} (RPII);
+	
+	% Hexagonal Magic shape
+	\node[ regular polygon, regular polygon sides=6, draw=mblue,
+		inner sep=2.0cm, line width=0.1cm, ] (hexagon) at (1.5,1) {};
 
-	\draw [dashed] (t2) -- ++(127:3.3cm);
-	\draw (t2) -- ++(120:3.3cm);
-
-	\draw [draw=black!50, Stealth-Stealth, shorten <=1pt, shorten >=1pt] (Rp) 
-		-- node [sloped, below, text=black!70, font=\small] {$\theta^2$} (tp);
-	\fill [fill=mblue] 		(rp) circle (0.05);
-	\fill [fill=mblue] 		(Rp) circle (0.05);
-	\fill [fill=myellow] 	(tp) circle (0.05);
 \end{tikzpicture}
 \end{document}

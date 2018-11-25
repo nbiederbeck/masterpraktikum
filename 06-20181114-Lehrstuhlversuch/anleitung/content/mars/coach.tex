@@ -3,7 +3,7 @@
 Coach trainiert Modelle zur Separation von Signal und Untergrund, 
 sowie der Rekonstuktion von Energie und Richtung.
 \paragraph{Theorie}%
-\label{par:theorie}
+% \label{par:theorie}
 {\color{red}Hier sollten am besten fuenf halbe sätze stehen damit hier nicht zwei title aufeinander
 folgen. Bin aber nicht so kreativ hier so viel hin zu schreiben.}
 
@@ -53,6 +53,28 @@ In MARS wird die Energie des Primärteilchens auf zwei Arten rekonstruiert:
 		zur Bestimmung der Energie durchgeführt.
 \end{description}
 
+\subparagraph{Richtungsrekonstruktion}%
+\label{par:position}
+Die Rekonstuktion der ursprünglichen Richtung ist einer der Hauptziele.
+Dafür werden nach der ersten Abschätzung \ref{par:superstar} weitere 
+Analyseschritte durchgeführt.
+Dazu wird zunächst der \textit{DISP (\textbf{D}istance between the 
+\textbf{I}mage controid and the \textbf{S}ource \textbf{P}osition)} bestimmt.
+Dieser gibt die Entfernung Schauerschwerpunkt zur rekonstruierten Quellposition
+entlang der Hauptachse der Ellipse an (siehe Abbildung \ref{fig:theta2}).
+Das Vorzeichen des DISP Parameter ist nicht bestimmt, sodass es zwei mögliche
+Quellpositionen gibt.
+Da Magic ein Stereoteleskop ist kann bei der Schätzung des Vorzeichen des DISP
+Parameter der Schnittpunkt der beiden Hauptachsen als zusätzliche Information
+verwendet werden. 
+Die rekonstruierte Position wird möglichst nah an dem Schnittpunkt der Achsen
+gewählt, was den Vorteil birgt das ca 10-20 \% schlecht rekonstruierte Events
+verworfen werden. 
+Die Schätzung des DISP-Parameters wird momentan über einen Random-Forrest
+getätigt, wo Informationen wie typischerweise, die Momenten entlang der 
+Hauptachse oder der Zeitgradient eingehen.
+Hadronische Schauer, welche fälschlicherweise die Gamma/Hadron-Seperation
+überstanden habe, weisen meist eine schlechte Richtungsrekonstruktion auf. 
 
 \paragraph{Durchführung}%
 In der \texttt{coach.rc} sind die Pfade

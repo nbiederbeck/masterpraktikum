@@ -1,6 +1,23 @@
 \subsection{Odie}%
 \label{sub:odie}
 
+\paragraph{Theorie}%
+\begin{equation}
+	S = \sqrt{2} \left(
+		N_\text{on} \log \left[
+			(\tau + 1) \left( 
+				\frac{N_\text{on}}{N_\text{on} + N_\text{off}} 
+			\right)
+		\right]  
+		+ N_\text{off} \log \left[
+			\left( \frac{1 + \tau}{\tau} \right) \left( 
+				\frac{N_\text{off}}{N_\text{on} + N_\text{off}} 
+			\right)
+		\right]  
+	\right) ^ {1/2}
+\end{equation}
+
+
 \paragraph{Durchführung}%
 
 Die Konfigurationsdatei \texttt{odie.rc} wird verwendet.
@@ -9,5 +26,5 @@ Es gilt wieder, mit Wildcards die von Melibea prozessierten Daten zu nutzen
 (Bsp.: \texttt{*\_Q\_*.root}).
 
 \begin{lstlisting}
-  odie -q -b --config=odie.rc
+	odie -q -b --config=odie.rc
 \end{lstlisting}
