@@ -47,8 +47,48 @@ Dazu wird die Signifikanz der Quelle bestimmt
 \end{equation}
 Eine statistische Stabile Methode die Signifikanz zu bestimmen stellt die
 Likelihood Ratio Methode nach Li and Ma da.
+Es wird angenommen, dass die beiden Parameter die erwatete Anzahl an Signal
+Photonen $\langle N_\text{on} \rangle$ und die Anzahl Hintergrund Photonen
+$\langle N_\text{off} \rangle$ nicht bekannt sind. 
+Die zu prüfende Nullhypothese ist: 
+\begin{quote}
+	Keine Quelle existiert und 
+	alle gemessenen Events gehören zum kosmischen Hintergrund.
+\end{quote}
+Dies ist äquivalent zu $\langle N_\text{on} \rangle=0$.
+Da gamma ray ereignisse alle unabhängig voneinander sind, sind diese Poisson
+verteilt.
 
-
+Zur Bestimmung der Liklihood funktion der Nullhypothese, verschwinden die
+Ereignisse aus der Quelle und die Anzahl an hintergrund Strahlung addiert sich
+aus der On und off Region. 
+\begin{equation}
+	L(X|E_0, \hat{T}_\text{c})= P_\text{r} \left[ 
+		N_\text{on}, N_\text{off} |
+		\langle N_\text{S} \rangle = 0,
+		\langle N_\text{B} \rangle = \frac{\alpha}{1 + \alpha} (N_\text{on} +
+			N_\text{off})
+	\right]
+\end{equation}
+Die maximum Likelihood ergibt sich indem das On Signal,
+um die Events der Hintergrundstrahlung bereinigt werden.
+\begin{equation}
+	L(X|\hat{E}, \hat{T})= P_\text{r} \left[ 
+		N_\text{on}, N_\text{off} |
+		\langle N_\text{S} \rangle = N_\text{on} - \alpha N_\text{off},
+		\langle N_\text{B} \rangle = \alpha N_\text{off}
+	\right]
+\end{equation}
+Durch Einsetzen in den Likelihood Quotienten Test
+\begin{equation}
+	\lambda = \frac{L(X|E_0, \hat{T}_\text{c})}{L(X|\hat{E}, \hat{T})}
+\end{equation}
+und der Annahme das genügend Ereignisse detektiert wurden, sodass diese einer
+$\chi^2$ mit einem Freiheitsgrad folgen, 
+\begin{equation}
+	\sqrt{- 2 \ln \lambda} = \chi(1)
+\end{equation}
+ergibt sich die Li and Ma Signifikanz.
 \begin{equation}
 	S = \sqrt{2} \left(
 		N_\text{on} \log \left[
@@ -63,6 +103,22 @@ Likelihood Ratio Methode nach Li and Ma da.
 		\right]  
 	\right) ^ {1/2}
 \end{equation}
+
+\begin{wrapfigure}[10]{L}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{build/theta2.pdf}
+		\caption{Theta2 cut auf Daten zur Maximierung der Signifikanz.}
+		\label{fig:thetacut}
+\end{wrapfigure}
+Die Signifikanz kann sowohl auf Gamma/Hadron seperierten als auch auf nicht
+seperierten Daten bestimmt werden. 
+Sie ist neben dem Verhältniss von $N_\text{on}$ zu $N_\text{off}$ auch
+Maßgeblich von dem Umfang an $N_\text{on}$ ab.
+Eine gute Gamma Hadron seperation hält den Untergrund gering und maximiert die
+Signifikanz. 
+Ziel ist es den theta cut so zu setzen das die Signifikanz maximal wird. 
+Ein bespielhafter Thetacut ist in Abbildung \ref{fig:thetacut} zu sehen.
+Er kann zum Beispiel durch Intervallschachtelung bestimmt werden.
 
 
 \paragraph{Durchführung}%

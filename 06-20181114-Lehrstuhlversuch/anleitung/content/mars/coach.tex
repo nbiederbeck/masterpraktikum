@@ -21,6 +21,12 @@ Da Untergrundevents um mehrere größenordnungen häufiger auftreten (1:\num{e5}
 geschieht dies durch ein multidimensionales maschinelles Klassifizierung 
 System (Random Forest).
 
+\begin{wrapfigure}[18]{L}{0.6\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{build/hadroness.pdf}
+  \caption{Hadroness cuts und ihre Konsequenzen für die Analyse.}%
+  \label{fig:uebersicht}
+\end{wrapfigure}
 Ziel des Modell ist es Gammas dem Wert 0 und Untergrund den Wert 1 zuzuweisen.
 Dazu werden für unabhängige Entscheidungsbäume, 
 einer begrenzten Tiefe, 
@@ -28,7 +34,10 @@ der Informationsgehalt maximiert.
 Durch Mittelung eines Events über alle trainierten Bäume entseht ein Wert
 zwischen eindeutig Gamma und eindeutig Hadron, welcher als Hadroness bezeichnet
 wird.
-Durch schnitte auf diesem Wert kann eine Separation durchgeführt werden.
+Durch Schnitte auf diesem Wert kann eine Separation durchgeführt werden.
+
+Entweder hier oder in dem Melibea Kapitel erklaeren was hadroness schnitte für
+konsequenzen nach sich ziehen.
 
 \subparagraph{Energierekonstruktion}%
 \label{par:energie}

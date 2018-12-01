@@ -3,12 +3,15 @@ all: build/anleitung.pdf
 build:
 	mkdir -p $@
 
-build/anleitung.pdf: FORCE tikz/build/overview.pdf| build
+build/anleitung.pdf: FORCE tikz/build/overview.pdf build/theta2.pdf build/hadroness.pdf | build
 	latexmk --pdf --output-directory=build --halt-on-error --interaction=nonstopmode \
 		anleitung.tex
 
 tikz/build/overview.pdf:
 	make -C tikz
+
+build/theta2.pdf build/hadroness.pdf:
+	make -C plots
 
 FORCE:
 

@@ -1,5 +1,51 @@
 \subsection{Caspar}%
 \label{sub:caspar}
+Skymaps sind Grundlage einer jeden Datenanalyse 
+und sind von besonderem Interess bei ausgedehnten Quellen. 
+Durch das vermessen von ausgedehnten Quellen, 
+lässt sich beispielsweise das Alter einer Supernova-Explosion schätzen.
+
+\paragraph{Theorie}%
+\label{par:theorie}
+Eine Skymap ist eine zwei-dimensionale Representation der aufgenommen Photonen.
+Ziel ist es den gemessenen Events einer Position zuzuordnen. 
+Dazu werden gewöhnlich drei verschieden Koordinatensysteme genutzt:
+\begin{description}
+	\item[\quad Kamera Koordinaten] werden genutzt um die Sensivität des Teleskop
+		als eine Funktion in der Kamera zu beschreiben. 
+		Eine Representation ist in Abbildung~\ref{fig:??} zu sehen. 
+		Anhand derer lassen sich beispielsweise inhomogenitäten,
+		wie sie ein helle Quelle verursacht,
+		bereinigen.
+
+	\item[\quad Azimuthal Koordinaten] sind abhängig von der Position des
+		Beobachters auf der Erde. 
+		Sie sind nicht für die observation von Astronomischen Objekten von nutzen,
+		aber um die Performance zu testen.
+		Dazu werden Daten bei verschiedenen Zenitwinkel verglichen was eine
+		variation der Atmospheren Dicke entspricht. 
+
+	\item[\quad Equatorial Koordinaten] werden genutzt um eine Skymap einer
+		astrophysikalischen Quelle anzufertigen. 
+		Mglw noch beschreiben wie es aussieht, kann ich aber nicht so schnell.
+\end{description}
+
+Die Anfertigung einer Skymap ist nicht so simple wie bei einem gewöhnlichen
+Bild. 
+Für eine Skymap reicht nicht allein die Konstruktion eines 2D array,
+bei dem die Information allein im Signalverlauf der Pixel enthalten ist,
+wie es bei gewöhnlichen Bildern der Fall ist.
+
+Vielmehr wird für jedes gamma Event ein Einzelnes Bild aufgenommen, 
+auf dem die Richtung rekonstruiert wird.
+Eine Skymap bildet eine Menge an rekonstruierten Richtungen im Himmel ab. 
+Da die Richtungskonstruktion der Events einen gewissen Fehler aufweist,
+schmieren die Rekonstruierten um die wahre Quellposition aus. 
+Das Ausschmieren der Quelle wird durch die \textit{Point Spread Function}
+beschrieben 
+und kann auf einer Skymap bestimmt werden. 
+Durch die PSF kann das Auflösungsvermögen eines Teleskop beschrieben werden und
+bildet daher eine wichtige größe.
 
 \paragraph{Durchführung}%
 

@@ -1,7 +1,35 @@
 \subsection{CombUnfold}%
 \label{sub:combunfold}
+Die Bestimmung der Energie von Gamma Schauern beruht auf den Look-Up Table
+welche aus den Image Parametern erstellt wurden. 
+Die Energie welche auf den Parametern geschätzt wird, beruht auf einer 
+endlichen Auflösung.
+Um einen Energieschätzer für die Quelle zu erhalten, 
+wird das Entfaltungsverfahren verwendet.
+
 \paragraph{Theorie}%
 \label{par:theorie}
+Da kein Chrenkov-Teleskop in der Laage ist die Energie 
+des primärteilche zu messen,
+sondern lediglich den Deponierten Photonstrom wird ein Entfaltungsalgorithmus
+benötigt.
+Dabei treten beim Messen hauptsächlich dreierlei Probleme auf.
+
+Die \textit{limitierte Akzeptanz} beschreibt das Problem, 
+dass nicht alle Events welche in der Erdatmosphäre über den Teleskop geschehen,
+detektiert werden können. 
+Die detektionswahrscheinlichkeit ist sowohl beschränkt 
+und abhängig von der Energie.
+Desweiteren können die Schauer nur indirekt, 
+aufgrund der Erdatmosphäre gemessen werden.
+Da die Strecke welche Teilchen durch die Erdatmosphäre durchlaufen die
+geschätzte Energie wesentlich beeinflussen,
+ist der Fehler durch die \textit{indirekten Messung} direkt mit der
+Richtungsrekonstruktion korreliert.
+Zusätzlich weisen die geschätzten Energien einen statistischen Fehler auf. 
+Da Entfaltungsalgorithmen auf \textit{begrenzten Auflösungen}/ gebinnten Daten
+beruhen, kommt es vor das wenn die geschätzte Energie von der Wahren Energie
+Abweicht bins über und die Entsprechend anderen unterrepräsentiert sind.
 
 \begin{equation}
 	g(y) = \int_\text{c}^\text{d} M(x,y) f(x) \text{dx} + b(y)
