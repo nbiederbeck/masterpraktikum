@@ -1,79 +1,83 @@
 \subsection{Odie}%
 \label{sub:odie}
-In der gra werden die Teleskope in der Regel auf einen Punkt 
+In der Gamma Ray Astronomy werden die Teleskope in der Regel auf einen Punkt
 ausgerichtet, an dem eine Quelle angenommen wird.
-Die gemessenen Events die das Teleskop triggert, können vom 
-kosmischen Hintergrund oder von einer echten Quelle, falls diese existiert seien.
-Es wird ein Maß benötigt um entscheiden zu können, 
-ob die Ursache der gemessen Evens die Quelle selber ist.
-Das wahrscheinlichkeitsmaß wird gewöhnlicherweise in Form von Gaußschen
-Standardabweichungen $\sigma$ angegeben. 
-Kosmische Quellen können also, 
-durch das suchen von Regionen mit hoher Signifikanz (siehe 
-Abbildung \ref{fig:skymap}),
+Die gemessenen Events, die das Teleskop triggert, können vom
+kosmischen Hintergrund oder von einer echten Quelle, falls diese existiert, sein.
+Es wird ein Maß benötigt, um entscheiden zu können,
+ob die Ursache der gemessen Events die Quelle selber ist.
+Das Wahrscheinlichkeitsmaß wird gewöhnlicherweise in Form von Gaußschen
+Standardabweichungen $\sigma$ angegeben.
+Kosmische Quellen können also
+durch das Suchen von Regionen mit hoher Signifikanz (siehe
+Abbildung~\ref{fig:skymap})
 identifiziert werden.
-Desweiteren kann die Sensivität und Analyse von verschiedenen 
+Desweiteren können die Sensitivitäten und Analysen von verschiedenen
 Teleskopen untereinander,
 durch die auf die Zeit normierte Signifikanz,
 verglichen werden.
 
 \paragraph{Theorie}%
-Die Wahrscheinlichkeit wird angegeben in dem geprüft wird, ob die überschüssigen
-Ereignisse (zum kosmischen Hintergrund)  auf eine zufällige Fluktaktion zur
+
+Die Wahrscheinlichkeit wird angegeben, indem geprüft wird,
+ob die (zum kosmischen Hintergrund) über\-schüssigen
+Ereignisse   auf eine zufällige Fluktaktion zur
 Hintergrundstrahlung zurückzuführen sind.
-Dies geschieht in einem Likelihood-Quotienten-Test.
+Dies geschieht mit einem Likelihood\-/Quotienten\-/Test.
 
-Die Herleitung ist im einzelnen für die Durchführung des 
-Versuches nicht relevant, 
-dient aber zum vollen verständniss des Versuches.
+Die Herleitung ist im Einzelnen für die Durchführung des
+Versuches nicht relevant,
+dient aber zum vollen Verständnis des Versuchs.
 
-Zur bestimmung des Photonflusses der Quelle wird für die Zeit $t_\text{on}$ in die Region der
-erwateten Quelle geschaut und die Anzahl an Photonen $N_\text{on}$ gezählt.
-Zur abschätzung des Untergrundes werden für die Zeit $t_\text{off}$ 
+Zur Bestimmung des Photonenflusses der Quelle wird für die Zeit $t_\text{on}$ in die Region der
+erwarteten Quelle geschaut und die Anzahl an Photonen $N_\text{on}$ gezählt.
+Zur Abschätzung des Untergrundes werden für die Zeit $t_\text{off}$
 (äquivalent zu $t_\text{on} / \alpha$)
-die Events der kosmischen Hintergrunds $N_\text{off}$ gemessen.
-Da das Verhältniss von Signal $N_\text{S}$ zu Untergrund 
-$N_\text{B}$ sehr klein ist 
-und der Hintergrund statistichen Schwankungen unterliegt,
-ist 
+die Events des kosmischen Hintergrunds $N_\text{off}$ gemessen.
+Da das Verhältnis von Signal $N_\text{S}$ zu Untergrund
+$N_\text{B}$ sehr klein ist
+und der Hintergrund statistischen Schwankungen unterliegt,
+ist
 \begin{equation}
 	N_\text{S} = N_\text{on} - \hat{N}_\text{B} = N_\text{on} - \alpha N_\text{off}
 \end{equation}
-nur eine schlechte Abgeschätzung, da es sich um statistisches Rauschen des
-Hintergrund handeln kann.
-Dazu wird die Signifikanz der Quelle bestimmt
+nur eine schlechte Abschätzung der Signifikanz
 \begin{equation}
-	S = \frac{N_\text{S}}{\sqrt{N_\text{S}}} .
+	S = \frac{N_\text{S}}{\sqrt{N_\text{S}}},
 \end{equation}
-Eine statistische Stabile Methode die Signifikanz zu bestimmen stellt die
-Likelihood Ratio Methode nach Li and Ma da.
-Es wird angenommen, dass die beiden Parameter die erwatete Anzahl an Signal
+da es sich um statistisches Rauschen des
+Hintergrunds handeln kann.
+
+Eine statistisch stabile Methode, die Signifikanz zu bestimmen, stellt die
+Likelihood Ratio Methode nach Li und Ma da.
+Es wird angenommen, dass die erwartete Anzahl an Signal
 Photonen $\langle N_\text{on} \rangle$ und die Anzahl Hintergrund Photonen
-$\langle N_\text{off} \rangle$ nicht bekannt sind. 
-Die zu prüfende Nullhypothese ist: 
+$\langle N_\text{off} \rangle$ nicht bekannt sind.
+Die zu prüfende Nullhypothese ist:
 \begin{quote}
-	Keine Quelle existiert und 
+	Keine Quelle existiert und
 	alle gemessenen Events gehören zum kosmischen Hintergrund.
 \end{quote}
 Dies ist äquivalent zu $\langle N_\text{on} \rangle=0$.
-Da gamma ray ereignisse alle unabhängig voneinander sind, sind diese Poisson
-verteilt.
+Da Gamma Ray Ereignisse alle unabhängig voneinander sind,
+sind diese poissonverteilt.
 
-Zur Bestimmung der Liklihood funktion der Nullhypothese, verschwinden die
-Ereignisse aus der Quelle und die Anzahl an hintergrund Strahlung addiert sich
-aus der On und off Region. 
+Zur Bestimmung der Liklihoodfunktion der Nullhypothese,
+verschwinden die
+Ereignisse aus der Quelle und die Anzahl an Hintergrund Photonen addiert sich
+aus der On und Off Region:
 \begin{equation}
-	L(X|E_0, \hat{T}_\text{c})= P_\text{r} \left[ 
+	L(X|E_0, \hat{T}_\text{c})= P_\text{r} \left[
 		N_\text{on}, N_\text{off} |
 		\langle N_\text{S} \rangle = 0,
 		\langle N_\text{B} \rangle = \frac{\alpha}{1 + \alpha} (N_\text{on} +
 			N_\text{off})
 	\right]
 \end{equation}
-Die maximum Likelihood ergibt sich indem das On Signal,
-um die Events der Hintergrundstrahlung bereinigt werden.
+Die maximale Likelihood ergibt sich, indem die On-Region
+um die Events der Hintergrundstrahlung bereinigt wird:
 \begin{equation}
-	L(X|\hat{E}, \hat{T})= P_\text{r} \left[ 
+	L(X|\hat{E}, \hat{T})= P_\text{r} \left[
 		N_\text{on}, N_\text{off} |
 		\langle N_\text{S} \rangle = N_\text{on} - \alpha N_\text{off},
 		\langle N_\text{B} \rangle = \alpha N_\text{off}
@@ -83,47 +87,61 @@ Durch Einsetzen in den Likelihood Quotienten Test
 \begin{equation}
 	\lambda = \frac{L(X|E_0, \hat{T}_\text{c})}{L(X|\hat{E}, \hat{T})}
 \end{equation}
-und der Annahme das genügend Ereignisse detektiert wurden, sodass diese einer
-$\chi^2$ mit einem Freiheitsgrad folgen, 
+und die Annahme, dass genügend Ereignisse detektiert wurden, sodass diese einer
+$\chi^2$-Verteilung mit einem Freiheitsgrad folgen,
 \begin{equation}
-	\sqrt{- 2 \ln \lambda} = \chi(1)
+	\sqrt{- 2 \ln \lambda} = \chi(1),
 \end{equation}
-ergibt sich die Li and Ma Signifikanz.
+ergibt sich die Li und Ma Signifikanz
 \begin{equation}
-	S = \sqrt{2} \left(
-		N_\text{on} \log \left[
-			(\tau + 1) \left( 
-				\frac{N_\text{on}}{N_\text{on} + N_\text{off}} 
-			\right)
-		\right]  
-		+ N_\text{off} \log \left[
-			\left( \frac{1 + \tau}{\tau} \right) \left( 
-				\frac{N_\text{off}}{N_\text{on} + N_\text{off}} 
-			\right)
-		\right]  
-	\right) ^ {1/2}
+  S = \sqrt{2} {\left(
+      N_\text{on} \log \left[
+        (\tau + 1) \left(
+          \frac{N_\text{on}}{N_\text{on} + N_\text{off}}
+        \right)
+      \right]
+      + N_\text{off} \log \left[
+        \left( \frac{1 + \tau}{\tau} \right) \left(
+          \frac{N_\text{off}}{N_\text{on} + N_\text{off}}
+        \right)
+      \right]
+  \right)} ^ {1/2}.
 \end{equation}
 
-\begin{wrapfigure}[10]{L}{0.45\textwidth}
+\begin{wrapfigure}[13]{L}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{build/theta2.pdf}
-		\caption{Theta2 cut auf Daten zur Maximierung der Signifikanz.}
+		\caption{Theta2 Schnitt auf Daten zur Maximierung der Signifikanz.}%
 		\label{fig:thetacut}
 \end{wrapfigure}
-Die Signifikanz kann sowohl auf Gamma/Hadron seperierten als auch auf nicht
-seperierten Daten bestimmt werden. 
-Sie ist neben dem Verhältniss von $N_\text{on}$ zu $N_\text{off}$ auch
-Maßgeblich von dem Umfang an $N_\text{on}$ ab.
-Eine gute Gamma Hadron seperation hält den Untergrund gering und maximiert die
-Signifikanz. 
-Ziel ist es den theta cut so zu setzen das die Signifikanz maximal wird. 
-Ein bespielhafter Thetacut ist in Abbildung \ref{fig:thetacut} zu sehen.
-Er kann zum Beispiel durch Intervallschachtelung bestimmt werden.
+
+Die Signifikanz kann sowohl auf Rohdaten als auch Gamma/Hadron-separierten Daten
+bestimmt werden.
+Sie hängt neben dem Verhältnis von $N_\text{on}$ zu $N_\text{off}$ auch
+maßgeblich von dem Umfang an $N_\text{on}$ ab.
+Eine gute Gamma/Hadron Separation hält den Untergrund gering und maximiert die
+Signifikanz.
+
+Der Parameter $\theta$ gibt den Abstand zwischen
+angenommener und rekonstruierter Quellposition
+für jedes Event an.
+Durch einen Schnitt in $\theta$ werden Events verworfen,
+welche einen zu großen Abstand von der angenommenen Quelle aufweisen.
+Die Richtungsrekonstruktion eines Signalereignisses weist
+einen geringen Abstand zur angenommenen Quelle auf.
+Hingegen können diffuse Untergrundereignisse jeden möglichen Abstand zur
+angenommenen Signalquelle haben,
+da sie den Detektor homogen ausfüllen.
+Ziel ist es, einen Schnitt in $\theta^2$ (\texttt{theta2}) so zu setzen,
+dass die Signifikanz maximal wird.
+Ein beispielhafter Schnitt in Theta ist in
+Abbildung~\ref{fig:thetacut} zu sehen.
+% Er kann zum Beispiel durch Intervallschachtelung bestimmt werden.
 
 
 \paragraph{Durchführung}%
 
-Die Konfigurationsdatei \texttt{odie.rc} wird verwendet.
+Die Konfigurations\-datei \texttt{odie.rc} wird verwendet.
 Es muss das Feld \texttt{Odie.dataName} angepasst werden.
 Es gilt wieder, mit Wildcards die von Melibea prozessierten Daten zu nutzen
 (Bsp.: \texttt{*\_Q\_*.root}).

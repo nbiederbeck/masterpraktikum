@@ -1,0 +1,74 @@
+# Directories
+IN=/net/big-tank/POOL/users/afattorini/MAGIC_workshop/Data
+CRAB=$(IN)/Crab
+OFF=$(IN)/Off
+MC=$(IN)/MC
+
+# Program Calls
+QUATE=quate -q -b -s --config=RC/quate.rc --stereo --ind=$< --out=$|
+COACH=coach -q -b -s --config=RC/coach.rc
+MELIBEA=melibea -q -b --stereo \
+		--config=RC/melibea_stereo.rc \
+		--rf --rftree=Coach/RF.root \
+		-erec --etab=Coach/Energy_Table.root \
+		--calcstereodisp --calc-disp-rf --calc-disp2-rf --disp-rf-sstrained \
+		--rfdisptree=Coach/disp1/DispRF.root \
+		--rfdisp2tree=Coach/disp2/DispRF.root \
+		--log=$|/melibea.log --out=$| -f
+ODIE=odie -q -b --config=RC/odie.rc --outname=Odie
+CASPAR=caspar -q -b --config=RC/caspar.rc
+FLUTE=flute -q -b --config=RC/flute.rc
+
+all: $(addprefix RC/Output_, $(addsuffix .root, odie caspar flute))
+
+# Quate
+Crab/Overview.root: $(CRAB) RC/quate.rc | Crab
+	$(QUATE)
+Off/Overview.root: $(OFF) RC/quate.rc | Off
+	$(QUATE)
+
+# Coach
+Coach/RF.root: Crab/Overview.root Off/Overview.root RC/coach.rc | Coach
+	$(COACH) -RFgh
+Coach/disp1/DispRF.root: Crab/Overview.root Off/Overview.root RC/coach.rc | Coach
+	$(COACH) -RFdisp
+Coach/Energy_Table.root: Crab/Overview.root Off/Overview.root RC/coach.rc | Coach
+	$(COACH) -LUTs
+
+# Melibea
+Melibea/Mc/melibea.root: Coach/RF.root Coach/Energy_Table.root Coach/disp1/DispRF.root | Melibea/Mc
+	$(MELIBEA) -mc --ind=Mc/*wr_2.root
+Melibea/data/melibea.root: Coach/RF.root Coach/Energy_Table.root Coach/disp1/DispRF.root | Melibea/data
+	$(MELIBEA) --ind=Crab/good/*.root
+
+
+# Odie
+RC/Output_odie.root: Melibea/Mc/melibea.root Melibea/data/melibea.root | Odie
+	$(ODIE)
+
+# Caspar
+RC/Output_caspar.root: Melibea/Mc/melibea.root Melibea/data/melibea.root | Caspar
+	$(CASPAR)
+
+# Flute
+RC/Output_flute.root: Melibea/Mc/melibea.root Melibea/data/melibea.root | Flute
+	$(FLUTE)
+
+# Create Directories
+Crab Off Coach Melibea Odie Caspar Flute Melibea/Mc Melibea/data:
+	mkdir -p $@
+
+# Symlink Monte Carlo Files
+Mc:
+	ln -sf $(MC) $@
+
+clean:
+	rmdir --ignore-fail-on-non-empty Crab Off Coach Melibea Odie Caspar Flute
+	# rm -rf Crab/Overview.root Off/Overview.root Mc Coach/coach_std
+
+superclean:
+	rm -rf Crab Off Coach Melibea Odie Caspar Flute
+
+# Help Make
+.PHONY: all clean superclean
+.PHONY: quate coach melibea odie caspar flute

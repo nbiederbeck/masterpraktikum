@@ -1,43 +1,47 @@
 \subsection{Coach}%
 \label{sub:coach}
-Coach trainiert Modelle zur Separation von Signal und Untergrund, 
-sowie der Rekonstuktion von Energie und Richtung.
+
+Coach trainiert Modelle zur Separation von Signal und Untergrund,
+sowie der Rekonstruktion von Energie und Richtung.
+
 \paragraph{Theorie}%
-% \label{par:theorie}
 {\color{red}Hier sollten am besten fuenf halbe sätze stehen damit hier nicht zwei title aufeinander
 folgen. Bin aber nicht so kreativ hier so viel hin zu schreiben.}
 
 \subparagraph{Gamma/Hadron-Separation}
-Die Teleskope triggern drei Arten von Events. 
-Neben den eigentlichen Luftschauern welche durch Protonen 
-oder Gamma verursacht werden,
-erzeugen Myonen oder versentliche trigger weitere Events.
+Die Teleskope triggern drei Arten von Events.
+Neben den eigentlichen Luftschauern,
+welche durch Protonen
+oder Gammas verursacht werden,
+erzeugen Myonen oder versehentliche Trigger weitere Events.
 Myonen erzeugen ringförmige Ereignisse in der Kamera.
-Versentliche Triggers entstehen z.B. durch NSB und elekronisches Rauschen.
+Versehentliche Trigger entstehen z.B.\ durch NSB und elektronisches Rauschen.
 
-Für die Analyse einer Quelle ist es wichtig das Signal (Gammaschauer) vom 
+Für die Analyse einer Quelle ist es wichtig,
+das Signal (Gammaschauer) vom
 Untergrund (alles andere) zu separieren.
-Da Untergrundevents um mehrere größenordnungen häufiger auftreten (1:\num{e5})
-geschieht dies durch ein multidimensionales maschinelles Klassifizierung 
-System (Random Forest).
+Da Untergrundevents um mehrere Größenordnungen häufiger auftreten (1:\num{e5}),
+geschieht dies durch ein multidimensionales maschinelles
+Klassifizierungsystem (Random Forest).
 
 \begin{wrapfigure}[18]{L}{0.6\textwidth}
   \centering
   \includegraphics[width=\linewidth]{build/hadroness.pdf}
-  \caption{Hadroness cuts und ihre Konsequenzen für die Analyse.}%
+  \caption{Schnitte auf der Hadroness und ihre Konsequenzen für die Analyse.}%
   \label{fig:uebersicht}
 \end{wrapfigure}
-Ziel des Modell ist es Gammas dem Wert 0 und Untergrund den Wert 1 zuzuweisen.
-Dazu werden für unabhängige Entscheidungsbäume, 
-einer begrenzten Tiefe, 
+
+Ziel des Modells ist es, Gammas den Wert 0 und Untergrund den Wert 1 zuzuweisen.
+Dazu werden für unabhängige Entscheidungsbäume einer begrenzten Tiefe
 der Informationsgehalt maximiert.
-Durch Mittelung eines Events über alle trainierten Bäume entseht ein Wert
+Durch Mittelung eines Events über alle trainierten Bäume entsteht ein Wert
 zwischen eindeutig Gamma und eindeutig Hadron, welcher als Hadroness bezeichnet
 wird.
 Durch Schnitte auf diesem Wert kann eine Separation durchgeführt werden.
-
-Entweder hier oder in dem Melibea Kapitel erklaeren was hadroness schnitte für
-konsequenzen nach sich ziehen.
+{\color{red}
+  Entweder hier oder in dem Melibea Kapitel erklaeren was hadroness schnitte für
+  konsequenzen nach sich ziehen.
+}
 
 \subparagraph{Energierekonstruktion}%
 \label{par:energie}
@@ -50,7 +54,7 @@ wie unter anderem Winkel der Kamera und Lage des Schauers im Kamerabild, ab.
 
 In MARS wird die Energie des Primärteilchens auf zwei Arten rekonstruiert:
 \begin{description}
-	\item[\quad Look-up Tables] Für eine Look-up Table werden Monte Carlo 
+	\item[\quad Look-up Tables] Für eine Look-up Table werden Monte Carlo
 		Gammas in ausgewählten Parametern gebinnt.
 		Diesen Bins wird eine mittlere Energie aller
 		zugehörigen Gammas zugewiesen.
@@ -64,26 +68,28 @@ In MARS wird die Energie des Primärteilchens auf zwei Arten rekonstruiert:
 
 \subparagraph{Richtungsrekonstruktion}%
 \label{par:position}
-Die Rekonstuktion der ursprünglichen Richtung ist einer der Hauptziele.
-Dafür werden nach der ersten Abschätzung \ref{par:superstar} weitere 
+
+Die Rekonstruktion der ursprünglichen Richtung ist einer der Hauptziele.
+Dafür werden nach der ersten Abschätzung in Kapitel~\ref{sub:superstar} weitere
 Analyseschritte durchgeführt.
-Dazu wird zunächst der \textit{DISP (\textbf{D}istance between the 
+Dazu wird zunächst die \textit{DISP (\textbf{D}istance between the
 \textbf{I}mage controid and the \textbf{S}ource \textbf{P}osition)} bestimmt.
-Dieser gibt die Entfernung Schauerschwerpunkt zur rekonstruierten Quellposition
-entlang der Hauptachse der Ellipse an (siehe Abbildung \ref{fig:theta2}).
-Das Vorzeichen des DISP Parameter ist nicht bestimmt, sodass es zwei mögliche
-Quellpositionen gibt.
-Da Magic ein Stereoteleskop ist kann bei der Schätzung des Vorzeichen des DISP
-Parameter der Schnittpunkt der beiden Hauptachsen als zusätzliche Information
-verwendet werden. 
+Diese gibt die Entfernung vom Schauerschwerpunkt zur rekonstruierten Quellposition
+entlang der Hauptachse der Ellipse an (siehe Abbildung~\ref{fig:reco}).
+Das Vorzeichen des DISP-Parameters ist nicht bestimmt,
+sodass es zwei mögliche Quellpositionen gibt.
+Da MAGIC ein Stereoteleskop ist,
+kann bei der Schätzung des Vorzeichens des DISP-Parameters
+der Schnittpunkt der beiden Hauptachsen als zusätzliche Information
+verwendet werden.
 Die rekonstruierte Position wird möglichst nah an dem Schnittpunkt der Achsen
-gewählt, was den Vorteil birgt das ca 10-20 \% schlecht rekonstruierte Events
-verworfen werden. 
-Die Schätzung des DISP-Parameters wird momentan über einen Random-Forrest
-getätigt, wo Informationen wie typischerweise, die Momenten entlang der 
+gewählt, was den Vorteil birgt,
+dass ca.\ 10--20\% schlecht rekonstruierte Events verworfen werden.
+Die Schätzung des DISP-Parameters wird momentan über einen Random-Forest
+getätigt, wo Informationen wie die Momente entlang der
 Hauptachse oder der Zeitgradient eingehen.
-Hadronische Schauer, welche fälschlicherweise die Gamma/Hadron-Seperation
-überstanden habe, weisen meist eine schlechte Richtungsrekonstruktion auf. 
+Hadronische Schauer, welche fälschlicherweise die Gamma/Hadron-Separation
+überstanden habe, weisen meist eine schlechte Richtungsrekonstruktion auf.
 
 \paragraph{Durchführung}%
 In der \texttt{coach.rc} sind die Pfade

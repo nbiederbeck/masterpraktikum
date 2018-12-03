@@ -3,33 +3,31 @@
 
 Quate ist ein Programm,
 das Mittelwerte von einem Parametersatz ausrechnet,
-und Daten selektiert und teilt die Datein in die Klassen gut und schlecht ein.
-Durch das Aussortieren kann gewährleistet werden, 
-dass die Monte Carlo Simmulation sich mehr mit den Daten deckt. 
+und Daten selektiert und in die Klassen \textit{gut} und \textit{schlecht} einteilt.
+Durch das Aussortieren kann gewährleistet werden,
+dass sich die Monte Carlo-Simulation mehr mit den Daten deckt.
 
 \paragraph{Theorie}%
 % \label{par:theorie}
 % Ziel der Analyse ist es die Unsicherheiten z.B. des Flusses so gering wie
-% möglich zu halten. 
+% möglich zu halten.
 Primärteilchen schauern in einer Höhe von \SIrange{10}{20}{\kilo\meter}
 auf.
-Da die Entwicklung des Schauers vom Dichteprofil der Atmosphäre abhängig ist, 
-ist es wichtig dieses zu kennen. 
-Das Dichteprofil variiert abhängig vom Wetter. 
-Weitere Instrumente, z.B. Lidar messen Eigenschaften der Atmosphäre.
-Dazu misst Lidar die Licht Transmission.
-Ziel ist es einen Datensatz zu erstellen,
-mit wenig variierenden und gut simmulierbaren Wetterbedingungen.
+Da die Entwicklung des Schauers vom Dichteprofil der Atmosphäre abhängig ist,
+ist es wichtig, dieses zu kennen.
+Das Dichteprofil variiert abhängig vom Wetter.
+Weitere Instrumente, z.B. Lidar, messen Eigenschaften der Atmosphäre.
+Dazu misst Lidar die Lichttransmission.
+Ziel ist es, einen Datensatz zu erstellen,
+mit wenig variierenden und gut simulierbaren Wetterbedingungen.
 
 Die Wirkungsquerschnitte der Schauerprozesse sind dichteabhängig.
 Zur guten Rekonstruktion eines Schauers muss deswegen die Dichteverteilung
 bekannt sein.
-Dies Reduziert die Unsicherheiten auf die abgeleiteten Größen. 
-
-{\color{red}(Wir sollten noch erwähnen das wir Crab observieren damit der
-richtige Zenitwinkel rausgesucht werden kann. Aerosol)}
+Dies Reduziert die Unsicherheiten auf die abgeleiteten Größen.
 
 \paragraph{Durchführung}%
+
 Das Programm \texttt{quate} wird über die
 Datei \texttt{quate.rc} konfiguriert.
 In dieser werden Einstellungen getroffen,
@@ -41,9 +39,9 @@ Dies ist über die Parameter \texttt{AzMin},
 möglich.
 Zusätzlich ist der Parameter
 \texttt{MinAerosolTrans9km = 0.8} anzupassen,
-damit {\color{red}\ldots} berücksichtigt wird.
+damit {\color{red}\ldots Aerosol \ldots} berücksichtigt wird.
 Überlegen Sie sich,
-bei welche Daten das Selektieren sinnvoll ist
+bei welchen Daten das Selektieren sinnvoll ist
 (On/Off/MC)
 und führen Sie dieses durch.
 Geben Sie dazu als \texttt{<INPUT-DIRECTORY>} die entsprechenden Pfade zu den Daten an.
