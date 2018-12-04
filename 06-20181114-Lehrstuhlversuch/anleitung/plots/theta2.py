@@ -15,8 +15,8 @@ ax.axvline(x=0.10, c='r', alpha=0.05, linewidth=20)
 ax.axvline(x=0.10, c='r', alpha=0.10, linewidth=10)
 
 ax.hist([lin_rnd, exp_rnd], bins=np.linspace(0,1,15),
-        stacked=True, histtype='step', 
-        label=['Untergrund', 'Signal'], 
+        stacked=True, histtype='step',
+        label=['Off-Region', 'On-Region'],
         linewidth=2, zorder=10)
 
 ax.set_xlabel('theta2')
