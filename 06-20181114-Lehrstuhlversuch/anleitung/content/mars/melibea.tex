@@ -1,11 +1,39 @@
 \subsection{Melibea}%
 \label{sub:melibea}
 
+\paragraph{Theorie}
+
+Melibea wendet auf die von Superstar berechnetet
+Stereo-Parameter Dateien
+die von Coach trainierten Modelle an.
+Das Programm weist damit jedem Event
+eine geschätzte Energie und Hadronness zu
+und schätzt eine Quellposition (DISP).
+
+Auf diesen Werten können im weiteren Verlauf der Analyse
+Schnitte angewendet werden.
+Ein Schnitt auf der Hadronness $H_{\text{cut}}$
+weist Events mit einer Hadronnes $H_{\text{Evt}}~<~H_{\text{cut}}$
+die Klasse Signal zu.
+Events mit $H_{\text{Evt}} > H_{\text{cut}}$ werden der Klasse Untergrund
+zugeordnet.
+Hierbei ist das Ziel, einen möglichst reinen
+Datensatz
+(frei von Untergrund)
+zu erzeugen.
+Für eine Veranschaulichung des Schnittes siehe Abbildung~\ref{fig:uebersicht}.
+Für die weiteren Analyseschritte ist ein möglichst
+großer Datensatz von Vorteil.
+Die Hadronness muss so eingestellt werden,
+dass ein Kompromiss zwischen Reinheit und Größe des Datensatzes erreicht wird.
+
+
 \paragraph{Durchführung}%
 
 Für Stereo-Analysen muss die Konfigurationsdatei \texttt{melibea\_stereo.rc}
 verwendet werden.
 Es gibt keine notwendigen Anpassungen in dieser Datei.
+Melibea muss auf Daten und Monte Carlos einzeln angewendet werden.
 
 \begin{lstlisting}
   # <PATH-TO> entspricht dem RF.outpath aus coach!
