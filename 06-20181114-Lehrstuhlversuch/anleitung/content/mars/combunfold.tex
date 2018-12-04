@@ -35,17 +35,32 @@ Die Probleme werden durch den Entfaltungsalgorithmus,
 welche die Observablen $f$,
 in den Raum der physikalischen Groessen $g$transformiert,
 gelöst.
-hier koennte eine lange geschichte stehen.
+Das Problem wird durch das Fredholm integral beschrieben.
 \begin{equation}
 	g(y) = \int_\text{c}^\text{d} M(x,y) f(x) \text{dx} + b(y)
 \end{equation}
-
-\begin{equation}
-	g_i = \sum_j M_{ij} f_j + b_i
-\end{equation}
-
+Ziel ist es mit Monte Carlo simmulierten Daten die Response Matrix zu bestimmen.
+Dazu wird der Paramterraum diskretisiert.
+Dies geschieht durch binning der Daten,
 \begin{equation}
 	g_i = \int_{y_{i-1}}^{y_i} g(y) \text{dy} \quad \text{und} \quad
 	b_i = \int_{y_{i-1}}^{y_i} b(y) \text{dy}
 \end{equation}
+Anschliessend wird versucht die Matrixgleichung 
+\begin{equation}
+	g_i = \sum_j M_{ij} f_j + b_i
+\end{equation}
+zu loesen.
+Dabei entspricht das Element $M_\text{ij}$
+
+
+Die naivste Annahme die Migrationsmatrix zu bestimmen,
+beruht auf ihrer Inversion.
+\begin{equation}
+    \vec{f} = M \vec{g}
+\end{equation}
+
+\subparagraph{Durchführung}%
+\label{par:durchfuhrung}
+
 
