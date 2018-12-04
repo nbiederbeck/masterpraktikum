@@ -8,6 +8,7 @@ eine Lichtkurve einer Quelle zu bestimmen.
 
 \paragraph{Theorie}%
 
+\subparagraph{Background Estimation}
 Zuerst wird der Untergrund abgeschätzt.
 Dies geschieht, indem die Daten im Wobble-Modus aufgenommen werden.
 Die erwartete Quellposition ist dabei nicht im
@@ -27,13 +28,17 @@ Im Anschluss wird der aus den Off-Positionen bestimmte Untergrund
 aus der Messung der On-Position subtrahiert, sodass Signal übrig bleibt
 (vgl. Abbildung~\ref{fig:thetacut}).
 
-\begin{align}
+
+\begin{align*}
     On &= Signal + Untergrund \\
     Off_{1} &= Untergrund \\
     Off_{2} &= Untergrund \\
     \Rightarrow Signal &= On - Off_{\text{mean}}
-\end{align}
+\end{align*}
 
+\subparagraph{Effective Collection Area}
+\subparagraph{Estimated Energy Spectrum}
+\subparagraph{Flux}
 % Zur Berechnung werden die Anzahl an detektierten Gammas,
 % die effektive Observationszeit,
 % und die Collecting Area des Teleskop benötigt.
@@ -42,6 +47,7 @@ aus der Messung der On-Position subtrahiert, sodass Signal übrig bleibt
 \frac{\text{d} \Phi}{\text{d}E} \simeq K {\left( \frac{E}{E_0} \right)}^{- \Gamma}
 \end{equation}
 
+\subparagraph{Light Curve}
 
 \paragraph{Durchführung}%
 
