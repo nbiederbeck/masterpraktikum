@@ -30,32 +30,31 @@ aus der Messung der On-Position subtrahiert, sodass Signal übrig bleibt
 
 
 \begin{align*}
-    On &= Signal + Untergrund \\
-    Off_{1} &= Untergrund \\
-    Off_{2} &= Untergrund \\
-    \Rightarrow Signal &= On - Off_{\text{mean}}
+    \text{On} &= \text{Signal} + \text{Untergrund}_{\text{on}} \\
+    \text{Off}_{1} &= \text{Untergrund}_{1} ;
+    \quad \text{Off}_{2} = \text{Untergrund}_{2} \\
+    \Rightarrow \text{Signal} &= \text{On} - \text{Off}_{\text{mean}}
 \end{align*}
 
 \subparagraph{Effective Collection Area}
+Die effektive Fläche entspricht der Fläche,
+bei der ein idealer Detektor 100\%
+der einfallenden Gammas detektieren würde.
+Diese entspricht dem Oberflächenintegral der Detektorfläche
+über der Effizienz des Detektors
+bei einem orthogonal eintreffenden Primärteilchen.
+Von besonderem Interesse ist die \enquote{Analysis of Effective Area},
+welche sich aus den allen Einzeleffizienzen zusammensetzt.
+Die Effizienz ist abhängig von verschiedenen Parametern,
+wovon die Pointing Position,
+und die Richtung und Energie des Primärteilchens
+die wichtigsten sind.
+Beispielsweise ist die Collection Area von der Energie abhängig,
+da höherenergetische Teilchen mehr Tscherenkowlicht emittieren
+und so einfacher zu detektieren sind.
+
 \subparagraph{Estimated Energy Spectrum}
 \subparagraph{Flux}
-Die effektive Flaeche entspricht der Flaeche bei dem ein idealer Detector 100 \%
-der einfallenden Gamma Rays detektieren wuerde.
-Dies entspricht dem oberflaechen integrall der Detektorflaeche 
-ueber der Effizienz des Detektors eines orthogonal eintreffenden
-primaerteilchens.
-Von besonderem Interesse ist die "Analysis effective area" welche sich aus den
-allen einzel Effizienzen zusammensetzt. 
-Die Effizienz ist abhaengig von allerlei Parameter,
-wovon die Pointing Position, die Richtung und die Energie des Primaerteilchends 
-die wichtigsten sind.
-Beispielsweise ist die Collection Area von der Energie abhaengig, da hoeher
-Energetische Teilchen mehr Tscherenkovlicht emitttieren und so einfacher zu
-detektieren sind.
-
-% Zur Berechnung werden die Anzahl an detektierten Gammas,
-% die effektive Observationszeit,
-% und die Collecting Area des Teleskop benötigt.
 
 \begin{equation}
 \frac{\text{d} \Phi}{\text{d}E} \simeq K {\left( \frac{E}{E_0} \right)}^{- \Gamma}
