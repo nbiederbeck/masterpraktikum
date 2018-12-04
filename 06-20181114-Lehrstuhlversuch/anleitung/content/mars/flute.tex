@@ -1,14 +1,42 @@
 \subsection{Flute}%
 \label{sub:flute}
-Ziel von Flute ist,
-es das Energiespektrum und die Lichtkurve einer Quelle zu bestimmen.
+
+Ziel von Flute ist es,
+den Untergrund zu schätzen,
+und das Energiespektrum und
+eine Lichtkurve einer Quelle zu bestimmen.
 
 \paragraph{Theorie}%
-\label{par:theorie}
 
-Zur Berechnung werden die Anzahl an detektiereten Gamma-Rays,
-die effektive Observationszeit,
-und die Collecting Area des Teleskop benötigt.
+Zuerst wird der Untergrund abgeschätzt.
+Dies geschieht, indem die Daten im Wobble-Modus aufgenommen werden.
+Die erwartete Quellposition ist dabei nicht im
+Kameramittelpunkt,
+sondern um
+\SI{0.4}{\degree} um die Kameraachse
+verschoben.
+Die Quellposition wird um die Kameraachse rotiert.
+In äquidistanten Abständen um die Kameraachse werden Off-Positionen bestimmt
+(siehe Abbildung~\ref{fig:hillas}).
+
+Anschließend wird der Abstand $\theta$ der rekonstruierten
+zu der On- und den Off-Positionen bestimmt.
+Die Bins von $\theta^2$ werden in den Off-Positionen
+anhand der On-Position (Anzahl Off-Positionen / Messzeiten) normiert.
+Im Anschluss wird der aus den Off-Positionen bestimmte Untergrund
+aus der Messung der On-Position subtrahiert, sodass Signal übrig bleibt
+(vgl. Abbildung~\ref{fig:thetacut}).
+
+\begin{align}
+    On &= Signal + Untergrund \\
+    Off_{1} &= Untergrund \\
+    Off_{2} &= Untergrund \\
+    \Rightarrow Signal &= On - Off_{\text{mean}}
+\end{align}
+
+% Zur Berechnung werden die Anzahl an detektierten Gammas,
+% die effektive Observationszeit,
+% und die Collecting Area des Teleskop benötigt.
 
 \begin{equation}
 \frac{\text{d} \Phi}{\text{d}E} \simeq K {\left( \frac{E}{E_0} \right)}^{- \Gamma}
