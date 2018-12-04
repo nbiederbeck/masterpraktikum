@@ -61,6 +61,33 @@ beruht auf ihrer Inversion.
 \end{equation}
 
 \subparagraph{Durchführung}%
-\label{par:durchfuhrung}
 
+Die Konfigurationsdatei \texttt{combunfold.rc} wird verwendet.
+Hier müssen einige Sachen angepasst werden:
+\begin{lstlisting}
+  # <PATH-TO> MUSS ein absoluter Pfad sein, also mit einem / starten !!
+  MCombineDataForUnfolding.InputFiles[0] = <PATH-TO>/Output_flute.root
+\end{lstlisting}
+Es kann
+\texttt{MCombineDataForUnfolding.NSpectrumIterations}
+auf eine andere Zahl gesetzt werden.
 
+Außerdem werden mit
+\texttt{MCallUnfold.FlagUnfold}
+ein Entfaltungsalgorithmus ausgewählt und mit
+\texttt{MCallUnfold.FlagCriterion}
+ein Kriterium für das Auswählen der Entfaltungsgewichte gesetzt.
+
+Um CombUnfold zu starten, muss in das
+\texttt{\$MARSSYS}
+gewechselt werden.
+Das Makro wird direkt in Root ausgeführt:
+\begin{lstlisting}
+  root
+  # Warten, dass root startet
+  .x CombUnfold.C("<PATH-TO>/combunfold.rc")
+\end{lstlisting}
+
+In der Ausgabedatei
+\texttt{<PATH-TO>/Unfolding\_Output\_combunfold.root}
+finden sich die entfalteten Spektren.
