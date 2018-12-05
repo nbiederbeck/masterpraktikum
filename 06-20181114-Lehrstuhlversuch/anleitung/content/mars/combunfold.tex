@@ -6,59 +6,107 @@ Die Energie welche auf den Parametern geschätzt wird, beruht auf einer
 endlichen Auflösung.
 Um einen Energieschätzer für die Quelle zu erhalten, 
 wird das Entfaltungsverfahren verwendet.
+Ziel ist es das Spektrale Energieverteilung einer Quelle zu bestimmen.
+Dadurch ist eine genauere Klassifizierung des Objekts und den
+Wechselwirkungsprozessen möglich. 
 
 \paragraph{Theorie}%
 \label{par:theorie}
-Da kein Chrenkov-Teleskop in der Laage ist die Energie 
-des primärteilche zu messen,
-sondern lediglich den Deponierten Photonstrom wird ein Entfaltungsalgorithmus
-benötigt.
-Dabei treten beim Messen hauptsächlich dreierlei Probleme auf.
+Chrenkov-Teleskop sind nicht in der Laage ist die Energie 
+des Primärteilchen direkt zu messen,
+sondern lediglich den Deponierten Photostrom,
+weswegen ein Entfaltungsalgorithmus benötigt.
+Bei der Berechnung der Primärenergie treten beim Messen hauptsächlich dreierlei Probleme auf.
 
-Die \textit{limitierte Akzeptanz} beschreibt das Problem, 
-dass nicht alle Events welche in der Erdatmosphäre über den Teleskop geschehen,
-detektiert werden können. 
-Die detektionswahrscheinlichkeit ist sowohl beschränkt 
-und abhängig von der Energie.
-Desweiteren können die Schauer nur indirekt, 
-aufgrund der Erdatmosphäre gemessen werden.
-Da die Strecke welche Teilchen durch die Erdatmosphäre durchlaufen die
-geschätzte Energie wesentlich beeinflussen,
-ist der Fehler durch die \textit{indirekten Messung} direkt mit der
-Richtungsrekonstruktion korreliert.
-Zusätzlich weisen die geschätzten Energien einen statistischen Fehler auf. 
-Da Entfaltungsalgorithmen auf \textit{begrenzten Auflösungen}/ gebinnten Daten
-beruhen, kommt es vor das wenn die geschätzte Energie von der Wahren Energie
-Abweicht bins über und die Entsprechend anderen unterrepräsentiert sind.
+\begin{description}
+    \item[\quad limitierte Akzeptanz]
+        Nicht alle Schauer können Detektiert werden. 
+        Die Detektionswahrscheinlichkeit wird Beispielsweise limitiert,
+        durch Events welche die Triggerschwelle der PMTs nicht auslösen,
+        die Totzeit der PMTs 
+        und dem Cut auf Events die zu klein sind,
+        um ihre Richtung zu rekonstruieren.
+
+    \item[\quad indirekte Messung]
+        Die Primär Energie kann nicht direkt gemessen werden.
+        Stattdessen kann nur der Photostrom gemessen werden,
+        welcher vom Tscherenkow-Schauer in der Kamera deponiert wird.
+        Da die Strecke welche Teilchen durch die Erdatmosphäre 
+        durchlaufen,
+        die geschätzte Energie wesentlich beeinflussen,
+        ist der Fehler direkt mit der Richtungsrekonstruktion korreliert.
+
+    \item[\quad begrenzte Auflösung] 
+        Die geschätzten Energien weisen einen statistischen Fehler auf. 
+        Durch das binnen der Daten, 
+        kommt es vor das der Bin der geschätzte Energien von dem der wahren
+        Abweicht,
+        sodass Bins über- und die entsprecht anderen unterrepräsentiert sind.
+\end{description}
 
 Die Probleme werden durch den Entfaltungsalgorithmus,
 welche die Observablen $f$,
-in den Raum der physikalischen Groessen $g$transformiert,
+in den Raum der physikalischen Größen $g$ transformiert,
 gelöst.
-Das Problem wird durch das Fredholm integral beschrieben.
+Das Problem wird durch das Fredholm Integral beschrieben.
 \begin{equation}
-	g(y) = \int_\text{c}^\text{d} M(x,y) f(x) \text{dx} + b(y)
+	g(y) = \int_\text{c}^\text{d} M(x,y) f(x) \, \text{d}x + b(y)
 \end{equation}
-Ziel ist es mit Monte Carlo simmulierten Daten die Response Matrix zu bestimmen.
-Dazu wird der Paramterraum diskretisiert.
-Dies geschieht durch binning der Daten,
+Ziel ist es mit Monte Carlo simulierten Daten,
+die Response Matrix zu bestimmen.
+Dazu wird der Parameterraum diskretisiert.
+Dies geschieht durch Binning der Daten,
 \begin{equation}
-	g_i = \int_{y_{i-1}}^{y_i} g(y) \text{dy} \quad \text{und} \quad
-	b_i = \int_{y_{i-1}}^{y_i} b(y) \text{dy}
+	g_i = \int_{y_{i-1}}^{y_i} g(y) \, \text{d}y \quad \text{und} \quad
+	b_i = \int_{y_{i-1}}^{y_i} b(y) \, \text{d}y
 \end{equation}
 Anschliessend wird versucht die Matrixgleichung 
 \begin{equation}
 	g_i = \sum_j M_{ij} f_j + b_i
 \end{equation}
 zu loesen.
-Dabei entspricht das Element $M_\text{ij}$
-
-
 Die naivste Annahme die Migrationsmatrix zu bestimmen,
-beruht auf ihrer Inversion.
+beruht auf ihrer \textit{Inversion}.
 \begin{equation}
-    \vec{f} = M \vec{g}
+    \vec{f} = \mathbf{M}^{-1} \vec{g}
 \end{equation}
+Dabei entsteht das Problem das die un korreliert Messgrößen $g$,
+korrelierte $f$ erzeugen.
+Eine Alternative zur Bestimmung der Migrationsmatrix,
+besteht aus der \textit{Minimierung der kleinsten Quadrate}. 
+Dabei werden die Matrix bestimmt,
+welche die grösste Übereinstimmung mit den Daten erzeugt.
+\begin{equation}
+    \chi^2_0 = ( \vec{g} - \mathbf{M} \vec{f} )^\intercal
+        \cdot \mathbf{V} \left[ \vec{g} \right] \cdot
+        ( \vec{g} - \mathbf{M} \vec{f} )
+\end{equation}
+Alternative Algorithmen sind Beispielsweise das Forward Folding.
+
+Desweiteren neigen die Lösung zu Starken Oszillation in $\vec{f}$.
+Um dies zu minimieren und ein reproduzierbare Ergebnisse zu erzeugen
+muss regularisiert werden.
+Die Oszillationen stammen aus kleinen unbedeutsamen Beiträgen welche im
+Entfaltung Prozess verstärkt werden und zu einem unverhältnismäßig hohen
+Rauschen führen.
+Durch das Einführen eines Regularisierungs Terms wird eine Anforderung an die 
+Entfaltung wie zum Beispiel ein Glattes Spektrum gestellt.
+Die Regularisierung $\tau$ ist entscheidend, wie viele
+Informationen verworfen werden.
+
+Durch hinzufügen eines Zusatzterms der zu minimierende Funktion während des
+Entfaltungsprozess, ist Regularisierung möglich. 
+\begin{equation}
+    \chi^2 = \chi^2_0 - \frac{\tau}{2} Reg(\vec{f})
+\end{equation}
+Dabei gibt es verschiedene Möglichkeiten, 
+wovon Beispielsweise die Tikhonov, Bertero  
+und Schmelling in Mars implementiert sind.
+\begin{equation}
+    Reg(\vec{f}) = \sum_j \left( \frac{d^2 f_j}{dx^2} \right)^2
+\end{equation}
+Bei der Tikhonov Methode wird die Glattheit der 
+Funktion durch Minimierung der zweiten Ableitung.
 
 \subparagraph{Durchführung}%
 
@@ -77,6 +125,8 @@ Außerdem werden mit
 ein Entfaltungsalgorithmus ausgewählt und mit
 \texttt{MCallUnfold.FlagCriterion}
 ein Kriterium für das Auswählen der Entfaltungsgewichte gesetzt.
+Es sollen verschiedene Entfaltungsalgorithmen ausprobiert 
+und die Gewichte variiert werden 
 
 Um CombUnfold zu starten, muss in das
 \texttt{\$MARSSYS}

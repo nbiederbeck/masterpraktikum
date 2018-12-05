@@ -5,6 +5,7 @@
 \RequirePackage{caption}
 \RequirePackage{subcaption}
 
+
 \RequirePackage{xcolor}
 \xdefinecolor{mblue}{RGB}{43, 50, 122}
 \definecolor{myellow}{RGB}{228, 188, 15}
