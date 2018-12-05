@@ -30,10 +30,10 @@ aus der Messung der On-Position subtrahiert, sodass Signal übrig bleibt
 
 
 \begin{align*}
-    \text{On} &= \text{Signal} + \text{Untergrund}_{\text{on}} \\
-    \text{Off}_{1} &= \text{Untergrund}_{1} ;
-    \quad \text{Off}_{2} = \text{Untergrund}_{2} \\
-    \Rightarrow \text{Signal} &= \text{On} - \text{Off}_{\text{mean}}
+  \text{On} &= \text{Signal} + \text{Untergrund}_{\text{on}} \\
+  \text{Off}_{1} &= \text{Untergrund}_{1} ;
+  \quad \text{Off}_{2} = \text{Untergrund}_{2} \\
+  \Rightarrow \text{Signal} &= \text{On} - \text{Off}_{\text{mean}}
 \end{align*}
 
 \subparagraph{Effective Collection Area}
@@ -43,7 +43,8 @@ der einfallenden Gammas detektieren würde.
 Diese entspricht dem Oberflächenintegral der Detektorfläche
 über der Effizienz des Detektors
 bei einem orthogonal eintreffenden Primärteilchen.
-Von besonderem Interesse ist die \enquote{Analysis of Effective Area},
+Von besonderem Interesse ist die \enquote{Analysis Effective Area}
+(Effektive Fläche der gesamten Analyse),
 welche sich aus den allen Einzeleffizienzen zusammensetzt.
 Die Effizienz ist abhängig von verschiedenen Parametern,
 wovon die Pointing Position,
@@ -53,19 +54,75 @@ Beispielsweise ist die Collection Area von der Energie abhängig,
 da höherenergetische Teilchen mehr Tscherenkowlicht emittieren
 und so einfacher zu detektieren sind.
 
-Die effektive Flaeche wird durch die Mittlung von Monte-Carlo-Ereignissen
+Die effektive Fläche wird durch die Mittelung von Monte Carlo-Ereignissen
 berechnet.
-Dazu wird eine homogene Fläche simuliert, auf der Gamma-Ray ereignisse
-geschehen. 
+Dazu wird eine homogene Fläche $A_{\text{MC}}$ simuliert,
+auf der Gamma Ereignisse geschehen,
+mit den Teleskopen in ihrer Mitte.
+Die effektive Fläche ist dann
+\begin{equation}%
+  \label{eq:effective_area}
+  A_{\text{eff}} =
+    \frac{N_{\gamma,\text{final}}}{N_{\gamma,\text{mc}}}
+    \cdot A_{\text{MC}}
+\end{equation}
+Die Simulation muss in Bins aller abhängigen Parameter durchgeführt werden.
 
-\subparagraph{Estimated Energy Spectrum}
-\subparagraph{Flux}
 
-\begin{equation}
-\frac{\text{d} \Phi}{\text{d}E} \simeq K {\left( \frac{E}{E_0} \right)}^{- \Gamma}
+
+\subparagraph{Energiespektrum}
+
+Zur Berechnung des Energiespektrums muss ein Spektrum angenommen werden,
+das entfaltet werden kann:
+\begin{equation}%
+  \label{eq:photon_index}
+  \frac{d\Phi}{dE} \simeq K {\left(\frac{E}{E_0}\right)}^{-\Gamma},
+\end{equation}
+dabei ist $\Gamma \approx 2$ der spektrale Index.
+
+Es wird der \textit{Gammafluss} definiert als
+\begin{equation}%
+  \label{eq:gamma_flux}
+  \Phi = \frac{d^2 N}{dS dt}
+  \quad \left(\si{\per\centi\meter\tothe2\per\second}\right),
+\end{equation}
+und der differentielle Fluss ist
+\begin{equation}%
+  \label{eq:differential_energy_spectrum}
+  \frac{d\Phi}{dE} = \frac{d^3N}{dS dt dE}
+  \quad \left(\si{\per\centi\meter\tothe2\per\second\per\tera\electronvolt}\right).
+\end{equation}
+
+Der Integrale Fluss ist beispielsweise
+\begin{equation}%
+  \label{eq:integral_flux}
+  \Phi_{E > \SI{200}{\giga\electronvolt}} =
+    \int\limits_{\SI{200}{\giga\electronvolt}}^{\infty} \frac{d \Phi}{dE}
+    \text{d} E
+  \quad \left(\si{\per\centi\meter\tothe2\per\second}\right).
+\end{equation}
+
+{\color{red} Warum wird der Fluss bestimmt? Wahrscheinlich hat das was mit dem
+Spektrum zu tun. Vielleicht so:}
+Aus dem Binning des Flusses kann die Spektrale Energieverteilung
+(\textit{Spectral Energy Distribution: SED}) entfaltet werden:
+\begin{equation}%
+  \label{eq:spectral_energy_distribution}
+  E^2 \cdot \frac{d \Phi}{dE}
+  \quad \left(\si{\tera\electronvolt\per\centi\meter\tothe2\per\second}\right)
+  = E \cdot \frac{d \Phi}{d \left(\log E\right)}.
 \end{equation}
 
 \subparagraph{Light Curve}
+In der Lichtkurve wird
+der Fluss $\Phi$ gegen die Zeit $t$
+aufgetragen.
+Sie ist dafür vorgesehen,
+zeitliche Veränderungen des Flusses zu bestimmen.
+Dies ist notwendig bei zeitlich veränderlichen Quellen
+oder zur Überprüfung einer Konstanz von Quellen oder Instrumenten.
+
+
 
 \paragraph{Durchführung}%
 
