@@ -9,8 +9,8 @@ eine Lichtkurve einer Quelle zu bestimmen.
 \paragraph{Theorie}%
 
 \subparagraph{Background Estimation}
-Zuerst wird der Untergrund abgeschätzt.
-Dies geschieht, indem die Daten im Wobble-Modus aufgenommen werden.
+Der Untergrund wird abgeschätzt,
+indem die Daten im Wobble-Modus aufgenommen werden.
 Die erwartete Quellposition ist dabei nicht im
 Kameramittelpunkt,
 sondern um
@@ -80,20 +80,22 @@ das entfaltet werden kann:
 \end{equation}
 dabei ist $\Gamma \approx 2$ der spektrale Index.
 
-Es wird der \textit{Gammafluss} definiert als
+Es wird der \textit{Gammafluss} definiert als Anzahl von emittierten Photonen
+über der Detektorfläche pro Zeit:
 \begin{equation}%
   \label{eq:gamma_flux}
   \Phi = \frac{d^2 N}{dS dt}
   \quad \left(\si{\per\centi\meter\tothe2\per\second}\right),
 \end{equation}
-und der differentielle Fluss ist
+und der differentielle Fluss pro Energie ist
 \begin{equation}%
   \label{eq:differential_energy_spectrum}
   \frac{d\Phi}{dE} = \frac{d^3N}{dS dt dE}
   \quad \left(\si{\per\centi\meter\tothe2\per\second\per\tera\electronvolt}\right).
 \end{equation}
 
-Der Integrale Fluss ist beispielsweise
+Der Integrale Fluss ist für Energien $> \SI{200}{\giga\electronvolt}$
+beispielsweise
 \begin{equation}%
   \label{eq:integral_flux}
   \Phi_{E > \SI{200}{\giga\electronvolt}} =
@@ -104,8 +106,10 @@ Der Integrale Fluss ist beispielsweise
 
 {\color{red} Warum wird der Fluss bestimmt? Wahrscheinlich hat das was mit dem
 Spektrum zu tun. Vielleicht so:}
-Aus dem Binning des Flusses kann die Spektrale Energieverteilung
-(\textit{Spectral Energy Distribution: SED}) entfaltet werden:
+Aus dem Binning des Flusses in der Energie
+kann die Spektrale Energieverteilung
+(\textit{Spectral Energy Distribution: SED})
+entfaltet werden:
 \begin{equation}%
   \label{eq:spectral_energy_distribution}
   E^2 \cdot \frac{d \Phi}{dE}
@@ -120,7 +124,9 @@ aufgetragen.
 Sie ist dafür vorgesehen,
 zeitliche Veränderungen des Flusses zu bestimmen.
 Dies ist notwendig bei zeitlich veränderlichen Quellen
-oder zur Überprüfung einer Konstanz von Quellen oder Instrumenten.
+(z.B.\ Pulsare, zur Bestimmung der Entfernung)
+oder zur Überprüfung einer Konstanz von Quellen oder Instrumenten
+über die Zeit.
 
 
 
