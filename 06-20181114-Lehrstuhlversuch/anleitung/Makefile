@@ -8,14 +8,17 @@ build/anleitung.pdf: FORCE tikz/build/overview.pdf build/theta2.pdf build/hadron
 		anleitung.tex
 
 tikz/build/overview.pdf:
-	make -C tikz
+	$(MAKE) -C tikz
 
-build/theta2.pdf build/hadroness.pdf:
-	make -C plots
+build/theta2.pdf: build/hadroness.pdf
+build/hadroness.pdf:
+	$(MAKE) -C plots
 
 FORCE:
 
 clean:
-	rm -rf build tikz/build
+	rm -rf build
+	$(MAKE) -C tikz clean
+	$(MAKE) -C plots clean
 
 .PHONY: all clean FORCE

@@ -12,6 +12,6 @@ all: ../build/theta2.pdf ../build/hadroness.pdf
 FORCE:
 
 clean:
-	rm -rf ../build
+	rm -rf ../build/theta2.pdf ../build/hadroness.pdf
 
 .PHONY: all clean FORCE

@@ -11,7 +11,7 @@ build/theta2.pdf: theta2.tex | build
 	latexmk --pdf --output-directory=build --halt-on-error --interaction=nonstopmode \
 		$<
 
-build/imgParam.pdf: ./imgParam.tex | build
+build/imgParam.pdf: imgParam.tex | build
 	latexmk --pdf --output-directory=build --halt-on-error --interaction=nonstopmode \
 		$<
 

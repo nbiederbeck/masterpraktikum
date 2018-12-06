@@ -1,9 +1,8 @@
 # Latex Font Settings
 font.family:         serif
 text.usetex:         True
-text.latex.unicode:  True
 text.latex.preamble: \usepackage[locale=DE]{siunitx}
 text.latex.preview:  False
- 
+
 # change colors to magic one
 axes.prop_cycle    : cycler('color', ['2a327a', 'e4bc0f', '9467bd', '8c564b', 'e377c2', '7f7f7f', 'bcbd22', '17becf'])
