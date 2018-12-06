@@ -9,16 +9,15 @@ eine Lichtkurve einer Quelle zu bestimmen.
 \paragraph{Theorie}%
 
 \subparagraph{Background Estimation}
-Der Untergrund wird abgeschätzt,
-indem die Daten im Wobble-Modus aufgenommen werden.
-Die erwartete Quellposition ist dabei nicht im
+MAGIC nimmt Daten im Wobble-Modus auf.
+Die erwartete Quellposition dabei liegt nicht im
 Kameramittelpunkt,
 sondern um
 \SI{0.4}{\degree} um die Kameraachse
-verschoben.
-Die Quellposition wird um die Kameraachse rotiert.
-In äquidistanten Abständen um die Kameraachse werden Off-Positionen bestimmt
-(siehe Abbildung~\ref{fig:hillas}).
+verschoben,
+wobei die angenommene Quellposition um die Kameraachse rotiert wird.
+In äquidistanten Abständen um die Kameraachse 
+werden Off-Positionen bestimmt (siehe Abbildung~\ref{fig:hillas}).
 
 Anschließend wird der Abstand $\theta$ der rekonstruierten
 zu der On- und den Off-Positionen bestimmt.
@@ -28,13 +27,12 @@ Im Anschluss wird der aus den Off-Positionen bestimmte Untergrund
 aus der Messung der On-Position subtrahiert, sodass Signal übrig bleibt
 (vgl. Abbildung~\ref{fig:thetacut}).
 
-
-\begin{align*}
-  \text{On} &= \text{Signal} + \text{Untergrund}_{\text{on}} \\
-  \text{Off}_{1} &= \text{Untergrund}_{1} ;
-  \quad \text{Off}_{2} = \text{Untergrund}_{2} \\
-  \Rightarrow \text{Signal} &= \text{On} - \text{Off}_{\text{mean}}
-\end{align*}
+% \begin{align*}
+%   \text{On} &= \text{Signal} + \text{Untergrund}_{\text{on}} \\
+%   \text{Off}_{1} &= \text{Untergrund}_{1} ;
+%   \quad \text{Off}_{2} = \text{Untergrund}_{2} \\
+%   \Rightarrow \text{Signal} &= \text{On} - \text{Off}_{\text{mean}}
+% \end{align*}
 
 \subparagraph{Effective Collection Area}
 Die effektive Fläche entspricht der Fläche,
