@@ -48,7 +48,7 @@ ax.hist(
         bins=np.linspace(0,1,20), 
         stacked=True,
         histtype='step',
-        label=['gamma', 'hadron'],
+        label=['hadron', 'gamma'],
         linewidth=2,
         )
 
@@ -62,7 +62,7 @@ ax.tick_params(labelleft=False, labelbottom=False)
 
 ax = fig.add_subplot(212)
 ax.plot(param['cut'], param['sen'], label='sensitivity')
-ax.plot(param['cut'], param['pre'], label='precission')
+ax.plot(param['cut'], param['pre'], label='precision')
 ax.plot(param['cut'], param['acc'], label='accuracy')
 
 ax.axvline(x=0.10, c='r', alpha=0.7)

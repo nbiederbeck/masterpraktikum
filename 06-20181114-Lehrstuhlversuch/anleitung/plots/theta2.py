@@ -19,7 +19,7 @@ ax.hist([lin_rnd, exp_rnd], bins=np.linspace(0,1,15),
         label=['Off-Region', 'On-Region'],
         linewidth=2, zorder=10)
 
-ax.set_xlabel('theta2')
+ax.set_xlabel(r'$\theta^2 / grad^2$')
 ax.set_ylabel('\# Events')
 plt.legend(loc='best')
 ax.tick_params(

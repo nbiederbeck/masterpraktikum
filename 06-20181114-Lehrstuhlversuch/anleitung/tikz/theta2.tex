@@ -28,7 +28,7 @@
 		x radius= .1cm, y radius= .1cm, rotate=-60] coordinate (CoGII);
 
 	% Schwerpunkte der Ellipsen
-	\draw [dashed, draw=black!70] (t1)++(45:-2.0cm) -- ++(45:5.9cm);
+	\draw [dashed, draw=black!70] (t1)++(45:-2.2cm) -- ++(45:5.9cm);
 	\draw [dashed, draw=black!70] (t2)++(120:-2.0cm) -- ++(120:5.8cm);
 	
 	% rekonstruierte Positionen
@@ -45,8 +45,7 @@
 		(CoGII) -- node[sloped, above=8pt] {DISP} (RPII);
 	
 	% Hexagonal Magic shape
-	\node[ regular polygon, regular polygon sides=6, draw=mblue,
-		inner sep=2.0cm, line width=0.1cm, ] (hexagon) at (1.5,1) {};
+    \draw [line width=0.1cm, draw=mblue] (1.5,1) circle (3cm);
 
 \end{tikzpicture}
 \end{document}

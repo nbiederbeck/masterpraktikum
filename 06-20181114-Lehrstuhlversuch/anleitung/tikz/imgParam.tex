@@ -5,12 +5,10 @@
 
 \begin{document}
 \begin{tikzpicture} 
+    \draw [line width=0.2cm, draw=mblue] (0, 0) circle (7.3cm);
+    \draw [line width=0.8cm, draw=mblue!20] (0, 0) circle (6.8cm);
 
-	\node[ regular polygon, regular polygon sides=6, draw=mblue!20,
-      inner sep=4.7cm, line width=0.8cm, ] (hexagon) {};
-	\node[ regular polygon, regular polygon sides=6, draw=mblue,
-		inner sep=5.0cm, line width=0.2cm, ] (hexagon) at (0,0) {};
-	\node (lek) at (0,6.6) {leakage};
+	\node (lek) at (0,6.8) {leakage};
 
 	\fill (0, 3) circle (0.15cm) coordinate (on) node [above, yshift=.2cm] {on};
 	\fill (0, 0) circle (0.15cm) coordinate (ca) node [below, yshift=-.2cm] {Center of Camera};
@@ -34,20 +32,22 @@
 	\fill[fill=myellow!90] (CoG) ellipse 
 		[fill=yellow, x radius= 0.5cm, y radius= 0.3cm, rotate=-65];
 	
-	\draw [draw=black, dashed] (CoE)++(115:-3.5cm) -- ++(115:12cm) coordinate (ep) ;
-	\draw [draw=black] (CoE)++(115:-3.0cm) -- node [sloped, above right] {width}
-		++(115:6cm);
-	\draw [draw=black] (CoE)++(205:-1.0cm) -- node [sloped, above right] {length}
-		++(205:2cm);
-	\draw [Stealth-Stealth, draw=black] (CoG) -- node [sloped, below] {DISP} (on);
+    \draw [draw=black, dashed] (CoE)++(115:-3.5cm) -- node [sloped, above,
+        xshift=-1.5cm] {DISP} ++(115:12cm) coordinate (ep);
+	\draw [draw=black] (CoE)++(115:-3.0cm) -- node [sloped, above right] 
+        {length} ++(115:6cm);
+	\draw [draw=black] (CoE)++(205:-1.0cm) -- node [sloped, above right] 
+        {width} ++(205:2cm);
+	\draw [Stealth-Stealth, draw=black] (CoG) -- node [sloped, below,
+        xshift=-0.3cm] {dist} (on);
 	
-	\fill ($(CoE)+(115:6cm)$) circle (0.15cm) coordinate (EP) node [right,
+	\fill ($(CoE)+(115:6cm)$) circle (0.15cm) coordinate (EP) node [above right,
 		xshift=.2cm, fill=white] {rek. Pos.};
 
-	\draw [Stealth-Stealth, draw=black] (EP) -- node [sloped, below] {theta} (on);
+	\draw [Stealth-Stealth, draw=black] (EP) -- node [sloped, above] {$\theta$} (on);
 
 
-	\pic["ALPHA", draw, angle radius = 3.0cm] {angle = ep--CoG--on};
+	\pic["$\alpha$", draw, angle radius = 3.0cm] {angle = ep--CoG--on};
 	
 \end{tikzpicture}
 \end{document}
