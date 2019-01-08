@@ -12,3 +12,14 @@ Fortgeschrittenenpraktikum im Studiengang Physik Master of Science an der Techni
 - V64  [Moderne Interferometrie](http://129.217.224.2/HOMEPAGE/PHYSIKER/MASTER/SKRIPT/Interferometrie.pdf)
     -  [Aufgaben](http://129.217.224.2/HOMEPAGE/PHYSIKER/MASTER/SKRIPT/V64Aufgaben.pdf)
 - STM  [Rastertunnelmikroskop](http://129.217.224.2/HOMEPAGE/PHYSIKER/MASTER/SKRIPT/STMAnleitung.pdf)
+
+## Usage
+Make sure to install packages
+```bash
+pip install -U --user numpy matplotlib pandas pickle uncertainties scipy pint textable
+```
+
+Run using
+```bash
+make
+```
