@@ -66,3 +66,11 @@ anleitungen.pdf: $(anleitungen)
 
 clean:
 	$(foreach dir, $(SUBDIRS), $(MAKE) -C $(dir) clean;)
+
+test:
+	rm -f test.py
+	grep $$(find . -name '*.py') -e 'import' | awk -F: '{print $$2}' > test.py
+	python test.py
+
+
+.PHONY: all clean test

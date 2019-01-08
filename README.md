@@ -19,7 +19,12 @@ Make sure to install packages
 pip install -U --user numpy matplotlib pandas pickle uncertainties scipy pint textable
 ```
 
-Run using
+To test if everything is correctly installed do
+```bash
+make test
+```
+
+if there are no errors, build all protocols with
 ```bash
 make
 ```

@@ -1,16 +1,7 @@
-all: build/main.pdf
+all:
+	$(MAKE) -C anleitung
 
-OUT_DIR = build
-TEX_CMD = latexmk \
-	--pdf \
-	--output-directory=$(OUT_DIR) \
-	--halt-on-error \
-	--interaction=nonstopmode
+clean:
+	$(MAKE) -C anleitung clean
 
-build:
-	mkdir -p build
-
-build/main.pdf: main.tex | build
-	TEXINPUTS=build: BIBINPUTS=build: max_print_line=1048576 \
-	$(TEX_CMD) main.tex
-
+.PHONY: all clean
