@@ -9,22 +9,22 @@ protokolle=\
 	04-20180702-Operationsverstaerker/build/main.pdf \
 	05-20181015-OptischePumpen/build/main.pdf \
 
-01-20180416-DebyeScherrer/build/main.pdf:
+01-20180416-DebyeScherrer/build/main.pdf: FORCE
 	$(MAKE) -C ./01-20180416-DebyeScherrer build/main.pdf
 
-02-20180507-GepulsteNMR/build/main.pdf:
+02-20180507-GepulsteNMR/build/main.pdf: FORCE
 	$(MAKE) -C ./02-20180507-GepulsteNMR build/main.pdf
 
-03-20180611-Diodenlaser/build/main.pdf:
+03-20180611-Diodenlaser/build/main.pdf: FORCE
 	$(MAKE) -C ./03-20180611-Diodenlaser build/main.pdf
 
-04-20180702-Operationsverstaerker/build/main.pdf:
+04-20180702-Operationsverstaerker/build/main.pdf: FORCE
 	$(MAKE) -C ./04-20180702-Operationsverstaerker build/main.pdf
 
-05-20181015-OptischePumpen/build/main.pdf:
+05-20181015-OptischePumpen/build/main.pdf: FORCE
 	$(MAKE) -C ./05-20181015-OptischePumpen build/main.pdf
 
-06-20181114-Lehrstuhlversuch/anleitung/build/anleitung.pdf:
+06-20181114-Lehrstuhlversuch/anleitung/build/anleitung.pdf: FORCE
 	$(MAKE) -C ./06-20181114-Lehrstuhlversuch/anleitung build/anleitung.pdf
 
 protokolle.pdf: $(protokolle)
@@ -63,6 +63,8 @@ anleitungen.pdf: $(anleitungen)
 		04-20180702-Operationsverstaerker/anleitung_V51_Operationsverstaerker.pdf \
 		05-20181015-OptischePumpen/anleitung_V21_OptischePumpen.pdf \
 		$@
+
+FORCE:
 
 clean:
 	$(foreach dir, $(SUBDIRS), $(MAKE) -C $(dir) clean;)
