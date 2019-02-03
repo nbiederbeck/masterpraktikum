@@ -1,0 +1,59 @@
+\section{Aufgabe (Farbcodierungen)}%
+\label{sec:aufgabe_1}
+
+\textbf{Task:}
+Sie finden auf einem Widerstand den Farbcode 'gelb, violett, rot, silber'. 
+Um was für einen Widerstand hadelt es sich und welchen Wert hat der Widerstand?
+
+\textbf{Solution:}
+Widerstände in runder Bauform für elektronische Schaltungen werden 
+oder können oft nicht mit Ziffern bedruckt werden. 
+Um ihre Werte zu kennzeichnen, werden Farbcodierungen verwendet. 
+Es geben umlaufende farbige Ringe den Widerstandswert und die Toleranzklasse 
+an. 
+
+Es gibt Farbcodes mit drei, vier, fünf oder sechs Ringen. Bei drei oder vier
+Ringen geben die ersten beiden Ringe einen zweistelligen Wert von 10 $\Omega$ 
+bis 99 $\Omega$ an und der dritte Ring gibt einen Multiplikator an.
+Der vierte Ring, falls vorhanden, gibt die Toleranzklasse an. 
+Fehlt er, ist die Toleranz ±20 \%.
+Bei fünf oder sechs Ringen geben die ersten drei Ringe den Wert an (100 bis 999
+$\Omega$), der vierte Ring ist der Multiplikator und der fünfte Ring die
+Toleranzklasse. Ist ein sechster Ring vorhanden, gibt er den
+Temperaturkoeffizienten (Stabilität) an.
+
+Die Ableserichtung wird auf zwei verschiedene Weisen gekennzeichnet: 
+\begin{itemize}
+    \item der erste Ring vom Rand des Widerstandskörpers einen kleineren 
+        Abstand als der letzte Ring
+    \item der letzte Ring ist räumlich abgesetzt
+\end{itemize}
+Prüfung: 
+Die andere Leserichtung ergibt keinen Wert der zugehörigen E-Reihe 
+oder lässt sich gar nicht entschlüsseln (z. B. letzter Ring ist silber 
+oder gold, was für den ersten Ring nicht zulässig ist). 
+
+\begin{table}
+    \centering
+    \caption{Farbkodierung von Widerständen}
+    \label{tab:label}
+    \begin{tabular}{l c c c}
+        \toprule
+        Farbe & Wert & Multiplikator & Toleranz \\
+        \midrule
+        keine   & ---   & ---       & \pm 20 \% \\
+        silber  & ---   & $10^{-2}$ & \pm 10 \% \\
+        gold    & ---   & $10^{-1}$ & \pm 5 \% \\
+        schwarz & 0     & $10^{0}$  &  --- \\
+        braun   & 1     & $10^{1}$  &  \pm 1 \% \\
+        rot     & 2     & $10^{2}$  &  \pm 2 \% \\
+        orange  & 3     & $10^{3}$  &  --- \\
+        gelb    & 4     & $10^{4}$  &  --- \\
+        grün    & 5     & $10^{5}$  &  \pm 0.5 \% \\
+        blau    & 6     & $10^{6}$  &  \pm 0.25 \% \\
+        violett & 7     & $10^{7}$  &  \pm 0.1 \% \\
+        grau    & 8     & $10^{8}$  &  \pm 0.05 \% \\
+        weiß    & 9     & $10^{9}$  &  --- \\
+        \bottomrule
+    \end{tabular}
+\end{table}

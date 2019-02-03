@@ -13,6 +13,11 @@ all_plots = $(addprefix plots/, \
 all_data = $(addprefix data/, \
 	diode.csv spannungsteiler.csv )
 
+anleitung.pdf:
+	wget http://129.217.224.2/HOMEPAGE/PHYSIKER/MASTER/SKRIPT/ArbeitsblLoet.pdf -q \
+		--user TUDoFP --password WS1819 -O $@
+
+
 $(all_plots): Loetpraktikum.py $(all_data) plots
 	python Loetpraktikum.py
 
