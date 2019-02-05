@@ -21,7 +21,7 @@ for header_0 in diode.columns.levels[0]:
                 ('I/mA', 'U/mV'), ('I/uA', 'U/mV'), ('I/mA', 'U/V'), ('I/uA', 'U/V')]:
             try:
                 diode[header_0][header_1].plot.scatter(
-                    x=comb[0], y=comb[1],
+                    y=comb[0], x=comb[1],
                     label='{}, {}'.format(header_0, header_1),
                     ax=ax, figsize=(5.78, 3.57))
                 fig.tight_layout(pad=0)
