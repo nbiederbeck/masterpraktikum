@@ -43,3 +43,17 @@ for header_0 in diode.columns.levels[0]:
                 fig.savefig('plots/diode_{}_{}.pdf'.format(header_0, header_1))
             except Exception:
                 pass
+
+ue, ua = np.genfromtxt('data/OP.txt', unpack=True)
+ue /= -1000
+param, pcov = curve_fit(f, ue[3:-2], ua[3:-2])
+fig, ax = plt.subplots()
+ax.plot(ue, ua, 'x')
+ax.plot(ue, f(ue, *param), 
+        label='Verstärkung = {:3.2f}+- {:3.2f}'.format(
+            param[0], np.sqrt(np.diag(pcov))[0]))
+ax.set_xlabel('Eingangsspannung / V')
+ax.set_ylabel('Ausgangsspannung / V')
+ax.legend()
+fig.tight_layout(pad=0)
+fig.savefig('plots/OP.pdf')
