@@ -1,15 +1,8 @@
 \subsection{Caspar}%
 \label{sub:caspar}
 
-\begin{wrapfigure}[13]{R}{0.35\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{pictures/skymap.png}
-    \caption{Diese Skymap will durch ein passendes Bild ersetzt werden.}%
-    \label{fig:skymap}
-\end{wrapfigure}
-
 Skymaps sind Grundlage einer jeden Datenanalyse
-und sind von besonderem Interesse bei ausgedehnten Quellen, 
+und sind von besonderem Interesse bei ausgedehnten Quellen,
 oder bei vorhandenseien anderer Quellen im FoV.
 
 \paragraph{Theorie}%
@@ -20,24 +13,27 @@ Ziel ist es, den gemessenen Events eine Position zuzuordnen.
 Dazu werden ge\-wöhn\-lich drei verschieden Koordinatensysteme genutzt:
 
 \begin{description}
-	\item[\quad Kamera Koordinaten] werden genutzt, um die Sensitivität des
+  \item[\quad Kamera Koordinaten] werden genutzt, um die Sensitivität des
     Teleskops
-		als eine Funktion in der Kamera zu beschreiben.
+    als eine Funktion in der Kamera zu beschreiben.
     Eine Repräsentation ist in Abbildung~\ref{fig:cleaning} zu sehen.
-		Anhand dieser lassen sich beispielsweise Inhomogenitäten,
-		wie sie ein helle Quelle verursacht, bereinigen.
-
-	\item[\quad Azimuthal Koordinaten] sind abhängig von der Position des
-		Beobachters auf der Erde.
-		Sie sind nicht für die Observation von Astronomischen Objekten von Nutzen,
-		aber um die Performance zu testen.
-		Dazu werden Daten bei verschiedenen Zenitwinkel verglichen,
+    Anhand dieser lassen sich beispielsweise Inhomogenitäten,
+    wie sie ein helle Quelle verursacht, bereinigen.
+  \item[\quad Azimuthal Koordinaten] sind abhängig von der Position des
+    Beobachters auf der Erde.
+    Sie sind nicht für die Observation von Astronomischen Objekten von Nutzen,
+    aber um die Performance zu testen.
+    Dazu werden Daten bei verschiedenen Zenitwinkel verglichen,
     was eine Variation der Atmosphärendicke entspricht.
-
-	\item[\quad Äquatorial Koordinaten] werden genutzt um eine Skymap einer
-		astrophysikalischen Quelle anzufertigen.
-    % {\color{red} Noch beschreiben wie es aussieht.}
+  \item[\quad Äquatorial Koordinaten] werden genutzt, um eine Skymap einer astrophysikalischen Quelle anzufertigen.
 \end{description}
+
+\begin{wrapfigure}[14]{O}{0.35\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{pictures/skymap.png}
+  \caption{Skymap einer Beobachtung des Krebsnebels.}%
+  \label{fig:skymap}
+\end{wrapfigure}
 
 Die Anfertigung einer Skymap ist nicht so simpel wie bei einem gewöhnlichen
 Bild.

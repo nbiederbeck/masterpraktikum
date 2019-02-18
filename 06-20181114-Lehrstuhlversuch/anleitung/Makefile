@@ -3,7 +3,7 @@ all: build/anleitung.pdf
 build:
 	mkdir -p $@
 
-build/anleitung.pdf: FORCE tikz/build/overview.pdf build/theta2.pdf build/hadroness.pdf | build
+build/anleitung.pdf: FORCE tikz/build/shower.pdf tikz/build/overview.pdf build/theta2.pdf build/hadroness.pdf | build
 	latexmk --pdf --output-directory=build --halt-on-error --interaction=nonstopmode \
 		anleitung.tex
 
