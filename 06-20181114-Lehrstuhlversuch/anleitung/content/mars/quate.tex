@@ -4,7 +4,7 @@
 Quate ist ein Programm,
 das Mittelwerte von einem Parametersatz ausrechnet,
 und Daten selektiert und in die Klassen \textit{gut} und \textit{schlecht} einteilt.
-Durch das Aussortieren kann gewährleistet werden,
+Durch das Aussortieren kann unter anderem gewährleistet werden,
 dass sich die Monte Carlo-Simulation mehr mit den Daten deckt.
 
 \paragraph{Theorie}%
@@ -26,34 +26,34 @@ Zur guten Rekonstruktion eines Schauers muss deswegen die Dichteverteilung
 bekannt sein.
 Dies Reduziert die Unsicherheiten auf die abgeleiteten Größen.
 
-\paragraph{Durchführung}%
+% \paragraph{Durchführung}%
 
-Das Programm \texttt{quate} wird über die
-Datei \texttt{quate.rc} konfiguriert.
-In dieser werden Einstellungen getroffen,
-sodass die Daten sinnvoll prozessiert werden.
-Dazu ist der Azimut und Zenit entsprechend der zu
-observierenden Quelle einzustellen.
-Dies ist über die Parameter \texttt{AzMin},
-\texttt{AzMax}, \texttt{ZdMin} und \texttt{ZdMin}
-möglich.
-Zusätzlich ist der Parameter
-\texttt{MinAerosolTrans9km = 0.8} anzupassen,
-damit {\color{red}\ldots Aerosol \ldots} berücksichtigt wird.
-Überlegen Sie sich,
-bei welchen Daten das Selektieren sinnvoll ist
-(On/Off/MC)
-und führen Sie dieses durch.
-Geben Sie dazu als \texttt{<INPUT-DIRECTORY>} die entsprechenden Pfade zu den Daten an.
+% Das Programm \texttt{quate} wird über die
+% Datei \texttt{quate.rc} konfiguriert.
+% In dieser werden Einstellungen getroffen,
+% sodass die Daten sinnvoll prozessiert werden.
+% Dazu ist der Azimut und Zenit entsprechend der zu
+% observierenden Quelle einzustellen.
+% Dies ist über die Parameter \texttt{AzMin},
+% \texttt{AzMax}, \texttt{ZdMin} und \texttt{ZdMin}
+% möglich.
+% Zusätzlich ist der Parameter
+% \texttt{MinAerosolTrans9km = 0.8} anzupassen,
+% damit {\color{red}\ldots Aerosol \ldots} berücksichtigt wird.
+% Überlegen Sie sich,
+% bei welchen Daten das Selektieren sinnvoll ist
+% (On/Off/MC)
+% und führen Sie dieses durch.
+% Geben Sie dazu als \texttt{<INPUT-DIRECTORY>} die entsprechenden Pfade zu den Daten an.
 
-\begin{lstlisting}
-  quate -b -s -q \
-    --stereo \
-    --config=quate.rc \
-    --out=<OUTPUT-DIRECTORY> \
-    --ind=<INPUT-DIRECTORY>
-\end{lstlisting}
-Quate erstellt im \texttt{<INPUT-DIRECTORY>}
-jeweils einen Ordner \texttt{bad} und \texttt{good},
-in denen symbolische Links zu den jeweils ausgewählten Dateien liegen.
-Dies ist für die folgenden Analyseschritte wichtig.
+% \begin{lstlisting}
+%   quate -b -s -q \
+%     --stereo \
+%     --config=quate.rc \
+%     --out=<OUTPUT-DIRECTORY> \
+%     --ind=<INPUT-DIRECTORY>
+% \end{lstlisting}
+% Quate erstellt im \texttt{<INPUT-DIRECTORY>}
+% jeweils einen Ordner \texttt{bad} und \texttt{good},
+% in denen symbolische Links zu den jeweils ausgewählten Dateien liegen.
+% Dies ist für die folgenden Analyseschritte wichtig.

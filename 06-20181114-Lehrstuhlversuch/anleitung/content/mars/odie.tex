@@ -1,28 +1,18 @@
 \subsection{Odie}%
 \label{sub:odie}
-In der Gamma Ray Astronomy werden die Teleskope in der Regel auf einen Punkt
-ausgerichtet, an dem eine Quelle angenommen wird.
-Die gemessenen Events, die das Teleskop triggert, können vom
-kosmischen Hintergrund oder von einer echten Quelle, falls diese existiert, sein.
 Es wird ein Maß benötigt, um entscheiden zu können,
 ob die Ursache der gemessen Events die Quelle selber ist.
 Das Wahrscheinlichkeitsmaß wird gewöhnlicherweise in Form von Gaußschen
 Standardabweichungen $\sigma$ angegeben.
-Kosmische Quellen können also
-durch das Suchen von Regionen mit hoher Signifikanz (siehe
-Abbildung~\ref{fig:skymap})
-identifiziert werden.
-Desweiteren können die Sensitivitäten und Analysen von verschiedenen
-Teleskopen untereinander,
-durch die auf die Zeit normierte Signifikanz,
-verglichen werden.
+Odie berechnet die Siginifikanz der Daten an einer entsprechenden Quellposition. 
+Ab einer Signifikanz \SI{3}{\sigma} wird von einem \textit{Hinweis} 
+und ab \SI{5}{\sigma} von einer \textit{Detektion} gesprochen.
 
 \paragraph{Theorie}%
 
 Die Wahrscheinlichkeit wird angegeben, indem geprüft wird,
-ob die (zum kosmischen Hintergrund) über\-schüssigen
-Ereignisse   auf eine zufällige Fluktaktion zur
-Hintergrundstrahlung zurückzuführen sind.
+ob die über\-schüssigen Ereignisse auf eine zufällige
+Fluktaktion zur Hintergrundstrahlung zurück\-zu\-führen sind.
 Dies geschieht mit einem Likelihood\-/Quotienten\-/Test.
 
 Die Herleitung ist im Einzelnen für die Durchführung des
@@ -30,42 +20,42 @@ Versuches nicht relevant,
 dient aber zum vollen Verständnis des Versuchs.
 
 Zur Bestimmung des Photonenflusses der Quelle wird für die Zeit $t_\text{on}$ in die Region der
-erwarteten Quelle geschaut und die Anzahl an Photonen $N_\text{on}$ gezählt.
+erwarteten Quelle geschaut und die Anzahl an Ereignissen $N_\text{on}$ gezählt.
 Zur Abschätzung des Untergrundes werden für die Zeit $t_\text{off}$
 (äquivalent zu $t_\text{on} / \alpha$)
-die Events des kosmischen Hintergrunds $N_\text{off}$ gemessen.
+Events in einer Region wo keine Quelle erwartet wird $N_\text{off}$ gemessen.
 Da das Verhältnis von Signal $N_\text{S}$ zu Untergrund
 $N_\text{B}$ sehr klein ist
 und der Hintergrund statistischen Schwankungen unterliegt,
-ist
+ist mit
 \begin{equation}
 	N_\text{S} = N_\text{on} - \hat{N}_\text{B} = N_\text{on} - \alpha N_\text{off}
 \end{equation}
-nur eine schlechte Abschätzung der Signifikanz
+die Signifikanz 
 \begin{equation}
 	S = \frac{N_\text{S}}{\sqrt{N_\text{S}}},
 \end{equation}
-da es sich um statistisches Rauschen des
+nur grob abgeschätzt, da es sich um statistisches Rauschen des
 Hintergrunds handeln kann.
+Da Gamma Ray Ereignisse alle unabhängig voneinander sind,
+sind diese poissonverteilt.
 
 Eine statistisch stabile Methode, die Signifikanz zu bestimmen, stellt die
 Likelihood Ratio Methode nach Li und Ma da.
 Es wird angenommen, dass die erwartete Anzahl an Signal
-Photonen $\langle N_\text{on} \rangle$ und die Anzahl Hintergrund Photonen
+Photonen $\langle N_\text{on} \rangle$ und die Anzahl an Untergrundereignissen 
 $\langle N_\text{off} \rangle$ nicht bekannt sind.
 Die zu prüfende Nullhypothese ist:
 \begin{quote}
 	Keine Quelle existiert und
-	alle gemessenen Events gehören zum kosmischen Hintergrund.
+    alle gemessenen Events $N_\text{on}$ gehören zum Untergrund.
 \end{quote}
-Dies ist äquivalent zu $\langle N_\text{on} \rangle=0$.
-Da Gamma Ray Ereignisse alle unabhängig voneinander sind,
-sind diese poissonverteilt.
+Dies ist äquivalent zu $\langle N_\text{S} \rangle=0$.
 
 Zur Bestimmung der Liklihoodfunktion der Nullhypothese,
 verschwinden die
-Ereignisse aus der Quelle und die Anzahl an Hintergrund Photonen addiert sich
-aus der On und Off Region:
+Ereignisse aus der Quelle und die Untergrundereignisse entsprechen der
+gewichteten Summe aus der On und Off Region:
 \begin{equation}
 	L(X|E_0, \hat{T}_\text{c})= P_\text{r} \left[
 		N_\text{on}, N_\text{off} |
@@ -96,12 +86,12 @@ ergibt sich die Li und Ma Signifikanz
 \begin{equation}
   S = \sqrt{2} {\left(
       N_\text{on} \log \left[
-        (\tau + 1) \left(
+        \left( \frac{1 + \alpha}{\alpha} \right) \left(
           \frac{N_\text{on}}{N_\text{on} + N_\text{off}}
         \right)
       \right]
       + N_\text{off} \log \left[
-        \left( \frac{1 + \tau}{\tau} \right) \left(
+        (\alpha + 1) \left(
           \frac{N_\text{off}}{N_\text{on} + N_\text{off}}
         \right)
       \right]
@@ -118,7 +108,7 @@ ergibt sich die Li und Ma Signifikanz
 Die Signifikanz kann sowohl auf Rohdaten als auch Gamma/Hadron-separierten Daten
 bestimmt werden.
 Sie hängt neben dem Verhältnis von $N_\text{on}$ zu $N_\text{off}$ auch
-maßgeblich von dem Umfang an $N_\text{on}$ ab.
+maßgeblich von der Größe von $N_\text{on}$ ab.
 Eine gute Gamma/Hadron Separation hält den Untergrund gering und maximiert die
 Signifikanz.
 
@@ -127,11 +117,9 @@ angenommener und rekonstruierter Quellposition
 für jedes Event an.
 Durch einen Schnitt in $\theta$ werden Events verworfen,
 welche einen zu großen Abstand von der angenommenen Quelle aufweisen.
-Die Richtungsrekonstruktion eines Signalereignisses weist
-einen geringen Abstand zur angenommenen Quelle auf.
 Hingegen können diffuse Untergrundereignisse jeden möglichen Abstand zur
 angenommenen Signalquelle haben,
-da sie den Detektor homogen ausfüllen.
+da sie den Himmelsausschnitt homogen ausfüllen.
 Ziel ist es, einen Schnitt in $\theta^2$ (\texttt{theta2}) so zu setzen,
 dass die Signifikanz maximal wird.
 Ein beispielhafter Schnitt in Theta ist in

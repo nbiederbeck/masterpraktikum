@@ -3,7 +3,7 @@
 
 \paragraph{Theorie}
 
-Melibea wendet auf die von Superstar berechnetet
+Melibea wendet auf die von Superstar berechneten
 Stereo-Parameter Dateien
 die von Coach trainierten Modelle an.
 Das Programm weist damit jedem Event
@@ -18,9 +18,8 @@ die Klasse Signal zu.
 Events mit $H_{\text{Evt}} > H_{\text{cut}}$ werden der Klasse Untergrund
 zugeordnet.
 Hierbei ist das Ziel, einen möglichst reinen
-Datensatz
-(frei von Untergrund)
-zu erzeugen.
+Datensatz (frei von Untergrund) zu erzeugen, 
+unter der Einschränkung nicht zu viele Gammas zu verwerfen.
 Für eine Veranschaulichung des Schnittes siehe Abbildung~\ref{fig:uebersicht}.
 Für die weiteren Analyseschritte ist ein möglichst
 großer Datensatz von Vorteil.
@@ -32,8 +31,8 @@ dass ein Kompromiss zwischen Reinheit und Größe des Datensatzes erreicht wird.
 
 Für Stereo-Analysen muss die Konfigurationsdatei \texttt{melibea\_stereo.rc}
 verwendet werden.
-Es gibt keine notwendigen Anpassungen in dieser Datei.
-Melibea muss auf Daten und Monte Carlos einzeln angewendet werden.
+Es gibt für diese Analyse keine notwendigen Anpassungen in dieser Datei.
+Melibea muss auf Daten und dem Testdatensatz der Monte Carlos einzeln angewendet werden.
 
 \begin{lstlisting}
   # <PATH-TO> entspricht dem RF.outpath aus coach!
@@ -50,9 +49,13 @@ Melibea muss auf Daten und Monte Carlos einzeln angewendet werden.
     --etab=<PATH-TO>/Energy_Table.root \
     --rfdisptree=<PATH-TO>/disp1/DispRF.root \
     --rfdisp2tree=<PATH-TO>/disp2/DispRF.root \
-    --ind=<INPUT-DIRECTORY> \
+    --ind=<INPUT-DIRECTORY>/*.root \
     --out=<OUTPUT-DIRECTORY> \
     --log=<OUTPUT-DIRECTORY>/melibea.log
   # Ausserdem bei Monte Carlo
-    -mc
+    -mc 
+    --ind=<INPUT-DIRECTORY>/*_wr_2.root \
 \end{lstlisting}
+
+Melibea erstellt für jede Eingangsdatei eine Outputdatei der
+Form \texttt{*\_Q\_*} und die Datei \texttt{melibea.root}. 

@@ -1,6 +1,6 @@
 \subsection{Star}%
 \label{sub:star}
-Ziel von Star ist die Berechnung von gereinigten Kamerabildern und die Berechnung
+Ziel von Star ist die Bereinigung von Kamerabildern und die Berechnung
 der Image Parameter auf den Daten.
 
 \paragraph{Theorie}
@@ -8,24 +8,18 @@ Sobald das Teleskop ein Event triggert,
 speichert es Daten von jedem PMT.\@
 Diese Daten enthalten neben dem eigentlichen Tscherenkowlicht auch
 Rauschen von elektronischen Bauteilen,
-Nachthimmelhintergrund (NSB:\ Night Sky Background) z.B.\ des Mondes,
+Nachthimmelhintergrund  z.B.\ des Mondes,
 und andere Störungen.
 
 \subparagraph{Image Cleaning}
 Um sinnvoll die Image Parameter bestimmen zu können,
 müssen die Daten bereinigt werden.
-Dazu werden alle Pixel verworfen, die wahrscheinlich nicht zu den
-vom Tscherenkowschauer ausgelösten Pixeln gehören.
+Dazu werden alle Pixel verworfen, in denen keine 
+Tscherenkowphotonen gemessen werden.
 Des Weiteren ist gutes Image Cleaning in der Lage,
 % um einen konstanten Photostream zu bereinigen,
 niederenergetische Ereignisse vom Untergrund zu trennen und damit
 für einen geringen Energie-Schwellwert zu sorgen.
-
-Zu jeder anvisierten Quellposition (\textit{On}) werden
-genau so lang Daten aufgenommen,
-wo kein Gammafluss (\textit{Off}) erwartet wird.
-Da insbesondere der NSB abhängig von der Zeit und Quellposition ist,
-müssen bei jeder Observation zusätzliche Off-Daten aufgenommen werden.
 
 Das aktuell angewandte Image Cleaning heißt \textit{Sum Image Cleaning}.
 Es besteht aus drei Schritten.

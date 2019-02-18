@@ -9,14 +9,13 @@
 \end{wrapfigure}
 
 Skymaps sind Grundlage einer jeden Datenanalyse
-und sind von besonderem Interesse bei ausgedehnten Quellen.
-Durch das Vermessen von ausgedehnten Quellen
-lässt sich beispielsweise der Zeitpunkt einer Supernova-Explosion schätzen.
+und sind von besonderem Interesse bei ausgedehnten Quellen, 
+oder bei vorhandenseien anderer Quellen im FoV.
 
 \paragraph{Theorie}%
 \label{par:theorie}
 
-Eine Skymap ist eine zweidimensionale Repräsentation der aufgenommen Photonen.
+Eine Skymap ist eine zweidimensionale Repräsentation der aufgenommen Ereignisse.
 Ziel ist es, den gemessenen Events eine Position zuzuordnen.
 Dazu werden ge\-wöhn\-lich drei verschieden Koordinatensysteme genutzt:
 
@@ -35,7 +34,7 @@ Dazu werden ge\-wöhn\-lich drei verschieden Koordinatensysteme genutzt:
 		Dazu werden Daten bei verschiedenen Zenitwinkel verglichen,
     was eine Variation der Atmosphärendicke entspricht.
 
-	\item[\quad Equatorial Koordinaten] werden genutzt um eine Skymap einer
+	\item[\quad Äquatorial Koordinaten] werden genutzt um eine Skymap einer
 		astrophysikalischen Quelle anzufertigen.
     % {\color{red} Noch beschreiben wie es aussieht.}
 \end{description}
@@ -49,7 +48,7 @@ wie es bei gewöhnlichen Bildern der Fall ist.
 Vielmehr wird für jedes Gammaevent ein einzelnes Bild aufgenommen,
 auf dem die Richtung rekonstruiert wird.
 Eine Skymap bildet eine Menge an rekonstruierten Richtungen im Himmel ab.
-Da die Richtungskonstruktion der Events einen gewissen Fehler aufweist,
+Da die Auflösung des Detektors beschränkt ist,
 schmieren die rekonstruierten um die wahren Quellposition aus.
 Das Ausschmieren der Quelle wird durch die \textit{Point Spread Function (PSF)}
 beschrieben
@@ -63,7 +62,8 @@ Die Konfigurationsdatei \texttt{caspar.rc} wird verwendet.
 Es muss das Feld \texttt{Caspar.dataName} angepasst werden.
 Wie bei Odie werden die von Melibea prozessierten Daten genutzt.
 
-
 \begin{lstlisting}
   caspar -q -b --config=caspar.rc
 \end{lstlisting}
+
+Caspar erzeugt die Datei \texttt{Output\_caspar.root}.

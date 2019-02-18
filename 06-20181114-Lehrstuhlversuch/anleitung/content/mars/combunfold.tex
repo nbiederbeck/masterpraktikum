@@ -1,12 +1,12 @@
 \subsection{CombUnfold}%
 \label{sub:combunfold}
-Die Bestimmung der Energie von Gammaschauern beruht auf dem Look-Up Table
+Die Bestimmung der Energie von Gammaschauern beruht auf dem Look-Up-Table
 Verfahren,
 welche aus den Image Parametern erstellt wurden.
 Die Energie, welche auf den Parametern geschätzt wird, beruht auf einer
 endlichen Auflösung.
-Um einen Energieschätzer für die Quelle zu erhalten,
-wird ein Entfaltungsverfahren verwendet.
+% Um einen Energieschätzer für die Quelle zu erhalten,
+% wird ein Entfaltungsverfahren verwendet.
 Ziel ist es, die Spektrale Energieverteilung einer Quelle zu bestimmen.
 Dadurch ist eine genauere Klassifizierung des Objekts und der
 Wechselwirkungsprozesse möglich.
@@ -18,39 +18,46 @@ Tscherenkowteleskope sind nicht in der Lage, die Energie
 des Primärteilchen direkt zu messen,
 sondern lediglich den deponierten Photostrom,
 weswegen ein Entfaltungsalgorithmus benötigt wird.
-Bei der Berechnung der Primärenergie treten beim Messen hauptsächlich dreierlei Probleme auf.
+% Bei der Berechnung der Primärenergie treten beim Messen hauptsächlich dreierlei Probleme auf.
+Aufgrund der statistischen Unsicherheit der Energieschätzer und der begrenzten
+Auflösung in der Energie muss der dopnierte Photostrom entfaltet werden.
 
-\begin{description}
-    \item[\quad limitierte Akzeptanz]
-        Nicht alle Schauer können detektiert werden.
-        Die Detektionswahrscheinlichkeit wird beispielsweise limitiert
-        durch Events, welche die Triggerschwelle der PMTs nicht auslösen,
-        die Totzeit der PMTs,
-        und dem Cut auf Events, die zu klein sind, um ihre Richtung zu rekonstruieren.
+% \begin{description}
+%     \item[\quad limitierte Akzeptanz]
+%         Nicht alle Schauer können detektiert werden.
+%         Die Detektionswahrscheinlichkeit wird beispielsweise limitiert
+%         durch Events, welche die Triggerschwelle der PMTs nicht auslösen,
+%         die Totzeit der PMTs,
+%         und dem Cut auf Events, die zu klein sind, um ihre Richtung zu rekonstruieren.
 
-    \item[\quad indirekte Messung]
-        Die Primärenergie kann nicht direkt gemessen werden.
-        Stattdessen kann nur der Photostrom gemessen werden,
-        welcher vom Tscherenkowschauer in der Kamera deponiert wird.
-        Da die Strecke, welche die Teilchen durch die Erdatmosphäre durchlaufen,
-        die geschätzte Energie wesentlich beeinflusst,
-        ist der Fehler direkt mit der Richtungsrekonstruktion korreliert.
+%     \item[\quad indirekte Messung]
+%         Die Primärenergie kann nicht direkt gemessen werden.
+%         Stattdessen kann nur der Photostrom gemessen werden,
+%         welcher vom Tscherenkowschauer in der Kamera deponiert wird.
+%         Da die Strecke, welche die Teilchen durch die Erdatmosphäre durchlaufen,
+%         die geschätzte Energie wesentlich beeinflusst,
+%         ist der Fehler direkt mit der Richtungsrekonstruktion korreliert.
 
-    \item[\quad begrenzte Auflösung]
-        Die geschätzten Energien weisen einen statistischen Fehler auf.
-        Durch das Binning der Daten kommt es vor,
-        dass der Bin der geschätzte Energien von dem der wahren abweicht,
-        sodass Bins über- oder unterrepräsentiert sind.
-\end{description}
+%     \item[\quad begrenzte Auflösung]
+%         Die geschätzten Energien weisen einen statistischen Fehler auf.
+%         Durch das Binning der Daten kommt es vor,
+%         dass der Bin der geschätzte Energien von dem der wahren abweicht,
+%         sodass Bins über- oder unterrepräsentiert sind.
+% \end{description}
 
-Die Probleme werden durch den Entfaltungsalgorithmus,
+% Die Probleme werden durch den
+Dazu wird ein
+Entfaltungsalgorithmus verwendet,
 welcher die Observablen $f$
-in den Raum der physikalischen Größen $g$ transformiert,
-gelöst.
+in den Raum der physikalischen Größen $g$ transformiert.
+% gelöst.
 Das Problem wird durch das Fredholm Integral beschrieben:
 \begin{equation}
 	g(y) = \int_\text{c}^\text{d} M(x,y) f(x) \, \text{d}x + b(y)
 \end{equation}
+Hierbei ist $M(x, y)$ eine Funktion, die die Transformation der physikalischen
+Daten in das Messsystem vornimmt (bspw.\ eine Detektorfunktion), und $b(y)$ der Bias.
+
 Ziel ist es, mit Monte Carlo simulierten Daten
 die Antwortmatrix zu bestimmen.
 Dazu wird der Parameterraum diskretisiert.
@@ -118,6 +125,10 @@ Hier müssen einige Sachen angepasst werden:
 Es kann
 \texttt{MCombineDataForUnfolding.NSpectrumIterations}
 auf eine andere Zahl gesetzt werden.
+Die Migrationsmatrix wird iterativ bestimmt. 
+Daher ist es notwendig, mehrere
+Iterationen durchzuführen, damit sie gegen einen sinnvollen Wert strebt. 
+Sinnvoll sind mindestens mehr als 10 Iterationen. 
 
 Außerdem werden mit
 \texttt{MCallUnfold.FlagUnfold}

@@ -7,22 +7,14 @@ sowie der Rekonstruktion von Energie und Richtung.
 \paragraph{Theorie}%
 
 \subparagraph{Gamma/Hadron-Separation}
-Die Teleskope triggern drei Arten von Events.
-Neben den eigentlichen Luftschauern,
-welche durch Protonen
-oder Gammas verursacht werden,
-erzeugen Myonen oder versehentliche Trigger weitere Events.
-Myonen erzeugen ringförmige Ereignisse in der Kamera.
-Versehentliche Trigger entstehen z.B.\ durch NSB und elektronisches Rauschen.
-
 Für die Analyse einer Quelle ist es wichtig,
 das Signal (Gammaschauer) vom
-Untergrund (alles andere) zu separieren.
+Untergrund (hauptsächlich Protonen) zu separieren.
 Da Untergrundevents um mehrere Größenordnungen häufiger auftreten (1:\num{e5}),
 geschieht dies durch ein multidimensionales maschinelles
 Klassifizierungsystem (Random Forest).
 
-\begin{wrapfigure}[18]{L}{0.6\textwidth}
+\begin{wrapfigure}[18]{L}{0.55\textwidth}
   \centering
   \includegraphics[width=\linewidth]{build/hadroness.pdf}
   \caption{Schnitte auf der Hadroness und ihre Konsequenzen für die Analyse.}%
@@ -30,7 +22,7 @@ Klassifizierungsystem (Random Forest).
 \end{wrapfigure}
 
 Ziel des Modells ist es, Gammas den Wert 0 und Untergrund den Wert 1 zuzuweisen.
-Dazu werden für unabhängige Entscheidungsbäume einer begrenzten Tiefe
+Dazu wird für unabhängige Entscheidungsbäume einer begrenzten Tiefe
 der Informationsgehalt maximiert.
 Durch Mittelung eines Events über alle trainierten Bäume entsteht ein Wert
 zwischen eindeutig Gamma und eindeutig Hadron, welcher als Hadroness bezeichnet
@@ -46,7 +38,7 @@ und somit der Photoelektronen in der Kamera,
 jedoch hängt die Menge an detektiertem Licht von weiteren Parametern,
 wie unter anderem Winkel der Kamera und Lage des Schauers im Kamerabild, ab.
 
-In MARS wird die Energie des Primärteilchens auf zwei Arten rekonstruiert:
+In MARS kann die Energie des Primärteilchens auf zwei Arten rekonstruiert werden:
 \begin{description}
 	\item[\quad Look-up Tables] Für eine Look-up Table werden Monte Carlo
 		Gammas in ausgewählten Parametern gebinnt.
@@ -63,7 +55,9 @@ In MARS wird die Energie des Primärteilchens auf zwei Arten rekonstruiert:
 \subparagraph{Richtungsrekonstruktion}%
 \label{par:position}
 
-Die Rekonstruktion der ursprünglichen Richtung ist einer der Hauptziele.
+Die Rekonstruktion der ursprünglich\-en Richtung der Gamma-Ereignisse 
+ist eines der Hauptziele, um zu überprüfen, ob das Ereigniss der angenommenen
+Quellposition zuzuordnen ist.
 Dafür werden nach der ersten Abschätzung in Kapitel~\ref{sub:superstar} weitere
 Analyseschritte durchgeführt.
 Dazu wird zunächst die \textit{DISP (\textbf{D}istance between the
@@ -76,14 +70,18 @@ Da MAGIC ein Stereoteleskop ist,
 kann bei der Schätzung des Vorzeichens des DISP-Parameters
 der Schnittpunkt der beiden Hauptachsen als zusätzliche Information
 verwendet werden.
-Die rekonstruierte Position wird möglichst nah an dem Schnittpunkt der Achsen
-gewählt, was den Vorteil birgt,
-dass ca.\ 10--20\% schlecht rekonstruierte Events verworfen werden.
-Die Schätzung des DISP-Parameters wird momentan über einen Random-Forest
-getätigt, wo Informationen wie die Momente entlang der
-Hauptachse oder der Zeitgradient eingehen.
+Die angenommene rekonstruierte Position ist diejenge, welche näher am
+Schnittpunkt der Achsen liegt.
+Dadurch wird die Auswirkung von schlecht richtungsrekonstruierten Ereignissen
+auf die angenomme Quellposition verringert.
+Die Schätzung des DISP-Parameters wird über einen Random-Forest getätigt, 
+wo Informationen wie die Momente entlang der Hauptachse oder der Zeitgradient eingehen.
 Hadronische Schauer, welche fälschlicherweise die Gamma/Hadron-Separation
-überstanden habe, weisen meist eine schlechte Richtungsrekonstruktion auf.
+überstanden habe, weisen eine kleinere Richtungsgenauigkeit auf, da auf diesen
+nicht trainiert wird.
+Die Richtungsrekonstruktion vom Untergrund ist jedoch ohne Belangen, solange sie
+homogen wie der Untergrund selber verteilt ist.
+
 
 \paragraph{Durchführung}%
 In der \texttt{coach.rc} sind die Pfade
@@ -98,14 +96,12 @@ und einem Testdatensatz aufgeteilt.
 Die Trainingsdaten sind durch die Endung
 \texttt{*\_wr\_1.root} gekennzeichnet.
 Desweiteren ist der Zenit sinnvoll einzustellen.
-Zur schnelleren Erzeugung von Ergebnissen kann die Anzahl an
-Entscheidungsbäumen auf \num{50}
-reduziert werden.
 Es sind die Argumente
 \texttt{-RFgh}, \texttt{-LUTs}, und \texttt{-RFdisp}
 zum Erstellen eines Random Forest für die Gamma-/Hadron-Separation,
 einer Look-Up-Table für die Energieschätzung,
-und eines weiteren Random Forest für zusätzliche Energieschätzung.
+und zwei weiterer Random Forest für die Richtungsrekonstruktion der beiden
+Teleskope.
 
 \begin{lstlisting}
   coach -q -b	\
@@ -119,6 +115,12 @@ und eines weiteren Random Forest für zusätzliche Energieschätzung.
   coach -q -b --config=coach.rc -RFdisp
 \end{lstlisting}
 
-Es werden fünf Dateien erzeugt,
+Es werden vier Dateien erzeugt,
 die als weitere Eingangsdaten für die folgenden Analyseschritte verwendet
 werden.
+Dies sind die beiden Richtungsrekonstruktionen \texttt{DispRF.root},
+für die beiden Teleskope, 
+in den Ordnern \texttt{disp\{1,2\}}, 
+der Random Forest für die Separation
+\texttt{RF.root} und die Look-Up-Table \texttt{Energy\_Table.root} für die
+Energieschätzung.
