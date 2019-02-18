@@ -1,7 +1,12 @@
-all: build/overview.pdf build/imgParam.pdf
+all: build/overview.pdf build/imgParam.pdf build/shower.pdf
 
 build:
 	mkdir -p $@
+
+build/shower.pdf: shower.tex | build
+	latexmk --lualatex --output-directory=build --halt-on-error --interaction=nonstopmode \
+		$<
+	pdfcrop $@ $@
 
 build/hillas.pdf: hillas.tex | build
 	latexmk --pdf --output-directory=build --halt-on-error --interaction=nonstopmode \

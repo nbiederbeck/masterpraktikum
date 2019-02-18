@@ -1,0 +1,19 @@
+\documentclass{scrartcl}
+\usepackage{magic}
+\usepackage[compat=1.1.0]{tikz-feynman}
+
+\begin{document}
+\thispagestyle{empty}
+  \vspace*{5cm}
+\begin{tikzpicture}[scale=1, transform shape]
+  \feynmandiagram[tree layout] {%
+    a -- [photon, edge label=$\gamma$] b;
+    b -- [fermion, edge label=$e^{-}$] c;
+    b -- [anti fermion, edge label=$e^{+}$] d;
+    c -- [photon, edge label=$\gamma$] e;
+    c -- [photon, edge label=$\gamma$] f;
+    d -- [photon, edge label=$\gamma$] g;
+    d -- [photon, edge label=$\gamma$] h;
+  };
+\end{tikzpicture}
+\end{document}
