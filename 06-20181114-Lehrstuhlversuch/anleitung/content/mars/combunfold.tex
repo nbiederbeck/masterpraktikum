@@ -12,11 +12,10 @@ Dadurch ist eine genauere Klassifizierung des Objekts und der
 Wechselwirkungsprozesse möglich.
 
 \paragraph{Theorie}%
-\label{par:theorie}
 
 Tscherenkowteleskope sind nicht in der Lage, die Energie
 des Primärteilchen direkt zu messen,
-sondern lediglich den deponierten Photostrom,
+sondern lediglich den deponierten Photostrom in den einzelnen PMTs,
 weswegen ein Entfaltungsalgorithmus benötigt wird.
 % Bei der Berechnung der Primärenergie treten beim Messen hauptsächlich dreierlei Probleme auf.
 Aufgrund der statistischen Unsicherheit der Energieschätzer und der begrenzten
@@ -125,10 +124,10 @@ Hier müssen einige Sachen angepasst werden:
 Es kann
 \texttt{MCombineDataForUnfolding.NSpectrumIterations}
 auf eine andere Zahl gesetzt werden.
-Die Migrationsmatrix wird iterativ bestimmt. 
+Die Migrationsmatrix wird iterativ bestimmt.
 Daher ist es notwendig, mehrere
-Iterationen durchzuführen, damit sie gegen einen sinnvollen Wert strebt. 
-Sinnvoll sind mindestens mehr als 10 Iterationen. 
+Iterationen durchzuführen, damit sie gegen einen sinnvollen Wert strebt.
+Sinnvoll sind mindestens mehr als 10 Iterationen.
 
 Außerdem werden mit
 \texttt{MCallUnfold.FlagUnfold}

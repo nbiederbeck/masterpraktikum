@@ -7,6 +7,7 @@ build/anleitung.pdf: FORCE tikz/build/shower.pdf tikz/build/overview.pdf build/t
 	latexmk --pdf --output-directory=build --halt-on-error --interaction=nonstopmode \
 		anleitung.tex
 
+tikz/build/shower.pdf: tikz/build/overview.pdf
 tikz/build/overview.pdf:
 	$(MAKE) -C tikz
 

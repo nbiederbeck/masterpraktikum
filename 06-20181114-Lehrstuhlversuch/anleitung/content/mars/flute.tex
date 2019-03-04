@@ -1,7 +1,7 @@
 \subsection{Flute}%
 \label{sub:flute}
 
-Ziel von Flute ist es, 
+Ziel von Flute ist es,
 das Energiespektrum und
 eine Lichtkurve einer Quelle zu bestimmen.
 
@@ -9,8 +9,8 @@ eine Lichtkurve einer Quelle zu bestimmen.
 
 Die
 Spektrale Energieverteilung (\textit{Spectral Energy Distribution: SED})
-gibt den Fluss gegen die Energie an. 
-Jede Quellart wird durch eine charakteristische SED identifiziert. 
+gibt den Fluss gegen die Energie an.
+Jede Quellart wird durch eine charakteristische SED identifiziert.
 Anhand der SED können beispielsweise Rückschlüsse auf die
 Beschleunigungsmechanismen der Quelle gezogen werden.
 Die zeitliche Änderung des Flusses wird durch die Light Curve (LC) beschrieben.
@@ -41,7 +41,7 @@ und so einfacher zu detektieren sind.
 
 % Die effektive Fläche wird durch die Mittelung von Monte Carlo-Ereignissen berechnet.
 Um die effektive Fläche $A_{\text{eff}}$ zu berechnen,
-werden auf einer homogenen Fläche $A_{\text{MC}}$ $N_{\gamma,\text{mc}}$ Gammaereignisse simuliert.
+werden auf einer Fläche $A_{\text{MC}}$ $N_{\gamma,\text{mc}}$ Gammaereignisse simuliert.
 % auf der Gamma Ereignisse geschehen,
 % mit den Teleskopen in ihrer Mitte.
 Die effektive Fläche ist dann
@@ -59,8 +59,7 @@ Die Simulation muss in Bins aller abhängigen Parameter durchgeführt werden.
 
 \subparagraph{Energiespektrum}
 
-Zur Berechnung des Energiespektrums muss ein Spektrum angenommen werden,
-das entfaltet werden kann:
+Zur Berechnung des Energiespektrums muss ein Quellspektrum angenommen werden:
 \begin{equation}%
   \label{eq:photon_index}
   \frac{d\Phi}{dE} \simeq K {\left(\frac{E}{E_0}\right)}^{-\Gamma},
@@ -68,22 +67,22 @@ das entfaltet werden kann:
 dabei ist $\Gamma \approx 2$ der spektrale Index.
 
 Es wird der \textit{Gammafluss} definiert,
-als Anzahl von gemessenen Signalereignissen
+als Anzahl von gemessenen Signalereignissen $N_{\gamma}$
 über
 einer Fläche $A$ über pro Zeit $t$.
 \begin{equation}%
   \label{eq:gamma_flux}
-  \Phi = \frac{d^2 N}{dA_{\text{eff}}\, dt_{\text{eff}}}
+  \Phi = \frac{d^2 N_{\gamma}}{dA_{\text{eff}}\, dt_{\text{eff}}}
   \quad \left(\si{\per\centi\meter\tothe2\per\second}\right),
 \end{equation}
 und der differentielle Fluss pro Energie ist
 \begin{equation}%
   \label{eq:differential_energy_spectrum}
-  \frac{d\Phi}{dE} = \frac{d^3N}{dA\, dt\, dE}
+  \frac{d\Phi}{dE} = \frac{d^3N_{\gamma}}{dA\, dt\, dE}
   \quad \left(\si{\per\centi\meter\tothe2\per\second\per\tera\electronvolt}\right).
 \end{equation}
 
-Der Integrale Fluss ist für Energien $> \SI{200}{\giga\electronvolt}$
+Der integrierte Fluss ist für Energien $> \SI{200}{\giga\electronvolt}$
 beispielsweise
 \begin{equation}%
   \label{eq:integral_flux}

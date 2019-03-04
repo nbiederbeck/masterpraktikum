@@ -3,13 +3,15 @@
 
 Coach trainiert Modelle zur Separation von Signal und Untergrund,
 sowie der Rekonstruktion von Energie und Richtung.
+Weitere Informationen zu Maschinellem Lernen sind in der Vorlesung
+\enquote{Statistische Methoden der Datenanalyse} zu finden.
 
 \paragraph{Theorie}%
 
 \subparagraph{Gamma/Hadron-Separation}
 Für die Analyse einer Quelle ist es wichtig,
 das Signal (Gammaschauer) vom
-Untergrund (hauptsächlich Protonen) zu separieren.
+Untergrund (hauptsächlich Protonschauer) zu separieren.
 Da Untergrundevents um mehrere Größenordnungen häufiger auftreten (1:\num{e5}),
 geschieht dies durch ein multidimensionales maschinelles
 Klassifizierungsystem (Random Forest).
@@ -21,20 +23,31 @@ Klassifizierungsystem (Random Forest).
   \label{fig:uebersicht}
 \end{wrapfigure}
 
-Ziel des Modells ist es, Gammas den Wert 0 und Untergrund den Wert 1 zuzuweisen.
+Ziel des Modells ist es,
+den Ereignissen einen Klassifizierungswert zwischen 0 und 1 zuzuweisen,
+die sogenannte Hadronness.
+% Gammas den Wert 0 und Untergrund den Wert 1 zuzuweisen.
 Dazu wird für unabhängige Entscheidungsbäume einer begrenzten Tiefe
-der Informationsgehalt maximiert.
-Durch Mittelung eines Events über alle trainierten Bäume entsteht ein Wert
-zwischen eindeutig Gamma und eindeutig Hadron, welcher als Hadroness bezeichnet
-wird.
-Durch Schnitte auf diesem Wert kann eine Separation durchgeführt werden.
+auf Daten mit bekannter Zuordnung (Gamma oder Hadron) so trainiert, dass die
+Trennkraft maximiert wird.
+% der Informationsgehalt maximiert.
+Ein Ereignis wird mit größerer Wahrscheinlichkeit einem
+Gammateilchen zugeordnet, wenn die Hadronness kleiner ist.
+% Durch Mittelung eines Events über alle trainierten Bäume entsteht ein Wert
+% zwischen eindeutig Gamma und eindeutig Hadron, welcher als Hadroness bezeichnet
+% wird.
+Diese wird durch die Mittelung der Entscheidungen (0 oder 1) aller trainierter
+Bäume berechnet.
+Durch Schnitte auf diesem Wert kann somit die Gamma-Hadron-Separation durchgeführt werden.
 
 \subparagraph{Energierekonstruktion}%
 \label{par:energie}
 
-Die Energie des Gammas ist beinahe proportional
+Die Energie des Gammas ist annähernd proportional
 zur Anzahl der Tscherenkowphotonen
-und somit der Photoelektronen in der Kamera,
+und somit der Photoelektronen
+in den PMTs, welche dem Schauer zugeordnet werden,
+% in der Kamera,
 jedoch hängt die Menge an detektiertem Licht von weiteren Parametern,
 wie unter anderem Winkel der Kamera und Lage des Schauers im Kamerabild, ab.
 
@@ -55,8 +68,8 @@ In MARS kann die Energie des Primärteilchens auf zwei Arten rekonstruiert werde
 \subparagraph{Richtungsrekonstruktion}%
 \label{par:position}
 
-Die Rekonstruktion der ursprünglich\-en Richtung der Gamma-Ereignisse 
-ist eines der Hauptziele, um zu überprüfen, ob das Ereigniss der angenommenen
+Die Rekonstruktion der ursprünglichen Richtung der Gamma\-/Ereignisse
+ist notwendig, um zu überprüfen, ob das Ereignis der angenommenen
 Quellposition zuzuordnen ist.
 Dafür werden nach der ersten Abschätzung in Kapitel~\ref{sub:superstar} weitere
 Analyseschritte durchgeführt.
@@ -74,7 +87,7 @@ Die angenommene rekonstruierte Position ist diejenge, welche näher am
 Schnittpunkt der Achsen liegt.
 Dadurch wird die Auswirkung von schlecht richtungsrekonstruierten Ereignissen
 auf die angenomme Quellposition verringert.
-Die Schätzung des DISP-Parameters wird über einen Random-Forest getätigt, 
+Die Schätzung des DISP-Parameters wird über einen Random-Forest getätigt,
 wo Informationen wie die Momente entlang der Hauptachse oder der Zeitgradient eingehen.
 Hadronische Schauer, welche fälschlicherweise die Gamma/Hadron-Separation
 überstanden habe, weisen eine kleinere Richtungsgenauigkeit auf, da auf diesen
@@ -84,7 +97,7 @@ homogen wie der Untergrund selber verteilt ist.
 
 
 \paragraph{Durchführung}%
-In der \texttt{coach.rc} sind die Pfade
+In der Konfigurationsdatei \texttt{coach.rc} sind die Pfade
 \texttt{RF.mcdata},
 \texttt{RF.data},
 und \texttt{RF.outpath}
@@ -100,8 +113,8 @@ Es sind die Argumente
 \texttt{-RFgh}, \texttt{-LUTs}, und \texttt{-RFdisp}
 zum Erstellen eines Random Forest für die Gamma-/Hadron-Separation,
 einer Look-Up-Table für die Energieschätzung,
-und zwei weiterer Random Forest für die Richtungsrekonstruktion der beiden
-Teleskope.
+und zwei weiterer Random Forests für die Richtungsrekonstruktion
+der Ereignisse beider Teleskope.
 
 \begin{lstlisting}
   coach -q -b	\
@@ -118,9 +131,11 @@ Teleskope.
 Es werden vier Dateien erzeugt,
 die als weitere Eingangsdaten für die folgenden Analyseschritte verwendet
 werden.
-Dies sind die beiden Richtungsrekonstruktionen \texttt{DispRF.root},
-für die beiden Teleskope, 
-in den Ordnern \texttt{disp\{1,2\}}, 
+Dies sind die beiden Random Forests
+\texttt{DispRF.root},
+für die Richtungsrekonstruktionen
+% für die beiden Teleskope,
+in den Ordnern \texttt{disp1}/\texttt{disp2},
 der Random Forest für die Separation
 \texttt{RF.root} und die Look-Up-Table \texttt{Energy\_Table.root} für die
 Energieschätzung.

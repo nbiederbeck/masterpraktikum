@@ -4,15 +4,15 @@ Es wird ein Maß benötigt, um entscheiden zu können,
 ob die Ursache der gemessen Events die Quelle selber ist.
 Das Wahrscheinlichkeitsmaß wird gewöhnlicherweise in Form von Gaußschen
 Standardabweichungen $\sigma$ angegeben.
-Odie berechnet die Siginifikanz der Daten an einer entsprechenden Quellposition. 
-Ab einer Signifikanz \SI{3}{\sigma} wird von einem \textit{Hinweis} 
+Odie berechnet die Siginifikanz der Daten an einer entsprechenden Quellposition.
+Ab einer Signifikanz \SI{3}{\sigma} wird von einem \textit{Hinweis}
 und ab \SI{5}{\sigma} von einer \textit{Detektion} gesprochen.
 
 \paragraph{Theorie}%
 
 Die Wahrscheinlichkeit wird angegeben, indem geprüft wird,
 ob die über\-schüssigen Ereignisse auf eine zufällige
-Fluktaktion zur Hintergrundstrahlung zurück\-zu\-führen sind.
+Fluktaktion des Untergrunds zurück\-zu\-führen sind.
 Dies geschieht mit einem Likelihood\-/Quotienten\-/Test.
 
 Die Herleitung ist im Einzelnen für die Durchführung des
@@ -23,15 +23,18 @@ Zur Bestimmung des Photonenflusses der Quelle wird für die Zeit $t_\text{on}$ i
 erwarteten Quelle geschaut und die Anzahl an Ereignissen $N_\text{on}$ gezählt.
 Zur Abschätzung des Untergrundes werden für die Zeit $t_\text{off}$
 (äquivalent zu $t_\text{on} / \alpha$)
-Events in einer Region wo keine Quelle erwartet wird $N_\text{off}$ gemessen.
+Events in einer Region $N_\text{off}$,
+in welcher keine Gammaquelle erwartet wird,
+% wo keine Quelle erwartet wird,
+gemessen.
 Da das Verhältnis von Signal $N_\text{S}$ zu Untergrund
 $N_\text{B}$ sehr klein ist
-und der Hintergrund statistischen Schwankungen unterliegt,
+und der Untergrund statistischen Schwankungen unterliegt,
 ist mit
 \begin{equation}
 	N_\text{S} = N_\text{on} - \hat{N}_\text{B} = N_\text{on} - \alpha N_\text{off}
 \end{equation}
-die Signifikanz 
+die Signifikanz
 \begin{equation}
 	S = \frac{N_\text{S}}{\sqrt{N_\text{S}}},
 \end{equation}
@@ -43,7 +46,7 @@ sind diese poissonverteilt.
 Eine statistisch stabile Methode, die Signifikanz zu bestimmen, stellt die
 Likelihood Ratio Methode nach Li und Ma da.
 Es wird angenommen, dass die erwartete Anzahl an Signal
-Photonen $\langle N_\text{on} \rangle$ und die Anzahl an Untergrundereignissen 
+Photonen $\langle N_\text{on} \rangle$ und die Anzahl an Untergrundereignissen
 $\langle N_\text{off} \rangle$ nicht bekannt sind.
 Die zu prüfende Nullhypothese ist:
 \begin{quote}
@@ -98,19 +101,13 @@ ergibt sich die Li und Ma Signifikanz
   \right)} ^ {1/2}.
 \end{equation}
 
-\begin{wrapfigure}[13]{L}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{build/theta2.pdf}
-		\caption{Theta2 Schnitt auf Daten zur Maximierung der Signifikanz.}%
-		\label{fig:thetacut}
-\end{wrapfigure}
-
 Die Signifikanz kann sowohl auf Rohdaten als auch Gamma/Hadron-separierten Daten
 bestimmt werden.
 Sie hängt neben dem Verhältnis von $N_\text{on}$ zu $N_\text{off}$ auch
 maßgeblich von der Größe von $N_\text{on}$ ab.
-Eine gute Gamma/Hadron Separation hält den Untergrund gering und maximiert die
-Signifikanz.
+Eine gute Gamma/Hadron Separation hält den Untergrund gering,
+das Signal jedoch hoch
+und maximiert somit die Signifikanz.
 
 Der Parameter $\theta$ gibt den Abstand zwischen
 angenommener und rekonstruierter Quellposition
@@ -126,10 +123,18 @@ Ein beispielhafter Schnitt in Theta ist in
 Abbildung~\ref{fig:thetacut} zu sehen.
 % Er kann zum Beispiel durch Intervallschachtelung bestimmt werden.
 
+\begin{wrapfigure}[10]{L}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{build/theta2.pdf}
+		\caption{Theta2 Schnitt auf Daten zur Maximierung der Signifikanz.}%
+		\label{fig:thetacut}
+\end{wrapfigure}
+
 
 \paragraph{Durchführung}%
 
-Die Konfigurations\-datei \texttt{odie.rc} wird verwendet.
+% Die Konfigurationsdatei \texttt{odie.rc} wird verwendet.
+Es wird die Konfigurationsdatei \texttt{odie.rc} verwendet.
 Es muss das Feld \texttt{Odie.dataName} angepasst werden.
 Es gilt wieder, mit Wildcards die von Melibea prozessierten Daten zu nutzen
 (Bsp.: \texttt{*\_Q\_*.root}).
