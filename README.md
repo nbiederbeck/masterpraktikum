@@ -19,6 +19,12 @@ Make sure to install packages
 pip install -U --user numpy matplotlib pandas pickle uncertainties scipy pint textable
 ```
 
+and
+```bash
+apt-get install librsvg2-bin
+```
+
+
 To test if everything is correctly installed do
 ```bash
 make test
