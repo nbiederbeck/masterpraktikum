@@ -10,21 +10,21 @@ Das Programm weist damit jedem Event
 eine geschätzte Energie und Hadronness zu
 und schätzt eine Quellposition (DISP).
 
-Auf diesen Werten können im weiteren Verlauf der Analyse
-Schnitte angewendet werden.
-Ein Schnitt auf der Hadronness $H_{\text{cut}}$
-weist Events mit einer Hadronnes $H_{\text{Evt}}~<~H_{\text{cut}}$
-die Klasse Signal zu.
-Events mit $H_{\text{Evt}} > H_{\text{cut}}$ werden der Klasse Untergrund
-zugeordnet.
-Hierbei ist das Ziel, einen möglichst reinen
-Datensatz (frei von Untergrund) zu erzeugen, 
-unter der Einschränkung nicht zu viele Gammas zu verwerfen.
-Für eine Veranschaulichung des Schnittes siehe Abbildung~\ref{fig:uebersicht}.
-Für die weiteren Analyseschritte ist ein möglichst
-großer Datensatz von Vorteil.
-Die Hadronness muss so eingestellt werden,
-dass ein Kompromiss zwischen Reinheit und Größe des Datensatzes erreicht wird.
+% Auf diesen Werten können im weiteren Verlauf der Analyse
+% Schnitte angewendet werden.
+% Ein Schnitt auf der Hadronness $H_{\text{cut}}$
+% weist Events mit einer Hadronnes $H_{\text{Evt}}~<~H_{\text{cut}}$
+% die Klasse Signal zu.
+% Events mit $H_{\text{Evt}} > H_{\text{cut}}$ werden der Klasse Untergrund
+% zugeordnet.
+% Hierbei ist das Ziel, einen möglichst reinen
+% Datensatz (frei von Untergrund) zu erzeugen,
+% unter der Einschränkung nicht zu viele Gammas zu verwerfen.
+% Für eine Veranschaulichung des Schnittes siehe Abbildung~\ref{fig:uebersicht}.
+% Für die weiteren Analyseschritte ist ein möglichst
+% großer Datensatz von Vorteil.
+% Die Hadronness muss so eingestellt werden,
+% dass ein Kompromiss zwischen Reinheit und Größe des Datensatzes erreicht wird.
 
 
 \paragraph{Durchführung}%
@@ -53,9 +53,9 @@ Melibea muss auf Daten und dem Testdatensatz der Monte Carlos einzeln angewendet
     --out=<OUTPUT-DIRECTORY> \
     --log=<OUTPUT-DIRECTORY>/melibea.log
   # Ausserdem bei Monte Carlo
-    -mc 
+    -mc
     --ind=<INPUT-DIRECTORY>/*_wr_2.root \
 \end{lstlisting}
 
 Melibea erstellt für jede Eingangsdatei eine Outputdatei der
-Form \texttt{*\_Q\_*} und die Datei \texttt{melibea.root}. 
+Form \texttt{*\_Q\_*} und die Datei \texttt{melibea.root}.

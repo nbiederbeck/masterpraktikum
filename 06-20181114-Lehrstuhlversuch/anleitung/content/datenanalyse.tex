@@ -8,14 +8,22 @@
   \label{fig:uebersicht_analyse}
 \end{wrapfigure}
 
-MARS ist ein Software-Paket, das in \texttt{C++} geschrieben ist.
-Es beinhaltet zum einen Container, um die aufgenommenen Daten zu speichern,
-zum anderen viele Ausführbare,
-mit denen die gesamte Analysekette für MAGIC durchgeführt wird.
+MARS ist die Standardsoftware zur Analyse von MAGIC Daten.
+Die Hauptprogramme sind in \texttt{C++} geschrieben.
+Zum Ausführen der einzelnen Programme gibt es Konfigurationsdateien
+(Endung \texttt{*.rc}),
+in welchen die wichtigen Parameter an die Analyse angepasst werden können.
+
+% MARS ist ein Software-Paket, das in \texttt{C++} geschrieben ist.
+% Es beinhaltet zum einen Container, um die aufgenommenen Daten zu speichern,
+% zum anderen viele Ausführbare,
+% mit denen die gesamte Analysekette für MAGIC durchgeführt wird.
 
 Die Hauptprogramme werden im Folgenden näher erklärt.
-Dabei sind sie so angeordnet, dass die Ergebnisse der einzelnen
-Programme die Eingangsdaten der nächsten sind.
+Dabei sind sie so angeordnet,
+dass die Ergebnisse der einzelnen Programme,
+abgespeichert in \texttt{*.root} Dateien,
+die Eingangsdaten der nächsten sind.
 
 \input{content/mars/sorcerer.tex}
 \input{content/mars/star.tex}

@@ -8,18 +8,26 @@ Sobald die Teleskope ein Event triggern,
 speichern sie die Lichtpulse in einem gewissen Zeitfenster von jedem PMT.\@
 Diese Daten enthalten neben dem eigentlichen Tscherenkowlicht auch
 Rauschen von elektronischen Bauteilen,
-Nachthimmelhintergrund  z.B.\ durch den Mondes,
-und andere Störungen.
+und Nachthimmelhintergrund z.B.\ durch den Mond.
+% und andere Störungen.
 
 \subparagraph{Image Cleaning}
 Um sinn\-voll die Im\-age Pa\-ra\-met\-er bestimmen zu können,
 müssen die Daten bereinigt werden.
-Dazu werden alle Pixel verworfen, in denen keine
-Tscherenkowphotonen gemessen werden.
-Des Weiteren ist gutes Image Cleaning in der Lage,
-% um einen konstanten Photostream zu bereinigen,
-niederenergetische Ereignisse vom Untergrund zu trennen und damit
-für einen geringen Energie-Schwellwert zu sorgen.
+Dazu werden alle Pixel verworfen,
+die nicht eindeutig dem Teilchenschauer zugeordnet werden können.
+% Dazu werden alle Pixel verworfen, in denen keine
+% Tscherenkowphotonen gemessen werden.
+% Des Weiteren ist gutes Image Cleaning in der Lage,
+% % um einen konstanten Photostream zu bereinigen,
+% niederenergetische Ereignisse vom Untergrund zu trennen und damit
+% für einen geringen Energie-Schwellwert zu sorgen.
+Die Tscherenkowschauer sind größer und energieärmer,
+je niedriger die Energie des Primärphotons ist.
+Somit ist es schwieriger niederenergetische Schauer,
+solche Schauer vom Rauschen zu unterschieden.
+Ein gutes Image Cleaning ist essentiell für einen niedrigen
+Energie-Schwellwert in der Analyse.
 
 Das aktuell angewandte Image Cleaning heißt \textit{Sum Image Cleaning}.
 Es besteht aus drei Schritten.
@@ -33,20 +41,22 @@ Es werden die mittleren Ankunftszeiten jeder Insel bestimmt.
 Weichen die Ankunftszeiten der Inseln zu stark von der Ankunftszeit der größten Insel ab,
 werden die Pixel der Insel verworfen.
 Pixel der übrigbleibenden Inseln werden im dritten Schritt gereinigt,
-wobei zwei Grenzwerte $Q_{1} > Q_{2}$ existieren.
-Im ersten Schritt wird geprüft,
-ob die Pixel über dem
-Grenzwert $Q_{1}$ liegen,
-und ob sie einen Cluster mit mindestens zwei Pixeln bilden.
-Ist dies der Fall,
-werden zusätzlich angrenzende Pixel,
-die über dem Grenzwert $Q_{2}$ liegen,
-hinzugefügt.
+wobei
+wieder überprüft wird, ob die Pixel einen gewissen Grenzwert überschreiten.
+% zwei Grenzwerte $Q_{1} > Q_{2}$ existieren.
+% Im ersten Schritt wird geprüft,
+% ob die Pixel über dem
+% Grenzwert $Q_{1}$ liegen,
+% und ob sie einen Cluster mit mindestens zwei Pixeln bilden.
+% Ist dies der Fall,
+% werden zusätzlich angrenzende Pixel,
+% die über dem Grenzwert $Q_{2}$ liegen,
+% hinzugefügt.
 
 Jeweils ein Beispiel für ein Kamerabild vor und nach dem Image Cleaning ist in
 Abbildung~\ref{fig:cleaning} dargestellt.
 
-\begin{figure}[htpb]
+\begin{figure}[ht]
   \centering
   \begin{subfigure}[c]{0.35\linewidth}
     \includegraphics[width=\linewidth]{pictures/uncleaned.png}
@@ -67,7 +77,7 @@ Abbildung~\ref{fig:cleaning} dargestellt.
 \label{spar:image_parameter}
 
 Tscherenkowschauer erzeugen in der Kamera ellipsenförmige Projektionen.
-Unter anderem anhand der Größe der Ellipse und deren Ausrichtung
+Unter anderem anhand der Länge der Hauptachsen der Ellipse und deren Ausrichtung
 lässt sich die Energie des
 Primärteilchens bestimmen und die Richtung rekonstruieren.
 Dazu werden auf den gereinigten Kamerabildern die Image Parameter bestimmt.
@@ -99,7 +109,7 @@ Pixelringen.
 Dieser Parameter gibt eine Abschätzung,
 zu welchem Anteil der Schauer ausserhalb der Kamera liegt.
 \textit{Alpha} beschreibt den Winkel zwischen Hauptachse der Ellipse und
-der Linie vom CoG zum Referenzpunkt (z.B.\ erwartete Quellposition).
-Da gammainduzierte Schauer Richtung Quelle zeigen,
-ist es ebenfalls ein trennstarker Parameter.
-\textit{Dist} ist die Entfernung vom CoG zum Referenzpunkt.
+der Linie vom CoG zur erwarteten Quellposition.
+% Da gammainduzierte Schauer Richtung Quelle zeigen,
+% ist es ebenfalls ein trennstarker Parameter.
+\textit{Dist} ist die Entfernung vom CoG zur erwarteten Quellposition.

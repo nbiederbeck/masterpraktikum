@@ -6,55 +6,71 @@ das
 % Mittelwerte von einem Parametersatz ausrechnet, und
 Daten selektiert und in die Klassen \textit{gut} und \textit{schlecht} einteilt.
 Durch das Aussortieren kann unter anderem gewährleistet werden,
-dass sich die Monte Carlo-Simulation mehr mit den Daten deckt.
+dass sich die Daten der Monte Carlo-Simulation mehr mit den Messdaten decken.
 
-\paragraph{Theorie}%
-% \label{par:theorie}
-% Ziel der Analyse ist es die Unsicherheiten z.B. des Flusses so gering wie
-% möglich zu halten.
+
+
+% \paragraph{Theorie}%
+% Hier ist einerseits das Problem, dass der Leser gar nicht weiss, was Monte Carlos sind und warum die mit den Daten uebereinstimmen muessen.
+
+% Im Wetter koennen Daten und MCs nicht uebereinstimmen, weil das Wetter nicht mitsimuliert wird.
+
+% Die gemessenen Daten werden nach Wetter selektiert, einfach um zu sehen, wie gut die Daten sind und ob ggf Korrekturen stattfinden muessen.
+
+% Ausserdem braucht man in einer normalen Analyse Crab Daten, die den Messdaten besonders aehnlich in Zenit, Wetter, Mondbedingungen, etc sind. Hier natuerlich irrrelevant weil eh Crab :)
+
+% Hadronische Daten werden nur fuer die gh Separation gebraucht und die sollen den Daten moeglichst aehnlich im Zenit sein.
+
+% Soviel zum Verstaendnis. Aber da der Versuch ohne Quate durchgefuehrt wird: Kapitel weglassen! Eine allgemeine Erklaerung zu "welche Daten brauchen wir warum" wo das von oben drinsteht (ohne Wetter, nur was man wofuer braucht) Vielleicht direkt nach dem Schauerkapitel, wo eh noch der Satz zur gh Separation hinsoll...
+% % \label{par:theorie}
+Ziel der Analyse ist es, die Unsicherheiten z.B.\ des Flusses so gering wie
+möglich zu halten.
 Primärteilchen schauern in einer Höhe von \SIrange{10}{20}{\kilo\meter}
 auf.
 Da die Entwicklung des Schauers vom Dichteprofil der Atmosphäre abhängig ist,
 ist es wichtig, dieses zu kennen.
-Das Dichteprofil variiert abhängig vom Wetter.
-Weitere Instrumente, z.B. Lidar, messen Eigenschaften der Atmosphäre.
-Dazu misst Lidar die Lichttransmission.
-Ziel ist es, einen Datensatz zu erstellen,
-mit wenig variierenden und gut simulierbaren Wetterbedingungen.
+Das Dichteprofil variiert abhängig vom Zenithwinkel und Wetter.
+Daten und Monte Carlos müssen deshalb im Zenithbereich übereinstimmen.
+% da die Weglänge durch die Atmosphäre entscheidend für die Schauerentwicklung ist.
 
-Die Wirkungsquerschnitte der Schauerprozesse sind dichteabhängig.
-Zur guten Rekonstruktion eines Schauers muss deswegen die Dichteverteilung
-bekannt sein.
-Dies Reduziert die Unsicherheiten auf die abgeleiteten Größen.
+% Weitere Instrumente, z.B. Lidar, messen Eigenschaften der Atmosphäre.
+% Dazu misst Lidar die Lichttransmission.
+% Ziel ist es, einen Datensatz zu erstellen,
+% mit wenig variierenden und gut simulierbaren Wetterbedingungen.
 
-% \paragraph{Durchführung}%
+% Die Wirkungsquerschnitte der Schauerprozesse sind dichteabhängig.
+% Zur guten Rekonstruktion eines Schauers muss deswegen die Dichteverteilung
+% bekannt sein.
+% Dies Reduziert die Unsicherheiten auf die abgeleiteten Größen.
 
-% Das Programm \texttt{quate} wird über die
-% Datei \texttt{quate.rc} konfiguriert.
-% In dieser werden Einstellungen getroffen,
-% sodass die Daten sinnvoll prozessiert werden.
-% Dazu ist der Azimut und Zenit entsprechend der zu
-% observierenden Quelle einzustellen.
-% Dies ist über die Parameter \texttt{AzMin},
-% \texttt{AzMax}, \texttt{ZdMin} und \texttt{ZdMin}
-% möglich.
-% Zusätzlich ist der Parameter
-% \texttt{MinAerosolTrans9km = 0.8} anzupassen,
-% damit {\color{red}\ldots Aerosol \ldots} berücksichtigt wird.
-% Überlegen Sie sich,
-% bei welchen Daten das Selektieren sinnvoll ist
-% (On/Off/MC)
-% und führen Sie dieses durch.
-% Geben Sie dazu als \texttt{<INPUT-DIRECTORY>} die entsprechenden Pfade zu den Daten an.
+% % \paragraph{Durchführung}%
 
-% \begin{lstlisting}
-%   quate -b -s -q \
-%     --stereo \
-%     --config=quate.rc \
-%     --out=<OUTPUT-DIRECTORY> \
-%     --ind=<INPUT-DIRECTORY>
-% \end{lstlisting}
-% Quate erstellt im \texttt{<INPUT-DIRECTORY>}
-% jeweils einen Ordner \texttt{bad} und \texttt{good},
-% in denen symbolische Links zu den jeweils ausgewählten Dateien liegen.
-% Dies ist für die folgenden Analyseschritte wichtig.
+% % Das Programm \texttt{quate} wird über die
+% % Datei \texttt{quate.rc} konfiguriert.
+% % In dieser werden Einstellungen getroffen,
+% % sodass die Daten sinnvoll prozessiert werden.
+% % Dazu ist der Azimut und Zenit entsprechend der zu
+% % observierenden Quelle einzustellen.
+% % Dies ist über die Parameter \texttt{AzMin},
+% % \texttt{AzMax}, \texttt{ZdMin} und \texttt{ZdMin}
+% % möglich.
+% % Zusätzlich ist der Parameter
+% % \texttt{MinAerosolTrans9km = 0.8} anzupassen,
+% % damit {\color{red}\ldots Aerosol \ldots} berücksichtigt wird.
+% % Überlegen Sie sich,
+% % bei welchen Daten das Selektieren sinnvoll ist
+% % (On/Off/MC)
+% % und führen Sie dieses durch.
+% % Geben Sie dazu als \texttt{<INPUT-DIRECTORY>} die entsprechenden Pfade zu den Daten an.
+
+% % \begin{lstlisting}
+% %   quate -b -s -q \
+% %     --stereo \
+% %     --config=quate.rc \
+% %     --out=<OUTPUT-DIRECTORY> \
+% %     --ind=<INPUT-DIRECTORY>
+% % \end{lstlisting}
+% % Quate erstellt im \texttt{<INPUT-DIRECTORY>}
+% % jeweils einen Ordner \texttt{bad} und \texttt{good},
+% % in denen symbolische Links zu den jeweils ausgewählten Dateien liegen.
+% % Dies ist für die folgenden Analyseschritte wichtig.

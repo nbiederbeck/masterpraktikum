@@ -16,7 +16,7 @@ Da Untergrundevents um mehrere Größenordnungen häufiger auftreten (1:\num{e5}
 geschieht dies durch ein multidimensionales maschinelles
 Klassifizierungsystem (Random Forest).
 
-\begin{wrapfigure}[18]{L}{0.55\textwidth}
+\begin{wrapfigure}[17]{L}{0.55\textwidth}
   \centering
   \includegraphics[width=\linewidth]{build/hadroness.pdf}
   \caption{Schnitte auf der Hadroness und ihre Konsequenzen für die Analyse.}%
@@ -49,7 +49,8 @@ und somit der Photoelektronen
 in den PMTs, welche dem Schauer zugeordnet werden,
 % in der Kamera,
 jedoch hängt die Menge an detektiertem Licht von weiteren Parametern,
-wie unter anderem Winkel der Kamera und Lage des Schauers im Kamerabild, ab.
+% wie unter anderem Winkel der Kamera und Lage des Schauers im Kamerabild, ab.
+wie beispielsweise von dem Zenithwinkel der Quellposition ab.
 
 In MARS kann die Energie des Primärteilchens auf zwei Arten rekonstruiert werden:
 \begin{description}
@@ -88,9 +89,8 @@ Schnittpunkt der Achsen liegt.
 Dadurch wird die Auswirkung von schlecht richtungsrekonstruierten Ereignissen
 auf die angenomme Quellposition verringert.
 Die Schätzung des DISP-Parameters wird über einen Random-Forest getätigt,
-wo Informationen wie die Momente entlang der Hauptachse oder der Zeitgradient eingehen.
-Hadronische Schauer, welche fälschlicherweise die Gamma/Hadron-Separation
-überstanden habe, weisen eine kleinere Richtungsgenauigkeit auf, da auf diesen
+wo Informationen wie die Momente entlang der Hauptachse eingehen.
+Hadronische Schauerweisen eine kleinere Richtungsgenauigkeit auf, da auf diesen
 nicht trainiert wird.
 Die Richtungsrekonstruktion vom Untergrund ist jedoch ohne Belangen, solange sie
 homogen wie der Untergrund selber verteilt ist.
