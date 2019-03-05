@@ -47,8 +47,8 @@ Auflösung in der Energie muss der dopnierte Photostrom entfaltet werden.
 % Die Probleme werden durch den
 Dazu wird ein
 Entfaltungsalgorithmus verwendet,
-welcher die Observablen $f$
-in den Raum der physikalischen Größen $g$ transformiert.
+welcher die Observablen $g$
+in den Raum der physikalischen Größen $f$ transformiert.
 % gelöst.
 Das Problem wird durch das Fredholm Integral beschrieben:
 \begin{equation}
@@ -70,8 +70,8 @@ Anschließend wird versucht, die Matrixgleichung
 	g_i = \sum_j M_{ij} f_j + b_i
 \end{equation}
 zu lösen.
-Die naivste Annahme die Migrationsmatrix zu bestimmen,
-beruht auf ihrer \textit{Inversion}:
+Die naivste Annahme, die physikalischen Parameter zu bestimmen,
+beruht auf der \textit{Inversion} der Migrationsmatrix:
 \begin{equation}
     \vec{f} = \mathbf{M}^{-1} \vec{g}.
 \end{equation}
@@ -80,20 +80,19 @@ korrelierte $f$ erzeugen.
 Eine Alternative zur Bestimmung der Migrationsmatrix
 besteht aus der \textit{Minimierung der kleinsten Quadrate}.
 Dabei wird die Matrix bestimmt,
-welche die grösste Übereinstimmung mit den Daten erzeugt.
+welche die größte Übereinstimmung mit den Monte Carlo-Daten erzeugt.
 \begin{equation}
     \chi^2_0 = {\left( \vec{g} - \mathbf{M} \vec{f} \right)}^\intercal
         \cdot \mathbf{V} \left[ \vec{g} \right] \cdot
         \left( \vec{g} - \mathbf{M} \vec{f} \right)
 \end{equation}
-Alternative Algorithmen sind beispielsweise das Forward Folding.
+Ein alternativer Algorithmus zur Bestimmung der inversen Detektorfunktion ist beispielsweise das Forward Folding.
 
-Desweiteren neigt die Lösung zu starken Oszillation in $\vec{f}$.
+Des Weiteren neigt die Lösung zu starken Oszillation in $\vec{f}$.
 Um dies zu minimieren und reproduzierbare Ergebnisse zu erzeugen,
 muss regularisiert werden.
-Die Oszillationen stammen aus kleinen unbedeutsamen Beiträgen, welche im
-Entfaltungsprozess verstärkt werden und zu einem unverhältnismäßig hohen
-Rauschen führen.
+Die Oszillationen durch das Entfalten von Bins mit wenig Statistik,
+die verstärkt werden und zu einem unverhältnismäßig hohen Rauschen führen.
 Durch das Einführen eines Regularisierungsterms wird eine Anforderung an die
 Entfaltung, wie zum Beispiel ein glattes Spektrum, gestellt.
 Die Regularisierung $\tau$ ist entscheidend, wie viele
@@ -101,16 +100,17 @@ Informationen verworfen werden.
 
 Durch Hinzufügen eines Zusatzterms der zu minimierenden Funktion während des
 Entfaltungsprozess ist Regularisierung möglich.
-\begin{equation}
-    \chi^2 = \chi^2_0 - \frac{\tau}{2} Reg(\vec{f})
-\end{equation}
+\begin{align}
+    \chi^2 &= \chi^2_0 - \frac{\tau}{2} Reg(\vec{f}) \\
+    \text{mit z.B. } Reg(\vec{f}) &= \sum_j {\left( \frac{d^2 f_j}{dx^2} \right)}^2
+    \label{eq:thikonov}
+    % \text{(Tikhonov)}
+\end{align}
 Dabei gibt es verschiedene Möglichkeiten,
-wovon beispielsweise die Tikhonov, Bertero
-und Schmelling Methoden in Mars implementiert sind.
-\begin{equation}
-    Reg(\vec{f}) = \sum_j {\left( \frac{d^2 f_j}{dx^2} \right)}^2
-\end{equation}
-Bei der Tikhonov Methode wird die Glattheit der
+wovon beispielsweise die Methoden nach
+Tikhonov, Bertero, und Schmelling
+in MARS implementiert sind.
+Bei der Methode nach Tikhonov~\eqref{eq:thikonov} wird die Glattheit der
 Funktion durch Minimierung der zweiten Ableitung erreicht.
 
 \subparagraph{Durchführung}%

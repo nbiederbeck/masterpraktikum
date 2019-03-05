@@ -13,7 +13,7 @@ gibt den Fluss gegen die Energie an.
 Jede Quellart wird durch eine charakteristische SED identifiziert.
 Anhand der SED können beispielsweise Rückschlüsse auf die
 Beschleunigungsmechanismen der Quelle gezogen werden.
-Die zeitliche Änderung über einen Energiebereich integrierten Flusses wird durch die Light Curve (LC) beschrieben.
+Die zeitliche Änderung eines über einen Energiebereich integrierten Flusses wird durch die Light Curve (LC) beschrieben.
 % \begin{align*}
 %   \text{On} &= \text{Signal} + \text{Untergrund}_{\text{on}} \\
 %   \text{Off}_{1} &= \text{Untergrund}_{1} ;
@@ -22,15 +22,16 @@ Die zeitliche Änderung über einen Energiebereich integrierten Flusses wird dur
 % \end{align*}
 
 \subparagraph{Effective Collection Area}
-Die effektive Fläche entspricht der Fläche,
-bei der ein idealer Detektor 100\%
-der einfallenden Gammas detektieren würde.
+Ein Mass für die Effizienz des Detektors ist die effektive Fläche.
+Sie gibt die Detektorfläche eines idealen Detektors an,
+der die gleiche Anzahl an Signalereignissen messen würde,
+wie ein realer Detektor.
+% Die effektive Fläche entspricht der Fläche,
+% bei der ein Detektor 100\%
+% der einfallenden Gammas detektieren würde.
 Diese entspricht dem Oberflächenintegral der Detektorfläche
 über der Effizienz des Detektors
 bei einem orthogonal eintreffenden Primärteilchen.
-Von besonderem Interesse ist die \enquote{Analysis Effective Area}
-(Effektive Fläche der gesamten Analyse),
-welche sich aus den allen Einzeleffizienzen zusammensetzt.
 Die Effizienz ist abhängig von verschiedenen Parametern,
 wovon die Pointing Position,
 und die Energie des Primärteilchens
@@ -38,6 +39,13 @@ die wichtigsten sind.
 Beispielsweise ist die Collection Area von der Energie abhängig,
 da höherenergetische Teilchen mehr Tscherenkowlicht emittieren
 und so einfacher zu detektieren sind.
+
+Von besonderem Interesse ist die \enquote{Analysis Effective Area}
+(Effektive Fläche der gesamten Analyse),
+welche den relativen Verlust von Gammateilchen durch verschiedene
+Einflüsse, wie Zenithwinkel, Hardware, Schnitte in der Analyse,
+beschreibt.
+% welche sich aus den allen Einzeleffizienzen zusammensetzt.
 
 % Die effektive Fläche wird durch die Mittelung von Monte Carlo-Ereignissen berechnet.
 Um die effektive Fläche $A_{\text{eff}}$ zu berechnen,
@@ -53,7 +61,7 @@ Die effektive Fläche ist dann
 \end{equation}
 wobei $N_{\gamma,\text{final}}$ der Anzahl von Gammaereignissen nach der Detektion
 und allen Analyseschritten entspricht.
-Die Simulation muss in Bins aller abhängigen Parameter durchgeführt werden.
+% Die Simulation muss in Bins aller abhängigen Parameter durchgeführt werden.
 
 
 
@@ -64,7 +72,7 @@ Zur Berechnung des Energiespektrums muss ein Quellspektrum angenommen werden:
   \label{eq:photon_index}
   \frac{d\Phi}{dE} \simeq K {\left(\frac{E}{E_0}\right)}^{-\Gamma},
 \end{equation}
-dabei ist $\Gamma \approx 2$ der spektrale Index.
+dabei ist $\Gamma$ der spektrale Index.
 
 Es wird der \textit{Gammafluss} definiert,
 als Anzahl von gemessenen Signalereignissen $N_{\gamma}$
@@ -98,7 +106,7 @@ kann die SED berechnet werden:
   \label{eq:spectral_energy_distribution}
   E^2 \cdot \frac{d \Phi}{dE}
   \quad \left(\si{\tera\electronvolt\per\centi\meter\tothe2\per\second}\right)
-  = E \cdot \frac{d \Phi}{d \left(\log E\right)}.
+  % = E \cdot \frac{d \Phi}{d \left(\log E\right)}.
 \end{equation}
 
 \subparagraph{Light Curve}
@@ -126,3 +134,6 @@ Es werden die von Melibea prozessierten Daten und Monte Carlos genutzt.
 \end{lstlisting}
 
 Flute erzeugt die Datei \texttt{Output\_flute.root}.
+Die Analyse kann mit den in die Plots eingezeichneten Theoriewerten überprüft werden.
+Es empfielt sich ein wenig, Parameter, wie die Hadronness Efficiency, zu variieren,
+um die Auswirkungen in der Analyse zu verstehen.
