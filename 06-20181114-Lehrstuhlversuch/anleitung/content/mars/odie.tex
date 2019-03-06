@@ -76,7 +76,9 @@ gewichteten Summe aus der On und Off Region:
 \end{equation}
 Die maximale Likelihood ergibt sich,
 indem die Gegenhypothese,
-dass die On-Region um die Untergrundereignisse bereinigt ist,
+dass das Signal der um den Untergrund bereinigten Ereignissen in der On-Region
+entspricht,
+% dass die On-Region um die Untergrundereignisse bereinigt ist,
 getestet wird:
 \begin{equation}
 	L(X|\hat{E}, \hat{T})= P_\text{r} \left[
@@ -122,11 +124,11 @@ und maximiert somit die Signifikanz.
 Der Parameter $\theta$ gibt den Abstand zwischen
 angenommener und rekonstruierter Quellposition
 für jedes Event an.
-Durch einen Schnitt in $\theta$ werden Events verworfen,
-welche einen zu großen Abstand von der angenommenen Quelle aufweisen.
-Hingegen können diffuse Untergrundereignisse jeden möglichen Abstand zur
+Diffuse Untergrundereignisse können jeden möglichen Abstand zur
 angenommenen Signalquelle haben,
 da sie den Himmelsausschnitt homogen ausfüllen.
+Durch einen Schnitt in $\theta$ werden Events verworfen,
+welche einen zu großen Abstand von der angenommenen Quelle aufweisen.
 Ziel ist es, einen Schnitt in $\theta^2$ (\texttt{theta2}) so zu setzen,
 dass die Signifikanz maximal wird.
 Ein beispielhafter Schnitt in Theta ist in
