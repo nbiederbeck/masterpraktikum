@@ -8,12 +8,20 @@
 \begin{tikzpicture}[scale=1, transform shape]
   \feynmandiagram[tree layout] {%
     a -- [photon, edge label=$\gamma$] b;
-    b -- [fermion, edge label=$e^{-}$] c;
-    b -- [anti fermion, edge label=$e^{+}$] d;
-    c -- [photon, edge label=$\gamma$] e;
-    c -- [photon, edge label=$\gamma$] f;
-    d -- [photon, edge label=$\gamma$] g;
-    d -- [photon, edge label=$\gamma$] h;
+      b -- [fermion, edge label=$e^{-}$] c;
+        c -- [fermion, edge label=$e^{-}$] e;
+          % e -- [fermion, edge label=$e^{-}$] i;
+          % e -- [photon, edge label=$\gamma$] j;
+        c -- [photon, edge label=$\gamma$] f;
+          f -- [fermion, edge label=$e^{-}$] k;
+          f -- [anti fermion, edge label=$e^{+}$] l;
+      b -- [anti fermion, edge label=$e^{+}$] d;
+        d -- [fermion, edge label=$e^{+}$] g;
+          g -- [fermion, edge label=$e^{+}$] m;
+          g -- [photon, edge label=$\gamma$] n;
+        d -- [photon, edge label=$\gamma$] h;
+          % h -- [fermion, edge label=$e^{-}$] o;
+          % h -- [anti fermion, edge label=$e^{+}$] p;
   };
 \end{tikzpicture}
 \end{document}
