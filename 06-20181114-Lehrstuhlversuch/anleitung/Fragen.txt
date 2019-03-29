@@ -1,0 +1,16 @@
+Ich habe mit den Korrekturen angefangen, dabei sind mir ein paar Sachen unklar
+geblieben. 
+
+1.4 
+einfach weglassen != aber einfach weglasssen das kapitel passt nicht ganz.
+Verstehe nicht was du bei dem Kommentar 
+"... ihr müsstet auch mit denhadronischen daten anfangen und und und" 
+wünschst zu hören?"
+
+1.10 
+Reine Verständniss frage:
+Wodrin unterscheidet sich den denn dann das Naive Entfalten M*f = g 
+(M aus MC berechnen), dannach M^{-1}
+berechnen dann noch von dem Forward Folding?
+Ich dachte beim Forward Folding nimmt man irgendwelche Parameter an und sampelt
+sofort die Inverse Matrix?

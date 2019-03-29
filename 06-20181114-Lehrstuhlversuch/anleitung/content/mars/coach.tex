@@ -78,20 +78,25 @@ Dazu wird zunächst die \textit{DISP (\textbf{D}istance between the
 \textbf{I}mage controid and the \textbf{S}ource \textbf{P}osition)} bestimmt.
 Diese gibt die Entfernung vom Schauerschwerpunkt zur rekonstruierten Quellposition
 entlang der Hauptachse der Ellipse an (siehe Abbildung~\ref{fig:reco}).
-Das Vorzeichen des DISP-Parameters ist nicht bestimmt,
-sodass es zwei mögliche Quellpositionen gibt.
-Da MAGIC ein Stereoteleskop ist,
-kann bei der Schätzung des Vorzeichens des DISP-Parameters
-der Schnittpunkt der beiden Hauptachsen als zusätzliche Information
-verwendet werden.
-Die angenommene rekonstruierte Position ist diejenge, welche näher am
-Schnittpunkt der Achsen liegt.
-Dadurch wird die Auswirkung von schlecht richtungsrekonstruierten Ereignissen
-auf die angenomme Quellposition verringert.
-Die Schätzung des DISP-Parameters wird über einen Random-Forest getätigt,
-wo Informationen wie die Momente entlang der Hauptachse eingehen.
-Hadronische Schauer weisen eine kleinere Richtungsgenauigkeit auf, da auf diesen
-nicht trainiert wird.
+% Das Vorzeichen des DISP-Parameters ist nicht bestimmt,
+% sodass es zwei mögliche Quellpositionen gibt.
+% Da MAGIC ein Stereoteleskop ist,
+% kann bei der Schätzung des Vorzeichens des DISP-Parameters
+% der Schnittpunkt der beiden Hauptachsen als zusätzliche Information
+% verwendet werden.
+% Die angenommene rekonstruierte Position ist diejenge, welche näher am
+% Schnittpunkt der Achsen liegt.
+% Dadurch wird die Auswirkung von schlecht richtungsrekonstruierten Ereignissen
+% auf die angenomme Quellposition verringert.
+% Die Schätzung des DISP-Parameters wird über einen Random-Forest getätigt,
+% wo Informationen wie die Momente entlang der Hauptachse eingehen.
+Da Magic ein Stereoteleskop ist, gibt es zwei rekonstruierte DISP-Parameter,
+mit deren Hilfe sowie der geometrischen Richtung, 
+die wahre Richtung der Primärteilchen sehr genau bestimmt werden kann.
+% Hadronische Schauer weisen eine kleinere Richtungsgenauigkeit auf, da auf diesen
+% nicht trainiert wird.
+Hadronische Schauer weisen eine kleinere Richtungsgenauigkeit auf, 
+da die Random Forests zur Richtungsrekonstruktion ausschließlich auf simulierten Gammaereignissen tainiert werden.
 Die Richtungsrekonstruktion vom Untergrund ist jedoch ohne Belangen, solange sie
 homogen wie der Untergrund selber verteilt ist.
 

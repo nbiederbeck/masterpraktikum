@@ -13,13 +13,21 @@ Wechselwirkungsprozesse möglich.
 
 \paragraph{Theorie}%
 
-Tscherenkowteleskope sind nicht in der Lage, die Energie
-des Primärteilchen direkt zu messen,
-sondern lediglich den deponierten Photostrom in den einzelnen PMTs,
-weswegen ein Entfaltungsalgorithmus benötigt wird.
-% Bei der Berechnung der Primärenergie treten beim Messen hauptsächlich dreierlei Probleme auf.
-Aufgrund der statistischen Unsicherheit der Energieschätzer und der begrenzten
-Auflösung in der Energie muss der deponierte Photostrom entfaltet werden.
+% Tscherenkowteleskope sind nicht in der Lage, die Energie
+% des Primärteilchen direkt zu messen,
+% sondern lediglich den deponierten Photostrom in den einzelnen PMTs,
+% weswegen ein Entfaltungsalgorithmus benötigt wird.
+% % Bei der Berechnung der Primärenergie treten beim Messen hauptsächlich dreierlei Probleme auf.
+% Aufgrund der statistischen Unsicherheit der Energieschätzer und der begrenzten
+% Auflösung in der Energie muss der deponierte Photostrom entfaltet werden.
+
+Bei realen Daten ist die wahre Energie der Primärteilchen nicht bekannt,
+daher wird der Fluss in einer SED in Abhängigkeit der geschätzen Energie aufgetragen. 
+Aufgrund der statistischen Unsicherheit der Energieschätzer 
+und der begrenzten Detektorauflösung, 
+weicht die geschätze Energie von der wahren Energie ab. 
+Mit hilfe sogenannter Entfaltungsalgorithmen kann die SED in Abhängigkeit der wahren Energie abgeschätzt werden.
+
 
 % \begin{description}
 %     \item[\quad limitierte Akzeptanz]
@@ -86,7 +94,7 @@ welche die größte Übereinstimmung mit den Monte Carlo-Daten erzeugt.
         \cdot \mathbf{V} \left[ \vec{g} \right] \cdot
         \left( \vec{g} - \mathbf{M} \vec{f} \right)
 \end{equation}
-Ein alternativer Algorithmus zur Bestimmung der inversen Detektorfunktion ist beispielsweise das Forward Folding.
+Ein alternative Methode zur Bestimmung der wahren Verteilung $f$ ist beispielsweise das Forward Folding.
 
 Des Weiteren neigt die Lösung zu starken Oszillation in $\vec{f}$.
 Um dies zu minimieren und reproduzierbare Ergebnisse zu erzeugen,

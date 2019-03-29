@@ -1,9 +1,13 @@
 \subsection{Odie}%
 \label{sub:odie}
-Es wird ein Maß benötigt, um entscheiden zu können,
-ob die Ursache der gemessen Events die Quelle selber ist.
-Das Wahrscheinlichkeitsmaß wird gewöhnlicherweise in Form von Gaußschen
-Standardabweichungen $\sigma$ angegeben.
+% Es wird ein Maß benötigt, um entscheiden zu können,
+% ob die Ursache der gemessen Events die Quelle selber ist.
+In der Messung schmiert die Quelle statistisch bedingt aus, 
+was durch die Punktspreizfunktion \textit{(\textbf{P}oint \textbf{S}pread 
+\textbf{F}unction)} charakterisiert werden kann.
+Das Wahrscheinlichkeitsmaß für die Detektion einer Quelle wird 
+gewöhnlicherweise in Form von Gaußschen Standardabweichungen $\sigma$ 
+angegeben.
 Odie berechnet die Siginifikanz der Daten an einer entsprechenden Quellposition.
 Ab einer Signifikanz \SI{3}{\sigma} wird von einem \textit{Hinweis}
 und ab \SI{5}{\sigma} von einer \textit{Detektion} gesprochen.
@@ -63,8 +67,8 @@ Die zu prüfende Nullhypothese ist:
 Dies ist äquivalent zu $\langle N_\text{S} \rangle=0$.
 
 Zur Bestimmung der Liklihoodfunktion der Nullhypothese,
-verschwinden die
-Ereignisse aus der Quelle und die Untergrundereignisse entsprechen der
+wird die Anzahl der Signalereignisse auf null gesetzt
+und die Untergrundereignisse entsprechen der
 gewichteten Summe aus der On und Off Region:
 \begin{equation}
 	L(X|E_0, \hat{T}_\text{c})= P_\text{r} \left[
@@ -74,12 +78,17 @@ gewichteten Summe aus der On und Off Region:
 			N_\text{off})
 	\right]
 \end{equation}
-Die maximale Likelihood ergibt sich,
-indem die Gegenhypothese,
-dass das Signal der um den Untergrund bereinigten Ereignissen in der On-Region
-entspricht,
-% dass die On-Region um die Untergrundereignisse bereinigt ist,
-getestet wird:
+% Die maximale Likelihood ergibt sich,
+% indem die Gegenhypothese,
+% dass das Signal der um den Untergrund bereinigten Ereignissen in der On-Region
+% entspricht,
+% % dass die On-Region um die Untergrundereignisse bereinigt ist,
+% getestet wird:
+Die Gegenhypothese ergibt sich, 
+wenn die Annahme getroffen wird, 
+dass das Signal ungleich null ist 
+und die Differenz aus der Anzahl an On und Untergrundereignissen entspricht.
+
 \begin{equation}
 	L(X|\hat{E}, \hat{T})= P_\text{r} \left[
 		N_\text{on}, N_\text{off} |
@@ -112,14 +121,19 @@ ergibt sich die Li und Ma Signifikanz
   \right)} ^ {1/2}.
 \end{equation}
 
-Die Signifikanz kann sowohl auf dem gesamten Datensatz,
-als auch auf dem vom Untergrund bereinigten Datensatz bestimmt werden. %nicht-separierten als auch Gamma/Hadron-separierten Daten
-% bestimmt werden.
-Sie hängt neben dem Verhältnis von $N_\text{on}$ zu $N_\text{off}$ auch
-maßgeblich von der Größe von $N_\text{on}$ ab.
-Eine gute Gamma/Hadron Separation hält den Untergrund gering,
-das Signal jedoch hoch
-und maximiert somit die Signifikanz.
+% Die Signifikanz kann sowohl auf dem gesamten Datensatz,
+% als auch auf dem vom Untergrund bereinigten Datensatz bestimmt werden. %nicht-separierten als auch Gamma/Hadron-separierten Daten
+% % bestimmt werden.
+% Sie hängt neben dem Verhältnis von $N_\text{on}$ zu $N_\text{off}$ auch
+% maßgeblich von der Größe von $N_\text{on}$ ab.
+% Eine gute Gamma/Hadron Separation hält den Untergrund gering,
+% das Signal jedoch hoch
+% und maximiert somit die Signifikanz.
+Die Signifikanz kann prinzipiell mit dem gesamten Datensatz berechnet werden. 
+Besteht die Möglichkeit viel Untergrund mit Hilfe eines Schnittes 
+in der vorher berechneten Hadronness zu verwerfen 
+und somit die Anzahl an Untergrundereignissen zu reduzieren, 
+ergeben sich deutlich höhere Signifikanzen.
 
 Der Parameter $\theta$ gibt den Abstand zwischen
 angenommener und rekonstruierter Quellposition

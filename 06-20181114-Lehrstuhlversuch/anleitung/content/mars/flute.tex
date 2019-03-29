@@ -10,8 +10,10 @@ eine Lichtkurve einer Quelle zu bestimmen.
 Die
 Spektrale Energieverteilung (\textit{Spectral Energy Distribution: SED})
 gibt den Fluss gegen die Energie an.
-Jede Quellart wird durch eine charakteristische SED identifiziert.
-Anhand der SED können beispielsweise Rückschlüsse auf die
+% Jede Quellart wird durch eine charakteristische SED identifiziert.
+Die SED ist charakteristisch für verschiedene Quellarten 
+und dient somit im allgemeinen der Quellidentifikation.
+Desweiteren können anhand der SED beispielsweise Rückschlüsse auf die
 Beschleunigungsmechanismen der Quelle gezogen werden.
 Die zeitliche Änderung eines über einen Energiebereich integrierten Flusses wird durch die Light Curve (LC) beschrieben.
 % \begin{align*}
@@ -24,7 +26,7 @@ Die zeitliche Änderung eines über einen Energiebereich integrierten Flusses wi
 \subparagraph{Effective Collection Area}
 Ein Maß für die Effizienz des Detektors ist die effektive Fläche.
 Sie gibt die Detektorfläche eines idealen Detektors an,
-der die gleiche Anzahl an Signalereignissen messen würde,
+der die gleiche Anzahl an Signalereignisse messen würde,
 wie ein realer Detektor.
 % Die effektive Fläche entspricht der Fläche,
 % bei der ein Detektor 100\%
@@ -33,7 +35,7 @@ Diese entspricht dem Oberflächenintegral der Detektorfläche
 über der Effizienz des Detektors
 bei einem orthogonal eintreffenden Primärteilchen.
 Die Effizienz ist abhängig von verschiedenen Parametern,
-wovon die Pointing Position,
+wobei der Zenitwinkel
 und die Energie des Primärteilchens
 die wichtigsten sind.
 Beispielsweise ist die Collection Area von der Energie abhängig,
@@ -67,12 +69,14 @@ und allen Analyseschritten entspricht.
 
 \subparagraph{Energiespektrum}
 
-Zur Berechnung des Energiespektrums muss ein Quellspektrum angenommen werden:
+Im Allgemeinen wird ein exponentielles Energiespektrum bei hohen Energien
+angenommen. 
+Es hat die Form 
 \begin{equation}%
   \label{eq:photon_index}
   \frac{d\Phi}{dE} \simeq K {\left(\frac{E}{E_0}\right)}^{-\Gamma},
 \end{equation}
-dabei ist $\Gamma$ der spektrale Index.
+wobei $\Gamma$ der spektrale Index ist.
 
 Es wird der \textit{Gammafluss} definiert,
 als Anzahl von gemessenen Signalereignissen $N_{\gamma}$
