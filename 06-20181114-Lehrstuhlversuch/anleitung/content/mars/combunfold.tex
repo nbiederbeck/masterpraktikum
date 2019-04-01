@@ -27,7 +27,9 @@ Aufgrund der statistischen Unsicherheit der Energieschätzer
 und der begrenzten Detektorauflösung, 
 weicht die geschätze Energie von der wahren Energie ab. 
 Mit Hilfe sogenannter Entfaltungsalgorithmen kann die SED in Abhängigkeit der wahren Energie abgeschätzt werden.
-
+Dazu wird der Raum der Observablen $g$
+in den Raum der physikalischen Parameter $f$,
+unter Berücksichtigung von Migrationseffekten, abgebildet.
 
 % \begin{description}
 %     \item[\quad limitierte Akzeptanz]
@@ -53,10 +55,10 @@ Mit Hilfe sogenannter Entfaltungsalgorithmen kann die SED in Abhängigkeit der w
 % \end{description}
 
 % Die Probleme werden durch den
-Dazu wird ein
-Entfaltungsalgorithmus verwendet,
-welcher die Observablen $g$
-in den Raum der physikalischen Größen $f$ transformiert.
+% Dazu wird ein
+% Entfaltungsalgorithmus verwendet,
+% welcher die Observablen $g$
+% in den Raum der physikalischen Größen $f$ transformiert.
 % gelöst.
 Das Problem wird durch das Fredholm Integral beschrieben:
 \begin{equation}
@@ -64,9 +66,10 @@ Das Problem wird durch das Fredholm Integral beschrieben:
 \end{equation}
 Hierbei ist $M(x, y)$ eine Funktion, die die Transformation der physikalischen
 Daten in das Messsystem vornimmt (bspw.\ eine Detektorfunktion), und $b(y)$ der Bias.
-
-Für die Entfaltung wird der Parameterraum diskretisiert.
-Dies geschieht durch Binning der Daten,
+% Für die Entfaltung wird der Parameterraum diskretisiert.
+% Beim Berechnen der Algorithmen wird der Parameterraum diskretisiert.
+% Dies geschieht durch Binning der Daten,
+Durch Binning der Daten wird der Parameterraum diskretisiert:
 \begin{equation}
 	g_i = \int_{y_{i-1}}^{y_i} g(y) \, \text{d}y \quad \text{und} \quad
 	b_i = \int_{y_{i-1}}^{y_i} b(y) \, \text{d}y,
@@ -82,10 +85,10 @@ bestimmen.
 
 Eine Methode zur Bestimmung der wahren Verteilung $f$ ist
 beispielsweise das Forward Folding.
-Hierbei wird eine Funktion mit freien Parametern zum Entfalten angenommen.
+Hierbei wird eine Funktion mit freien Parametern angenommen.
 Die physikalischen Parameter werden mit Gleichung~\eqref{eq:matrix_bin}
 berechnet und mit den gemessen verglichen.
-Die Fehler werden mit dem Algorithmus der
+Die Fehler zwischen dieser Berechnung und Monte Carlo-Daten werden mit dem Algorithmus der
 % Eine Alternative zur Bestimmung der Migrationsmatrix
 % Sie
 % besteht aus der
@@ -101,7 +104,7 @@ Dabei werden die Parameter der angenommenen Funktion so bestimmt, dass
 minimiert wird.
 
 Eine weitere Möglichkeit, die physikalischen Parameter zu bestimmen,
-beruht auf der \textit{Inversion} der Migrationsmatrix:
+beruht auf der \textit{Inversion} der Migrationsmatrix (Entfaltung):
 \begin{equation}
     \vec{f} = \mathbf{M}^{-1} \vec{g}.
 \end{equation}
