@@ -87,37 +87,53 @@ beruht auf der \textit{Inversion} der Migrationsmatrix:
 \end{equation}
 Dabei entsteht das Problem, dass die unkorrelierten Messgrößen $g$
 korrelierte $f$ erzeugen.
-Eine Alternative zur Bestimmung der Migrationsmatrix
+Diese
+Lösung
+neigt
+zu starken Oszillation in $\vec{f}$.
+Die Oszillationen werden durch das Entfalten von Bins mit wenig Statistik
+erzeugt und führen
+zu einem unverhältnismäßig hohen Rauschen.
+Um dies zu minimieren und reproduzierbare Ergebnisse zu erzeugen,
+muss regularisiert werden.
+% Eine Alternative zur Bestimmung der Migrationsmatrix
+% besteht aus der \textit{Minimierung der kleinsten Quadrate}.
+% Dabei wird die Matrix bestimmt,
+% welche die größte Übereinstimmung mit den Monte Carlo-Daten erzeugt.
+
+Eine Methode zur Bestimmung der wahren Verteilung $f$ ist
+beispielsweise das Forward Folding, 
+bei dem eine Funktion mit freien Parametern zum Entfalten angenommen wird.
+% Eine Alternative zur Bestimmung der Migrationsmatrix
+Sie
 besteht aus der \textit{Minimierung der kleinsten Quadrate}.
-Dabei wird die Matrix bestimmt,
-welche die größte Übereinstimmung mit den Monte Carlo-Daten erzeugt.
+Dabei werden die Parameter so bestimmt, dass
 \begin{equation}
     \chi^2_0 = {\left( \vec{g} - \mathbf{M} \vec{f} \right)}^\intercal
         \cdot \mathbf{V} \left[ \vec{g} \right] \cdot
         \left( \vec{g} - \mathbf{M} \vec{f} \right)
 \end{equation}
-Ein alternative Methode zur Bestimmung der wahren Verteilung $f$ ist
-beispielsweise das Forward Folding, 
-bei dem eine Funktion mit freien Parametern zum entfalten angenommen wird.
+% welche die größte Übereinstimmung mit den Monte Carlo-Daten erzeugt.
+minimiert wird.
 
-Des Weiteren neigt die Lösung zu starken Oszillation in $\vec{f}$.
-Um dies zu minimieren und reproduzierbare Ergebnisse zu erzeugen,
-muss regularisiert werden.
-Die Oszillationen durch das Entfalten von Bins mit wenig Statistik,
-die verstärkt werden und zu einem unverhältnismäßig hohen Rauschen führen.
-Durch das Einführen eines Regularisierungsterms wird eine Anforderung an die
-Entfaltung, wie zum Beispiel ein glattes Spektrum, gestellt.
-Die Regularisierung $\tau$ ist entscheidend, wie viele
-Informationen verworfen werden.
-
-Durch Hinzufügen eines Zusatzterms der zu minimierenden Funktion während des
-Entfaltungsprozess ist Regularisierung möglich.
+% Des Weiteren neigt die
+% die verstärkt werden und
+Durch das Einführen eines Regularisierungsterms können weitere Anforderungen an die
+Entfaltung, wie zum Beispiel ein glattes Spektrum
 \begin{align}
     \chi^2 &= \chi^2_0 - \frac{\tau}{2} Reg(\vec{f}) \\
-    \text{mit z.B. } Reg(\vec{f}) &= \sum_j {\left( \frac{d^2 f_j}{dx^2} \right)}^2
+    \text{mit z.B. } Reg(\vec{f}) &= \sum_j {\left( \frac{d^2 f_j}{dx^2}
+    \right)}^2,
     \label{eq:thikonov}
     % \text{(Tikhonov)}
 \end{align}
+gestellt werden.
+Die Regularisierungsstärke $\tau$ ist entscheidend, wie stark die Korrelationen
+der benachtbarten Bins unterdrückt wird. 
+
+% Durch Hinzufügen eines Zusatzterms der zu minimierenden Funktion
+% % während des Entfaltungsprozess 
+% ist Regularisierung möglich.
 Dabei gibt es verschiedene Möglichkeiten,
 wovon beispielsweise die Methoden nach
 Tikhonov, Bertero, und Schmelling
