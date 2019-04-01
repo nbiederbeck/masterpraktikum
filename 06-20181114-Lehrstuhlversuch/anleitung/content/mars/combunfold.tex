@@ -65,9 +65,7 @@ Das Problem wird durch das Fredholm Integral beschrieben:
 Hierbei ist $M(x, y)$ eine Funktion, die die Transformation der physikalischen
 Daten in das Messsystem vornimmt (bspw.\ eine Detektorfunktion), und $b(y)$ der Bias.
 
-Ziel ist es, mit Monte Carlo simulierten Daten
-die Antwortmatrix zu bestimmen.
-Dazu wird der Parameterraum diskretisiert.
+Für die Entfaltung wird der Parameterraum diskretisiert.
 Dies geschieht durch Binning der Daten,
 \begin{equation}
 	g_i = \int_{y_{i-1}}^{y_i} g(y) \, \text{d}y \quad \text{und} \quad
@@ -76,11 +74,33 @@ Dies geschieht durch Binning der Daten,
 Anschließend wird versucht, die Matrixgleichung
 \begin{equation}
 	g_i = \sum_j M_{ij} f_j + b_i
+    \label{eq:matrix_bin}
 \end{equation}
 zu lösen.
 Die Migrationsmatrix lässt sich aus den Monte Carlo Daten
 bestimmen.
-Die naivste Annahme, die physikalischen Parameter zu bestimmen,
+
+Eine Methode zur Bestimmung der wahren Verteilung $f$ ist
+beispielsweise das Forward Folding.
+Hierbei wird eine Funktion mit freien Parametern zum Entfalten angenommen.
+Die physikalischen Parameter werden mit Gleichung~\eqref{eq:matrix_bin}
+berechnet und mit den gemessen verglichen.
+Die Fehler werden mit dem Algorithmus der
+% Eine Alternative zur Bestimmung der Migrationsmatrix
+% Sie
+% besteht aus der
+\textit{Minimierung der kleinsten Quadrate}
+angepasst.
+Dabei werden die Parameter der angenommenen Funktion so bestimmt, dass
+\begin{equation}
+    \chi^2_0 = {\left( \vec{g} - \mathbf{M} \vec{f} \right)}^\intercal
+        \cdot \mathbf{V} \left[ \vec{g} \right] \cdot
+        \left( \vec{g} - \mathbf{M} \vec{f} \right)
+\end{equation}
+% welche die größte Übereinstimmung mit den Monte Carlo-Daten erzeugt.
+minimiert wird.
+
+Eine weitere Möglichkeit, die physikalischen Parameter zu bestimmen,
 beruht auf der \textit{Inversion} der Migrationsmatrix:
 \begin{equation}
     \vec{f} = \mathbf{M}^{-1} \vec{g}.
@@ -101,20 +121,6 @@ muss regularisiert werden.
 % Dabei wird die Matrix bestimmt,
 % welche die größte Übereinstimmung mit den Monte Carlo-Daten erzeugt.
 
-Eine Methode zur Bestimmung der wahren Verteilung $f$ ist
-beispielsweise das Forward Folding, 
-bei dem eine Funktion mit freien Parametern zum Entfalten angenommen wird.
-% Eine Alternative zur Bestimmung der Migrationsmatrix
-Sie
-besteht aus der \textit{Minimierung der kleinsten Quadrate}.
-Dabei werden die Parameter so bestimmt, dass
-\begin{equation}
-    \chi^2_0 = {\left( \vec{g} - \mathbf{M} \vec{f} \right)}^\intercal
-        \cdot \mathbf{V} \left[ \vec{g} \right] \cdot
-        \left( \vec{g} - \mathbf{M} \vec{f} \right)
-\end{equation}
-% welche die größte Übereinstimmung mit den Monte Carlo-Daten erzeugt.
-minimiert wird.
 
 % Des Weiteren neigt die
 % die verstärkt werden und
